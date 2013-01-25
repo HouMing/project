@@ -1,0 +1,28 @@
+CXX ?= g++
+
+CXXFLAGS = -g -Wall -O0 -DFILE_OFFSET_BITS=64 
+LDFLAGS  = -g -static -lcrypto -lssl -ldl -lz -lpthread -lrt
+
+SOURCES = config.cpp \
+				 	monitor.cpp
+
+HEADERS = common.h \
+					config.h \
+					monitor.h
+
+OBJECTS = $(SOURCES:.cpp=.o)
+
+TARGET := tpmonitor
+
+all: ${TARGET}
+
+${TARGET}: ${OBJECTS}
+	${CXX} $^ $(LDFLAGS) -o $@
+
+${OBJECTS}: ${HEADERS} Makefile
+
+.cpp.o:
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+clean:
+	@rm -rf *.o ${TARGET}
