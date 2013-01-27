@@ -1,6 +1,8 @@
 #ifndef _LEMONITOR_CONFIG_H_
 #define _LEMONITOR_CONFIG_H_
 
+#include "common.h"
+
 namespace le { namespace tpmonitor {
 
 using namespace std;
@@ -8,21 +10,19 @@ using namespace std;
 class Configuration {
  public:
   ~Configuration();
-
   void dump();
 
   static Configuration* readConfig(const char* load_path);
-  set<string> getAppSet();
-  map<string, string> getAppConfMap(const string& key);
+  const set<char*> getAppCfgs();
+  void showAppCfgs();
 
  private:
-  const string load_path_;
+  const char* load_path_;
   const char* cfg_dir_;
   const char* log_dir_;
-  set<string> config_files_;
-  map<string, map<string, string> > cfg_files_;
+  set<char*> cfg_files_;
 
-  Configuration(const string load_path, const char *cfg_dir, const char *log_dir);
+  Configuration(const char* load_path, const char *cfg_dir, const char *log_dir);
   void loadFiles();
 };
 

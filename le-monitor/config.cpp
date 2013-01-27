@@ -1,136 +1,146 @@
-#include "common.h"
 #include "config.h"
+#include "util.h"
+#include <dirent.h>
+
+#define CONF_REG "^.*\\.cfg$"
 
 namespace le { namespace tpmonitor {
 
-
-void tolower(char* str) 
+Configuration::Configuration (const char* load_path, const char cfg_dir[], const char log_dir[])
 {
-  for (; *str != '\0'; ++str) {
-    char c = *str;
-    switch (c) {
-      case 'A' ... 'Z' :
-        *str = c - 'Z' - 'z';
-        break;
-    }
+  if (sizeof(cfg_dir) > FILENAME_MAX || sizeof(log_dir) > FILENAME_MAX) {
+    abort();
   }
-}
+  char* tmp = new char [FILENAME_MAX + 1];
+  strcpy(tmp, load_path);
+  tmp[FILENAME_MAX] = 0;
+  load_path_ = tmp;
 
-char* next(char **line, const char *post_delim)
-{   
-  char *p = *line;
-  char *ret = p;
-  int len = ::strlen(p);
-  if (len == 0) {
-    return NULL;
-  }     
+  tmp = new char [FILENAME_MAX + 1];
+  strcpy(tmp, cfg_dir);
+  tmp[FILENAME_MAX] = 0;
+  cfg_dir_ = tmp;
 
-  int pos = ::strcspn(p, post_delim);
-  if (pos == 0) {
-    return NULL;
-  } 
-
-  p += pos;
-  *p++ = 0;
-
-  pos = ::strspn(p, post_delim);
-  p += pos;
-
-  *line = p;
-  return ret;
-}
-
-char* first(char **line, const char *pre_delim, const char *post_delim)
-{   
-  char *p = *line;
-  int len = strlen(p);
-  int pos = ::strspn(p, pre_delim);
-
-  if (pos == len) {
-    return NULL;
-  }
-  p += pos;
-  *line = p;
-  return next(line, post_delim);
-} 
-
-Configuration::Configuration (const string load_path, const char *cfg_dir, const char *log_dir)
-:  load_path_(load_path),
-    cfg_dir_(cfg_dir),
-    log_dir_(log_dir)
-{
+  tmp = new char [FILENAME_MAX + 1];
+  strcpy(tmp, log_dir);
+  tmp[FILENAME_MAX] = 0;
+  log_dir_ = tmp;
 }
 
 Configuration::~Configuration ()
-{}
+{
+  for (set<char*>::iterator it = cfg_files_.begin(); it != cfg_files_.end(); ++it) {
+    delete *it;
+  }
+  if (!cfg_dir_) {
+    delete cfg_dir_;
+  }
+  if (!log_dir_) {
+    delete log_dir_;
+  }
+}
 
-void Configuration::loadFiles() {
-  cout << "load files" << endl;
-  FILE* dir = fopen(cfg_dir_);
+void Configuration::loadFiles ()
+{
+  cfg_files_.clear();
+  DIR* dir = opendir(cfg_dir_);
+  if (!dir) {
+    SHOW_ERROR;
+    exit(-1);
+  }
+  dirent *pf;
+  regex_t rx;
+  if (regcomp(&rx, CONF_REG, REG_ICASE | REG_NOSUB)) {
+    SHOW_ERROR;
+  }
+  char* file_name;
+  while ((pf = readdir(dir))) {
+    file_name = pf->d_name;
+    if (!regexec(&rx, file_name, 1, NULL, 0)) {
+      char* elem = new char[FILENAME_MAX+1];
+      strcpy(elem, file_name);
+      elem[FILENAME_MAX] = 0;
+      cfg_files_.insert(elem);
+    }
+  }
+  closedir(dir);
 }
 
 Configuration* Configuration::readConfig (const char* load_path)
 {
-  FILE *fpcfg = fopen(load_path, "r");
-  if (!fpcfg) {
+  FILE *cfg_fd = fopen(load_path, "r");
+  if (!cfg_fd) {
     // TODO add google log error output
-    cout << "(" << errno << ")" << strerror(errno) << endl;
+    SHOW_ERROR;
     return NULL;
   }
   Configuration* cfg;
-  const char* cfg_dir;
-  const char* log_dir;
-
+  char cfg_dir[FILENAME_MAX + 1], log_dir[FILENAME_MAX + 1];
   char line[1024];
   int lineno = 0;
-  while (!feof(fpcfg)) {
-    if ( NULL == fgets(line, sizeof(line), fpcfg)) {
+  char *p, *key, *val;
+
+  while (!feof(cfg_fd)) {
+    if ( NULL == fgets(line, sizeof(line), cfg_fd)) {
       break;
     }
     ++lineno;
     int left = strcspn(line, "#\r\n");
     if (left == 0) {
       continue;
+    } else {
+      line[left] = 0;
+      p = line;
     }
-    line[left] = 0;
-    char* p = line; 
-
-    char* type = first(&p, " ", "= "); 
-    if (type == NULL) {
-      //LOG(ERROR) << "wrong line " << lineno << ": missing `type'"; 
-      exit(1); 
-    } 
-    tolower(type); 
-    if (!strcmp(type, "cfg.dir")) {
-      cfg_dir = next(&p, " ");
-      cout << cfg_dir << endl;
+    int pos = -1;
+    pos = Util::index(p, '=', -1);
+    if (pos == -1) {
+      continue;
+    } else {
+      line[pos] = '\0';
+      key = p; 
+      val = p + pos + 1;
     }
-    if (!strcmp(type, "log.dir")) {
-      log_dir = next(&p, " ");
-      cout << log_dir << endl;
+    Util::trim(key);
+    Util::trim(val);
+    Util::tolower(key); 
+    Util::tolower(val); 
+    if (!strcmp(key, "cfg.dir")) {
+      strcpy(cfg_dir, val);
+      cfg_dir[FILENAME_MAX] = 0;
+    }
+    if (!strcmp(key, "log.dir")) {
+      strcpy(log_dir, val);
+      log_dir[FILENAME_MAX] = 0;
     }
   }
   cfg = new Configuration(load_path, cfg_dir, log_dir);
-  cfg->loadFiles();
+  cfg->getAppCfgs();
   return cfg;
 }
 
-set<string> Configuration::getAppSet ()
+const set<char*> Configuration::getAppCfgs ()
 {
-  set<string> ret;
-  return ret;
+  loadFiles();
+  return cfg_files_;
 }
 
-map<string, string> Configuration::getAppConfMap (const string& key)
+void Configuration::showAppCfgs()
 {
-  map<string, string> ret;
-  return ret;
+  for (set<char*>::iterator it = cfg_files_.begin(); it != cfg_files_.end(); ++it) {
+    cout << *it << endl;
+  } 
 }
+
 }}
 
 int main(int argc, char** argv) 
 {
-  std::cout << "ddd" << std::endl;
-  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/hm/test/test.cfg");
+  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/houming/test/test.cfg");
+  if (!test) {
+    return -1;
+  }
+  test->getAppCfgs();
+  delete test;
   return 0;
 }

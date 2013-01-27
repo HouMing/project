@@ -1,14 +1,16 @@
 CXX ?= g++
 
 CXXFLAGS = -g -Wall -O0 -DFILE_OFFSET_BITS=64 
-LDFLAGS  = -g -static -lcrypto -lssl -ldl -lz -lpthread -lrt
+LDFLAGS  = -g -static 
 
 SOURCES = config.cpp \
-				 	monitor.cpp
+				 	monitor.cpp \
+					util.cpp
 
 HEADERS = common.h \
 					config.h \
-					monitor.h
+					monitor.h \
+					util.h
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
