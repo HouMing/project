@@ -1,6 +1,7 @@
 #include "monitor.h"
 
 namespace le { namespace tpmonitor {
+
 ProxyProc::ProxyProc ()
 {
   enable_ = false;
@@ -23,17 +24,24 @@ int ProxyProc::loadCfg (char* cfg)
   std::map<char*, char*> kv = Util::loadKV(cfg_file);
   int check = 0;
   for (it = kv.begin(); it != kv.end(); ++it) {
-    if (!strcpy(it->first, "shell")) {
+    // parse shell, input the shell command to ProxyProc
+    if (!strcmp(it->first, "shell")) {
       if (argv_ != NULL || argc_ != 0) {
         delete argv_;
         argv_ = NULL;
         argc_ = 0;
       }
-      Util::parse_args(it->second, &argc_, argv_);
+      Util::parse_args(it->second, &argc_, &argv_);
       ++check;
     }
+    
+    // set PATH, input the path of ProxyProc
+    if (!strcmp(it->first, "path")) {
+      if (argv_
+    }
 
-    if (!strcpy(it->first, "enable")) {
+    // enable ProxyProc
+    if (!strcmp(it->first, "enable")) {
       if (!strcpy(it->second, "false")) {
         enable_ = false;
       } else {
@@ -72,11 +80,22 @@ pid_t ProxyProc::start ()
 }
 
 Monitor::Monitor ()
-{
-
-}
+{}
 
 Monitor::~Monitor ()
 {}
 
+void Monitor::setCfgs(const std::set<char*> cfgs)
+{
+}
+
 }}
+
+using namespace std;
+
+int main(int argc, char** argv)
+{
+  le::tpmonitor::ProxyProc p;
+  p.loadCfg("/home/houming/test/task1.cfg");
+  return 0; 
+}

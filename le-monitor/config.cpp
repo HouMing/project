@@ -135,9 +135,10 @@ void Configuration::showAppCfgs()
 
 }}
 
+/*
 int main(int argc, char** argv) 
 {
-  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/hm/test/test.cfg");
+  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/houming/test/test.cfg");
   if (!test) {
     return -1;
   }
@@ -145,3 +146,4 @@ int main(int argc, char** argv)
   delete test;
   return 0;
 }
+*/

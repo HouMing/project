@@ -18,7 +18,7 @@ class Util {
   static void trim (char* line);
   static size_t count (const char* str, const char target);
 
-  static int parse_args (const char* str, size_t* argn, const char** argv);
+  static int parse_args (const char* str, size_t* argn, const char*** argv);
   static std::map<char*,char*> loadKV (FILE* file);
   static void releaseKV (std::map<char*, char*> imap);
 };

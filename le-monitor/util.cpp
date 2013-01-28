@@ -1,6 +1,9 @@
 #include "util.h"
+#include <iostream>
 
 namespace le { namespace tpmonitor {
+
+using namespace std;
 
 void Util::tolower (char* str) 
 {
@@ -8,7 +11,7 @@ void Util::tolower (char* str)
     char c = *str;
     switch (c) {
       case 'A' ... 'Z' :
-        *str = c - 'Z' - 'z';
+        *str = c - 'A' + 'a';
         break;
     }
   }
@@ -106,17 +109,19 @@ size_t Util::count (const char* str, const char target)
   return cnt;
 }
 
-int Util::parse_args (const char* str, size_t* argn, const char** argv)
+int Util::parse_args (const char* str, size_t* argn, const char*** argv)
 {
-  if ( str == NULL || argv != NULL || argn == NULL) 
+  if ( str == NULL || *argv != NULL || argn == NULL || *argn != 0) 
   {
     return -1;
   }
   if (!strlen(str)) {
     return -1;
   }
+
   *argn = Util::count(str, ' ') + 2;// COUNT(arg0,arg1,...,argN,NULL) == N + 2
-  argv = new const char[argn];
+  *argv = new const char*[*argn];
+
   off_t off_str = 0;
   size_t n = 0;
   const char* p = str;
@@ -124,11 +129,11 @@ int Util::parse_args (const char* str, size_t* argn, const char** argv)
   off_str = ::strcspn(p, " \0");
   char* tmp = new char[off_str + 1];
   memcpy(tmp, p, sizeof(char) * off_str);
-  argv[n] = tmp;
-  argv[n][b] = 0;
-  p = p + b + 1;
+  tmp[off_str] = 0;
+  argv[0][n] = tmp;
+  p = p + off_str + 1;
   }
-  argv[argn - 1] = NULL; 
+  argv[0][*argn - 1] = NULL; 
   return 0;
 }
 
