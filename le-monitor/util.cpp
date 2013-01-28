@@ -77,26 +77,71 @@ void Util::trim (char* line)
   }
   int a = 0;
   int b = 0;
+  bool t = true;
   while (line[b] != '\0') {
-    if (line[b] == ' ') {
+    if (line[b] == ' ' && t) {
       ++b;
+      t = true;
     } else {
       line[a] = line[b];
       ++a;
       ++b;
+      t = false;
     }
+  }
+  if (line[a - 1] == ' ') {
+    line[a - 1] = 0;
   }
   line[a] = 0;
 }
 
-std::set<char*> Util::loadProperties (FILE* file)
+size_t Util::count (const char* str, const char target)
 {
-  std::set<char*> ret;
+  size_t cnt = 0;
+  for (;*str != '\0'; ++str) {
+    if (target == *str) {
+      ++cnt;
+    }
+  }
+  return cnt;
+}
+
+int Util::parse_args (const char* str, size_t* argn, const char** argv)
+{
+  if ( str == NULL || argv != NULL || argn == NULL) 
+  {
+    return -1;
+  }
+  if (!strlen(str)) {
+    return -1;
+  }
+  *argn = Util::count(str, ' ') + 2;// COUNT(arg0,arg1,...,argN,NULL) == N + 2
+  argv = new const char[argn];
+  off_t off_str = 0;
+  size_t n = 0;
+  const char* p = str;
+  for (;n < *argn - 1; ++n) {
+  off_str = ::strcspn(p, " \0");
+  char* tmp = new char[off_str + 1];
+  memcpy(tmp, p, sizeof(char) * off_str);
+  argv[n] = tmp;
+  argv[n][b] = 0;
+  p = p + b + 1;
+  }
+  argv[argn - 1] = NULL; 
+  return 0;
+}
+
+std::map<char*, char*> Util::loadKV (FILE* file)
+{
+  std::map<char*, char*> ret;
   char line[1024];
   int lineno = 0;
   char* p;
   char* key;
   char* val;
+  char* ikey = new char[FILENAME_MAX + 1];
+  char* ival = new char[FILENAME_MAX + 1];
   while (!feof(file)) {
     if ( NULL == fgets(line, sizeof(line), file)) {
       break;
@@ -120,10 +165,29 @@ std::set<char*> Util::loadProperties (FILE* file)
     }
     Util::trim(key);
     Util::trim(val);
-    Util::tolower(key); 
+    Util::tolower(key);
     Util::tolower(val);
+    strcpy(ikey, key);
+    strcpy(ival, val);
+    ret.insert(std::pair<char*,char*>(ikey, ival));
   }
-    return ret;
+  return ret;
+}
+
+void Util::releaseKV (std::map<char*, char*> imap)
+{
+  for (std::map<char*, char*>::iterator it = imap.begin();
+       it != imap.end();
+       ++it) {
+    if (it->first != NULL) {
+      delete it->first;
+    }
+    if (it->second != NULL) {
+      delete it->second;
+      it->second = NULL;
+    }
+    imap.erase(it);
+  }
 }
 
 }}

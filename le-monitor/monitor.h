@@ -1,26 +1,37 @@
+#ifndef _MONITOR_MONITOR_H_
+#define _MONITOR_MONITOR_H_
+
+#include "common.h"
 #include "monitor.h"
+#include "util.h"
 
 namespace le { namespace tpmonitor {
 
 class ProxyProc {
  public:
+  ProxyProc();
+  virtual ~ProxyProc();
+  int loadCfg(char* cfg);
+  pid_t start();
+ protected:
   bool enable_;
-  pid_t pid_; 
-  const char* bin_;
-  const char* run_path_;
-  const char* argv;
-}
+  std::map<char*, char*> cfg_;
+  size_t argc_;
+  const char** argv_;
+  pid_t pid_;
+};
 
 class Monitor {
  public:
   Monitor();
-  ~Monitor();
-  void setCfgFiles(const set<char*> cfgs);
+  virtual ~Monitor();
+  void setCfgs(const std::set<char*> cfgs);
   void start();
  protected:
-  const set<char*> cfgs_;
-  map<char*,pid_t> pids_;
-  
+  const std::set<char*> cfgs_;
+  std::map<char*, ProxyProc> pids_;
 }; 
 
 }}
+
+#endif

@@ -106,6 +106,7 @@ Configuration* Configuration::readConfig (const char* load_path)
     Util::tolower(key); 
     Util::tolower(val); 
     if (!strcmp(key, "cfg.dir")) {
+      cout << key << endl;
       strcpy(cfg_dir, val);
       cfg_dir[FILENAME_MAX] = 0;
     }
@@ -136,7 +137,7 @@ void Configuration::showAppCfgs()
 
 int main(int argc, char** argv) 
 {
-  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/houming/test/test.cfg");
+  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/hm/test/test.cfg");
   if (!test) {
     return -1;
   }
