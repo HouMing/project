@@ -3,11 +3,14 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <string>
 #include <set>
 #include <map>
 #include <limits.h>
 
 namespace le { namespace tpmonitor {
+
+using namespace std;
 
 class Util {
  public:
@@ -18,9 +21,10 @@ class Util {
   static void trim (char* line);
   static size_t count (const char* str, const char target);
 
-  static int parse_args (const char* str, size_t* argn, const char*** argv);
-  static std::map<char*,char*> loadKV (FILE* file);
-  static void releaseKV (std::map<char*, char*> imap);
+  static int parse_args (const char* str, size_t* argn, char*** argv);
+  static int parse_env (const char* str, char** envp[]);
+  static map<string, char*> loadKV (FILE* file);
+  static void releaseKV (map<string, char*> imap);
 };
 
 }}

@@ -3,23 +3,10 @@
 
 #include "common.h"
 #include "monitor.h"
+#include "proxyproc.h"
 #include "util.h"
 
 namespace le { namespace tpmonitor {
-
-class ProxyProc {
- public:
-  ProxyProc();
-  virtual ~ProxyProc();
-  int loadCfg(char* cfg);
-  pid_t start();
- protected:
-  bool enable_;
-  std::map<char*, char*> cfg_;
-  size_t argc_;
-  const char** argv_;
-  pid_t pid_;
-};
 
 class Monitor {
  public:

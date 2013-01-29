@@ -1,5 +1,7 @@
 #include "util.h"
+#include "common.h"
 #include <iostream>
+#include <string>
 
 namespace le { namespace tpmonitor {
 
@@ -109,44 +111,48 @@ size_t Util::count (const char* str, const char target)
   return cnt;
 }
 
-int Util::parse_args (const char* str, size_t* argn, const char*** argv)
+int Util::parse_args (const char* str, size_t* argn, char*** argv)
 {
   if ( str == NULL || *argv != NULL || argn == NULL || *argn != 0) 
   {
-    return -1;
+    SHOW_ERROR;
+    abort();
   }
   if (!strlen(str)) {
-    return -1;
+    SHOW_ERROR;
+    abort();
   }
 
   *argn = Util::count(str, ' ') + 2;// COUNT(arg0,arg1,...,argN,NULL) == N + 2
-  *argv = new const char*[*argn];
+  *argv = new char*[*argn];
 
   off_t off_str = 0;
   size_t n = 0;
   const char* p = str;
   for (;n < *argn - 1; ++n) {
-  off_str = ::strcspn(p, " \0");
-  char* tmp = new char[off_str + 1];
-  memcpy(tmp, p, sizeof(char) * off_str);
-  tmp[off_str] = 0;
-  argv[0][n] = tmp;
-  p = p + off_str + 1;
+    off_str = ::strcspn(p, " \0");
+    char* tmp = new char[off_str + 1];
+    memcpy(tmp, p, sizeof(char) * off_str);
+    tmp[off_str] = 0;
+    argv[0][n] = tmp;
+    p = p + off_str + 1;
   }
-  argv[0][*argn - 1] = NULL; 
+  argv[0][*argn - 1] = NULL;
   return 0;
 }
 
-std::map<char*, char*> Util::loadKV (FILE* file)
+std::map<string, char*> Util::loadKV (FILE* file)
 {
-  std::map<char*, char*> ret;
-  char line[1024];
+  std::map<string, char*> ret;
+  if (file == NULL) {
+    return ret;
+  }
+  rewind(file);
+  char line[FILENAME_MAX + 1];
   int lineno = 0;
   char* p;
   char* key;
   char* val;
-  char* ikey = new char[FILENAME_MAX + 1];
-  char* ival = new char[FILENAME_MAX + 1];
   while (!feof(file)) {
     if ( NULL == fgets(line, sizeof(line), file)) {
       break;
@@ -172,21 +178,19 @@ std::map<char*, char*> Util::loadKV (FILE* file)
     Util::trim(val);
     Util::tolower(key);
     Util::tolower(val);
-    strcpy(ikey, key);
+    string ikey(key);
+    char* ival = new char[FILENAME_MAX + 1];
     strcpy(ival, val);
-    ret.insert(std::pair<char*,char*>(ikey, ival));
+    ret.insert(std::pair<string, char*>(ikey, ival));
   }
   return ret;
 }
 
-void Util::releaseKV (std::map<char*, char*> imap)
+void Util::releaseKV (std::map<string, char*> imap)
 {
-  for (std::map<char*, char*>::iterator it = imap.begin();
+  for (std::map<string, char*>::iterator it = imap.begin();
        it != imap.end();
        ++it) {
-    if (it->first != NULL) {
-      delete it->first;
-    }
     if (it->second != NULL) {
       delete it->second;
       it->second = NULL;

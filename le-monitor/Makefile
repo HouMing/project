@@ -5,12 +5,14 @@ LDFLAGS  = -g -static
 
 SOURCES = config.cpp \
 				 	monitor.cpp \
-					util.cpp
+					util.cpp \
+					proxyproc.cpp
 
 HEADERS = common.h \
 					config.h \
 					monitor.h \
-					util.h
+					util.h \
+					proxyproc.h
 
 OBJECTS = $(SOURCES:.cpp=.o)
 
