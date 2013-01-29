@@ -12,11 +12,11 @@ class Monitor {
  public:
   Monitor();
   virtual ~Monitor();
-  void setCfgs(const std::set<char*> cfgs);
+  void setCfgs(const std::set<string> cfgs);
   void start();
  protected:
-  const std::set<char*> cfgs_;
-  std::map<char*, ProxyProc> pids_;
+  const std::set<string> cfgs_;
+  std::map<string, ProxyProc> pids_;
 }; 
 
 }}

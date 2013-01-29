@@ -6,44 +6,19 @@
 
 namespace le { namespace tpmonitor {
 
-Configuration::Configuration (const char* load_path, const char cfg_dir[], const char log_dir[])
-{
-  if (sizeof(cfg_dir) > FILENAME_MAX || sizeof(log_dir) > FILENAME_MAX) {
-    abort();
-  }
-  char* tmp = new char [FILENAME_MAX + 1];
-  strcpy(tmp, load_path);
-  tmp[FILENAME_MAX] = 0;
-  load_path_ = tmp;
-
-  tmp = new char [FILENAME_MAX + 1];
-  strcpy(tmp, cfg_dir);
-  tmp[FILENAME_MAX] = 0;
-  cfg_dir_ = tmp;
-
-  tmp = new char [FILENAME_MAX + 1];
-  strcpy(tmp, log_dir);
-  tmp[FILENAME_MAX] = 0;
-  log_dir_ = tmp;
-}
+Configuration::Configuration (const string load_path, const string cfg_dir, const string log_dir)
+    : load_path_(load_path),
+    cfg_dir_(cfg_dir),
+    log_dir_(log_dir)
+  {}
 
 Configuration::~Configuration ()
-{
-  for (set<char*>::iterator it = cfg_files_.begin(); it != cfg_files_.end(); ++it) {
-    delete *it;
-  }
-  if (!cfg_dir_) {
-    delete cfg_dir_;
-  }
-  if (!log_dir_) {
-    delete log_dir_;
-  }
-}
+{}
 
 void Configuration::loadFiles ()
 {
   cfg_files_.clear();
-  DIR* dir = opendir(cfg_dir_);
+  DIR* dir = opendir(cfg_dir_.data());
   if (!dir) {
     SHOW_ERROR;
     exit(-1);
@@ -66,22 +41,23 @@ void Configuration::loadFiles ()
   closedir(dir);
 }
 
-Configuration* Configuration::readConfig (const char* load_path)
+Configuration* Configuration::readConfig (const char* monitor_cfg)
 {
-  FILE *cfg_fd = fopen(load_path, "r");
-  if (!cfg_fd) {
+  FILE *f_monitor_cfg = fopen(monitor_cfg, "r");
+  if (!f_monitor_cfg) {
     // TODO add google log error output
     SHOW_ERROR;
-    return NULL;
+    exit(-1);
   }
   Configuration* cfg;
-  char cfg_dir[FILENAME_MAX + 1], log_dir[FILENAME_MAX + 1];
+  string cfg_dir;
+  string log_dir;
+
   char line[1024];
   int lineno = 0;
   char *p, *key, *val;
-
-  while (!feof(cfg_fd)) {
-    if ( NULL == fgets(line, sizeof(line), cfg_fd)) {
+  while (!feof(f_monitor_cfg)) {
+    if ( NULL == fgets(line, sizeof(line), f_monitor_cfg)) {
       break;
     }
     ++lineno;
@@ -106,21 +82,18 @@ Configuration* Configuration::readConfig (const char* load_path)
     Util::tolower(key); 
     Util::tolower(val); 
     if (!strcmp(key, "cfg.dir")) {
-      cout << key << endl;
-      strcpy(cfg_dir, val);
-      cfg_dir[FILENAME_MAX] = 0;
+      cfg_dir.replace(0, strlen(val), val);
     }
     if (!strcmp(key, "log.dir")) {
-      strcpy(log_dir, val);
-      log_dir[FILENAME_MAX] = 0;
+      log_dir.replace(0, strlen(val), val);
     }
   }
-  cfg = new Configuration(load_path, cfg_dir, log_dir);
+  cfg = new Configuration(monitor_cfg, cfg_dir, log_dir);
   cfg->getAppCfgs();
   return cfg;
 }
 
-const set<char*> Configuration::getAppCfgs ()
+const set<string> Configuration::getAppCfgs ()
 {
   loadFiles();
   return cfg_files_;
@@ -128,22 +101,23 @@ const set<char*> Configuration::getAppCfgs ()
 
 void Configuration::showAppCfgs()
 {
-  for (set<char*>::iterator it = cfg_files_.begin(); it != cfg_files_.end(); ++it) {
+  for (set<string>::iterator it = cfg_files_.begin(); it != cfg_files_.end(); ++it) {
     cout << *it << endl;
-  } 
+  }
 }
 
 }}
 
-/*
+#if 0
 int main(int argc, char** argv) 
 {
-  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/houming/test/test.cfg");
+  le::tpmonitor::Configuration* test = le::tpmonitor::Configuration::readConfig("/home/hm/test/test.cfg");
   if (!test) {
     return -1;
   }
   test->getAppCfgs();
+  test->showAppCfgs();
   delete test;
   return 0;
 }
-*/
+#endif

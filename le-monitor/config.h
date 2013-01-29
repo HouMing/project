@@ -12,17 +12,17 @@ class Configuration {
   ~Configuration();
   void dump();
 
-  static Configuration* readConfig(const char* load_path);
-  const set<char*> getAppCfgs();
+  static Configuration* readConfig(const char* monitor_cfg);
+  const set<string> getAppCfgs();
   void showAppCfgs();
 
  private:
-  const char* load_path_;
-  const char* cfg_dir_;
-  const char* log_dir_;
-  set<char*> cfg_files_;
+  const string load_path_;
+  const string cfg_dir_;
+  const string log_dir_;
+  set<string> cfg_files_;
 
-  Configuration(const char* load_path, const char *cfg_dir, const char *log_dir);
+  Configuration(const string load_path, const string cfg_dir, const string log_dir);
   void loadFiles();
 };
 
