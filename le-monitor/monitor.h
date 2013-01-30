@@ -8,6 +8,8 @@
 
 namespace le { namespace tpmonitor {
 
+using namespace std;
+
 class Monitor {
  public:
   Monitor();
@@ -15,8 +17,8 @@ class Monitor {
   void setCfgs(const std::set<string> cfgs);
   void start();
  protected:
-  const std::set<string> cfgs_;
-  std::map<string, ProxyProc> pids_;
+  set<string> cfgs_;
+  map<string, ProxyProc> proxys_;
 }; 
 
 }}

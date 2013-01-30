@@ -1,4 +1,5 @@
 #include "monitor.h"
+#include "config.h"
 
 namespace le { namespace tpmonitor {
 
@@ -11,11 +12,31 @@ Monitor::~Monitor ()
 
 void Monitor::setCfgs(const std::set<string> cfgs)
 {
-   
+  cfgs_ = cfgs; 
 }
 
 void Monitor::start()
-{}
+{
+  for (set<string>::iterator it = cfgs_.begin(); it != cfgs_.end(); ++it) {
+    ProxyProc proc; 
+    proc.loadCfg(it->data());
+    proxys_.insert(pair<string, ProxyProc>(*it, proc));
+  }
+
+  for (map<string, ProxyProc>::iterator it = proxys_.begin(); it != proxys_.end(); ++it) {
+        it->second.start();
+  }
+   
+  while (1) {
+    for (map<string, ProxyProc>::iterator it = proxys_.begin(); it != proxys_.end(); ++it) {
+      pid_t p = waitpid(it->second.pid_, NULL, WNOHANG);
+      if (p > 0) {
+        it->second.start();
+      }
+    }
+    sleep(1);
+  }
+}
 
 }}
 
@@ -29,6 +50,7 @@ int main(int argc, char** argv)
   }
   le::tpmonitor::Monitor master;
   master.setCfgs(test->getAppCfgs());
+  master.start();
   delete test;
   return 0;
 }

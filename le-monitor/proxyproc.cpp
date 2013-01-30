@@ -22,6 +22,7 @@ int ProxyProc::loadCfg (const char* cfg)
   FILE* cfg_file = fopen(cfg, "r");
   std::map<string, char*>::iterator it;
   if (cfg_file == NULL) {
+    cout << "file name:" << cfg << endl;
     SHOW_ERROR; 
     abort();
   }
@@ -99,6 +100,16 @@ pid_t ProxyProc::start ()
   }
 
   if (pid_ == 0) {
+#ifdef LOG
+    //add glog
+    cout << "exec:" << getppid() << endl;
+    int i = 0;
+    while (argv_[i] != NULL) {
+      cout << argv_[i++] << " ";
+    }
+    cout << endl;
+#endif
+    chdir(path_);
     execv(argv_[0], argv_);
     return 0;
   }

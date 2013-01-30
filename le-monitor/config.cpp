@@ -20,6 +20,7 @@ void Configuration::loadFiles ()
   cfg_files_.clear();
   DIR* dir = opendir(cfg_dir_.data());
   if (!dir) {
+    cout << "dir is not exist : " << cfg_dir_.data() << endl;
     SHOW_ERROR;
     exit(-1);
   }
@@ -32,9 +33,7 @@ void Configuration::loadFiles ()
   while ((pf = readdir(dir))) {
     file_name = pf->d_name;
     if (!regexec(&rx, file_name, 1, NULL, 0)) {
-      char* elem = new char[FILENAME_MAX+1];
-      strcpy(elem, file_name);
-      elem[FILENAME_MAX] = 0;
+      string elem = cfg_dir_ + file_name;
       cfg_files_.insert(elem);
     }
   }
@@ -81,7 +80,7 @@ Configuration* Configuration::readConfig (const char* monitor_cfg)
     Util::trim(val);
     Util::tolower(key); 
     Util::tolower(val); 
-    if (!strcmp(key, "cfg.dir")) {
+    if (!strcasecmp(key, "cfg.dir")) {
       cfg_dir.replace(0, strlen(val), val);
     }
     if (!strcmp(key, "log.dir")) {
