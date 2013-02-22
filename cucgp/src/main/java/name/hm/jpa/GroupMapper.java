@@ -13,22 +13,22 @@ import org.apache.ibatis.annotations.Update;
 
 public interface GroupMapper {
 
-	final String SELECT_BY_GROUPID = "SELECT * FROM cucgp.group WHERE group_id = #{param1}";
-	final String SELECT_BY_GROUPNAME = "SELECT * FROM cucgp.group WHERE group_name = #{param1}";
-	final String SELECTL_BY_GROUPVALIDE = "SELECT * FROM cucgp.group WHERE valide = #{param1}";
-	final String INSERT_GROUP = "INSERT INTO cucgp.group (group_id, group_name, valide) VALUES " +
-			                    "(#{groupId}, #{groupName}, #{valide})";
-	final String UPDATE = "UPDATE cucgp.group " +
-			              "SET group_name = #{groupName}, valide = #{valide} " +
+	final String SELECT_BY_GROUPID = "SELECT * FROM `group` WHERE group_id = #{param1}";
+	final String SELECT_BY_GROUPNAME = "SELECT * FROM `group` WHERE group_name = #{param1}";
+	final String SELECT_BY_GROUPVALID = "SELECT * FROM `group` WHERE valid = #{param1}";
+	final String INSERT_GROUP = "INSERT INTO `group` (group_id, group_name, valid) VALUES " +
+			                    "(#{groupId}, #{groupName}, #{valid})";
+	final String UPDATE = "UPDATE `group` " +
+			              "SET group_name = #{groupName}, valid = #{valid} " +
 			              "WHERE group_id = #{groupId}";
-	final String DELETE = "DELETE FROM cucgp.group WHERE group_id = #{groupId}";
+	final String DELETE = "DELETE FROM `group` WHERE group_id = #{groupId}";
 	
 	//Basic CRUD method
 	@Select(SELECT_BY_GROUPID)
 	@Results(value = {
 			@Result(property="groupId",column="group_id"),
 			@Result(property="groupName",column="group_name"),
-			@Result(property="valide",column="valide")
+			@Result(property="valid",column="valid")
 	})
 	Group selectByGroupId(Integer groupId);
 
@@ -36,17 +36,17 @@ public interface GroupMapper {
 	@Results(value = {
 			@Result(property="groupId",column="group_id"),
 			@Result(property="groupName",column="group_name"),
-			@Result(property="valide",column="valide")
+			@Result(property="valid",column="valid")
 	})
 	Group selectByGroupName(String groupName);
 	
-	@Select(SELECTL_BY_GROUPVALIDE)
+	@Select(SELECT_BY_GROUPVALID)
 	@Results(value = {
 			@Result(property="groupId",column="group_id"),
 			@Result(property="groupName",column="group_name"),
-			@Result(property="valide",column="valide")
+			@Result(property="valid",column="valid")
 	})
-	List<Group> selectByValide(String valide);
+	List<Group> selectByValid(String valid);
 	
 	@Insert(INSERT_GROUP)
 	Integer insert(Group cellTest);

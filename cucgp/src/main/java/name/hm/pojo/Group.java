@@ -9,7 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 public class Group implements Serializable {
 	private Integer groupId;
 	private String groupName;
-	private String valide;
+	private String valid;
 
 	public Integer getGroupId() {
 		return groupId;
@@ -27,12 +27,12 @@ public class Group implements Serializable {
 		this.groupName = groupName;
 	}
 
-	public String getValide() {
-		return valide;
+	public String getValid() {
+		return valid;
 	}
 
-	public void setValide(String valide) {
-		this.valide = valide;
+	public void setValid(String valid) {
+		this.valid = valid;
 	}
 
 	public String toString() {

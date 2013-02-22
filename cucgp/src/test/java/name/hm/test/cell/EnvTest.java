@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 import name.hm.jpa.GroupMapper;
+import name.hm.jpa.RoleMapper;
 import name.hm.test.CellTest;
 
 import org.apache.ibatis.io.Resources;
@@ -26,6 +27,7 @@ public class EnvTest {
 			if (sqlSessionFactory == null) {
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 				sqlSessionFactory.getConfiguration().addMapper(GroupMapper.class);
+				sqlSessionFactory.getConfiguration().addMapper(RoleMapper.class);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
