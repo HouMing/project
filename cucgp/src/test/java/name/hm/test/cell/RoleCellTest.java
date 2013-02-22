@@ -12,9 +12,8 @@ import org.junit.Test;
 
 import name.hm.jpa.RoleMapper;
 import name.hm.pojo.Role;
-//MARK
+
 /**
- * TODO 
  * test ISUD of Role Table
  */
 public class RoleCellTest {
@@ -40,7 +39,6 @@ public class RoleCellTest {
     }
 
   /**
-   * TODO
    * insert Role
    * #roleId(ROLE_ID)
    * #roleName(ROLE_NAME)
@@ -71,7 +69,6 @@ public class RoleCellTest {
   }
 
   /**
-   * TODO
    * select Role
    * #roleId(ROLE_ID)
    * #roleName(ROLE_NAME)
@@ -99,7 +96,6 @@ public class RoleCellTest {
     }
 
   /**
-   * TODO
    * update Role
    * #roleName(ROLE_NAME <--> "CellTestChange")
    * #valid('invalid' <--> 'valid')
@@ -140,7 +136,6 @@ public class RoleCellTest {
     }
 
   /**
-   * TODO
    * delete Role
    * #roleId(ROLE_ID)
    */

@@ -6,16 +6,14 @@ import java.io.Reader;
 import name.hm.jpa.GroupMapper;
 import name.hm.jpa.RoleMapper;
 import name.hm.jpa.UserMapper;
-import name.hm.test.CellTest;
+import name.hm.jpa.WorkflowMapper;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
-@Category(CellTest.class)
 public class EnvTest {
 
 	private static SqlSessionFactory sqlSessionFactory = null;
@@ -30,6 +28,7 @@ public class EnvTest {
 				sqlSessionFactory.getConfiguration().addMapper(GroupMapper.class);
 				sqlSessionFactory.getConfiguration().addMapper(RoleMapper.class);
 				sqlSessionFactory.getConfiguration().addMapper(UserMapper.class);
+				sqlSessionFactory.getConfiguration().addMapper(WorkflowMapper.class);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

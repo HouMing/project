@@ -6,7 +6,6 @@ import name.hm.jpa.GroupMapper;
 import name.hm.jpa.UserMapper;
 import name.hm.pojo.Group;
 import name.hm.pojo.User;
-import name.hm.test.CellTest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,14 +13,10 @@ import org.apache.log4j.Logger;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.categories.Category;
 
-//MARK
 /**
- * TODO 
  * test ISUD of User Table
  */
-@Category(CellTest.class)
 public class UserCellTest{
 
 static SqlSessionFactory factory;
@@ -69,7 +64,6 @@ static SqlSessionFactory factory;
   }
 
   /**
-   * TODO
    * insert user
    * #userId(0)
    * #userName("CellTest")
@@ -105,7 +99,6 @@ static SqlSessionFactory factory;
   }
 
   /**
-   * TODO
    * select user
    * #userId(0)
    * #userName("CellTest")
@@ -134,7 +127,6 @@ static SqlSessionFactory factory;
   }
 
   /**
-   * TODO
    * update user
    * #valide('valide' <--> 'invalide')
    * #password("123456" <--> "654321")
@@ -177,7 +169,6 @@ static SqlSessionFactory factory;
   }
 
   /**
-   * TODO
    * delete user
    * #userId(0)
    */
