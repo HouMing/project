@@ -21,8 +21,8 @@ import name.hm.pojo.Group;
     static GroupMapper mp = null;
     private static Logger logger = Logger.getLogger("testcell");
 
-    Integer GROUP_ID = 0;
-    String GROUP_NAME = "CellTest";
+    static final Integer GROUP_ID = 0;
+    static final String GROUP_NAME = "CellTest";
 
     @BeforeClass
       static public void init() {

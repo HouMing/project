@@ -5,6 +5,7 @@ import java.io.Reader;
 
 import name.hm.jpa.GroupMapper;
 import name.hm.jpa.RoleMapper;
+import name.hm.jpa.UserMapper;
 import name.hm.test.CellTest;
 
 import org.apache.ibatis.io.Resources;
@@ -28,6 +29,7 @@ public class EnvTest {
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
 				sqlSessionFactory.getConfiguration().addMapper(GroupMapper.class);
 				sqlSessionFactory.getConfiguration().addMapper(RoleMapper.class);
+				sqlSessionFactory.getConfiguration().addMapper(UserMapper.class);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

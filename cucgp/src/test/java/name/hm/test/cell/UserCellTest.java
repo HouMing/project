@@ -1,7 +1,18 @@
 package name.hm.test.cell;
 
+import java.util.List;
+
+import name.hm.jpa.GroupMapper;
+import name.hm.jpa.UserMapper;
+import name.hm.pojo.Group;
+import name.hm.pojo.User;
 import name.hm.test.CellTest;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.experimental.categories.Category;
 
@@ -12,6 +23,51 @@ import org.junit.experimental.categories.Category;
  */
 @Category(CellTest.class)
 public class UserCellTest{
+
+static SqlSessionFactory factory;
+  static SqlSession se = null;
+  static UserMapper mp = null;
+  private static Logger logger = Logger.getLogger("testcell");
+
+  final Integer USER_ID = 0;
+  final String USER_NAME = "CellTest";
+  final String USER_HOME = "/" + USER_NAME + "/";
+  final String PASSWORD = "123456";
+  static Group grp = null;
+
+  @BeforeClass
+    static public void init() {
+      factory = EnvTest.getSqlSessionFactory();
+      se = factory.openSession();
+      mp = se.getMapper(UserMapper.class);
+      GroupMapper mp2 = se.getMapper(GroupMapper.class);
+      grp = new Group();
+      grp.setGroupId(GroupCellTest.GROUP_ID);
+      grp.setGroupName(GroupCellTest.GROUP_NAME);
+      grp.setValid("valid");
+      mp2.insert(grp);
+      se.commit();
+    }
+
+  @AfterClass
+    static public void clean() {
+      GroupMapper mp2 = se.getMapper(GroupMapper.class);
+      grp.setGroupId(GroupCellTest.GROUP_ID);
+      grp.setGroupName(GroupCellTest.GROUP_NAME);
+      grp.setValid("valid");
+      mp2.delete(grp);
+      se.commit();
+      se.close();
+    }
+
+  @Test
+  public void cell() {
+	  insertUser();
+	  selectUser();
+	  updateUser();
+	  deleteUser();
+  }
+
   /**
    * TODO
    * insert user
@@ -21,8 +77,31 @@ public class UserCellTest{
    * #valide('invalide')
    * #userHome("/#userName/")
    */
-	@Test
   public void insertUser() {
+      logger.info("start");
+      logger.info(
+          "UserCellTest - insertUser\n" +
+          " insert User\n" +
+          " #userId(USER_ID)\n" +
+          " #userName(USER_NAME)\n" +
+          " #valid('invalid')"
+          );
+      try {
+        se.flushStatements();
+        User user = new User();
+        user.setUserId(USER_ID);
+        user.setUserName(USER_NAME);
+        user.setPassword(PASSWORD );
+        user.setGroupId(grp.getGroupId());
+        user.setValid("invalid");
+        user.setUserHome(USER_HOME);
+        mp.insert(user);
+        se.commit();
+        logger.info("end");
+      } catch (Exception e) {
+        se.rollback();
+        e.printStackTrace();
+      }
   }
 
   /**
@@ -34,6 +113,24 @@ public class UserCellTest{
    * #valide('valide') => #valide('invalide')
    */
   public void selectUser() {
+    logger.info("start");
+    try {
+      se.flushStatements();
+      User user = mp.selectByUserId(USER_ID);
+      User user2 = mp.selectByUserName(USER_NAME);
+      List<User> luser = mp.selectByValid("valid");
+      List<User> luser2 = mp.selectByValid("invalid");
+      List<User> luser3 = mp.selectByGroupId(grp.getGroupId());
+      se.commit();
+      logger.info(user.toString());
+      logger.info(user2.toString());
+      logger.info(luser);
+      logger.info(luser2);
+      logger.info(luser3);
+      logger.info("end");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -45,6 +142,38 @@ public class UserCellTest{
    * #groupId(1 <--> 2);
    */
   public void updateUser() {
+    logger.info("start");
+    StringBuilder strb = new StringBuilder();
+    try {
+      se.flushStatements();
+      strb.append("#userName(\"CellTest\" <--> \"CellTestChange\") \n");
+      User user = mp.selectByUserId(USER_ID);
+      strb.append(user + "\n");
+
+      user.setUserName("CellTestChange");
+      mp.update(user);
+      user = mp.selectByUserId(USER_ID);
+      se.commit();
+      strb.append(user + "\n");
+
+      user.setUserName(USER_NAME);
+      mp.update(user);
+      user = mp.selectByUserId(USER_ID);
+      se.commit();
+      strb.append(user + "\n");
+
+      strb.append("#valid('invalid' -> 'valid')\n");
+      user.setValid("valid");
+      mp.update(user);
+      user = mp.selectByUserId(USER_ID);
+      se.commit();
+      strb.append(user);
+      logger.info(strb.toString());
+      logger.info("end");
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+
   }
 
   /**
@@ -53,6 +182,16 @@ public class UserCellTest{
    * #userId(0)
    */
   public void deleteUser() {
+    try{
+      logger.info("start");
+      se.flushStatements();
+      User user = mp.selectByUserId(USER_ID);
+      logger.info(mp.delete(user));
+      se.commit();
+      logger.info("end");
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
 }
