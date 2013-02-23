@@ -1,10 +1,11 @@
-package name.hm.test.cell;
+package name.hm.test.unit;
 
 
 import java.util.List;
 
 import name.hm.jpa.WorkflowMapper;
 import name.hm.pojo.Workflow;
+import name.hm.test.integration.RoleIntegrationTest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,22 +16,22 @@ import org.junit.Test;
 
 //MARK
 /**
- * TODO 
  * test ISUD of Workflow Table
  */
-public class WorkflowCellTest{
+public class WorkflowUnitTest{
 
   static SqlSessionFactory factory;
   static SqlSession se = null;
   static WorkflowMapper mp = null;
   private static Logger logger = Logger.getLogger("testcell");
 
-  static final Integer WORKFLOW_ID = 0;
-  static final String WORKFLOW_NAME = "CellTest";
+  public static final Integer WORKFLOW_ID = 0;
+  public static final String WORKFLOW_NAME = "CellTest";
+  public static final String WORKFLOW_STATUS = "valid";
 
   @BeforeClass
     static public void init() {
-      factory = EnvTest.getSqlSessionFactory();
+      factory = RoleIntegrationTest.getSqlSessionFactory();
       se = factory.openSession();
       mp = se.getMapper(WorkflowMapper.class);
     }
@@ -49,7 +50,6 @@ public class WorkflowCellTest{
     }
 
   /**
-   * TODO
    * insert Workflow
    * #workflowId(0)
    * #workflowName("CellTest");
@@ -61,15 +61,15 @@ public class WorkflowCellTest{
         "WorkflowCellTest - insertWorkflow\n" +
         " insert workflow\n" +
         " #workflowId(WORKFLOW_ID)\n" +
-        " #workflowName(\"CellTest\")\n" +
-        " #valid('invalid')"
+        " #workflowName(WORKFLOW_NAME)\n" +
+        " #valid(WORKFLOW_STATUS)"
         );
     try {
       se.flushStatements();
       Workflow cellTest = new Workflow();
       cellTest.setWorkflowId(WORKFLOW_ID);
       cellTest.setWorkflowName(WORKFLOW_NAME);
-      cellTest.setWorkflowStatus("invalid");
+      cellTest.setWorkflowStatus(WORKFLOW_STATUS);
       mp.insert(cellTest);
       se.commit();
       logger.info("end");
@@ -79,7 +79,6 @@ public class WorkflowCellTest{
   }
 
   /**
-   * TODO
    * select Workflow
    * #workflowId(0)
    * #workflowName("CellTest")
@@ -93,8 +92,8 @@ public class WorkflowCellTest{
       se.flushStatements();
       Workflow workflow = mp.selectByWorkflowId(WORKFLOW_ID);
       Workflow workflow2 = mp.selectByWorkflowName(WORKFLOW_NAME);
-      List<Workflow> lworkflow = mp.selectByWorkflowStatus("valid");
-      List<Workflow> lworkflow2 = mp.selectByWorkflowStatus("invalid");
+      List<Workflow> lworkflow = mp.selectByWorkflowStatus(WORKFLOW_STATUS);
+      List<Workflow> lworkflow2 = mp.selectByWorkflowStatus(WORKFLOW_STATUS + "2");
       se.commit();
       logger.info(workflow.toString());
       logger.info(workflow2.toString());
@@ -107,7 +106,6 @@ public class WorkflowCellTest{
   }
 
   /**
-   * TODO
    * update Workflow
    * #workflowName("CellTest" <--> "CellTestChange")
    * #workflowStatus("Step1" <--> "Step2" <--> "Step3")
@@ -133,8 +131,8 @@ public class WorkflowCellTest{
       se.commit();
       strb.append(workflow + "\n");
 
-      strb.append("#valid('invalid' -> 'valid')\n");
-      workflow.setWorkflowStatus("valid");
+      strb.append("#valid('valid' -> 'invalid')\n");
+      workflow.setWorkflowStatus("in" + WORKFLOW_STATUS);
       mp.update(workflow);
       workflow = mp.selectByWorkflowId(WORKFLOW_ID);
       se.commit();
@@ -158,6 +156,5 @@ public class WorkflowCellTest{
     } catch (Exception e) {
       e.printStackTrace();
     }
-
   }
 }

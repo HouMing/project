@@ -1,4 +1,4 @@
-package name.hm.test.cell;
+package name.hm.test.unit;
 
 import java.util.List;
 
@@ -6,6 +6,7 @@ import name.hm.jpa.GroupMapper;
 import name.hm.jpa.UserMapper;
 import name.hm.pojo.Group;
 import name.hm.pojo.User;
+import name.hm.test.integration.RoleIntegrationTest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -17,28 +18,28 @@ import org.junit.Test;
 /**
  * test ISUD of User Table
  */
-public class UserCellTest{
+public class UserUnitTest{
 
 static SqlSessionFactory factory;
   static SqlSession se = null;
   static UserMapper mp = null;
   private static Logger logger = Logger.getLogger("testcell");
 
-  final Integer USER_ID = 0;
-  final String USER_NAME = "CellTest";
-  final String USER_HOME = "/" + USER_NAME + "/";
-  final String PASSWORD = "123456";
+  public final static Integer USER_ID = 0;
+  public final static String USER_NAME = "CellTest";
+  public final static String USER_HOME = "/" + USER_NAME + "/";
+  public final static String PASSWORD = "123456";
   static Group grp = null;
 
   @BeforeClass
     static public void init() {
-      factory = EnvTest.getSqlSessionFactory();
+      factory = RoleIntegrationTest.getSqlSessionFactory();
       se = factory.openSession();
       mp = se.getMapper(UserMapper.class);
       GroupMapper mp2 = se.getMapper(GroupMapper.class);
       grp = new Group();
-      grp.setGroupId(GroupCellTest.GROUP_ID);
-      grp.setGroupName(GroupCellTest.GROUP_NAME);
+      grp.setGroupId(GroupUnitTest.GROUP_ID);
+      grp.setGroupName(GroupUnitTest.GROUP_NAME);
       grp.setValid("valid");
       mp2.insert(grp);
       se.commit();
@@ -47,8 +48,8 @@ static SqlSessionFactory factory;
   @AfterClass
     static public void clean() {
       GroupMapper mp2 = se.getMapper(GroupMapper.class);
-      grp.setGroupId(GroupCellTest.GROUP_ID);
-      grp.setGroupName(GroupCellTest.GROUP_NAME);
+      grp.setGroupId(GroupUnitTest.GROUP_ID);
+      grp.setGroupName(GroupUnitTest.GROUP_NAME);
       grp.setValid("valid");
       mp2.delete(grp);
       se.commit();

@@ -1,4 +1,4 @@
-package name.hm.test.cell;
+package name.hm.test.unit;
 
 import java.util.List;
 
@@ -12,23 +12,25 @@ import org.junit.Test;
 
 import name.hm.jpa.RoleMapper;
 import name.hm.pojo.Role;
+import name.hm.test.integration.RoleIntegrationTest;
 
 /**
  * test ISUD of Role Table
  */
-public class RoleCellTest {
+public class RoleUnitTest {
 
   static SqlSessionFactory factory;
   static SqlSession se = null;
   static RoleMapper mp = null;
   private static Logger logger = Logger.getLogger("testcell");
 
-  Integer ROLE_ID = 0;
-  String ROLE_NAME = "CellTest";
+  public static Integer ROLE_ID = 0;
+  public static String ROLE_NAME = "CellTest";
+  public static String ROLE_VALID = "valid";
 
   @BeforeClass
     static public void init() {
-      factory = EnvTest.getSqlSessionFactory();
+      factory = RoleIntegrationTest.getSqlSessionFactory();
       se = factory.openSession();
       mp = se.getMapper(RoleMapper.class);
     }
@@ -51,14 +53,14 @@ public class RoleCellTest {
         " insert Role\n" +
         " #roleId(ROLE_ID)\n" +
         " #roleName(ROLE_NAME)\n" +
-        " #valid('invalid')"
+        " #valid(ROLE_VALID)"
         );
     try {
       se.flushStatements();
       Role cellTest = new Role();
       cellTest.setRoleId(ROLE_ID);
       cellTest.setRoleName(ROLE_NAME);
-      cellTest.setValid("invalid");
+      cellTest.setValid(ROLE_VALID);
       mp.insert(cellTest);
       se.commit();
       logger.info("end");
@@ -73,8 +75,8 @@ public class RoleCellTest {
    * #roleId(ROLE_ID)
    * #roleName(ROLE_NAME)
    * #valid('valid') => #valid('invadile')
-   */
   @Test
+   */
     public void selectRole() {
       insertRole();
       logger.info("start");
@@ -82,8 +84,8 @@ public class RoleCellTest {
         se.flushStatements();
         Role role = mp.selectByRoleId(ROLE_ID);
         Role role2 = mp.selectByRoleName(ROLE_NAME);
-        List<Role> lrole = mp.selectByValid("valid");
-        List<Role> lrole2 = mp.selectByValid("invalid");
+        List<Role> lrole = mp.selectByValid(ROLE_VALID);
+        List<Role> lrole2 = mp.selectByValid("in" + ROLE_VALID);
         se.commit();
         logger.info(role.toString());
         logger.info(role2.toString());
@@ -97,8 +99,6 @@ public class RoleCellTest {
 
   /**
    * update Role
-   * #roleName(ROLE_NAME <--> "CellTestChange")
-   * #valid('invalid' <--> 'valid')
    */
   @Test
     public void updateRole() {
@@ -106,11 +106,11 @@ public class RoleCellTest {
       StringBuilder strb = new StringBuilder();
       try {
         se.flushStatements();
-        strb.append("#roleName(\"CellTest\" <--> \"CellTestChange\") \n");
+        strb.append("#roleName(\"CellTest\" <--> \"CellTestChange\")\n");
         Role role = mp.selectByRoleId(ROLE_ID);
         strb.append(role + "\n");
 
-        role.setRoleName("CellTestChange");
+        role.setRoleName(ROLE_NAME + "Changed");
         mp.update(role);
         role = mp.selectByRoleId(ROLE_ID);
         se.commit();
@@ -122,8 +122,8 @@ public class RoleCellTest {
         se.commit();
         strb.append(role + "\n");
 
-        strb.append("#valid('invalid' -> 'valid')\n");
-        role.setValid("valid");
+        strb.append("#valid('valid' -> 'invalid')\n");
+        role.setValid(ROLE_VALID);
         mp.update(role);
         role = mp.selectByRoleId(ROLE_ID);
         se.commit();

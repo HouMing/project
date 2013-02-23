@@ -1,4 +1,4 @@
-package name.hm.test.cell;
+package name.hm.test.unit;
 
 import java.util.List;
 
@@ -11,23 +11,24 @@ import org.junit.Test;
 
 import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
+import name.hm.test.integration.RoleIntegrationTest;
 
 /**
  * test ISUD of Group Table
  */
-public class GroupCellTest {
+public class GroupUnitTest {
 
   static SqlSessionFactory factory;
   static SqlSession se = null;
   static GroupMapper mp = null;
   private static Logger logger = Logger.getLogger("testcell");
 
-  static final Integer GROUP_ID = 0;
-  static final String GROUP_NAME = "CellTest";
+  public static final Integer GROUP_ID = 0;
+  public static final String GROUP_NAME = "CellTest";
 
   @BeforeClass
     static public void init() {
-      factory = EnvTest.getSqlSessionFactory();
+      factory = RoleIntegrationTest.getSqlSessionFactory();
       se = factory.openSession();
       mp = se.getMapper(GroupMapper.class);
     }
