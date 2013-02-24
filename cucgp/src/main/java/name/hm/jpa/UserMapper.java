@@ -72,7 +72,7 @@ public interface UserMapper {
 	List<User> selectByGroupId(Integer groupId);
 
 	@Insert(INSERT_USER)
-	void insert(User cellTest);
+	Integer insert(User cellTest);
 
   	@Update(UPDATE)
 	Integer update(User user);

@@ -11,137 +11,115 @@ import org.junit.Test;
 
 import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
-import name.hm.test.integration.RoleIntegrationTest;
+import name.hm.test.BaseTestCase;
+import name.hm.test.BaseLogger.*;
 
 /**
  * test ISUD of Group Table
  */
-public class GroupUnitTest {
+public class GroupUnitTest extends BaseTestCase
+{
 
-  static SqlSessionFactory factory;
-  static SqlSession se = null;
-  static GroupMapper mp = null;
-  private static Logger logger = Logger.getLogger("testcell");
+	public static final Integer GROUP_ID = 0;
+	public static final String GROUP_NAME = "CellTest";
 
-  public static final Integer GROUP_ID = 0;
-  public static final String GROUP_NAME = "CellTest";
+	public void insertGroup()
+	{
+		INFO.isTrue("start", false);
+		try {
+			se.flushStatements();
+			Group cellTest = new Group();
+			cellTest.setGroupId(GROUP_ID);
+			cellTest.setGroupName(GROUP_NAME);
+			cellTest.setValid("invalid");
+			groupMapper.insert(cellTest);
+			se.commit();
+			INFO.isTrue("end", false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-  @BeforeClass
-    static public void init() {
-      factory = RoleIntegrationTest.getSqlSessionFactory();
-      se = factory.openSession();
-      mp = se.getMapper(GroupMapper.class);
-    }
+	/**
+	 * select group #groupId(GROUP_ID) #groupName(GROUP_NAME) #valid('valid') =>
+	 * #valid('invadile')
+	 */
+	@Test
+	public void selectGroup()
+	{
+		insertGroup();
+		INFO.isTrue("start", false);
+		try {
+			se.flushStatements();
+			Group grp = groupMapper.selectByGroupId(GROUP_ID);
+			Group grp2 = groupMapper.selectByGroupName(GROUP_NAME);
+			List<Group> lgrp = groupMapper.selectByValid("valid");
+			List<Group> lgrp2 = groupMapper.selectByValid("invalid");
+			se.commit();
+			INFO.isTrue(grp.toString(), false);
+			INFO.isTrue(grp2.toString(), false);
+			INFO.isTrue(lgrp.toString(), false);
+			INFO.isTrue(lgrp2.toString(), false);
+			INFO.isTrue("end", false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-  @AfterClass
-    static public void clean() {
-      se.close();
-    }
+	/**
+	 * #groupName("CellTest" <--> "CellTestChange") #valid('invalid' -> 'valid')
+	 */
+	@Test
+	public void updateGroup()
+	{
+		INFO.isTrue("start", false);
+		StringBuilder strb = new StringBuilder();
+		try {
+			se.flushStatements();
+			strb.append("#groupName(\"CellTest\" <--> \"CellTestChange\") \n");
+			Group grp = groupMapper.selectByGroupId(GROUP_ID);
+			strb.append(grp + "\n");
 
-  public void insertGroup() {
-    logger.info("start");
-    logger.info(
-        "GroupCellTest - insertGroup\n" +
-        " insert group\n" +
-        " #groupId(GROUP_ID)\n" +
-        " #groupName(\"CellTest\")\n" +
-        " #valid('invalid')"
-        );
-    try {
-      se.flushStatements();
-      Group cellTest = new Group();
-      cellTest.setGroupId(GROUP_ID);
-      cellTest.setGroupName(GROUP_NAME);
-      cellTest.setValid("invalid");
-      mp.insert(cellTest);
-      se.commit();
-      logger.info("end");
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-  }
+			grp.setGroupName("CellTestChange");
+			groupMapper.update(grp);
+			grp = groupMapper.selectByGroupId(GROUP_ID);
+			se.commit();
+			strb.append(grp + "\n");
 
-  /**
-   * select group
-   * #groupId(GROUP_ID)
-   * #groupName(GROUP_NAME)
-   * #valid('valid') => #valid('invadile')
-   */
-  @Test
-    public void selectGroup() {
-      insertGroup();
-      logger.info("start");
-      try {
-        se.flushStatements();
-        Group grp = mp.selectByGroupId(GROUP_ID);
-        Group grp2 = mp.selectByGroupName(GROUP_NAME);
-        List<Group> lgrp = mp.selectByValid("valid");
-        List<Group> lgrp2 = mp.selectByValid("invalid");
-        se.commit();
-        logger.info(grp.toString());
-        logger.info(grp2.toString());
-        logger.info(lgrp);
-        logger.info(lgrp2);
-        logger.info("end");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
+			grp.setGroupName(GROUP_NAME);
+			groupMapper.update(grp);
+			grp = groupMapper.selectByGroupId(GROUP_ID);
+			se.commit();
+			strb.append(grp + "\n");
 
-  /**
-   * #groupName("CellTest" <--> "CellTestChange")
-   * #valid('invalid' -> 'valid')
-   */
-  @Test
-    public void updateGroup() {
-      logger.info("start");
-      StringBuilder strb = new StringBuilder();
-      try {
-        se.flushStatements();
-        strb.append("#groupName(\"CellTest\" <--> \"CellTestChange\") \n");
-        Group grp = mp.selectByGroupId(GROUP_ID);
-        strb.append(grp + "\n");
+			strb.append("#valid('invalid' -> 'valid')\n");
+			grp.setValid("valid");
+			groupMapper.update(grp);
+			grp = groupMapper.selectByGroupId(GROUP_ID);
+			se.commit();
+			strb.append(grp);
+			INFO.isTrue(strb.toString(), false);
+			INFO.isTrue("end", false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
-        grp.setGroupName("CellTestChange");
-        mp.update(grp);
-        grp = mp.selectByGroupId(GROUP_ID);
-        se.commit();
-        strb.append(grp + "\n");
-
-        grp.setGroupName(GROUP_NAME);
-        mp.update(grp);
-        grp = mp.selectByGroupId(GROUP_ID);
-        se.commit();
-        strb.append(grp + "\n");
-
-        strb.append("#valid('invalid' -> 'valid')\n");
-        grp.setValid("valid");
-        mp.update(grp);
-        grp = mp.selectByGroupId(GROUP_ID);
-        se.commit();
-        strb.append(grp);
-        logger.info(strb.toString());
-        logger.info("end");
-      } catch(Exception e) {
-        e.printStackTrace();
-      }
-    }
-
-  /**
-   * delete group 
-   * #groupId(GROUP_ID)
-   */
-  @Test
-    public void deleteGroup() {
-      try{
-        logger.info("start");
-        se.flushStatements();
-        Group grp = mp.selectByGroupId(GROUP_ID);
-        logger.info(mp.delete(grp));
-        se.commit();
-        logger.info("end");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    }
+	/**
+	 * delete group #groupId(GROUP_ID)
+	 */
+	@Test
+	public void deleteGroup()
+	{
+		try {
+			INFO.isTrue("start", false);
+			se.flushStatements();
+			Group grp = groupMapper.selectByGroupId(GROUP_ID);
+			INFO.isTrue(groupMapper.delete(grp).toString(), false);
+			se.commit();
+			INFO.isTrue("end", false);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
