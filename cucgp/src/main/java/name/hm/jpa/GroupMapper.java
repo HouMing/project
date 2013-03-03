@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-public interface GroupMapper {
-
+public interface GroupMapper extends Mapper
+{
 	final String SELECT_BY_GROUPID = "SELECT * FROM `group` WHERE group_id = #{param1}";
 	final String SELECT_BY_GROUPNAME = "SELECT * FROM `group` WHERE group_name = #{param1}";
 	final String SELECT_BY_GROUPVALID = "SELECT * FROM `group` WHERE valid = #{param1}";

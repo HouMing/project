@@ -11,8 +11,8 @@ import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Action;
 
-public interface ActionMapper {
-
+public interface ActionMapper extends Mapper 
+{
 	final String SELECT_BY_ACTIONID = "SELECT * FROM cucgp.`action` WHERE action_id = #{param1}";
 	final String SELECT_BY_ACTIONNAME = "SELECT * FROM cucgp.`action` WHERE action_name = #{param1}";
 	final String SELECT_BY_ACTIONSTATUS = "SELECT * FROM cucgp.`action` WHERE action_status = #{param1}";

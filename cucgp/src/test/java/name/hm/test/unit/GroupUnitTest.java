@@ -12,69 +12,81 @@ import org.junit.Test;
 import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
-import name.hm.test.BaseLogger.*;
 
 /**
  * test ISUD of Group Table
  */
 public class GroupUnitTest extends BaseTestCase
 {
+	public static Integer GROUP_ID = 0;
+	public static String GROUP_NAME = "CellTest";
+	public static String GROUP_NAME2 = "CellTestChanged";
+	public static String GROUP_VALID = "valid";
+	public static String GROUP_INVALID = "invalid";
 
-	public static final Integer GROUP_ID = 0;
-	public static final String GROUP_NAME = "CellTest";
+	private Integer ret;
+
+	@Test
+	public void test()
+	{
+		insertGroup();
+		selectGroup();
+		updateGroup();
+		deleteGroup();
+	}
 
 	public void insertGroup()
 	{
-		INFO.isTrue("start", false);
 		try {
-			se.flushStatements();
-			Group cellTest = new Group();
-			cellTest.setGroupId(GROUP_ID);
-			cellTest.setGroupName(GROUP_NAME);
-			cellTest.setValid("invalid");
-			groupMapper.insert(cellTest);
+			logger.info("start");
+			openTestSession();
+			Group group = new Group();
+			group.setGroupId(GROUP_ID);
+			group.setGroupName(GROUP_NAME);
+			group.setValid(GROUP_VALID);
+			ret = groupMapper.insert(group);
 			se.commit();
-			INFO.isTrue("end", false);
+			if (ret == 1) {
+				logger.info(group.toString());
+			} else {
+				logger.error("insertGroup failed! " + group);
+			}
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 
-	/**
-	 * select group #groupId(GROUP_ID) #groupName(GROUP_NAME) #valid('valid') =>
-	 * #valid('invadile')
-	 */
-	@Test
 	public void selectGroup()
 	{
-		insertGroup();
-		INFO.isTrue("start", false);
 		try {
-			se.flushStatements();
+			logger.info("start");
+			openTestSession();
 			Group grp = groupMapper.selectByGroupId(GROUP_ID);
 			Group grp2 = groupMapper.selectByGroupName(GROUP_NAME);
-			List<Group> lgrp = groupMapper.selectByValid("valid");
-			List<Group> lgrp2 = groupMapper.selectByValid("invalid");
+			List<Group> lgrp = groupMapper.selectByValid(GROUP_VALID);
+			List<Group> lgrp2 = groupMapper.selectByValid(GROUP_INVALID);
 			se.commit();
-			INFO.isTrue(grp.toString(), false);
-			INFO.isTrue(grp2.toString(), false);
-			INFO.isTrue(lgrp.toString(), false);
-			INFO.isTrue(lgrp2.toString(), false);
-			INFO.isTrue("end", false);
+			logger.info(grp.toString());
+			logger.info(grp2.toString());
+			logger.info(lgrp.toString());
+			logger.info(lgrp2.toString());
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 
-	/**
-	 * #groupName("CellTest" <--> "CellTestChange") #valid('invalid' -> 'valid')
-	 */
-	@Test
 	public void updateGroup()
 	{
-		INFO.isTrue("start", false);
-		StringBuilder strb = new StringBuilder();
 		try {
+			logger.info("start");
+			openTestSession();
+			StringBuilder strb = new StringBuilder();
 			se.flushStatements();
 			strb.append("#groupName(\"CellTest\" <--> \"CellTestChange\") \n");
 			Group grp = groupMapper.selectByGroupId(GROUP_ID);
@@ -98,28 +110,31 @@ public class GroupUnitTest extends BaseTestCase
 			grp = groupMapper.selectByGroupId(GROUP_ID);
 			se.commit();
 			strb.append(grp);
-			INFO.isTrue(strb.toString(), false);
-			INFO.isTrue("end", false);
+			logger.info(strb.toString());
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 
 	/**
-	 * delete group #groupId(GROUP_ID)
+	 * delete group
 	 */
-	@Test
 	public void deleteGroup()
 	{
 		try {
-			INFO.isTrue("start", false);
-			se.flushStatements();
+			logger.info("start");
+			openTestSession();
 			Group grp = groupMapper.selectByGroupId(GROUP_ID);
-			INFO.isTrue(groupMapper.delete(grp).toString(), false);
+			logger.info(groupMapper.delete(grp).toString());
 			se.commit();
-			INFO.isTrue("end", false);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 }

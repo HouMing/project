@@ -11,7 +11,8 @@ import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Workflow;
 
-public interface WorkflowMapper {
+public interface WorkflowMapper extends Mapper
+{
 
 	final String SELECT_BY_WORKFLOWID = "SELECT * FROM `workflow` WHERE workflow_id = #{param1}";
 	final String SELECT_BY_WORKFLOWNAME = "SELECT * FROM `workflow` WHERE workflow_name = #{param1}";

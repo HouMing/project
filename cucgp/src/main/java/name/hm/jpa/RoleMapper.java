@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Role;
 
-public interface RoleMapper {
-	
+public interface RoleMapper extends Mapper
+{
 	final String SELECT_BY_ROLEID = "SELECT * FROM cucgp.`role` WHERE role_id = #{param1}";
 	final String SELECT_BY_ROLENAME = "SELECT * FROM cucgp.`role` WHERE role_name = #{param1}";
 	final String SELECT_BY_ROLEVALID = "SELECT * FROM cucgp.`role` WHERE valid = #{param1}";

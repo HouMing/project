@@ -11,7 +11,8 @@ import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.User;
 
-public interface UserMapper {
+public interface UserMapper extends Mapper
+{
 
 	final String SELECT_BY_USERID = "SELECT * FROM cucgp.`user` WHERE user_id = #{param1}";
 	final String SELECT_BY_USERNAME = "SELECT * FROM cucgp.`user` WHERE user_name = #{param1}";

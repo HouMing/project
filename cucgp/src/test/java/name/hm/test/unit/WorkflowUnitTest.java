@@ -5,8 +5,7 @@ import java.util.List;
 import name.hm.jpa.WorkflowMapper;
 import name.hm.pojo.Workflow;
 import name.hm.test.BaseTestCase;
-import name.hm.test.RoleIntegrationTest;
-import name.hm.test.BaseLogger.INFO;
+import name.hm.test.integration.RoleIntegrationTest;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -15,15 +14,15 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-//MARK
 /**
  * test ISUD of Workflow Table
  */
+@Deprecated
 public class WorkflowUnitTest extends BaseTestCase
 {
-	public static final Integer WORKFLOW_ID = 0;
-	public static final String WORKFLOW_NAME = "CellTest";
-	public static final String WORKFLOW_STATUS = "valid";
+	public static Integer WORKFLOW_ID = 0;
+	public static String WORKFLOW_NAME = "CellTest";
+	public static String WORKFLOW_STATUS = "valid";
 
 	@Test
 	public void test()
@@ -34,21 +33,18 @@ public class WorkflowUnitTest extends BaseTestCase
 		deleteWorkflowName();
 	}
 
-	/**
-	 * insert Workflow
-	 */
 	public void insertWorkflow()
 	{
 		try {
 			openTestSession();
-			INFO.isTrue("start", false);
+			logger.info("start");
 			Workflow cellTest = new Workflow();
 			cellTest.setWorkflowId(WORKFLOW_ID);
 			cellTest.setWorkflowName(WORKFLOW_NAME);
 			cellTest.setWorkflowStatus(WORKFLOW_STATUS);
 			workflowMapper.insert(cellTest);
 			se.commit();
-			INFO.isTrue("end", false);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,14 +52,9 @@ public class WorkflowUnitTest extends BaseTestCase
 		}
 	}
 
-	/**
-	 * select Workflow #workflowId(0) #workflowName("CellTest")
-	 * #workflowStatus("Step1") => \ #workflowStatus("Step2") => \
-	 * #workflowStatus("Step3")
-	 */
 	public void selectWorkflow()
 	{
-		INFO.isTrue("start");
+		logger.info("start");
 		try {
 			se.flushStatements();
 			Workflow workflow = workflowMapper.selectByWorkflowId(WORKFLOW_ID);
@@ -73,23 +64,19 @@ public class WorkflowUnitTest extends BaseTestCase
 			List<Workflow> lworkflow2 = workflowMapper
 					.selectByWorkflowStatus(WORKFLOW_STATUS + "2");
 			se.commit();
-			INFO.isTrue(workflow.toString());
-			INFO.isTrue(workflow2.toString());
-			INFO.isTrue(lworkflow);
-			INFO.isTrue(lworkflow2);
-			INFO.isTrue("end");
+			logger.info(workflow.toString());
+			logger.info(workflow2.toString());
+			logger.info(lworkflow);
+			logger.info(lworkflow2);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	/**
-	 * update Workflow #workflowName("CellTest" <--> "CellTestChange")
-	 * #workflowStatus("Step1" <--> "Step2" <--> "Step3")
-	 */
 	public void updateWorkflowName()
 	{
-		INFO.isTrue("start");
+		logger.info("start");
 		StringBuilder strb = new StringBuilder();
 		try {
 			se.flushStatements();
@@ -115,8 +102,8 @@ public class WorkflowUnitTest extends BaseTestCase
 			workflow = workflowMapper.selectByWorkflowId(WORKFLOW_ID);
 			se.commit();
 			strb.append(workflow);
-			INFO.isTrue(strb.toString());
-			INFO.isTrue("end");
+			logger.info(strb.toString());
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -126,12 +113,12 @@ public class WorkflowUnitTest extends BaseTestCase
 	public void deleteWorkflowName()
 	{
 		try {
-			INFO.isTrue("start");
+			logger.info("start");
 			se.flushStatements();
 			Workflow workflow = workflowMapper.selectByWorkflowId(WORKFLOW_ID);
-			INFO.isTrue(workflowMapper.delete(workflow));
+			logger.info(workflowMapper.delete(workflow));
 			se.commit();
-			INFO.isTrue("end");
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

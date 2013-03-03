@@ -4,44 +4,36 @@ import java.util.List;
 
 import name.hm.pojo.Action;
 import name.hm.test.BaseTestCase;
-import name.hm.test.BaseLogger.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+@Deprecated
 public class ActionUnitTest extends BaseTestCase
 {
-	private ActionUnitTest unit = null;
-
-	public static final Integer ACTION_ID = 0;
-	public static final String ACTION_NAME = "CellTest";
-	public static final String ACTION_URL = "/test/test/";
-	public static final String ACTION_STATUS = "valid";
+	public static Integer ACTION_ID = 0;
+	public static String ACTION_NAME = "CellTest";
+	public static String ACTION_URL = "/test/test/";
+	public static String ACTION_STATUS = "valid";
 
 	@Test
 	public void cell()
 	{
-		openTestSession();
 		insertAction();
 		selectAction();
 		updateActionName();
 		deleteActionName();
-		closeTestSession();
 	}
 
 	/**
-	 * insert Action #actionId(0) #actionName("CellTest"); #actionStatus('unkown')
+	 * insert Action
 	 */
 	public void insertAction()
 	{
 		try {
 			openTestSession();
-			INFO.isTrue("start", false);
-			INFO.isTrue("ActionCellTest - insertAction\n" + " insert action\n"
-					+ " #actionId(ACTION_ID)\n" + " #actionName(ACTION_NAME)\n"
-					+ " #valid(ACTION_VALID)", false);
-			se.flushStatements();
+			logger.info("start");
 			Action action = new Action();
 			action.setActionId(ACTION_ID);
 			action.setActionName(ACTION_NAME);
@@ -51,7 +43,7 @@ public class ActionUnitTest extends BaseTestCase
 			action.setWorkflowId(WorkflowUnitTest.WORKFLOW_ID);
 			actionMapper.insert(action);
 			se.commit();
-			INFO.isTrue("end", false);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -60,26 +52,28 @@ public class ActionUnitTest extends BaseTestCase
 	}
 
 	/**
-	 * select Action #actionId(0) #actionName("CellTest") #actionStatus("Step1")
-	 * => \ #actionStatus("Step2") => \ #actionStatus("Step3")
+	 * select Action
 	 */
 	public void selectAction()
 	{
 		try {
-			INFO.isTrue("start", false);
+			openTestSession();
+			logger.info("start");
 			se.flushStatements();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
 			Action action2 = actionMapper.selectByActionName(ACTION_NAME);
 			List<Action> laction = actionMapper.selectByActionStatus("valid");
 			List<Action> laction2 = actionMapper.selectByActionStatus("invalid");
 			se.commit();
-			INFO.isTrue(action.toString(), false);
-			INFO.isTrue(action2.toString(), false);
-			INFO.isTrue(laction.toString(), false);
-			INFO.isTrue(laction2.toString(), false);
-			INFO.isTrue("end", false);
+			logger.debug(action.toString());
+			logger.debug(action2.toString());
+			logger.debug(laction.toString());
+			logger.debug(laction2.toString());
+			logger.debug("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 
@@ -88,49 +82,57 @@ public class ActionUnitTest extends BaseTestCase
 	 */
 	public void updateActionName()
 	{
-		INFO.isTrue("start", false);
-		StringBuilder strb = new StringBuilder();
 		try {
-			se.flushStatements();
-			strb.append("#actionName(\"CellTest\" <--> \"CellTestChange\") \n");
+			openTestSession();
+			Integer ret;
+			logger.info("start");
 			Action action = actionMapper.selectByActionId(ACTION_ID);
-			strb.append(action + "\n");
+			if (action == null) {
+				logger.error("selectByActionId(ACTION_ID) failed!");
+			} else {
+				logger.info(action.toString());
+			}
 
 			action.setActionName("CellTestChange");
-			actionMapper.update(action);
-			action = actionMapper.selectByActionId(ACTION_ID);
+			ret = actionMapper.update(action);
+			if (ret != 1) {
+				logger.error("update failed");
+			} else {
+				action = actionMapper.selectByActionId(ACTION_ID);
+				logger.info(action);
+			}
 			se.commit();
-			strb.append(action + "\n");
 
 			action.setActionName(ACTION_NAME);
-			actionMapper.update(action);
+			ret = actionMapper.update(action);
+			if (ret != 1) {
+				logger.error("update failed");
+			}
 			action = actionMapper.selectByActionId(ACTION_ID);
 			se.commit();
-			strb.append(action + "\n");
+			logger.info(action);
 
-			strb.append("#valid('invalid' -> 'valid')\n");
 			action.setActionStatus("valid");
 			actionMapper.update(action);
 			action = actionMapper.selectByActionId(ACTION_ID);
 			se.commit();
-			strb.append(action);
-			INFO.isTrue(strb.toString(), false);
-			INFO.isTrue("end", false);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
-
 	}
 
 	public void deleteActionName()
 	{
 		try {
-			INFO.isTrue("start", false);
+			logger.info("start");
 			se.flushStatements();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
-			INFO.isTrue(actionMapper.delete(action).toString(), false);
+			logger.info(actionMapper.delete(action).toString());
 			se.commit();
-			INFO.isTrue("end", false);
+			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
