@@ -29,7 +29,7 @@ public class UserUnitTest extends BaseTestCase
 	public static String USER_INVALID = "invalid";
 
 	static Group group = null;
-
+	
 	@Test
 	public void test()
 	{
