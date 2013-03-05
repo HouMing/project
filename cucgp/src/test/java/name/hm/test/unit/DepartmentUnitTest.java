@@ -32,7 +32,7 @@ public class DepartmentUnitTest extends BaseTestCase
 			Department department = departmentMapper.selectAll().getFirst();
 	    ret = departmentMapper.delete(department);
 	    if (ret == 1) {
-	    	logger.info("delete Department successfully");
+	    	logger.info("delete Department OK!");
 	    } else {
 	    	logger.error("delete Department failed");
 	    }
@@ -53,7 +53,7 @@ public class DepartmentUnitTest extends BaseTestCase
 			department.setDepartmentName(DEPARTMENT_NAME2);
 			ret = departmentMapper.update(department);
 			if(ret == 1) {
-				logger.info("update Department successfully");
+				logger.info("update Department OK!");
 			} else {
 				logger.error("update Department failed!");
 			}
@@ -61,7 +61,7 @@ public class DepartmentUnitTest extends BaseTestCase
 			department.setDepartmentName(DEPARTMENT_NAME);
 			ret = departmentMapper.update(department);
 			if(ret == 1) {
-				logger.info("update Department successfully");
+				logger.info("update Department OK!");
 			} else {
 				logger.error("update Department failed!");
 			}
@@ -99,7 +99,7 @@ public class DepartmentUnitTest extends BaseTestCase
 			department.setDepartmentName(DEPARTMENT_NAME);
 			ret = departmentMapper.insert(department);
 			if (ret == 1) {
-				logger.info("insert Department successfully!");
+				logger.info("insert Department OK!");
 			} else {
 				logger.error("insert Department failed!");
 			}

@@ -11,8 +11,12 @@ import org.junit.Test;
 public class TitleUnitTest extends BaseTestCase
 {
 	static public String TITLE_NAME = "测试职称";
+	static public String TITLE_NAME1 = "测试职称1";
+	static public String TITLE_NAME11 = "测试职称11";
 	static public String TITLE_NAME2 = "测试职称2";
-
+	static public String TITLE_NAME3 = "测试职称3";
+	static public String TITLE_NAME4 = "测试职称4";
+	
 	@Test
 	public void test()
 	{
@@ -50,7 +54,7 @@ public class TitleUnitTest extends BaseTestCase
 			Integer ret;
 			openTestSession();
 			Title title = titleMapper.selectAll().getFirst();
-			title.setTitleName(TITLE_NAME2);
+			title.setTitleName(TITLE_NAME11);
 			ret = titleMapper.update(title);
 			if(ret == 1) {
 				logger.info("update Title successfully");
@@ -95,9 +99,16 @@ public class TitleUnitTest extends BaseTestCase
 		try {
 			Integer ret;
 			openTestSession();
-			Title title = new Title();
-			title.setTitleName(TITLE_NAME);
+			Title title = new Title(TITLE_NAME);
+			Title title1 = new Title(TITLE_NAME1);
+			Title title2 = new Title(TITLE_NAME2);
+			Title title3 = new Title(TITLE_NAME3);
+			Title title4 = new Title(TITLE_NAME4);
 			ret = titleMapper.insert(title);
+			ret = titleMapper.insert(title1) & ret;
+			ret = titleMapper.insert(title2) & ret;
+			ret = titleMapper.insert(title3) & ret;
+			ret = titleMapper.insert(title4) & ret;
 			if (ret == 1) {
 				logger.info("insert Title successfully!");
 			} else {

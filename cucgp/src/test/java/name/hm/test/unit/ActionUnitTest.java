@@ -3,47 +3,68 @@ package name.hm.test.unit;
 import java.util.List;
 
 import name.hm.pojo.Action;
+import name.hm.pojo.User;
 import name.hm.test.BaseTestCase;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-@Deprecated
 public class ActionUnitTest extends BaseTestCase
 {
-	public static Integer ACTION_ID = 0;
-	public static String ACTION_NAME = "CellTest";
-	public static String ACTION_URL = "/test/test/";
-	public static String ACTION_STATUS = "valid";
+	static public Integer ACTION_ID = 0;
+	static public String ACTION_NAME = "测试操作";
+	static public String ACTION_NAMEC = "测试操作改";
+	static public String ACTION_URL = "/test/unit/";
+	static public Action.STATUS ACTION_VALID = Action.getStatus("valid");
+	static public Action.STATUS ACTION_INVALID = Action.getStatus("invalid");
 
 	@Test
-	public void cell()
+	public void test()
 	{
-		insertAction();
-		selectAction();
-		updateActionName();
-		deleteActionName();
+		beforeTest();
+		create();
+		read();
+		update();
+		delete();
+		afterTest();
 	}
 
-	/**
-	 * insert Action
-	 */
-	public void insertAction()
+	// DOING
+	private void beforeTest()
+	{
+		logger.info("start ActionUnit test");
+		GroupUnitTest unitGroup = new GroupUnitTest();
+		UserUnitTest unitUser = new UserUnitTest();
+		WorkflowUnitTest unitWorkflow = new WorkflowUnitTest();
+		unitGroup.create();
+		unitUser.create();
+		unitWorkflow.create();
+	}
+
+	// FINISH
+	private void afterTest()
+	{
+		UserUnitTest unitUser = new UserUnitTest();
+		unitUser.delete();
+		logger.info("finish ActionUnit test");
+	}
+
+	// FINISH
+	public void create()
 	{
 		try {
+			Integer ret;
 			openTestSession();
-			logger.info("start");
-			Action action = new Action();
-			action.setActionId(ACTION_ID);
-			action.setActionName(ACTION_NAME);
-			action.setActionStatus(ACTION_STATUS);
-			action.setActionUrl(ACTION_URL);
-			action.setRoleId(RoleUnitTest.ROLE_ID);
-			action.setWorkflowId(WorkflowUnitTest.WORKFLOW_ID);
-			actionMapper.insert(action);
+			Action action = new Action(ACTION_ID, ACTION_NAME, ACTION_URL,
+					ACTION_INVALID, RoleUnitTest.ROLE_ID, WorkflowUnitTest.WORKFLOW_ID);
+			ret = actionMapper.insert(action);
+			if (ret == 1) {
+				logger.info("insert Action OK!");
+			} else {
+				logger.error("insert Action failed");
+			}
 			se.commit();
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -51,25 +72,31 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	/**
-	 * select Action
-	 */
-	public void selectAction()
+	// FINISH #0305
+	public void read()
 	{
 		try {
 			openTestSession();
-			logger.info("start");
-			se.flushStatements();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
 			Action action2 = actionMapper.selectByActionName(ACTION_NAME);
-			List<Action> laction = actionMapper.selectByActionStatus("valid");
-			List<Action> laction2 = actionMapper.selectByActionStatus("invalid");
+			List<Action> l = actionMapper.selectByActionStatus(ACTION_VALID);
+			List<Action> l2 = actionMapper.selectByActionStatus(ACTION_INVALID);
 			se.commit();
-			logger.debug(action.toString());
-			logger.debug(action2.toString());
-			logger.debug(laction.toString());
-			logger.debug(laction2.toString());
-			logger.debug("end");
+			if (action != null) {
+				logger.info("selectByActionId OK! : " + action);
+			} else {
+				logger.error("selectByActionName faild : " + action);
+			}
+			if (action2 != null) {
+				logger.info("selectByActionName OK! : " + action2);
+			} else {
+				logger.error("selectByActionName failed : " + action2);
+			}
+			if (l.size() > 0 || l2.size() > 0) {
+				logger.info("selectByActionStatus OK! : " + l + l2);
+			} else {
+				logger.error("selectByActionStatus failed");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -77,46 +104,29 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	/**
-	 * update Action
-	 */
-	public void updateActionName()
+	// FINISH #0305
+	public void update()
 	{
 		try {
-			openTestSession();
 			Integer ret;
-			logger.info("start");
+			openTestSession();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
 			if (action == null) {
-				logger.error("selectByActionId(ACTION_ID) failed!");
-			} else {
-				logger.info(action.toString());
-			}
-
-			action.setActionName("CellTestChange");
-			ret = actionMapper.update(action);
-			if (ret != 1) {
 				logger.error("update failed");
 			} else {
+				logger.info("before update : " + action);
+			}
+			action.setActionName(ACTION_NAMEC);
+			action.setActionStatus(ACTION_INVALID);
+			ret = actionMapper.update(action);
+			se.commit();
+			if (ret == 1) {
 				action = actionMapper.selectByActionId(ACTION_ID);
-				logger.info(action);
-			}
-			se.commit();
-
-			action.setActionName(ACTION_NAME);
-			ret = actionMapper.update(action);
-			if (ret != 1) {
+				se.commit();
+				logger.info("update OK! : " + action);
+			} else {
 				logger.error("update failed");
 			}
-			action = actionMapper.selectByActionId(ACTION_ID);
-			se.commit();
-			logger.info(action);
-
-			action.setActionStatus("valid");
-			actionMapper.update(action);
-			action = actionMapper.selectByActionId(ACTION_ID);
-			se.commit();
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -124,17 +134,27 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	public void deleteActionName()
+	// FINISH #0305
+	public void delete()
 	{
 		try {
-			logger.info("start");
-			se.flushStatements();
+			Integer ret;
+			openTestSession();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
-			logger.info(actionMapper.delete(action).toString());
-			se.commit();
-			logger.info("end");
+			logger.info("before delete : " + action);
+			ret = actionMapper.delete(action);
+			if (ret == 1) {
+				logger.info("delete OK!");
+				action = actionMapper.selectByActionId(ACTION_ID);
+				se.commit();
+				logger.info("after delete : " + action);
+			} else {
+				logger.error("delete failed");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			closeTestSession();
 		}
 	}
 }

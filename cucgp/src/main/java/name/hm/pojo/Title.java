@@ -4,7 +4,32 @@ import com.alibaba.fastjson.JSON;
 
 public class Title
 {
+	Integer titleId;
 	String titleName;
+
+	public Title()
+	{}
+
+	public Title(Integer title_Id, String title_Name)
+	{
+		titleId = title_Id;
+		titleName = title_Name;
+	}
+
+	public Title(String title_Name)
+	{
+		this(new Integer(0), title_Name);
+	}
+
+	public Integer getTitleId()
+	{
+		return titleId;
+	}
+
+	public void setTitleId(Integer titleId)
+	{
+		this.titleId = titleId;
+	}
 
 	public String getTitleName()
 	{

@@ -1,51 +1,124 @@
 package name.hm.pojo;
 
+import name.hm.pojo.Workflow.STATUS;
+
 import com.alibaba.fastjson.JSONObject;
 
-public class Action {
+public class Action
+{
 	Integer actionId;
 	String actionName;
 	String actionUrl;
-	String actionStatus;
+	STATUS actionStatus;
 	Integer workflowId;
 	Integer roleId;
-	public Integer getActionId() {
-		return actionId;
-	}
-	public void setActionId(Integer actionId) {
+
+	public Action()
+	{}
+
+	public Action(Integer actionId, String actionName, String actionUrl,
+			STATUS actionStatus, Integer roleId, Integer workflowId)
+	{
 		this.actionId = actionId;
-	}
-	public String getActionName() {
-		return actionName;
-	}
-	public void setActionName(String actionName) {
 		this.actionName = actionName;
-	}
-	public String getActionUrl() {
-		return actionUrl;
-	}
-	public void setActionUrl(String actionUrl) {
 		this.actionUrl = actionUrl;
-	}
-	public String getActionStatus() {
-		return actionStatus;
-	}
-	public void setActionStatus(String actionStatus) {
 		this.actionStatus = actionStatus;
-	}
-	public Integer getWorkflowId() {
-		return workflowId;
-	}
-	public void setWorkflowId(Integer workflow) {
-		this.workflowId = workflow;
-	}
-	public Integer getRoleId() {
-		return roleId;
-	}
-	public void setRoleId(Integer roleId) {
+		this.workflowId = workflowId;
 		this.roleId = roleId;
 	}
-	public String toString() {
+
+	public Integer getActionId()
+	{
+		return actionId;
+	}
+
+	public void setActionId(Integer actionId)
+	{
+		this.actionId = actionId;
+	}
+
+	public String getActionName()
+	{
+		return actionName;
+	}
+
+	public void setActionName(String actionName)
+	{
+		this.actionName = actionName;
+	}
+
+	public String getActionUrl()
+	{
+		return actionUrl;
+	}
+
+	public void setActionUrl(String actionUrl)
+	{
+		this.actionUrl = actionUrl;
+	}
+
+	public STATUS getActionStatus()
+	{
+		return actionStatus;
+	}
+
+	public void setActionStatus(STATUS actionStatus)
+	{
+		this.actionStatus = actionStatus;
+	}
+
+	public Integer getWorkflowId()
+	{
+		return workflowId;
+	}
+
+	public void setWorkflowId(Integer workflow)
+	{
+		this.workflowId = workflow;
+	}
+
+	public Integer getRoleId()
+	{
+		return roleId;
+	}
+
+	public void setRoleId(Integer roleId)
+	{
+		this.roleId = roleId;
+	}
+
+	public String toString()
+	{
 		return JSONObject.toJSONString(this);
 	}
+
+	public enum STATUS
+	{
+		valid("valid"), invalid("invalid");
+		String val;
+
+		STATUS(String val)
+		{
+			this.val = val;
+		}
+
+		public String toString()
+		{
+			return val;
+		}
+
+	}
+
+	public static STATUS getStatus(String str)
+	{
+		switch (str) {
+		case "valid":
+			return STATUS.valid;
+		case "invalid":
+			return STATUS.invalid;
+		default:
+			return null;
+		}
+	}
+
 }

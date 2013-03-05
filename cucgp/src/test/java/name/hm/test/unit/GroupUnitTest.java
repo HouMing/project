@@ -13,45 +13,39 @@ import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
 
-/**
- * test ISUD of Group Table
- */
 public class GroupUnitTest extends BaseTestCase
 {
 	public static Integer GROUP_ID = 0;
-	public static String GROUP_NAME = "CellTest";
-	public static String GROUP_NAME2 = "CellTestChanged";
-	public static String GROUP_VALID = "valid";
-	public static String GROUP_INVALID = "invalid";
+	public static String GROUP_NAME = "测试组";
+	public static String GROUP_NAME2 = "测试组改";
+	public static Group.VALID GROUP_VALID = Group.getValid("valid");
+	public static Group.VALID GROUP_INVALID = Group.getValid("invalid");
 
 	private Integer ret;
 
 	@Test
 	public void test()
 	{
-		insertGroup();
+		create();
 		selectGroup();
 		updateGroup();
-		deleteGroup();
+		delete();
 	}
 
-	public void insertGroup()
+	// FINISH
+	public void create()
 	{
 		try {
-			logger.info("start");
+			Integer ret;
 			openTestSession();
-			Group group = new Group();
-			group.setGroupId(GROUP_ID);
-			group.setGroupName(GROUP_NAME);
-			group.setValid(GROUP_VALID);
+			Group group = new Group(GROUP_ID, GROUP_NAME, GROUP_VALID);
 			ret = groupMapper.insert(group);
 			se.commit();
 			if (ret == 1) {
-				logger.info(group.toString());
+				logger.info("insert OK! : " + group);
 			} else {
-				logger.error("insertGroup failed! " + group);
+				logger.error("insert failed! " + group);
 			}
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -119,18 +113,20 @@ public class GroupUnitTest extends BaseTestCase
 		}
 	}
 
-	/**
-	 * delete group
-	 */
-	public void deleteGroup()
+	// FINISH #0305
+	public void delete()
 	{
 		try {
-			logger.info("start");
+			Integer ret;
 			openTestSession();
-			Group grp = groupMapper.selectByGroupId(GROUP_ID);
-			logger.info(groupMapper.delete(grp).toString());
+			Group group = groupMapper.selectByGroupId(GROUP_ID);
+			ret = groupMapper.delete(group);
+			if (ret == 1) {
+				logger.info("delete OK! : " + group);
+			} else {
+				logger.error("delete failed : " + group);
+			}
 			se.commit();
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

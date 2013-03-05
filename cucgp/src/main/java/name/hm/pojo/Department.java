@@ -4,7 +4,18 @@ import com.alibaba.fastjson.JSON;
 
 public class Department
 {
-	String departmentName;
+	protected Integer departmentId;
+	protected String departmentName;
+
+	public Integer getDepartmentId()
+	{
+		return departmentId;
+	}
+
+	public void setDepartmentId(Integer departmentId)
+	{
+		this.departmentId = departmentId;
+	}
 
 	public String getDepartmentName()
 	{

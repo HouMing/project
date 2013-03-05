@@ -17,34 +17,54 @@ import org.junit.Test;
 /**
  * test ISUD of Workflow Table
  */
-@Deprecated
 public class WorkflowUnitTest extends BaseTestCase
 {
 	public static Integer WORKFLOW_ID = 0;
-	public static String WORKFLOW_NAME = "CellTest";
-	public static String WORKFLOW_STATUS = "valid";
+	public static Integer WORKFLOW_ID1 = 1;
+	public static Integer WORKFLOW_ID2 = 2;
+	public static Integer WORKFLOW_ID3 = 3;
+	public static String WORKFLOW_NAME = "测试工作流";
+	public static String WORKFLOW_NAME1 = "测试工作流1";
+	public static String WORKFLOW_NAME11 = "测试工作流1改";
+	public static String WORKFLOW_NAME2 = "测试工作流2";
+	public static Workflow.STATUS WORKFLOW_STATUS1 = Workflow.getStatus("valid");
+	public static Workflow.STATUS WORKFLOW_STATUS2 = Workflow.getStatus("invalid");
 
 	@Test
 	public void test()
 	{
-		insertWorkflow();
+		beforeTest();
+		create();
 		selectWorkflow();
 		updateWorkflowName();
 		deleteWorkflowName();
+		afterTest();
 	}
 
-	public void insertWorkflow()
+	private void afterTest()
+	{
+		logger.info("start");
+	}
+
+	private void beforeTest()
+	{
+		logger.info("end");
+	}
+
+	// FINISH #0001
+	public void create()
 	{
 		try {
+			Integer ret;
 			openTestSession();
-			logger.info("start");
-			Workflow cellTest = new Workflow();
-			cellTest.setWorkflowId(WORKFLOW_ID);
-			cellTest.setWorkflowName(WORKFLOW_NAME);
-			cellTest.setWorkflowStatus(WORKFLOW_STATUS);
-			workflowMapper.insert(cellTest);
+			Workflow workflow = new Workflow(WORKFLOW_ID, WORKFLOW_NAME, WORKFLOW_STATUS1);
+			ret = workflowMapper.insert(workflow);
+			if (ret == 1) {
+				logger.info("create OK! : " + workflow);
+			} else {
+				logger.error("create fialed : " + workflow);
+			}
 			se.commit();
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -54,9 +74,7 @@ public class WorkflowUnitTest extends BaseTestCase
 
 	public void selectWorkflow()
 	{
-		logger.info("start");
 		try {
-			se.flushStatements();
 			Workflow workflow = workflowMapper.selectByWorkflowId(WORKFLOW_ID);
 			Workflow workflow2 = workflowMapper.selectByWorkflowName(WORKFLOW_NAME);
 			List<Workflow> lworkflow = workflowMapper

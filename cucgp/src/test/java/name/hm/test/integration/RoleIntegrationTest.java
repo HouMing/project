@@ -38,81 +38,67 @@ public class RoleIntegrationTest extends BaseTestCase
 	public void integrationTest()
 	{
 		try {
-			init();
+			beforeTest();
 		} finally {
-			clean();
+			afterTest();
 		}
 	}
 
-	public void init()
+	public void beforeTest()
 	{
 		try {
 			Integer ret;
 			logger.info("start");
 			openTestSession();
-			role = new Role();
-			role.setRoleId(RoleUnitTest.ROLE_ID);
-			role.setRoleName(RoleUnitTest.ROLE_NAME);
-			role.setValid(RoleUnitTest.ROLE_VALID);
+			role = new Role(RoleUnitTest.ROLE_ID, RoleUnitTest.ROLE_NAME,
+					Role.VALID(RoleUnitTest.ROLE_VALID));
 			ret = roleMapper.insert(role);
 			if (ret != 1) {
 				logger.error("insert Role failed");
 			} else {
-				logger.info("insert Role successed");
+				logger.info("insert Role OK!");
 			}
 			se.commit();
 
-			group = new Group();
-			group.setGroupId(GroupUnitTest.GROUP_ID);
-			group.setGroupName(GroupUnitTest.GROUP_NAME);
-			group.setValid("invalid");
+			group = new Group(GroupUnitTest.GROUP_ID, GroupUnitTest.GROUP_NAME,
+					Group.VALID(GroupUnitTest.GROUP_VALID));
 			ret = groupMapper.insert(group);
 			if (ret != 1) {
-				logger.error("insert Group failed");
+				logger.error("insert Group failed" + group);
 			} else {
-				logger.info("insert Group successed");
+				logger.info("insert Group OK!");
 			}
 			se.commit();
 
-			user = new User();
-			user.setUserId(UserUnitTest.USER_ID);
-			user.setUserName(UserUnitTest.USER_NAME);
-			user.setPassword(UserUnitTest.PASSWORD);
-			user.setGroupId(group.getGroupId());
-			user.setValid("invalid");
-			user.setUserHome(UserUnitTest.USER_HOME);
+			user = new User(UserUnitTest.USER_ID, UserUnitTest.USER_NAME,
+					UserUnitTest.PASSWORD, UserUnitTest.USER_HOME,
+					User.VALID(UserUnitTest.USER_VALID), GroupUnitTest.GROUP_ID);
 			ret = userMapper.insert(user);
 			if (ret != 1) {
 				logger.error("insert User failed");
 			} else {
-				logger.info("insert User successed");
+				logger.info("insert User OK!");
 			}
 			se.commit();
 
-			workflow = new Workflow();
-			workflow.setWorkflowId(WorkflowUnitTest.WORKFLOW_ID);
-			workflow.setWorkflowName(WorkflowUnitTest.WORKFLOW_NAME);
-			workflow.setWorkflowStatus(WorkflowUnitTest.WORKFLOW_STATUS);
+			workflow = new Workflow(WorkflowUnitTest.WORKFLOW_ID,
+					WorkflowUnitTest.WORKFLOW_NAME, Workflow.getStatus("valid"));
 			ret = workflowMapper.insert(workflow);
 			if (ret != 1) {
 				logger.error("insert Workflow failed");
 			} else {
-				logger.info("insert Workflow successed");
+				logger.info("insert Workflow OK!");
 			}
 			se.commit();
 
-			action = new Action();
-			action.setActionId(ActionUnitTest.ACTION_ID);
-			action.setActionName(ActionUnitTest.ACTION_NAME);
-			action.setActionUrl(ActionUnitTest.ACTION_URL);
-			action.setRoleId(role.getRoleId());
-			action.setWorkflowId(workflow.getWorkflowId());
-			action.setActionStatus(ActionUnitTest.ACTION_STATUS);
+			action = new Action(ActionUnitTest.ACTION_ID, ActionUnitTest.ACTION_NAME,
+					ActionUnitTest.ACTION_URL, ActionUnitTest.ACTION_VALID,
+					role.getRoleId(), workflow.getWorkflowId());
 			ret = actionMapper.insert(action);
 			if (ret != 1) {
 				logger.error("insert Action failed");
 			} else {
-				logger.info("insert Action successed");
+				logger.info("insert Action OK!");
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -122,22 +108,21 @@ public class RoleIntegrationTest extends BaseTestCase
 		}
 	}
 
-	public void clean()
+	public void afterTest()
 	{
 		try {
 			Integer ret;
 			openTestSession();
 			logger.info("start clean");
-
 			if (role != null) {
 				ret = roleMapper.delete(role);
 				if (ret != 1) {
 					logger.error("clean Role failed");
 				} else {
-					logger.info("clean Role successed");
+					logger.info("clean Role OK!");
 				}
 			} else {
-				logger.warn("no Role for cleaning");
+				logger.warn("no Role");
 			}
 
 			if (group != null) {
@@ -145,10 +130,10 @@ public class RoleIntegrationTest extends BaseTestCase
 				if (ret != 1) {
 					logger.error("clean Group failed");
 				} else {
-					logger.info("clean Group successed");
+					logger.info("clean Group OK!");
 				}
 			} else {
-				logger.warn("no Group for cleaning");
+				logger.warn("no Group");
 			}
 
 			if (user != null) {
@@ -156,10 +141,10 @@ public class RoleIntegrationTest extends BaseTestCase
 				if (ret != 1) {
 					logger.error("clean User failed");
 				} else {
-					logger.info("clean User successed");
+					logger.info("clean User OK!");
 				}
 			} else {
-				logger.warn("no User for cleaning");
+				logger.warn("no User");
 			}
 
 			if (workflow != null) {
@@ -167,10 +152,10 @@ public class RoleIntegrationTest extends BaseTestCase
 				if (ret != 1) {
 					logger.error("clean Workflow failed");
 				} else {
-					logger.info("clean Workflow successed");
+					logger.info("clean Workflow OK!");
 				}
 			} else {
-				logger.warn("no Workflow for cleaning");
+				logger.warn("no Workflow");
 			}
 
 			if (action != null) {
@@ -178,15 +163,14 @@ public class RoleIntegrationTest extends BaseTestCase
 				if (ret != 1) {
 					logger.error("clean Action failed " + ret);
 				} else {
-					logger.warn("clean Action successed");
+					logger.warn("clean Action OK!");
 				}
 			} else {
-				logger.warn("no Action for cleaning");
+				logger.warn("no Action");
 			}
 
 			se.commit();
 			se.close();
-			logger.info("end clean");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

@@ -102,9 +102,9 @@ public class TeacherUnitTest extends BaseTestCase
 		TitleUnitTest unitTitle = new TitleUnitTest();
 		unitTitle.insertTitle();
 		GroupUnitTest unitGroup = new GroupUnitTest();
-		unitGroup.insertGroup();
+		unitGroup.create();
 		UserUnitTest unitUser = new UserUnitTest();
-		unitUser.insertUser();
+		unitUser.create();
 	}
 
 	public void afterTest()
@@ -114,9 +114,9 @@ public class TeacherUnitTest extends BaseTestCase
 		TitleUnitTest unitTitle = new TitleUnitTest();
 		unitTitle.deleteTitle();
 		UserUnitTest unitUser = new UserUnitTest();
-		unitUser.deleteUser();
+		unitUser.delete();
 		GroupUnitTest unitGroup = new GroupUnitTest();
-		unitGroup.deleteGroup();
+		unitGroup.delete();
 		logger.info("end TeacherUnitTest");
 	}
 }

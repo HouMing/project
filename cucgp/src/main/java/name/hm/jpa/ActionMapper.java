@@ -57,7 +57,7 @@ public interface ActionMapper extends Mapper
 			@Result(property="workflowId",column="workflow_id"),
 			@Result(property="actionStatus",column="action_status")
 	})
-	List<Action> selectByActionStatus(String string);
+	List<Action> selectByActionStatus(Action.STATUS status);
 
 	@Insert(INSERT)
 	Integer insert(Action action);
