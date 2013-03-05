@@ -17,6 +17,7 @@ public class GroupUnitTest extends BaseTestCase
 {
 	public static Integer GROUP_ID = 0;
 	public static String GROUP_NAME = "测试组";
+	public static String GROUP_NAMEC = "测试组C";
 	public static String GROUP_NAME2 = "测试组改";
 	public static Group.VALID GROUP_VALID = Group.getValid("valid");
 	public static Group.VALID GROUP_INVALID = Group.getValid("invalid");
@@ -27,12 +28,12 @@ public class GroupUnitTest extends BaseTestCase
 	public void test()
 	{
 		create();
-		selectGroup();
-		updateGroup();
+		select();
+		update();
 		delete();
 	}
 
-	// FINISH
+	// PASS #0305
 	public void create()
 	{
 		try {
@@ -53,21 +54,32 @@ public class GroupUnitTest extends BaseTestCase
 		}
 	}
 
-	public void selectGroup()
+	// PASS #0305
+	public void select()
 	{
 		try {
-			logger.info("start");
+			Integer error;
 			openTestSession();
-			Group grp = groupMapper.selectByGroupId(GROUP_ID);
-			Group grp2 = groupMapper.selectByGroupName(GROUP_NAME);
-			List<Group> lgrp = groupMapper.selectByValid(GROUP_VALID);
-			List<Group> lgrp2 = groupMapper.selectByValid(GROUP_INVALID);
+			Group group = groupMapper.selectByGroupId(GROUP_ID);
+			Group group2 = groupMapper.selectByGroupName(GROUP_NAME);
+			List<Group> l = groupMapper.selectByValid(GROUP_VALID);
+			List<Group> l2 = groupMapper.selectByValid(GROUP_INVALID);
 			se.commit();
-			logger.info(grp.toString());
-			logger.info(grp2.toString());
-			logger.info(lgrp.toString());
-			logger.info(lgrp2.toString());
-			logger.info("end");
+			if (group != null) {
+				logger.info("selectByGroupId OK!\n" + group);
+			} else {
+				logger.error("selectByGroupId failed\n" + group);
+			}
+			if (group2 != null) {
+				logger.info("selectByGroupName OK!\n" + group2);
+			} else {
+				logger.error("selectByGroupName failed\n" + group2);
+			}
+			if (l.size() > 0 || l2.size() > 0) {
+				logger.info("selectByValid OK!\n" + l + l2);
+			} else {
+				logger.error("selectByValid failed!");
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -75,37 +87,27 @@ public class GroupUnitTest extends BaseTestCase
 		}
 	}
 
-	public void updateGroup()
+	// PASS #0305
+	public void update()
 	{
 		try {
-			logger.info("start");
+			Integer error;
 			openTestSession();
-			StringBuilder strb = new StringBuilder();
-			se.flushStatements();
-			strb.append("#groupName(\"CellTest\" <--> \"CellTestChange\") \n");
-			Group grp = groupMapper.selectByGroupId(GROUP_ID);
-			strb.append(grp + "\n");
-
-			grp.setGroupName("CellTestChange");
-			groupMapper.update(grp);
-			grp = groupMapper.selectByGroupId(GROUP_ID);
+			Group group = groupMapper.selectByGroupId(GROUP_ID);
 			se.commit();
-			strb.append(grp + "\n");
-
-			grp.setGroupName(GROUP_NAME);
-			groupMapper.update(grp);
-			grp = groupMapper.selectByGroupId(GROUP_ID);
+			logger.info("before update:\n" + group);
+			group.setGroupName(GROUP_NAMEC);
+			error = groupMapper.update(group);
 			se.commit();
-			strb.append(grp + "\n");
-
-			strb.append("#valid('invalid' -> 'valid')\n");
-			grp.setValid("valid");
-			groupMapper.update(grp);
-			grp = groupMapper.selectByGroupId(GROUP_ID);
-			se.commit();
-			strb.append(grp);
-			logger.info(strb.toString());
-			logger.info("end");
+			if (error == 1) {
+				group = groupMapper.selectByGroupId(GROUP_ID);
+				se.commit();
+				logger.info("update OK!\n" + group);
+			} else {
+				group = groupMapper.selectByGroupId(GROUP_ID);
+				se.commit();
+				logger.error("update OK!\n" + group);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -113,7 +115,7 @@ public class GroupUnitTest extends BaseTestCase
 		}
 	}
 
-	// FINISH #0305
+	// PASS #0305
 	public void delete()
 	{
 		try {
