@@ -46,7 +46,7 @@ public interface GroupMapper extends Mapper
 			@Result(property="groupName",column="group_name"),
 			@Result(property="valid",column="valid")
 	})
-	List<Group> selectByValid(String valid);
+	List<Group> selectByValid(Group.VALID valid);
 	
 	@Insert(INSERT_GROUP)
 	Integer insert(Group cellTest);
