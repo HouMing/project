@@ -146,7 +146,7 @@ public class TeacherUnitTest extends BaseTestCase
 	}
 
 	// PASS CELL #0306
-	private void delete()
+	public void delete()
 	{
 		try {
 			Integer error = 1;

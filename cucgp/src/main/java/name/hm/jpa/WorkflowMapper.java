@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Workflow;
@@ -49,6 +51,8 @@ public interface WorkflowMapper extends Mapper
 	List<Workflow> selectByWorkflowStatus(Workflow.STATUS str);
 
 	@Insert(INSERT_WORKFLOW)
+	@SelectKey(statement = "SELECT MAX(workflow_id) AS workflow_id FROM cucgp.`workflow`", keyProperty = "workflowId", before = false, resultType = Integer.class)
+	@Options(useGeneratedKeys = true, keyProperty = "workflowId", keyColumn = "workflow_id")
 	Integer insert(Workflow workflow);
 	
 	@Update(UPDATE)
