@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Role;
@@ -22,10 +23,18 @@ public interface RoleMapper extends Mapper
 			              "SET role_name = #{roleName}, valid = #{valid} " +
 			              "WHERE role_id = #{roleId}";
 	final String DELETE = "DELETE FROM cucgp.`role` WHERE role_id = #{roleId}";
+	final String LAST_INSERT_ID = "SELECT MAX(role_id) AS role_id FROM cucgp.`role`";
 	
 	@Insert(INSERT_ROLE)
+	@SelectKey(statement = "SELECT MAX(role_id + 1) AS role_id FROM cucgp.`role`", 
+	           keyProperty = "roleId", 
+	           resultType = Integer.class, 
+	           before = false)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
 	Integer insert(Role role);
+	
+	@Select(LAST_INSERT_ID)
+	Integer lastInsertId();
 	
 	@Select(SELECT_BY_ROLEID)
 	@Results(value = {

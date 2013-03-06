@@ -2,7 +2,7 @@
 <!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
 
 <log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
-  <appender name="celltest" class="org.apache.log4j.ConsoleAppender"> 
+  <appender name="dev" class="org.apache.log4j.ConsoleAppender"> 
     <param name="Target" value="System.out"/> 
     <layout class="org.apache.log4j.PatternLayout"> 
       <param name="ConversionPattern" value="[%-5p] %l %n%m%n"/> 
@@ -11,7 +11,7 @@
 
   <root> 
     <priority value ="info" /> 
-    <appender-ref ref="celltest" />
+    <appender-ref ref="dev" />
   </root>
   
 </log4j:configuration>

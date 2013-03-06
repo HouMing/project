@@ -13,7 +13,7 @@ import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
 
-// TODO check testUnit
+// PASS UNIT #0306
 public class GroupUnitTest extends BaseTestCase
 {
 	public static Integer GROUP_ID = 0;

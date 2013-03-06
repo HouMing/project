@@ -14,40 +14,43 @@ import name.hm.pojo.Role;
 import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 
-// TODO check testUnit
+// PASS UNIT #0306
 public class RoleUnitTest extends BaseTestCase
 {
-	static public Integer ROLE_ID = 0;
-	static public String ROLE_NAME = "测试角色";
-	static public String ROLE_NAMEC = "测试角色改";
-	static public String ROLE_NAME1 = "测试角色1";
-	static public Role.VALID ROLE_VALID = Role.VALID("valid");
-	static public Role.VALID ROLE_INVALID = Role.VALID("invalid");
+	static public Integer ROLE_ID = null;
+	static public Integer ROLE_ID1 = null;
+	static public Integer ROLE_ID2 = null;
+	static final public String ROLE_NAME = "测试角色";
+	static final public String ROLE_NAMEC = "测试角色改";
+	static final public String ROLE_NAME1 = "测试角色1";
+	static final public String ROLE_NAME2 = "测试角色2";
+	static final public Role.VALID ROLE_VALID = Role.VALID("valid");
+	static final public Role.VALID ROLE_INVALID = Role.VALID("invalid");
 
 	@Test
 	public void test()
 	{
 		beforeTest();
 		create();
-		select();
+		read();
 		update();
 		delete();
 		afterTest();
 	}
 
-	//
-	protected void afterTest()
+	// PASS CELL #0306
+	protected void beforeTest()
 	{
 		logger.info("start RoleUnitTest");
 	}
 
-	//
-	protected void beforeTest()
+	// PASS CELL #0306
+	protected void afterTest()
 	{
 		logger.info("finish RoleUnitTest");
 	}
 
-	// PASS #0305
+	// PASS CELL #0306
 	public void create()
 	{
 		try {
@@ -68,12 +71,13 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS #0305
-	public void select()
+	// PASS CELL #0306
+	public void read()
 	{
 		try {
 			Integer error;
 			openTestSession();
+			ROLE_ID = roleMapper.lastInsertId();
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
 			Role role2 = roleMapper.selectByRoleName(ROLE_NAME);
 			List<Role> l = roleMapper.selectByValid(ROLE_VALID);
@@ -101,13 +105,14 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS #0305
+	// PASS CELL #0306
 	public void update()
 	{
 		try {
 			Integer error;
 			openTestSession();
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
+			se.commit();
 			logger.info("before update:\n" + role);
 			role.setRoleName(ROLE_NAMEC);
 			role.setValid(ROLE_VALID);
@@ -127,7 +132,7 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS #0305
+	// PASS CELL #0306
 	public void delete()
 	{
 		try {

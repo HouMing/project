@@ -17,7 +17,7 @@ import name.hm.jpa.*;
 public class BaseTestCase implements ITestCase, ILogger
 {
 	static public String CONF_FILE_NAME = "appContext-MyBATIS.xml";
-	static public String LOGGER_APPENDER = "celltest";
+	static public String LOGGER_APPENDER = "dev";
 	
 	static protected Logger logger = Logger.getLogger(LOGGER_APPENDER); 
 	static private SqlSessionFactory sqlSessionFactory = null;
