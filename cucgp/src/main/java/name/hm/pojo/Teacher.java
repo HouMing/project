@@ -13,6 +13,23 @@ public class Teacher
 	String departmentName;
 	String titleName;
 
+	public Teacher()
+	{}
+
+	public Teacher(String userName, String teacherName, String telephone,
+			String email, String weibo, String introduction, String departmentName,
+			String titleName)
+	{
+		this.userName = userName;
+		this.teacherName = teacherName;
+		this.telephone = telephone;
+		this.email = email;
+		this.weibo = weibo;
+		this.introduction = introduction;
+		this.departmentName = departmentName;
+		this.titleName = titleName;
+	}
+
 	public String getUserName()
 	{
 		return userName;

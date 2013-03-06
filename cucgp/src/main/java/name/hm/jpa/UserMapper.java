@@ -15,19 +15,24 @@ import name.hm.pojo.User;
 public interface UserMapper extends Mapper
 {
 
-	final String SELECT_BY_USERID = "SELECT * FROM cucgp.`user` WHERE user_id = #{param1}";
-	final String SELECT_BY_USERNAME = "SELECT * FROM cucgp.`user` WHERE user_name = #{param1}";
-	final String SELECT_BY_USERVALID = "SELECT * FROM cucgp.`user` WHERE valid = #{param1}";
-	final String SELECT_BY_GROUPID = "SELECT * FROM cucgp.`user` WHERE group_id = #{param1}";
 	final String INSERT_USER = "INSERT INTO "
 			+ "cucgp.`user` (user_id, group_id, user_name, password, valid, user_home)"
 			+ " VALUES "
 			+ "(#{userId}, #{groupId}, #{userName}, #{password}, #{valid}, #{userHome})";
+	
+	final String SELECT_BY_USERID = "SELECT * FROM cucgp.`user` WHERE user_id = #{param1}";
+	final String SELECT_BY_USERNAME = "SELECT * FROM cucgp.`user` WHERE user_name = #{param1}";
+	final String SELECT_BY_USERVALID = "SELECT * FROM cucgp.`user` WHERE valid = #{param1}";
+	final String SELECT_BY_GROUPID = "SELECT * FROM cucgp.`user` WHERE group_id = #{param1}";
+	
 	final String UPDATE = "UPDATE cucgp.`user` "
 			+ "SET user_name = #{userName}, password = #{password}, user_home = #{userHome}, "
 			+ "group_id = #{groupId}, valid = #{valid}" + "WHERE user_id = #{userId}";
+	
 	final String DELETE = "DELETE FROM cucgp.`user` WHERE user_id = #{userId}";
 
+	final String LAST_INSERT_ID = "SELECT MAX(user_id) FROM cucgp.`user`";
+	
 	@Select(SELECT_BY_USERID)
 	@Results(value = { @Result(property = "userId", column = "user_id"),
 			@Result(property = "groupId", column = "group_id"),
@@ -79,5 +84,8 @@ public interface UserMapper extends Mapper
 	@Delete(DELETE)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
 	Integer delete(User user);
+
+	@Select(LAST_INSERT_ID)
+	Integer lastInsertId();
 
 }

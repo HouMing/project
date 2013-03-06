@@ -14,6 +14,7 @@ import name.hm.test.unit.WorkflowUnitTest;
 
 import org.junit.Test;
 
+// TODO INTEGRATION #0306
 public class RoleIntegrationTest extends BaseTestCase
 {
 	private static Role role;
@@ -44,7 +45,7 @@ public class RoleIntegrationTest extends BaseTestCase
 		}
 	}
 
-	// TODO fix
+	// TODO BEFORE #0306
 	public void beforeTest()
 	{
 		try {

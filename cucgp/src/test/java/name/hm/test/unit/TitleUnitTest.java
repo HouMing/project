@@ -9,7 +9,7 @@ import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
-// TODO check testUnit
+// PASS UNIT #0306
 public class TitleUnitTest extends BaseTestCase
 {
 	static public String TITLE_NAME = "测试职称";
