@@ -11,6 +11,9 @@ public class Workflow
 	String workflowName;
 	STATUS workflowStatus;
 
+	public Workflow()
+	{}
+
 	public Workflow(Integer workflow_Id, String workflow_Name,
 			STATUS workflow_Status)
 	{

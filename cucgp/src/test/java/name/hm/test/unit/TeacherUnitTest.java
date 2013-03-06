@@ -8,6 +8,7 @@ import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
+// TODO check testUnit
 public class TeacherUnitTest extends BaseTestCase
 {
 	static public String USER_NAME = UserUnitTest.USER_NAME;
@@ -98,9 +99,9 @@ public class TeacherUnitTest extends BaseTestCase
 	{
 		logger.info("start TeacherUnitTest");
 		DepartmentUnitTest unitDepartment = new DepartmentUnitTest();
-		unitDepartment.insertDepartment();
+		unitDepartment.create();
 		TitleUnitTest unitTitle = new TitleUnitTest();
-		unitTitle.insertTitle();
+		unitTitle.create();
 		GroupUnitTest unitGroup = new GroupUnitTest();
 		unitGroup.create();
 		UserUnitTest unitUser = new UserUnitTest();
@@ -110,9 +111,9 @@ public class TeacherUnitTest extends BaseTestCase
 	public void afterTest()
 	{
 		DepartmentUnitTest unitOne = new DepartmentUnitTest();
-		unitOne.deleteDepartment();
+		unitOne.delete();
 		TitleUnitTest unitTitle = new TitleUnitTest();
-		unitTitle.deleteTitle();
+		unitTitle.delete();
 		UserUnitTest unitUser = new UserUnitTest();
 		unitUser.delete();
 		GroupUnitTest unitGroup = new GroupUnitTest();

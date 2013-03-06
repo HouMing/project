@@ -10,6 +10,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// PASS #0306
 public class ActionUnitTest extends BaseTestCase
 {
 	static public Integer ACTION_ID = 0;
@@ -30,27 +31,27 @@ public class ActionUnitTest extends BaseTestCase
 		afterTest();
 	}
 
-	// DOING
+	// PASS #0306
 	private void beforeTest()
 	{
 		logger.info("start ActionUnit test");
-		GroupUnitTest unitGroup = new GroupUnitTest();
-		UserUnitTest unitUser = new UserUnitTest();
+		RoleUnitTest unitRole = new RoleUnitTest();
 		WorkflowUnitTest unitWorkflow = new WorkflowUnitTest();
-		unitGroup.create();
-		unitUser.create();
+		unitRole.create();
 		unitWorkflow.create();
 	}
 
-	// FINISH
+	// PASS #0306
 	private void afterTest()
 	{
-		UserUnitTest unitUser = new UserUnitTest();
-		unitUser.delete();
+		RoleUnitTest unitRole = new RoleUnitTest();
+		WorkflowUnitTest unitWorkflow = new WorkflowUnitTest();
+		unitRole.delete();
+		unitWorkflow.delete();
 		logger.info("finish ActionUnit test");
 	}
 
-	// FINISH
+	// PASS #0306
 	public void create()
 	{
 		try {
@@ -72,7 +73,7 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	// FINISH #0305
+	// PASS #0306
 	public void read()
 	{
 		try {
@@ -104,7 +105,7 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	// FINISH #0305
+	// PASS #0306
 	public void update()
 	{
 		try {
@@ -134,7 +135,7 @@ public class ActionUnitTest extends BaseTestCase
 		}
 	}
 
-	// FINISH #0305
+	// PASS #0306
 	public void delete()
 	{
 		try {

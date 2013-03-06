@@ -44,6 +44,7 @@ public class RoleIntegrationTest extends BaseTestCase
 		}
 	}
 
+	// TODO fix
 	public void beforeTest()
 	{
 		try {
@@ -51,7 +52,7 @@ public class RoleIntegrationTest extends BaseTestCase
 			logger.info("start");
 			openTestSession();
 			role = new Role(RoleUnitTest.ROLE_ID, RoleUnitTest.ROLE_NAME,
-					Role.VALID(RoleUnitTest.ROLE_VALID));
+					RoleUnitTest.ROLE_VALID);
 			ret = roleMapper.insert(role);
 			if (ret != 1) {
 				logger.error("insert Role failed");
@@ -61,7 +62,7 @@ public class RoleIntegrationTest extends BaseTestCase
 			se.commit();
 
 			group = new Group(GroupUnitTest.GROUP_ID, GroupUnitTest.GROUP_NAME,
-					Group.VALID(GroupUnitTest.GROUP_VALID));
+					GroupUnitTest.GROUP_VALID);
 			ret = groupMapper.insert(group);
 			if (ret != 1) {
 				logger.error("insert Group failed" + group);
@@ -72,7 +73,7 @@ public class RoleIntegrationTest extends BaseTestCase
 
 			user = new User(UserUnitTest.USER_ID, UserUnitTest.USER_NAME,
 					UserUnitTest.PASSWORD, UserUnitTest.USER_HOME,
-					User.VALID(UserUnitTest.USER_VALID), GroupUnitTest.GROUP_ID);
+					UserUnitTest.USER_VALID, GroupUnitTest.GROUP_ID);
 			ret = userMapper.insert(user);
 			if (ret != 1) {
 				logger.error("insert User failed");
@@ -168,9 +169,7 @@ public class RoleIntegrationTest extends BaseTestCase
 			} else {
 				logger.warn("no Action");
 			}
-
 			se.commit();
-			se.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

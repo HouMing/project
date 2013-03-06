@@ -12,10 +12,11 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+// TODO #0306-0307 add ORDER BY
 public interface TitleMapper extends Mapper
 {
 	final String INSERT = "INSERT INTO cucgp.`title` (title_name) VALUES (#{titleName})";
-	final String SELECT_ALL = "SELECT * FROM cucgp.`title`";
+	final String SELECT_ALL = "SELECT * FROM cucgp.`title` ORDER BY title_id ASC";
 	final String DELETE = "DELETE FROM cucgp.`title` WHERE title_name = #{titleName}";
 	final String UPDATE = "UPDATE cucgp.`title` SET title_name = #{titleName} WHERE title_id = #{titleId}";
 

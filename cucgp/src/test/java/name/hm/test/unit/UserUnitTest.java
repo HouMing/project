@@ -24,8 +24,8 @@ public class UserUnitTest extends BaseTestCase
 	public static String USER_NAMEC = "TestUserC";
 	public static String USER_HOME = "/" + USER_NAME + "/";
 	public static String PASSWORD = "123456";
-  static public User.VALID USER_VALID = User.getValid("valid");
-  static public User.VALID USER_INVALID = User.getValid("invalid");
+	static public User.VALID USER_VALID = User.getValid("valid");
+	static public User.VALID USER_INVALID = User.getValid("invalid");
 
 	static Group group = null;
 
@@ -76,7 +76,8 @@ public class UserUnitTest extends BaseTestCase
 		try {
 			Integer ret;
 			openTestSession();
-			User user = new User(USER_ID, USER_NAME, PASSWORD, USER_HOME, USER_VALID, GroupUnitTest.GROUP_ID);
+			User user = new User(USER_ID, USER_NAME, PASSWORD, USER_HOME, USER_VALID,
+					GroupUnitTest.GROUP_ID);
 			ret = userMapper.insert(user);
 			if (ret == 1) {
 				logger.info("create OK! : " + user);
@@ -107,7 +108,7 @@ public class UserUnitTest extends BaseTestCase
 			} else {
 				logger.error("selectByUserId failed : " + user);
 			}
-			
+
 			if (user2 != null) {
 				logger.info("selectByUserName OK! : " + user2);
 			} else {
@@ -119,7 +120,7 @@ public class UserUnitTest extends BaseTestCase
 			} else {
 				logger.error("selectByValid failed");
 			}
-			
+
 			if (l3.size() > 0) {
 				logger.info("selectByGroupId OK!");
 			} else {

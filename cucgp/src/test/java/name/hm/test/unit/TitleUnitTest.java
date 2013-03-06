@@ -1,6 +1,7 @@
 package name.hm.test.unit;
 
 import java.util.LinkedList;
+import java.util.List;
 
 import name.hm.pojo.Title;
 import name.hm.pojo.User;
@@ -8,111 +9,60 @@ import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
+// TODO check testUnit
 public class TitleUnitTest extends BaseTestCase
 {
 	static public String TITLE_NAME = "测试职称";
+	static public String TITLE_NAMEC = "测试职称改";
 	static public String TITLE_NAME1 = "测试职称1";
-	static public String TITLE_NAME11 = "测试职称11";
 	static public String TITLE_NAME2 = "测试职称2";
 	static public String TITLE_NAME3 = "测试职称3";
 	static public String TITLE_NAME4 = "测试职称4";
-	
+
 	@Test
 	public void test()
 	{
 		beforeTest();
-		insertTitle();
-		selectTitle();
-		updateTitle();
-		deleteTitle();
+		create();
+		read();
+		update();
+		delete();
 		afterTest();
 	}
 
-	public void deleteTitle()
+	// PASS CELL #0306
+	public void beforeTest()
 	{
-		try {
-			Integer ret;
-			openTestSession();
-			Title title = titleMapper.selectAll().getFirst();
-	    ret = titleMapper.delete(title);
-	    if (ret == 1) {
-	    	logger.info("delete Title successfully");
-	    } else {
-	    	logger.error("delete Title failed");
-	    }
-			se.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+		logger.info("start TitleUnitTest");
 	}
 
-	public void updateTitle()
+	public void afterTest()
 	{
-		try {
-			Integer ret;
-			openTestSession();
-			Title title = titleMapper.selectAll().getFirst();
-			title.setTitleName(TITLE_NAME11);
-			ret = titleMapper.update(title);
-			if(ret == 1) {
-				logger.info("update Title successfully");
-			} else {
-				logger.error("update Title failed!");
-			}
-			se.commit();
-			title.setTitleName(TITLE_NAME);
-			ret = titleMapper.update(title);
-			if(ret == 1) {
-				logger.info("update Title successfully");
-			} else {
-				logger.error("update Title failed!");
-			}
-			se.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+		logger.info("finish TitleUnitTest");
 	}
-
-	public void selectTitle()
+	
+	// PASS CELL #0306
+	public void create()
 	{
 		try {
-			openTestSession();
-			LinkedList<Title> list = titleMapper.selectAll();
-			if (list.size() == 1) {
-				logger.info("selectAll : " + list);
-			} else {
-				logger.error("selectAll : " + list);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
-	}
-
-	public void insertTitle()
-	{
-		try {
-			Integer ret;
+			Integer error;
 			openTestSession();
 			Title title = new Title(TITLE_NAME);
 			Title title1 = new Title(TITLE_NAME1);
 			Title title2 = new Title(TITLE_NAME2);
 			Title title3 = new Title(TITLE_NAME3);
 			Title title4 = new Title(TITLE_NAME4);
-			ret = titleMapper.insert(title);
-			ret = titleMapper.insert(title1) & ret;
-			ret = titleMapper.insert(title2) & ret;
-			ret = titleMapper.insert(title3) & ret;
-			ret = titleMapper.insert(title4) & ret;
-			if (ret == 1) {
-				logger.info("insert Title successfully!");
+			error = titleMapper.insert(title);
+			error = titleMapper.insert(title1) & error;
+			error = titleMapper.insert(title2) & error;
+			error = titleMapper.insert(title3) & error;
+			error = titleMapper.insert(title4) & error;
+			if (error == 1) {
+				logger.info("insert Title OK!\n" + title + title1 + title2 + title3
+						+ title4);
 			} else {
-				logger.error("insert Title failed!");
+				logger.info("insert Title failed\n" + title + title1 + title2 + title3
+						+ title4);
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -122,14 +72,78 @@ public class TitleUnitTest extends BaseTestCase
 		}
 	}
 
-	public void beforeTest()
+	// PASS CELL #0306
+	public void read()
 	{
-		logger.info("start");
+		try {
+			Integer error;
+			openTestSession();
+			LinkedList<Title> list = titleMapper.selectAll();
+			se.commit();
+			if (list.size() > 0) {
+				logger.info("selectAll OK!\n" + list);
+			} else {
+				logger.error("selectAll failed\n" + list);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
 	}
 
-	public void afterTest()
+	// PASS CELL #0306
+	public void update()
 	{
-		logger.info("end");
+		try {
+			Integer error;
+			openTestSession();
+			LinkedList<Title> l = titleMapper.selectAll();
+			Title title = l.getFirst();
+			se.commit();
+			logger.info("before update:\n" + l);
+			title.setTitleName(TITLE_NAMEC);
+			error = titleMapper.update(title);
+			se.commit();
+			if (error == 1) {
+				l = titleMapper.selectAll();
+				se.commit();			
+				logger.info("update OK!\n" + l);
+			} else {
+				logger.error("update failed\n" + l);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
 	}
 
+	// PASS CELL #0306
+	public void delete()
+	{
+		try {
+			Integer error = 1;
+			openTestSession();
+			LinkedList<Title> l = titleMapper.selectAll();
+			se.commit();
+			logger.info("before delete:\n" + l);
+			for (Title tmp: l) {
+			  error = titleMapper.delete(tmp) & error;
+			}
+			se.commit();
+			if (error == 1) {
+				l = titleMapper.selectAll();
+				se.commit();
+				logger.info("delete Title OK!\n" + l);
+			} else {
+				logger.error("delete Title failed" + l);
+			}
+			se.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
 }

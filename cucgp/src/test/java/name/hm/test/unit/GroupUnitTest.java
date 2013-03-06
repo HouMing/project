@@ -13,12 +13,13 @@ import name.hm.jpa.GroupMapper;
 import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
 
+// TODO check testUnit
 public class GroupUnitTest extends BaseTestCase
 {
 	public static Integer GROUP_ID = 0;
 	public static String GROUP_NAME = "测试组";
-	public static String GROUP_NAMEC = "测试组C";
-	public static String GROUP_NAME2 = "测试组改";
+	public static String GROUP_NAMEC = "测试组改";
+	public static String GROUP_NAME2 = "测试组2";
 	public static Group.VALID GROUP_VALID = Group.getValid("valid");
 	public static Group.VALID GROUP_INVALID = Group.getValid("invalid");
 

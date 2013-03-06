@@ -7,6 +7,14 @@ public class Department
 	protected Integer departmentId;
 	protected String departmentName;
 
+	public Department()
+	{}
+
+	public Department(String departmentName)
+	{
+		this.departmentName = departmentName;
+	}
+
 	public Integer getDepartmentId()
 	{
 		return departmentId;

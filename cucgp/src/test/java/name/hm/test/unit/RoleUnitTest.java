@@ -14,42 +14,53 @@ import name.hm.pojo.Role;
 import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 
-/**
- * test CRUD of Role Table
- */
+// TODO check testUnit
 public class RoleUnitTest extends BaseTestCase
 {
 	static public Integer ROLE_ID = 0;
-	static public String ROLE_NAME = "CellTest";
-	static public String ROLE_VALID = "valid";
-	static public String ROLE_INVALID = "invalid";
+	static public String ROLE_NAME = "测试角色";
+	static public String ROLE_NAMEC = "测试角色改";
+	static public String ROLE_NAME1 = "测试角色1";
+	static public Role.VALID ROLE_VALID = Role.VALID("valid");
+	static public Role.VALID ROLE_INVALID = Role.VALID("invalid");
 
-	static private Integer ret;
-	
 	@Test
-	public void test(){
-		insertRole();
-		selectRole();
-		updateRole();
-		deleteRole();
+	public void test()
+	{
+		beforeTest();
+		create();
+		select();
+		update();
+		delete();
+		afterTest();
 	}
-	
-	public void insertRole()
+
+	//
+	protected void afterTest()
+	{
+		logger.info("start RoleUnitTest");
+	}
+
+	//
+	protected void beforeTest()
+	{
+		logger.info("finish RoleUnitTest");
+	}
+
+	// PASS #0305
+	public void create()
 	{
 		try {
+			Integer error;
 			openTestSession();
-			logger.info("start");
-			Role role = new Role();
-			role.setRoleId(ROLE_ID);
-			role.setRoleName(ROLE_NAME);
-			role.setValid(ROLE_VALID);
-			ret = roleMapper.insert(role);
-			if (ret == 1) {
-				logger.info(role);
+			Role role = new Role(ROLE_ID, ROLE_NAME, ROLE_INVALID);
+			error = roleMapper.insert(role);
+			se.commit();
+			if (error == 1) {
+				logger.info("create Role OK!\n" + role);
 			} else {
-				logger.error("insertRole failed! " + role);
+				logger.error("create Role failed\n" + role);
 			}
-			logger.info("end");
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -57,21 +68,32 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	public void selectRole()
+	// PASS #0305
+	public void select()
 	{
 		try {
+			Integer error;
 			openTestSession();
-			logger.info("start");
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
 			Role role2 = roleMapper.selectByRoleName(ROLE_NAME);
-			List<Role> lrole = roleMapper.selectByValid(ROLE_VALID);
-			List<Role> lrole2 = roleMapper.selectByValid("in" + ROLE_VALID);
+			List<Role> l = roleMapper.selectByValid(ROLE_VALID);
+			List<Role> l2 = roleMapper.selectByValid(ROLE_INVALID);
 			se.commit();
-			logger.info(role.toString());
-			logger.info(role2.toString());
-			logger.info(lrole.toString());
-			logger.info(lrole2.toString());
-			logger.info("end");
+			if (role != null) {
+				logger.info("selectByRoleId OK!\n" + role);
+			} else {
+				logger.error("selectByRoleId failed\n" + role);
+			}
+			if (role2 != null) {
+				logger.info("selectByRoleName OK!\n" + role2);
+			} else {
+				logger.error("selectByRoleName failed\n" + role2);
+			}
+			if (l.size() > 0 || l2.size() > 0) {
+				logger.info("selectByValid OK!\n" + l + l2);
+			} else {
+				logger.error("selectByValid failed\n" + l + l2);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -79,39 +101,25 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	/**
-	 * update Role
-	 */
-	public void updateRole()
+	// PASS #0305
+	public void update()
 	{
 		try {
+			Integer error;
 			openTestSession();
-			logger.info("start");
-			StringBuilder strb = new StringBuilder();
-			strb.append("#roleName(\"CellTest\" <--> \"CellTestChange\")\n");
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
-			strb.append(role + "\n");
-
-			role.setRoleName(ROLE_NAME + "Changed");
-			roleMapper.update(role);
-			role = roleMapper.selectByRoleId(ROLE_ID);
-			se.commit();
-			strb.append(role + "\n");
-
-			role.setRoleName(ROLE_NAME);
-			roleMapper.update(role);
-			role = roleMapper.selectByRoleId(ROLE_ID);
-			se.commit();
-			strb.append(role + "\n");
-
-			strb.append("#valid('valid' -> 'invalid')\n");
+			logger.info("before update:\n" + role);
+			role.setRoleName(ROLE_NAMEC);
 			role.setValid(ROLE_VALID);
-			roleMapper.update(role);
-			role = roleMapper.selectByRoleId(ROLE_ID);
+			error = roleMapper.update(role);
 			se.commit();
-			strb.append(role);
-			logger.info(strb.toString());
-			logger.info("end");
+			if (error == 1) {
+				role = roleMapper.selectByRoleId(ROLE_ID);
+				se.commit();
+				logger.info("update OK!\n" + role);
+			} else {
+				logger.error("update failed\n" + role);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -119,16 +127,20 @@ public class RoleUnitTest extends BaseTestCase
 		}
 	}
 
-	public void deleteRole()
+	// PASS #0305
+	public void delete()
 	{
 		try {
+			Integer error;
 			openTestSession();
-			logger.info("start");
-			se.flushStatements();
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
-			logger.info(roleMapper.delete(role).toString());
+			error = roleMapper.delete(role);
 			se.commit();
-			logger.info("end");
+			if (error == 1) {
+				logger.info("delete OK!\n" + role);
+			} else {
+				logger.error("delete failed\n" + role);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

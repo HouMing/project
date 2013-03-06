@@ -46,13 +46,13 @@ public interface WorkflowMapper extends Mapper
 			@Result(property="workflowName",column="workflow_name"),
 			@Result(property="workflowStatus",column="workflow_status")
 	})
-	List<Workflow> selectByWorkflowStatus(String string);
+	List<Workflow> selectByWorkflowStatus(Workflow.STATUS str);
 
 	@Insert(INSERT_WORKFLOW)
-	Integer insert(Workflow cellTest);
+	Integer insert(Workflow workflow);
 	
 	@Update(UPDATE)
-	Integer update(Workflow grp);
+	Integer update(Workflow workflow);
 
 	@Delete(DELETE)
 	Integer delete(Workflow workflow);
