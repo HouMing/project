@@ -8,7 +8,7 @@ import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
-// TODO UNIT #0306
+// PASS UNIT #0306
 public class DepartmentUnitTest extends BaseTestCase
 {
 	static public Integer DEPARTMENT_ID = 0;
