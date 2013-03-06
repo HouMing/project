@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
@@ -20,16 +21,17 @@ public interface TeacherMapper extends Mapper
 			                  "(#{userName}, #{teacherName}, #{telephone}, #{email}, " +
 			                  "#{weibo}, #{introduction}, #{departmentName}, #{titleName})";
 	
-	final String SELECT_BY_USER_NAME = "SELECT * FROM cucgp.`teacher` where user_name = #{param1}";
-	final String SELECT_BY_DEPARTMENT_NAME = "SELECT * FROM cucgp.`teacher` where department_name = #{param1}";
-	final String SELECT_BY_TITLE_NAME = "SELECT * FROM cucgp.`teacher` where title_name = #{param1}";
+	final String SELECT_BY_USER_NAME = "SELECT * FROM cucgp.`teacher` where user_name = #{param1} ORDER BY user_name ASC";
+	final String SELECT_BY_DEPARTMENT_NAME = "SELECT * FROM cucgp.`teacher` where department_name = #{param1} ORDER BY user_name ASC";
+	final String SELECT_BY_TITLE_NAME = "SELECT * FROM cucgp.`teacher` where title_name = #{param1} ORDER BY user_name ASC";
 	
 	final String UPDATE ="UPDATE cucgp.`teacher` SET teacher_name = #{teacherName}, telephone = #{telephone},"+
 			                 "email = #{email}, weibo = #{weibo}, introduction = #{introduction}, " +
 			                 "department_name = #{departmentName}, title_name = #{titleName}";
-	final String DELETE = "DELETE FORM cucgp.`teacher` WHERE user_name = #{userName}";
+	final String DELETE = "DELETE FROM cucgp.`teacher` WHERE user_name = #{userName}";
 	
 	@Insert(INSERT)
+	@Options(useGeneratedKeys = true, keyProperty = "userName", keyColumn = "user_name")
 	public Integer insert(Teacher teacher);
 	
 	@Select(SELECT_BY_USER_NAME)

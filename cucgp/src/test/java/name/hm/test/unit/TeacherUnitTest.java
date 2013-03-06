@@ -10,14 +10,15 @@ import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
-// TODO UNIT #0306
+// PASS UNIT #0306
 public class TeacherUnitTest extends BaseTestCase
 {
-	static public String USER_NAME = UserUnitTest.USER_NAME;
 	static public String TEACHER_NAME = "测试老师";
 	static public String TEACHER_NAMEC = "测试老师改";
+	
 	static public String TEACHER_NAME1 = "测试老师1";
 	static public String TEACHER_NAME2 = "测试老师2";
+	
 	static public String TELEPHONE = "13461370223";
 	static public String EMAIL = "10197786@qq.com";
 	static public String WEIBO = "@testTeacher";
@@ -36,7 +37,7 @@ public class TeacherUnitTest extends BaseTestCase
 		afterTest();
 	}
 
-	// TODO CELL #0306
+	// PASS CELL #0306
 	public void beforeTest()
 	{
 		logger.info("start TeacherUnitTest");
@@ -50,11 +51,11 @@ public class TeacherUnitTest extends BaseTestCase
 		unitUser.create();
 	}
 
-	// TODO CELL #0306
+	// PASS CELL #0306
 	public void afterTest()
 	{
-		DepartmentUnitTest unitOne = new DepartmentUnitTest();
-		unitOne.delete();
+		DepartmentUnitTest unitDepartment = new DepartmentUnitTest();
+		unitDepartment.delete();
 		TitleUnitTest unitTitle = new TitleUnitTest();
 		unitTitle.delete();
 		UserUnitTest unitUser = new UserUnitTest();
@@ -64,17 +65,27 @@ public class TeacherUnitTest extends BaseTestCase
 		logger.info("end TeacherUnitTest");
 	}
 
-	// FINISH CELL #0306
+	// PASS CELL #0306
 	public void create()
 	{
 		try {
 			openTestSession();
-			User user = userMapper.selectByUserId(userMapper.lastInsertId());
+			User user = userMapper.selectByUserId(UserUnitTest.USER_ID);
+			User user1 = userMapper.selectByUserId(UserUnitTest.USER_ID1);
+			User user2 = userMapper.selectByUserId(UserUnitTest.USER_ID2);
 			se.commit();
 			Teacher teacher = new Teacher(user.getUserName(), TEACHER_NAME,
 					TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
 					DepartmentUnitTest.DEPARTMENT_NAME, TitleUnitTest.TITLE_NAME);
+			Teacher teacher1 = new Teacher(user1.getUserName(), TEACHER_NAME,
+					TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
+					DepartmentUnitTest.DEPARTMENT_NAME, TitleUnitTest.TITLE_NAME);
+			Teacher teacher2 = new Teacher(user2.getUserName(), TEACHER_NAME,
+					TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
+					DepartmentUnitTest.DEPARTMENT_NAME, TitleUnitTest.TITLE_NAME);
 			teacherMapper.insert(teacher);
+			teacherMapper.insert(teacher1);
+			teacherMapper.insert(teacher2);
 			se.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,7 +94,7 @@ public class TeacherUnitTest extends BaseTestCase
 		}
 	}
 
-	// FINISH CELL #0306
+	// PASS CELL #0306
 	public void read()
 	{
 		try {
@@ -116,7 +127,7 @@ public class TeacherUnitTest extends BaseTestCase
 		}
 	}
 
-	// TODO CELL #0306
+	// PASS CELL #0306
 	public void update()
 	{
 		try {
@@ -134,10 +145,34 @@ public class TeacherUnitTest extends BaseTestCase
 		}
 	}
 
-	// TODO CELL #0306
+	// PASS CELL #0306
 	private void delete()
 	{
-
+		try {
+			Integer error = 1;
+			openTestSession();
+			Teacher teacher = teacherMapper.selectByUserName(UserUnitTest.USER_NAME);
+			Teacher teacher1 = teacherMapper.selectByUserName(UserUnitTest.USER_NAME1);
+			Teacher teacher2 = teacherMapper.selectByUserName(UserUnitTest.USER_NAME2);
+			se.commit();
+			error = teacherMapper.delete(teacher1) & error;
+			error = teacherMapper.delete(teacher) & error;
+      error = teacherMapper.delete(teacher2) & error;			
+      se.commit();
+      teacher = teacherMapper.selectByUserName(UserUnitTest.USER_NAME);
+			teacher1 = teacherMapper.selectByUserName(UserUnitTest.USER_NAME1);
+			teacher2 = teacherMapper.selectByUserName(UserUnitTest.USER_NAME2);
+			se.commit();
+      if (error == 1) {
+      	logger.info("delete OK!\n" + teacher + teacher1 + teacher2);
+      } else {
+       	logger.info("delete failed\n" + teacher + teacher1 + teacher2);
+      }
+ 		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
 	}
 
 }

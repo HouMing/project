@@ -28,10 +28,22 @@ public class GroupUnitTest extends BaseTestCase
 	@Test
 	public void test()
 	{
+		beforeTest();
 		create();
 		select();
 		update();
 		delete();
+		afterTest();
+	}
+
+	private void beforeTest()
+	{
+		logger.info("start GroupUnitTest");
+	}
+
+	private void afterTest()
+	{
+		logger.info("finish GroupUnitTest");
 	}
 
 	// PASS #0305

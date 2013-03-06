@@ -95,7 +95,7 @@ public class UserUnitTest extends BaseTestCase
 			if (error == 1) {
 				logger.info("create OK!\n" + user + user1 + user2);
 			} else {
-				logger.error("create failed : " + user + user1 + user2);
+				logger.error("create failed\n" + user + user1 + user2);
 			}
 			se.commit();
 			USER_ID = user.getUserId();
