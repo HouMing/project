@@ -62,6 +62,7 @@ public class TeacherUnitTest extends BaseTestCase
 		unitUser.delete();
 		GroupUnitTest unitGroup = new GroupUnitTest();
 		unitGroup.delete();
+		clean();
 		logger.info("end TeacherUnitTest");
 	}
 
@@ -171,6 +172,23 @@ public class TeacherUnitTest extends BaseTestCase
  		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
+			closeTestSession();
+		}
+	}
+	
+	public void clean()
+	{
+		try {
+			openTestSession();
+			LinkedList<Teacher> l = teacherMapper.selectAll();
+			se.commit();
+			for (Teacher t : l) {
+				teacherMapper.delete(t);
+			}
+			se.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally { 
 			closeTestSession();
 		}
 	}

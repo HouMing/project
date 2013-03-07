@@ -1,5 +1,6 @@
 package name.hm.test.unit;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -18,11 +19,13 @@ import name.hm.test.integration.RoleIntegrationTest;
 public class RoleUnitTest extends BaseTestCase
 {
 	static public Integer ROLE_ID = null;
-	static public Integer ROLE_ID1 = null;
-	static public Integer ROLE_ID2 = null;
 	static final public String ROLE_NAME = "测试角色";
 	static final public String ROLE_NAMEC = "测试角色改";
+	
+	static public Integer ROLE_ID1 = null;
 	static final public String ROLE_NAME1 = "测试角色1";
+	
+	static public Integer ROLE_ID2 = null;
 	static final public String ROLE_NAME2 = "测试角色2";
 	static final public Role.VALID ROLE_VALID = Role.VALID("valid");
 	static final public Role.VALID ROLE_INVALID = Role.VALID("invalid");
@@ -54,15 +57,22 @@ public class RoleUnitTest extends BaseTestCase
 	public void create()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			Role role = new Role(ROLE_ID, ROLE_NAME, ROLE_INVALID);
-			error = roleMapper.insert(role);
+			Role role = new Role(ROLE_ID, ROLE_NAME, ROLE_VALID);
+			Role role1 = new Role(ROLE_ID1, ROLE_NAME1, ROLE_VALID);
+			Role role2 = new Role(ROLE_ID2, ROLE_NAME2, ROLE_INVALID);
+			error = roleMapper.insert(role) & error;
+			error = roleMapper.insert(role1) & error;
+			error = roleMapper.insert(role2) & error;
 			se.commit();
+			ROLE_ID = role.getRoleId();
+			ROLE_ID1 = role1.getRoleId();
+			ROLE_ID2 = role2.getRoleId();
 			if (error == 1) {
-				logger.info("create Role OK!\n" + role);
+				logger.info("create Role OK!\n" + role + "\n" + role1 + "\n" + role2);
 			} else {
-				logger.error("create Role failed\n" + role);
+				logger.info("create Role failed\n" + role + "\n" + role1 + "\n" + role2);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +125,7 @@ public class RoleUnitTest extends BaseTestCase
 			se.commit();
 			logger.info("before update:\n" + role);
 			role.setRoleName(ROLE_NAMEC);
-			role.setValid(ROLE_VALID);
+			role.setValid(ROLE_INVALID);
 			error = roleMapper.update(role);
 			se.commit();
 			if (error == 1) {
@@ -136,16 +146,44 @@ public class RoleUnitTest extends BaseTestCase
 	public void delete()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
-			error = roleMapper.delete(role);
+			Role role1 = roleMapper.selectByRoleId(ROLE_ID1);
+			Role role2 = roleMapper.selectByRoleId(ROLE_ID2);
+			se.commit();
+			logger.info("before delete\n" + role +"\n" + role1 + "\n"+ role2);
+			error = roleMapper.delete(role) & error;
+			error = roleMapper.delete(role1) & error;
+			error = roleMapper.delete(role2) & error;
 			se.commit();
 			if (error == 1) {
-				logger.info("delete OK!\n" + role);
+				logger.info("delete OK!\n" + role +"\n" + role1 + "\n"+ role2);
 			} else {
-				logger.error("delete failed\n" + role);
+				logger.error("delete failed\n" + role +"\n" + role1 + "\n"+ role2);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
+	
+	public void clean() 
+	{
+		try {
+			openTestSession();
+			LinkedList<Role> l = roleMapper.selectByValid(ROLE_VALID);
+			LinkedList<Role> l2 = roleMapper.selectByValid(ROLE_INVALID);
+			se.commit();
+			for (Role tmp: l) {
+				roleMapper.delete(tmp);
+			}
+			for (Role tmp: l2) {
+				roleMapper.delete(tmp);
+			}
+			se.commit();
+			roleMapper.selectByValid(ROLE_INVALID);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

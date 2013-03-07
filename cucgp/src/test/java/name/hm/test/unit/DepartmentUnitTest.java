@@ -1,22 +1,28 @@
 package name.hm.test.unit;
 
 import java.util.LinkedList;
+import java.util.List;
 
+import name.hm.jpa.DepartmentMapper;
+import name.hm.pojo.Action;
 import name.hm.pojo.Department;
 import name.hm.pojo.User;
 import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
 
-// PASS UNIT #0306
+// PASS UNIT #0307
 public class DepartmentUnitTest extends BaseTestCase
 {
-	static public Integer DEPARTMENT_ID = 0;
+	static public Integer DEPARTMENT_ID = null;
 	static public String DEPARTMENT_NAME = "测试系";
 	static public String DEPARTMENT_NAMEC = "测试系改";
+
+	static public Integer DEPARTMENT_ID1 = null;
 	static public String DEPARTMENT_NAME1 = "测试系1";
+
+	static public Integer DEPARTMENT_ID2 = null;
 	static public String DEPARTMENT_NAME2 = "测试系2";
-	static public String DEPARTMENT_NAME3 = "测试系3";
 
 	@Test
 	public void test()
@@ -29,19 +35,20 @@ public class DepartmentUnitTest extends BaseTestCase
 		afterTest();
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void beforeTest()
 	{
 		logger.info("start DepartmentUnitTest");
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void afterTest()
 	{
+		clean();
 		logger.info("finish DepartmentUnitTest");
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void create()
 	{
 		try {
@@ -50,18 +57,15 @@ public class DepartmentUnitTest extends BaseTestCase
 			Department department = new Department(DEPARTMENT_NAME);
 			Department department1 = new Department(DEPARTMENT_NAME1);
 			Department department2 = new Department(DEPARTMENT_NAME2);
-			Department department3 = new Department(DEPARTMENT_NAME3);
 			error = departmentMapper.insert(department);
 			error = departmentMapper.insert(department1) & error;
 			error = departmentMapper.insert(department2) & error;
-			error = departmentMapper.insert(department3) & error;
 			se.commit();
 			if (error == 1) {
-				logger.info("insert OK!\n" + department + department1 + department2
-						+ department3);
+				logger.info("insert OK!\n" + department + department1 + department2);
 			} else {
-				logger.error("insert failed\n" + department + department1 + department2
-						+ department3);
+				logger
+						.error("insert failed\n" + department + department1 + department2);
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -71,7 +75,7 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void read()
 	{
 		try {
@@ -90,7 +94,7 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void update()
 	{
 		try {
@@ -99,12 +103,15 @@ public class DepartmentUnitTest extends BaseTestCase
 			LinkedList<Department> l = departmentMapper.selectAll();
 			se.commit();
 			logger.info("before update\n:" + l);
-			String tmp;
-			tmp = l.get(0).getDepartmentName();
+			String pre;
+			String cur;
+			pre = l.get(0).getDepartmentName();
+			cur = pre;
 			l.get(0).setDepartmentName(DEPARTMENT_NAMEC);
 			for (int i = 1; i < l.size(); ++i) {
-				l.get(i).setDepartmentName(tmp);
-				tmp = l.get(i).getDepartmentName();
+				cur = l.get(i).getDepartmentName();
+				l.get(i).setDepartmentName(pre);
+				pre = cur;
 			}
 			for (int i = 0; i < l.size(); ++i) {
 				error = departmentMapper.update(l.get(i)) & error;
@@ -124,7 +131,7 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
+	// PASS CELL #0307
 	public void delete()
 	{
 		try {
@@ -132,8 +139,9 @@ public class DepartmentUnitTest extends BaseTestCase
 			openTestSession();
 			LinkedList<Department> l = departmentMapper.selectAll();
 			se.commit();
-			for (int i = 0; i < l.size(); ++i) {
-				error = departmentMapper.delete(l.get(i)) & error;
+			for (; l.size() > 0;) {
+				Department tmp = l.pop();
+				error = departmentMapper.delete(tmp) & error;
 			}
 			l = departmentMapper.selectAll();
 			se.commit();
@@ -149,4 +157,20 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
+	public void clean()
+	{
+		try {
+			openTestSession();
+			LinkedList<Department> l = departmentMapper.selectAll();
+			se.commit();
+			for (Department tmp : l) {
+				departmentMapper.delete(tmp);
+			}
+			se.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
 }

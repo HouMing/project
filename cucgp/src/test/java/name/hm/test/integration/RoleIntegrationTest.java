@@ -48,14 +48,14 @@ public class RoleIntegrationTest extends BaseTestCase
 			UserUnitTest userUnit = new UserUnitTest();
 			WorkflowUnitTest workflowUnit = new WorkflowUnitTest();
 			
-			workflowUnit.create();
-			actionUnit.create();
-			departmentUnit.create();
-			groupUnit.create();
-			roleUnit.create();
-			teacherUnit.create();
 			titleUnit.create();
+			groupUnit.create();
+			departmentUnit.create();
+			workflowUnit.create();
+			roleUnit.create();
+			actionUnit.create();
 			userUnit.create();
+			teacherUnit.create();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

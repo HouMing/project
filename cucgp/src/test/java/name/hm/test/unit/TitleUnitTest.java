@@ -16,8 +16,6 @@ public class TitleUnitTest extends BaseTestCase
 	static public String TITLE_NAMEC = "测试职称改";
 	static public String TITLE_NAME1 = "测试职称1";
 	static public String TITLE_NAME2 = "测试职称2";
-	static public String TITLE_NAME3 = "测试职称3";
-	static public String TITLE_NAME4 = "测试职称4";
 
 	@Test
 	public void test()
@@ -38,6 +36,7 @@ public class TitleUnitTest extends BaseTestCase
 
 	public void afterTest()
 	{
+		clean();
 		logger.info("finish TitleUnitTest");
 	}
 	
@@ -50,19 +49,13 @@ public class TitleUnitTest extends BaseTestCase
 			Title title = new Title(TITLE_NAME);
 			Title title1 = new Title(TITLE_NAME1);
 			Title title2 = new Title(TITLE_NAME2);
-			Title title3 = new Title(TITLE_NAME3);
-			Title title4 = new Title(TITLE_NAME4);
 			error = titleMapper.insert(title);
 			error = titleMapper.insert(title1) & error;
 			error = titleMapper.insert(title2) & error;
-			error = titleMapper.insert(title3) & error;
-			error = titleMapper.insert(title4) & error;
 			if (error == 1) {
-				logger.info("insert Title OK!\n" + title + title1 + title2 + title3
-						+ title4);
+				logger.info("insert Title OK!\n" + title + title1 + title2);
 			} else {
-				logger.info("insert Title failed\n" + title + title1 + title2 + title3
-						+ title4);
+				logger.error("insert Title failed\n" + title + title1 + title2);
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -146,4 +139,22 @@ public class TitleUnitTest extends BaseTestCase
 			closeTestSession();
 		}
 	}
+
+	private void clean()
+	{
+		try {
+			openTestSession();
+			LinkedList<Title> l = titleMapper.selectAll();
+			se.commit();
+			for (Title tmp : l) {
+				titleMapper.delete(tmp);
+			}
+			se.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
+
 }

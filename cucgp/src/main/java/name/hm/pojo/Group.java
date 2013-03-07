@@ -12,12 +12,15 @@ public class Group implements Serializable
 {
 	Integer groupId;
 	String groupName;
-	VALID valid;
+	Valid valid;
+
+	public static final Valid VALID = Valid.valueOf("valid");
+	public static final Valid INVALID = Valid.valueOf("invalid");
 
 	public Group()
 	{}
 
-	public Group(Integer groupId, String groupName, VALID valid)
+	public Group(Integer groupId, String groupName, Valid valid)
 	{
 		this.groupId = groupId;
 		this.groupName = groupName;
@@ -44,12 +47,12 @@ public class Group implements Serializable
 		this.groupName = groupName;
 	}
 
-	public VALID getValid()
+	public Valid getValid()
 	{
 		return valid;
 	}
 
-	public void setValid(VALID valid)
+	public void setValid(Valid valid)
 	{
 		this.valid = valid;
 	}
@@ -60,31 +63,19 @@ public class Group implements Serializable
 		return JSONObject.toJSONString(this);
 	}
 
-	public enum VALID
+	public enum Valid
 	{
 		valid("valid"), invalid("invalid");
-		String val;
+		String value;
 
-		VALID(String val_)
+		Valid(String value)
 		{
-			val = val_;
+			this.value = value;
 		}
 
 		public String toString()
 		{
-			return val;
-		}
-	}
-
-	public static name.hm.pojo.Group.VALID getValid(String str)
-	{
-		switch (str) {
-		case "valid":
-			return VALID.valid;
-		case "invalid":
-			return VALID.invalid;
-		default:
-			return null;
+			return value;
 		}
 	}
 

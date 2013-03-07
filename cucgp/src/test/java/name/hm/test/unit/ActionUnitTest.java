@@ -10,15 +10,22 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-// PASS #0306
+// PASS UNIT #0307
 public class ActionUnitTest extends BaseTestCase
 {
-	static public Integer ACTION_ID = 0;
-	static public String ACTION_NAME = "测试操作";
-	static public String ACTION_NAMEC = "测试操作改";
+	static public Integer ACTION_ID = null;
+	static final public String ACTION_NAME = "测试操作";
+	static final public String ACTION_NAMEC = "测试操作改";
+
+	static public Integer ACTION_ID1 = null;
+	static final public String ACTION_NAME1 = "测试操作1";
+
+	static public Integer ACTION_ID2 = null;
+	static final public String ACTION_NAME2 = "测试操作2";
+
 	static public String ACTION_URL = "/test/unit/";
-	static public Action.STATUS ACTION_VALID = Action.getStatus("valid");
-	static public Action.STATUS ACTION_INVALID = Action.getStatus("invalid");
+	static public Action.STATUS ACTION_VALID = Action.VALID;
+	static public Action.STATUS ACTION_INVALID = Action.INVALID;
 
 	@Test
 	public void test()
@@ -48,6 +55,7 @@ public class ActionUnitTest extends BaseTestCase
 		WorkflowUnitTest unitWorkflow = new WorkflowUnitTest();
 		unitRole.delete();
 		unitWorkflow.delete();
+		clean();
 		logger.info("finish ActionUnit test");
 	}
 
@@ -55,17 +63,30 @@ public class ActionUnitTest extends BaseTestCase
 	public void create()
 	{
 		try {
-			Integer ret;
+			Integer error = 1;
 			openTestSession();
 			Action action = new Action(ACTION_ID, ACTION_NAME, ACTION_URL,
-					ACTION_INVALID, RoleUnitTest.ROLE_ID, WorkflowUnitTest.WORKFLOW_ID);
-			ret = actionMapper.insert(action);
-			if (ret == 1) {
-				logger.info("insert Action OK!");
-			} else {
-				logger.error("insert Action failed");
-			}
+					ACTION_VALID, RoleUnitTest.ROLE_ID, WorkflowUnitTest.WORKFLOW_ID);
+			Action action1 = new Action(ACTION_ID1, ACTION_NAME1, ACTION_URL,
+					ACTION_VALID, RoleUnitTest.ROLE_ID1, WorkflowUnitTest.WORKFLOW_ID);
+			Action action2 = new Action(ACTION_ID2, ACTION_NAME2, ACTION_URL,
+					ACTION_INVALID, RoleUnitTest.ROLE_ID2, WorkflowUnitTest.WORKFLOW_ID);
+			logger.info("DDD " + RoleUnitTest.ROLE_ID + " " + RoleUnitTest.ROLE_ID1
+					+ " " + RoleUnitTest.ROLE_ID2);
+			error = actionMapper.insert(action) & error;
+			error = actionMapper.insert(action1) & error;
+			error = actionMapper.insert(action2) & error;
 			se.commit();
+			ACTION_ID = action.getActionId();
+			ACTION_ID1 = action1.getActionId();
+			ACTION_ID2 = action2.getActionId();
+			if (error == 1) {
+				logger.info("insert Action OK!\n" + action + "\n" + action1 + "\n"
+						+ action2);
+			} else {
+				logger.error("insert Action failed\n" + action + "\n" + action1 + "\n"
+						+ action2);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -79,24 +100,24 @@ public class ActionUnitTest extends BaseTestCase
 		try {
 			openTestSession();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
-			Action action2 = actionMapper.selectByActionName(ACTION_NAME);
+			Action action1 = actionMapper.selectByActionName(ACTION_NAME);
 			List<Action> l = actionMapper.selectByActionStatus(ACTION_VALID);
 			List<Action> l2 = actionMapper.selectByActionStatus(ACTION_INVALID);
 			se.commit();
 			if (action != null) {
-				logger.info("selectByActionId OK! : " + action);
+				logger.info("selectByActionId OK!\n" + action);
 			} else {
-				logger.error("selectByActionName faild : " + action);
+				logger.error("selectByActionName faild\n" + action);
 			}
-			if (action2 != null) {
-				logger.info("selectByActionName OK! : " + action2);
+			if (action1 != null) {
+				logger.info("selectByActionName OK!\n" + action1);
 			} else {
-				logger.error("selectByActionName failed : " + action2);
+				logger.error("selectByActionName failed\n" + action1);
 			}
 			if (l.size() > 0 || l2.size() > 0) {
-				logger.info("selectByActionStatus OK! : " + l + l2);
+				logger.info("selectByActionStatus OK!\n" + l + "\n" + l2);
 			} else {
-				logger.error("selectByActionStatus failed");
+				logger.error("selectByActionStatus failed" + l + "\n" + l2);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +136,7 @@ public class ActionUnitTest extends BaseTestCase
 			if (action == null) {
 				logger.error("update failed");
 			} else {
-				logger.info("before update : " + action);
+				logger.info("before update\n" + action);
 			}
 			action.setActionName(ACTION_NAMEC);
 			action.setActionStatus(ACTION_INVALID);
@@ -124,7 +145,7 @@ public class ActionUnitTest extends BaseTestCase
 			if (ret == 1) {
 				action = actionMapper.selectByActionId(ACTION_ID);
 				se.commit();
-				logger.info("update OK! : " + action);
+				logger.info("update OK!\n" + action);
 			} else {
 				logger.error("update failed");
 			}
@@ -139,19 +160,40 @@ public class ActionUnitTest extends BaseTestCase
 	public void delete()
 	{
 		try {
-			Integer ret;
+			Integer error;
 			openTestSession();
 			Action action = actionMapper.selectByActionId(ACTION_ID);
-			logger.info("before delete : " + action);
-			ret = actionMapper.delete(action);
-			if (ret == 1) {
+			logger.info("before delete\n" + action);
+			error = actionMapper.delete(action);
+			if (error == 1) {
 				logger.info("delete OK!");
 				action = actionMapper.selectByActionId(ACTION_ID);
 				se.commit();
-				logger.info("after delete : " + action);
+				logger.info("after delete\n" + action);
 			} else {
 				logger.error("delete failed");
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
+
+	public void clean()
+	{
+		try {
+			openTestSession();
+			List<Action> l = actionMapper.selectByActionStatus(Action.VALID);
+			List<Action> l2 = actionMapper.selectByActionStatus(Action.INVALID);
+			se.commit();
+			for (Action tmp : l) {
+				actionMapper.delete(tmp);
+			}
+			for (Action tmp : l2) {
+				actionMapper.delete(tmp);
+			}
+			se.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

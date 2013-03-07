@@ -1,5 +1,6 @@
 package name.hm.jpa;
 
+import java.util.LinkedList;
 import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -14,11 +15,11 @@ import name.hm.pojo.Role;
 
 public interface RoleMapper extends Mapper
 {
-	final String INSERT_ROLE = "INSERT INTO cucgp.`role` (role_id, role_name, valid) VALUES " +
-			"(#{roleId}, #{roleName}, #{valid})";
+	final String INSERT_ROLE = "INSERT INTO cucgp.`role` (role_name, valid) VALUES " +
+			"(#{roleName}, #{valid})";
 	final String SELECT_BY_ROLEID = "SELECT * FROM cucgp.`role` WHERE role_id = #{param1}";
 	final String SELECT_BY_ROLENAME = "SELECT * FROM cucgp.`role` WHERE role_name = #{param1}";
-	final String SELECT_BY_ROLEVALID = "SELECT * FROM cucgp.`role` WHERE valid = #{param1}";
+	final String SELECT_BY_ROLEVALID = "SELECT * FROM cucgp.`role` WHERE valid = #{param1} ORDER BY role_id ASC";
 	final String UPDATE = "UPDATE cucgp.`role` " +
 			              "SET role_name = #{roleName}, valid = #{valid} " +
 			              "WHERE role_id = #{roleId}";
@@ -26,10 +27,7 @@ public interface RoleMapper extends Mapper
 	final String LAST_INSERT_ID = "SELECT MAX(role_id) AS role_id FROM cucgp.`role`";
 	
 	@Insert(INSERT_ROLE)
-	@SelectKey(statement = "SELECT MAX(role_id + 1) AS role_id FROM cucgp.`role`", 
-	           keyProperty = "roleId", 
-	           resultType = Integer.class, 
-	           before = false)
+	@SelectKey(statement = "SELECT MAX(role_id) AS role_id FROM cucgp.`role`", keyProperty = "roleId", resultType = Integer.class, before = false)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
 	Integer insert(Role role);
 	
@@ -61,7 +59,7 @@ public interface RoleMapper extends Mapper
 			@Result(property="valid",column="valid")
 	})
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
-	List<Role> selectByValid(Role.VALID valid);
+	LinkedList<Role> selectByValid(Role.VALID valid);
 	
 	@Update(UPDATE)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")

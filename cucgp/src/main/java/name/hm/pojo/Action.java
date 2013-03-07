@@ -13,6 +13,9 @@ public class Action
 	Integer workflowId;
 	Integer roleId;
 
+	static public STATUS VALID = STATUS.valueOf("valid");
+	static public STATUS INVALID = STATUS.valueOf("invalid");
+	
 	public Action()
 	{}
 
@@ -107,18 +110,6 @@ public class Action
 			return val;
 		}
 
-	}
-
-	public static STATUS getStatus(String str)
-	{
-		switch (str) {
-		case "valid":
-			return STATUS.valid;
-		case "invalid":
-			return STATUS.invalid;
-		default:
-			return null;
-		}
 	}
 
 }

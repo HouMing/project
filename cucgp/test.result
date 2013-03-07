@@ -20,8 +20,6 @@
 [INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ cucgp ---
 [INFO] Changes detected - recompiling the module!
 [INFO] Compiling 12 source files to /home/houming/workspace/project/cucgp/target/test-classes
-[WARNING] /home/houming/workspace/project/cucgp/src/test/java/name/hm/test/integration/RoleIntegrationTest.java: /home/houming/workspace/project/cucgp/src/test/java/name/hm/test/integration/RoleIntegrationTest.java uses or overrides a deprecated API.
-[WARNING] /home/houming/workspace/project/cucgp/src/test/java/name/hm/test/integration/RoleIntegrationTest.java: Recompile with -Xlint:deprecation for details.
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.10:test (default-test) @ cucgp ---
 [INFO] Surefire report directory: /home/houming/workspace/project/cucgp/target/surefire-reports
@@ -30,297 +28,119 @@
  T E S T S
 -------------------------------------------------------
 Running name.hm.test.unit.DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:116) 
-start
-[INFO ] name.hm.test.unit.DepartmentUnitTest.insertDepartment(DepartmentUnitTest.java:102) 
-insert Department successfully!
-[INFO ] name.hm.test.unit.DepartmentUnitTest.selectDepartment(DepartmentUnitTest.java:82) 
-selectAll : [{"departmentName":"测试系"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.updateDepartment(DepartmentUnitTest.java:56) 
-update Department successfully
-[INFO ] name.hm.test.unit.DepartmentUnitTest.updateDepartment(DepartmentUnitTest.java:64) 
-update Department successfully
-[INFO ] name.hm.test.unit.DepartmentUnitTest.deleteDepartment(DepartmentUnitTest.java:35) 
-delete Department successfully
-[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:121) 
-end
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.616 sec
-Running name.hm.test.unit.WorkflowUnitTest
-[INFO ] name.hm.test.unit.WorkflowUnitTest.insertWorkflow(WorkflowUnitTest.java:40) 
-start
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-### The error may involve name.hm.jpa.WorkflowMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO `workflow` (workflow_id, workflow_name, workflow_status) VALUES (?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy19.insert(Unknown Source)
-	at name.hm.test.unit.WorkflowUnitTest.insertWorkflow(WorkflowUnitTest.java:45)
-	at name.hm.test.unit.WorkflowUnitTest.test(WorkflowUnitTest.java:30)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 34 more
-[INFO ] name.hm.test.unit.WorkflowUnitTest.selectWorkflow(WorkflowUnitTest.java:57) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.WorkflowUnitTest.selectWorkflow(WorkflowUnitTest.java:59)
-	at name.hm.test.unit.WorkflowUnitTest.test(WorkflowUnitTest.java:31)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.WorkflowUnitTest.updateWorkflowName(WorkflowUnitTest.java:79) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.WorkflowUnitTest.updateWorkflowName(WorkflowUnitTest.java:82)
-	at name.hm.test.unit.WorkflowUnitTest.test(WorkflowUnitTest.java:32)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.WorkflowUnitTest.deleteWorkflowName(WorkflowUnitTest.java:116) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.WorkflowUnitTest.deleteWorkflowName(WorkflowUnitTest.java:117)
-	at name.hm.test.unit.WorkflowUnitTest.test(WorkflowUnitTest.java:33)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 sec
-Running name.hm.test.unit.GroupUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:41) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:50) 
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:54) 
-end
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:65) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:72) 
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:73) 
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:74) 
-[{"groupId":0,"groupName":"CellTest","valid":"valid"}]
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:75) 
+[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:38) 
+start DepartmentUnitTest
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:61) 
+insert OK!
+{"departmentId":1,"departmentName":"测试系"}{"departmentId":2,"departmentName":"测试系1"}{"departmentId":3,"departmentName":"测试系2"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.read(DepartmentUnitTest.java:81) 
+selectAll OK!
+[{"departmentId":1,"departmentName":"测试系"}, {"departmentId":2,"departmentName":"测试系1"}, {"departmentId":3,"departmentName":"测试系2"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:100) 
+before update
+:[{"departmentId":1,"departmentName":"测试系"}, {"departmentId":2,"departmentName":"测试系1"}, {"departmentId":3,"departmentName":"测试系2"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:118) 
+update OK!
+[{"departmentId":1,"departmentName":"测试系改"}, {"departmentId":2,"departmentName":"测试系"}, {"departmentId":3,"departmentName":"测试系1"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:144) 
+delete OK!
 []
-[INFO ] name.hm.test.unit.GroupUnitTest.selectGroup(GroupUnitTest.java:76) 
-end
-[INFO ] name.hm.test.unit.GroupUnitTest.updateGroup(GroupUnitTest.java:87) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.updateGroup(GroupUnitTest.java:113) 
-#groupName("CellTest" <--> "CellTestChange") 
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-{"groupId":0,"groupName":"CellTestChange","valid":"valid"}
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-#valid('invalid' -> 'valid')
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.updateGroup(GroupUnitTest.java:114) 
-end
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:128) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:131) 
-1
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:133) 
-end
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.23 sec
+[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:44) 
+finish DepartmentUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.786 sec
+Running name.hm.test.unit.WorkflowUnitTest
+[INFO ] name.hm.test.unit.WorkflowUnitTest.beforeTest(WorkflowUnitTest.java:43) 
+start WorkflowUnitTest
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
+create OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}
+{"workflowId":2,"workflowName":"测试工作流1","workflowStatus":"valid"}
+{"workflowId":3,"workflowName":"测试工作流2","workflowStatus":"invalid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:93) 
+selectByWorkflowId OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:98) 
+selectByWorkflowName OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:103) 
+selectByWorkflowStatus OK!
+[{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}, {"workflowId":2,"workflowName":"测试工作流1","workflowStatus":"valid"}]
+[{"workflowId":3,"workflowName":"测试工作流2","workflowStatus":"invalid"}]
+[INFO ] name.hm.test.unit.WorkflowUnitTest.update(WorkflowUnitTest.java:127) 
+update OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"invalid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:157) 
+delete OK!
+null
+null
+null
+[INFO ] name.hm.test.unit.WorkflowUnitTest.afterTest(WorkflowUnitTest.java:48) 
+finish WorkflowUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.195 sec
+Running name.hm.test.unit.GroupUnitTest
+[INFO ] name.hm.test.unit.GroupUnitTest.beforeTest(GroupUnitTest.java:45) 
+start GroupUnitTest
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:67) 
+insert OK!
+{"groupId":1,"groupName":"测试组","valid":"valid"}
+{"groupId":2,"groupName":"测试组1","valid":"valid"}
+{"groupId":3,"groupName":"测试组2","valid":"invalid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:93) 
+selectByGroupId OK!
+{"groupId":1,"groupName":"测试组","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:98) 
+selectByGroupName OK!
+{"groupId":2,"groupName":"测试组1","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:103) 
+selectByValid OK!
+[{"groupId":1,"groupName":"测试组","valid":"valid"}, {"groupId":2,"groupName":"测试组1","valid":"valid"}][{"groupId":3,"groupName":"测试组2","valid":"invalid"}]
+[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:122) 
+before update
+{"groupId":1,"groupName":"测试组","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:129) 
+update OK!
+{"groupId":1,"groupName":"测试组改","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:157) 
+delete OK!
+{"groupId":1,"groupName":"测试组改","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.afterTest(GroupUnitTest.java:50) 
+finish GroupUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.159 sec
 Running name.hm.test.unit.ActionUnitTest
-[INFO ] name.hm.test.unit.ActionUnitTest.insertAction(ActionUnitTest.java:36) 
-start
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_behave_role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-### The error may involve name.hm.jpa.ActionMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`action`(action_id, action_name, action_url, workflow_id, role_id, action_status) VALUES (?, ?, ?, ?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_behave_role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy20.insert(Unknown Source)
-	at name.hm.test.unit.ActionUnitTest.insertAction(ActionUnitTest.java:44)
-	at name.hm.test.unit.ActionUnitTest.cell(ActionUnitTest.java:23)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_behave_role1` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 34 more
-[INFO ] name.hm.test.unit.ActionUnitTest.selectAction(ActionUnitTest.java:61) 
-start
+[INFO ] name.hm.test.unit.ActionUnitTest.beforeTest(ActionUnitTest.java:44) 
+start ActionUnit test
+[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
+create Role OK!
+{"roleId":1,"roleName":"测试角色","valid":"valid"}
+{"roleId":2,"roleName":"测试角色1","valid":"valid"}
+{"roleId":3,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
+create OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}
+{"workflowId":2,"workflowName":"测试工作流1","workflowStatus":"valid"}
+{"workflowId":3,"workflowName":"测试工作流2","workflowStatus":"invalid"}
+[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:73) 
+DDD 1 2 3
+[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:82) 
+insert Action OK!
+{"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":1,"workflowId":1}
+{"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/","roleId":2,"workflowId":1}
+{"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":3,"workflowId":1}
+[ERROR] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:108) 
+selectByActionName faild
+null
+[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:111) 
+selectByActionName OK!
+{"actionId":1,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":1,"workflowId":1}
+[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:116) 
+selectByActionStatus OK!
+[{"actionId":1,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":1,"workflowId":1}, {"actionId":2,"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/","roleId":2,"workflowId":1}]
+[{"actionId":3,"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":3,"workflowId":1}]
+[ERROR] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:135) 
+update failed
 java.lang.NullPointerException
-	at name.hm.test.unit.ActionUnitTest.selectAction(ActionUnitTest.java:68)
-	at name.hm.test.unit.ActionUnitTest.cell(ActionUnitTest.java:24)
+	at name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:139)
+	at name.hm.test.unit.ActionUnitTest.test(ActionUnitTest.java:36)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -349,95 +169,208 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.ActionUnitTest.updateActionName(ActionUnitTest.java:88) 
-start
-[ERROR] name.hm.test.unit.ActionUnitTest.updateActionName(ActionUnitTest.java:91) 
-selectByActionId(ACTION_ID) failed!
-java.lang.NullPointerException
-	at name.hm.test.unit.ActionUnitTest.updateActionName(ActionUnitTest.java:96)
-	at name.hm.test.unit.ActionUnitTest.cell(ActionUnitTest.java:25)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.ActionUnitTest.deleteActionName(ActionUnitTest.java:130) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.ActionUnitTest.deleteActionName(ActionUnitTest.java:131)
-	at name.hm.test.unit.ActionUnitTest.cell(ActionUnitTest.java:26)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 sec
+[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:164) 
+before delete
+null
+[ERROR] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:172) 
+delete failed
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:155) 
+before delete
+{"roleId":1,"roleName":"测试角色","valid":"valid"}
+{"roleId":2,"roleName":"测试角色1","valid":"valid"}
+{"roleId":3,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:161) 
+delete OK!
+{"roleId":1,"roleName":"测试角色","valid":"valid"}
+{"roleId":2,"roleName":"测试角色1","valid":"valid"}
+{"roleId":3,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:157) 
+delete OK!
+null
+null
+null
+[INFO ] name.hm.test.unit.ActionUnitTest.afterTest(ActionUnitTest.java:58) 
+finish ActionUnit test
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.433 sec
 Running name.hm.test.unit.TeacherUnitTest
-[INFO ] name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:99) 
+[INFO ] name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:43) 
 start TeacherUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.insertDepartment(DepartmentUnitTest.java:102) 
-insert Department successfully!
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:61) 
+insert OK!
+{"departmentId":4,"departmentName":"测试系"}{"departmentId":5,"departmentName":"测试系1"}{"departmentId":6,"departmentName":"测试系2"}
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:55) 
+insert Title OK!
+{"titleId":1,"titleName":"测试职称"}{"titleId":2,"titleName":"测试职称1"}{"titleId":3,"titleName":"测试职称2"}
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:67) 
+insert OK!
+{"groupId":4,"groupName":"测试组","valid":"valid"}
+{"groupId":5,"groupName":"测试组1","valid":"valid"}
+{"groupId":6,"groupName":"测试组2","valid":"invalid"}
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:84) 
+create OK!
+{"groupId":4,"password":"123456","userHome":"/TestUser/","userId":1,"userName":"TestUser","valid":"valid"}{"groupId":4,"password":"123456","userHome":"/TestUser1/","userId":2,"userName":"TestUser1","valid":"valid"}{"groupId":4,"password":"123456","userHome":"/TestUser2/","userId":3,"userName":"TestUser2","valid":"valid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:109) 
+selectByUserName OK!
+{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:114) 
+selectByDepartmentName OK!
+[{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser1","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser2","weibo":"@testTeacher"}]
+[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:119) 
+selectByTitleName OK!
+[{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser1","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser2","weibo":"@testTeacher"}]
+[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:167) 
+delete OK!
+nullnullnull
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:144) 
+delete OK!
+[]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:122) 
+before delete:
+[{"titleId":1,"titleName":"测试职称"}, {"titleId":2,"titleName":"测试职称1"}, {"titleId":3,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:130) 
+delete Title OK!
+[]
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:187) 
+delete OK!
+nullnullnull
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:157) 
+delete OK!
+{"groupId":4,"groupName":"测试组","valid":"valid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.afterTest(TeacherUnitTest.java:65) 
+end TeacherUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.563 sec
+Running name.hm.test.unit.TitleUnitTest
+[INFO ] name.hm.test.unit.TitleUnitTest.beforeTest(TitleUnitTest.java:34) 
+start TitleUnitTest
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:55) 
+insert Title OK!
+{"titleId":4,"titleName":"测试职称"}{"titleId":5,"titleName":"测试职称1"}{"titleId":6,"titleName":"测试职称2"}
+[INFO ] name.hm.test.unit.TitleUnitTest.read(TitleUnitTest.java:76) 
+selectAll OK!
+[{"titleId":4,"titleName":"测试职称"}, {"titleId":5,"titleName":"测试职称1"}, {"titleId":6,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:96) 
+before update:
+[{"titleId":4,"titleName":"测试职称"}, {"titleId":5,"titleName":"测试职称1"}, {"titleId":6,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:103) 
+update OK!
+[{"titleId":4,"titleName":"测试职称改"}, {"titleId":5,"titleName":"测试职称1"}, {"titleId":6,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:122) 
+before delete:
+[{"titleId":4,"titleName":"测试职称改"}, {"titleId":5,"titleName":"测试职称1"}, {"titleId":6,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:130) 
+delete Title OK!
+[]
+[INFO ] name.hm.test.unit.TitleUnitTest.afterTest(TitleUnitTest.java:39) 
+finish TitleUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.13 sec
+Running name.hm.test.unit.RoleUnitTest
+[INFO ] name.hm.test.unit.RoleUnitTest.beforeTest(RoleUnitTest.java:47) 
+start RoleUnitTest
+[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
+create Role OK!
+{"roleId":4,"roleName":"测试角色","valid":"valid"}
+{"roleId":5,"roleName":"测试角色1","valid":"valid"}
+{"roleId":6,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:97) 
+selectByRoleId OK!
+{"roleId":6,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:102) 
+selectByRoleName OK!
+{"roleId":4,"roleName":"测试角色","valid":"valid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:107) 
+selectByValid OK!
+[{"roleId":4,"roleName":"测试角色","valid":"valid"}, {"roleId":5,"roleName":"测试角色1","valid":"valid"}][{"roleId":6,"roleName":"测试角色2","valid":"invalid"}]
+[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:126) 
+before update:
+{"roleId":6,"roleName":"测试角色2","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:134) 
+update OK!
+{"roleId":6,"roleName":"测试角色改","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:155) 
+before delete
+{"roleId":6,"roleName":"测试角色改","valid":"invalid"}
+{"roleId":5,"roleName":"测试角色1","valid":"valid"}
+{"roleId":6,"roleName":"测试角色改","valid":"invalid"}
+[ERROR] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:163) 
+delete failed
+{"roleId":6,"roleName":"测试角色改","valid":"invalid"}
+{"roleId":5,"roleName":"测试角色1","valid":"valid"}
+{"roleId":6,"roleName":"测试角色改","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.afterTest(RoleUnitTest.java:53) 
+finish RoleUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.135 sec
+Running name.hm.test.unit.UserUnitTest
+[INFO ] name.hm.test.unit.UserUnitTest.beforeTest(UserUnitTest.java:56) 
+start UserUnitTest
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:67) 
+insert OK!
+{"groupId":7,"groupName":"测试组","valid":"valid"}
+{"groupId":8,"groupName":"测试组1","valid":"valid"}
+{"groupId":9,"groupName":"测试组2","valid":"invalid"}
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:84) 
+create OK!
+{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}{"groupId":7,"password":"123456","userHome":"/TestUser1/","userId":5,"userName":"TestUser1","valid":"valid"}{"groupId":7,"password":"123456","userHome":"/TestUser2/","userId":6,"userName":"TestUser2","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:111) 
+selectByUserId OK!
+{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:117) 
+selectByUserName OK!
+{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:123) 
+selectByValid OK!
+[{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}, {"groupId":7,"password":"123456","userHome":"/TestUser1/","userId":5,"userName":"TestUser1","valid":"valid"}, {"groupId":7,"password":"123456","userHome":"/TestUser2/","userId":6,"userName":"TestUser2","valid":"valid"}][]
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:129) 
+selectByGroupId OK!
+[{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}, {"groupId":7,"password":"123456","userHome":"/TestUser1/","userId":5,"userName":"TestUser1","valid":"valid"}, {"groupId":7,"password":"123456","userHome":"/TestUser2/","userId":6,"userName":"TestUser2","valid":"valid"}]
+[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:148) 
+before update
+{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUser","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:155) 
+update OK!
+{"groupId":7,"password":"123456","userHome":"/TestUser/","userId":4,"userName":"TestUserC","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:187) 
+delete OK!
+nullnullnull
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:157) 
+delete OK!
+{"groupId":7,"groupName":"测试组","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.afterTest(UserUnitTest.java:65) 
+finish UserUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.241 sec
+Running name.hm.test.integration.RoleIntegrationTest
+[INFO ] name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:41) 
+start RoleIntegrationTest
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:55) 
+insert Title OK!
+{"titleId":7,"titleName":"测试职称"}{"titleId":8,"titleName":"测试职称1"}{"titleId":9,"titleName":"测试职称2"}
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:67) 
+insert OK!
+{"groupId":10,"groupName":"测试组","valid":"valid"}
+{"groupId":11,"groupName":"测试组1","valid":"valid"}
+{"groupId":12,"groupName":"测试组2","valid":"invalid"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:61) 
+insert OK!
+{"departmentId":7,"departmentName":"测试系"}{"departmentId":8,"departmentName":"测试系1"}{"departmentId":9,"departmentName":"测试系2"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
+create OK!
+{"workflowId":1,"workflowName":"测试工作流","workflowStatus":"valid"}
+{"workflowId":2,"workflowName":"测试工作流1","workflowStatus":"valid"}
+{"workflowId":3,"workflowName":"测试工作流2","workflowStatus":"invalid"}
 org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°3' for key 'title_name_UNIQUE'
-### The error may involve name.hm.jpa.TitleMapper.insert-Inline
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è§’è‰²' for key 'role_name_UNIQUE'
+### The error may involve name.hm.jpa.RoleMapper.insert-Inline
 ### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`title` (title_name) VALUES (?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°3' for key 'title_name_UNIQUE'
+### SQL: INSERT INTO cucgp.`role` (role_name, valid) VALUES (?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è§’è‰²' for key 'role_name_UNIQUE'
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
 	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
 	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy15.insert(Unknown Source)
-	at name.hm.test.unit.TitleUnitTest.insertTitle(TitleUnitTest.java:110)
-	at name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:103)
-	at name.hm.test.unit.TeacherUnitTest.test(TeacherUnitTest.java:27)
+	at sun.proxy.$Proxy16.insert(Unknown Source)
+	at name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:65)
+	at name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:55)
+	at name.hm.test.integration.RoleIntegrationTest.test(RoleIntegrationTest.java:32)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -466,7 +399,7 @@ org.apache.ibatis.exceptions.PersistenceException:
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°3' for key 'title_name_UNIQUE'
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è§’è‰²' for key 'role_name_UNIQUE'
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -488,30 +421,23 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
 	... 35 more
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:41) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:50) 
-{"groupId":0,"groupName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.insertGroup(GroupUnitTest.java:54) 
-end
-[INFO ] name.hm.test.unit.UserUnitTest.insertUser(UserUnitTest.java:85) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.insertUser(UserUnitTest.java:95) 
-end
+[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:73) 
+DDD 6 5 6
 org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`teacher`, CONSTRAINT `fk_teacher_title` FOREIGN KEY (`title_name`) REFERENCES `title` (`title_name`) ON DELETE SET NULL ON UPDATE CASCADE)
-### The error may involve name.hm.jpa.TeacherMapper.insert-Inline
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_action_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
+### The error may involve name.hm.jpa.ActionMapper.insert-Inline
 ### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`teacher` (user_name, teacher_name, telephone, email, weibo, introduction, department_name, title_name)VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`teacher`, CONSTRAINT `fk_teacher_title` FOREIGN KEY (`title_name`) REFERENCES `title` (`title_name`) ON DELETE SET NULL ON UPDATE CASCADE)
+### SQL: INSERT INTO cucgp.`action`(action_id, action_name, action_url, workflow_id, role_id, action_status) VALUES (?, ?, ?, ?, ?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_action_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
 	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
 	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
 	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy21.insert(Unknown Source)
-	at name.hm.test.unit.TeacherUnitTest.insertTeacher(TeacherUnitTest.java:88)
-	at name.hm.test.unit.TeacherUnitTest.test(TeacherUnitTest.java:28)
+	at sun.proxy.$Proxy20.insert(Unknown Source)
+	at name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:74)
+	at name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:56)
+	at name.hm.test.integration.RoleIntegrationTest.test(RoleIntegrationTest.java:32)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -540,7 +466,7 @@ org.apache.ibatis.exceptions.PersistenceException:
 	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
 	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`teacher`, CONSTRAINT `fk_teacher_title` FOREIGN KEY (`title_name`) REFERENCES `title` (`title_name`) ON DELETE SET NULL ON UPDATE CASCADE)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`action`, CONSTRAINT `fk_action_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE SET NULL ON UPDATE CASCADE)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
 	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
 	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
@@ -561,322 +487,60 @@ Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationExce
 	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
 	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
 	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 34 more
-[ERROR] name.hm.test.unit.TeacherUnitTest.selectTeacher(TeacherUnitTest.java:64) 
-
-[ERROR] name.hm.test.unit.TeacherUnitTest.updateTeacher(TeacherUnitTest.java:45) 
-updateTeacher failed!
-[ERROR] name.hm.test.unit.TeacherUnitTest.updateTeacher(TeacherUnitTest.java:45) 
-updateTeacher failed!
-[INFO ] name.hm.test.unit.DepartmentUnitTest.deleteDepartment(DepartmentUnitTest.java:35) 
-delete Department successfully
-[INFO ] name.hm.test.unit.TitleUnitTest.deleteTitle(TitleUnitTest.java:39) 
-delete Title successfully
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:169) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:171) 
-1
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:173) 
-end
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:128) 
-start
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:131) 
-1
-[INFO ] name.hm.test.unit.GroupUnitTest.deleteGroup(GroupUnitTest.java:133) 
-end
-[INFO ] name.hm.test.unit.TeacherUnitTest.afterTest(TeacherUnitTest.java:120) 
-end TeacherUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.383 sec
-Running name.hm.test.unit.TitleUnitTest
-[INFO ] name.hm.test.unit.TitleUnitTest.beforeTest(TitleUnitTest.java:127) 
-start
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°4' for key 'title_name_UNIQUE'
-### The error may involve name.hm.jpa.TitleMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`title` (title_name) VALUES (?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°4' for key 'title_name_UNIQUE'
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy15.insert(Unknown Source)
-	at name.hm.test.unit.TitleUnitTest.insertTitle(TitleUnitTest.java:111)
-	at name.hm.test.unit.TitleUnitTest.test(TitleUnitTest.java:24)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry 'æµ‹è¯•è�Œç§°4' for key 'title_name_UNIQUE'
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 34 more
-[INFO ] name.hm.test.unit.TitleUnitTest.selectTitle(TitleUnitTest.java:86) 
-selectAll : [{"titleId":18,"titleName":"测试职称4"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.updateTitle(TitleUnitTest.java:60) 
-update Title successfully
-[INFO ] name.hm.test.unit.TitleUnitTest.updateTitle(TitleUnitTest.java:68) 
-update Title successfully
-[INFO ] name.hm.test.unit.TitleUnitTest.deleteTitle(TitleUnitTest.java:39) 
-delete Title successfully
-[INFO ] name.hm.test.unit.TitleUnitTest.afterTest(TitleUnitTest.java:132) 
-end
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.199 sec
-Running name.hm.test.unit.RoleUnitTest
-[INFO ] name.hm.test.unit.RoleUnitTest.insertRole(RoleUnitTest.java:41) 
-start
-[INFO ] name.hm.test.unit.RoleUnitTest.insertRole(RoleUnitTest.java:48) 
-{"roleId":0,"roleName":"CellTest","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.insertRole(RoleUnitTest.java:52) 
-end
-[INFO ] name.hm.test.unit.RoleUnitTest.selectRole(RoleUnitTest.java:64) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.RoleUnitTest.selectRole(RoleUnitTest.java:70)
-	at name.hm.test.unit.RoleUnitTest.test(RoleUnitTest.java:32)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.RoleUnitTest.updateRole(RoleUnitTest.java:89) 
-start
-java.lang.NullPointerException
-	at name.hm.test.unit.RoleUnitTest.updateRole(RoleUnitTest.java:95)
-	at name.hm.test.unit.RoleUnitTest.test(RoleUnitTest.java:33)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-[INFO ] name.hm.test.unit.RoleUnitTest.deleteRole(RoleUnitTest.java:126) 
-start
-[INFO ] name.hm.test.unit.RoleUnitTest.deleteRole(RoleUnitTest.java:129) 
-0
-[INFO ] name.hm.test.unit.RoleUnitTest.deleteRole(RoleUnitTest.java:131) 
-end
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.091 sec
-Running name.hm.test.unit.UserUnitTest
-[INFO ] name.hm.test.unit.UserUnitTest.beforeTest(UserUnitTest.java:50) 
-start UserUnitTest
-[INFO ] name.hm.test.unit.UserUnitTest.insertUser(UserUnitTest.java:85) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.insertUser(UserUnitTest.java:95) 
-end
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:108) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:115) 
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:116) 
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:117) 
-[{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}]
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:118) 
+	... 35 more
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:84) 
+create OK!
+{"groupId":10,"password":"123456","userHome":"/TestUser/","userId":7,"userName":"TestUser","valid":"valid"}{"groupId":10,"password":"123456","userHome":"/TestUser1/","userId":8,"userName":"TestUser1","valid":"valid"}{"groupId":10,"password":"123456","userHome":"/TestUser2/","userId":9,"userName":"TestUser2","valid":"valid"}
+[INFO ] name.hm.test.integration.RoleIntegrationTest.afterTest(RoleIntegrationTest.java:72) 
+start RoleIntegrationTest
+[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:164) 
+before delete
+null
+[ERROR] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:172) 
+delete failed
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:144) 
+delete OK!
 []
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:119) 
-[{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}]
-[INFO ] name.hm.test.unit.UserUnitTest.selectUser(UserUnitTest.java:120) 
-end
-[INFO ] name.hm.test.unit.UserUnitTest.updateUser(UserUnitTest.java:132) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.updateUser(UserUnitTest.java:156) 
-#userName("CellTest" <--> "CellTestChange") 
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"CellTestChange","valid":"valid"}
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}
-#valid('invalid' -> 'valid')
-{"groupId":0,"password":"123456","userHome":"/1000/","userId":0,"userName":"1000","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.updateUser(UserUnitTest.java:157) 
-end
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:169) 
-start
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:171) 
-1
-[INFO ] name.hm.test.unit.UserUnitTest.deleteUser(UserUnitTest.java:173) 
-end
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.27 sec
-Running name.hm.test.integration.RoleIntegrationTest
-[INFO ] name.hm.test.integration.RoleIntegrationTest.init(RoleIntegrationTest.java:51) 
-start
-[INFO ] name.hm.test.integration.RoleIntegrationTest.init(RoleIntegrationTest.java:61) 
-insert Role successed
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-### The error may involve name.hm.jpa.GroupMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO `group` (group_id, group_name, valid) VALUES (?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy17.insert(Unknown Source)
-	at name.hm.test.integration.RoleIntegrationTest.init(RoleIntegrationTest.java:69)
-	at name.hm.test.integration.RoleIntegrationTest.integrationTest(RoleIntegrationTest.java:41)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Duplicate entry '0000000000' for key 'PRIMARY'
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 34 more
-[INFO ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:130) 
-start clean
-[INFO ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:137) 
-clean Role successed
-[INFO ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:148) 
-clean Group successed
-[WARN ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:162) 
-no User for cleaning
-[WARN ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:173) 
-no Workflow for cleaning
-[WARN ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:184) 
-no Action for cleaning
-[INFO ] name.hm.test.integration.RoleIntegrationTest.clean(RoleIntegrationTest.java:189) 
-end clean
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.098 sec
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:157) 
+delete OK!
+{"groupId":10,"groupName":"测试组","valid":"valid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:155) 
+before delete
+null
+null
+null
+[ERROR] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:163) 
+delete failed
+null
+null
+null
+[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:167) 
+delete OK!
+nullnullnull
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:122) 
+before delete:
+[{"titleId":7,"titleName":"测试职称"}, {"titleId":8,"titleName":"测试职称1"}, {"titleId":9,"titleName":"测试职称2"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:130) 
+delete Title OK!
+[]
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:187) 
+delete OK!
+nullnullnull
+[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:157) 
+delete OK!
+null
+null
+null
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.651 sec
 
 Results :
 
-Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 8.010s
-[INFO] Finished at: Tue Mar 05 09:57:47 CST 2013
-[INFO] Final Memory: 17M/144M
+[INFO] Total time: 10.430s
+[INFO] Finished at: Thu Mar 07 16:09:20 CST 2013
+[INFO] Final Memory: 13M/116M
 [INFO] ------------------------------------------------------------------------

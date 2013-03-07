@@ -1,15 +1,15 @@
 package name.hm.pojo;
 
-import name.hm.pojo.Workflow.STATUS;
-
 import com.alibaba.fastjson.JSONObject;
 
 public class Workflow
 {
-
 	Integer workflowId;
 	String workflowName;
 	STATUS workflowStatus;
+
+	public static final STATUS VALID = STATUS.valueOf("valid");
+	public static final STATUS INVALID = STATUS.valueOf("invalid");
 
 	public Workflow()
 	{}
@@ -63,26 +63,14 @@ public class Workflow
 		valid("valid"), invalid("invalid");
 		String val;
 
-		STATUS(String val_)
+		STATUS(String val)
 		{
-			val = val_;
+			this.val = val;
 		}
 
 		public String toString()
 		{
 			return val;
-		}
-	}
-
-	public static STATUS getStatus(String str)
-	{
-		switch (str) {
-		case "valid":
-			return STATUS.valid;
-		case "invalid":
-			return STATUS.invalid;
-		default:
-			return null;
 		}
 	}
 

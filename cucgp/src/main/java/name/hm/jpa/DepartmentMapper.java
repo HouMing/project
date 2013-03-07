@@ -13,18 +13,20 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
-// TODO continue from here
 public interface DepartmentMapper extends Mapper
 {
 	final String INSERT = "INSERT INTO cucgp.`department` (department_name) VALUES (#{departmentName})";
-	final String SELECT_ALL = "SELECT * FROM cucgp.`department`";
+	final String SELECT_ALL = "SELECT * FROM cucgp.`department` ORDER BY department_id ASC";
 	final String DELETE = "DELETE FROM cucgp.`department` WHERE department_name = #{departmentName}";
 	final String UPDATE = "UPDATE cucgp.`department` SET department_name = #{departmentName} where department_id = #{departmentId}";
 
 	@Select(SELECT_ALL)
-	@Results(value = { @Result(property = "departmentName", column = "department_name") })
+	@Results(value = {
+			@Result(property = "departmentId", column = "department_id"),
+			@Result(property = "departmentName", column = "department_name") 
+			})
 //	@SelectKey(statement = "SELECT MAX(department_id) AS department_id FROM cucgp.`department`", before = false, keyProperty = "departmentId", resultType = Integer.class)
-	@Options(useGeneratedKeys = true, keyProperty = "departmentId", keyColumn = "department_id")
+//	@Options(useGeneratedKeys = true, keyProperty = "departmentId", keyColumn = "department_id")
 	LinkedList<Department> selectAll();
 
 	@Insert(INSERT)

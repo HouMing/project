@@ -11,13 +11,16 @@ public class User
 	String userName;
 	String password;
 	String userHome;
-	VALID valid;
+	Valid valid;
 
+	static final public Valid VALID = Valid.valueOf("valid");
+	static final public Valid INVALID = Valid.valueOf("invalid");
+	
 	public User()
 	{}
 
 	public User(Integer userId, String userName, String password,
-			String userHome, VALID valid, Integer groupId)
+			String userHome, Valid valid, Integer groupId)
 	{
 		this.userId = userId;
 		this.groupId = groupId;
@@ -67,12 +70,12 @@ public class User
 		this.password = password;
 	}
 
-	public VALID getValid()
+	public Valid getValid()
 	{
 		return valid;
 	}
 
-	public void setValid(VALID valid)
+	public void setValid(Valid valid)
 	{
 		this.valid = valid;
 	}
@@ -92,31 +95,20 @@ public class User
 		return JSONObject.toJSONString(this);
 	}
 
-	public enum VALID
+	public enum Valid
 	{
 		valid("valid"), invalid("invalid");
-		String val;
+		String value;
 
-		VALID(String val_)
+		Valid(String value)
 		{
-			val = val_;
+			this.value = value;
 		}
 
 		public String toString()
 		{
-			return val;
+			return value;
 		}
 	}
 
-	public static User.VALID getValid(String str)
-	{
-		switch (str) {
-		case "valid":
-			return VALID.valid;
-		case "invalid":
-			return VALID.invalid;
-		default:
-			return null;
-		}
-	}
 }

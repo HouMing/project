@@ -1,5 +1,6 @@
 package name.hm.jpa;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -48,7 +49,7 @@ public interface WorkflowMapper extends Mapper
 			@Result(property="workflowName",column="workflow_name"),
 			@Result(property="workflowStatus",column="workflow_status")
 	})
-	List<Workflow> selectByWorkflowStatus(Workflow.STATUS str);
+	LinkedList<Workflow> selectByWorkflowStatus(Workflow.STATUS str);
 
 	@Insert(INSERT_WORKFLOW)
 	@SelectKey(statement = "SELECT MAX(workflow_id) AS workflow_id FROM cucgp.`workflow`", keyProperty = "workflowId", before = false, resultType = Integer.class)

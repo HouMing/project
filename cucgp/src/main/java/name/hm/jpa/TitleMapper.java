@@ -12,7 +12,6 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-// TODO #0306-0307 add ORDER BY
 public interface TitleMapper extends Mapper
 {
 	final String INSERT = "INSERT INTO cucgp.`title` (title_name) VALUES (#{titleName})";

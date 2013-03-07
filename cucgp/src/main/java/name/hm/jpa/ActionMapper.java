@@ -1,12 +1,15 @@
 package name.hm.jpa;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.Action;
@@ -25,7 +28,12 @@ public interface ActionMapper extends Mapper
 			              "WHERE action_id = #{actionId}";
 	final String DELETE = "DELETE FROM cucgp.`action` WHERE action_id = #{actionId}";
 	
-	//Basic CRUD method
+
+	@Insert(INSERT)
+	@Options(useGeneratedKeys = true, keyProperty = "actionId", keyColumn = "action_id")
+	@SelectKey(statement = "SELECT MAX(action_id) AS action_id FROM cucgp.`action`", before = false, keyProperty = "actionId", resultType = Integer.class)
+	Integer insert(Action action);
+	
 	@Select(SELECT_BY_ACTIONID)
 	@Results(value = {
 			@Result(property="actionId",column="action_id"),
@@ -57,11 +65,8 @@ public interface ActionMapper extends Mapper
 			@Result(property="workflowId",column="workflow_id"),
 			@Result(property="actionStatus",column="action_status")
 	})
-	List<Action> selectByActionStatus(Action.STATUS status);
+	LinkedList<Action> selectByActionStatus(Action.STATUS status);
 
-	@Insert(INSERT)
-	Integer insert(Action action);
-	
 	@Update(UPDATE)
 	Integer update(Action action);
 

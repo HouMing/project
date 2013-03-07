@@ -1,12 +1,14 @@
 package name.hm.test.unit;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import name.hm.jpa.GroupMapper;
 import name.hm.jpa.UserMapper;
 import name.hm.pojo.Group;
+import name.hm.pojo.Title;
 import name.hm.pojo.User;
-import name.hm.pojo.User.VALID;
+import name.hm.pojo.User.Valid;
 import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 
@@ -20,21 +22,21 @@ import org.junit.Test;
 public class UserUnitTest extends BaseTestCase
 {
 	public static Integer USER_ID = null;
-	public static String USER_NAME = "TestUser";
-	public static String USER_NAMEC = "TestUserC";
-	public static String USER_HOME = "/" + USER_NAME + "/";
+	public static final String USER_NAME = "TestUser";
+	public static final String USER_NAMEC = "TestUserC";
+	public static final String USER_HOME = "/" + USER_NAME + "/";
 
 	public static Integer USER_ID1 = null;
-	public static String USER_NAME1 = "TestUser1";
-	public static String USER_HOME1 = "/" + USER_NAME1 + "/";
+	public static final String USER_NAME1 = "TestUser1";
+	public static final String USER_HOME1 = "/" + USER_NAME1 + "/";
 
 	public static Integer USER_ID2 = null;
-	public static String USER_NAME2 = "TestUser2";
-	public static String USER_HOME2 = "/" + USER_NAME2 + "/";
+	public static final String USER_NAME2 = "TestUser2";
+	public static final String USER_HOME2 = "/" + USER_NAME2 + "/";
 
 	public static String PASSWORD = "123456";
-	static public User.VALID USER_VALID = User.getValid("valid");
-	static public User.VALID USER_INVALID = User.getValid("invalid");
+	static public final User.Valid USER_VALID = User.VALID;
+	static public final User.Valid USER_INVALID = User.INVALID;
 
 	@Test
 	public void test()
@@ -53,28 +55,17 @@ public class UserUnitTest extends BaseTestCase
 
 	public void beforeTest()
 	{
-		try {
-			logger.info("start UserUnitTest");
-			GroupUnitTest unitGroup = new GroupUnitTest();
-			unitGroup.create();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+		logger.info("start UserUnitTest");
+		GroupUnitTest unitGroup = new GroupUnitTest();
+		unitGroup.create();
 	}
 
 	public void afterTest()
 	{
-		try {
-			GroupUnitTest unitGroup = new GroupUnitTest();
-			unitGroup.delete();
-			logger.info("finish UserUnitTest");
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+		GroupUnitTest unitGroup = new GroupUnitTest();
+		unitGroup.delete();
+		clean();
+		logger.info("finish UserUnitTest");
 	}
 
 	// PASS #0305
@@ -142,7 +133,7 @@ public class UserUnitTest extends BaseTestCase
 			} else {
 				logger.error("selectByGroupId failed\n" + l3);
 			}
-	
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -157,18 +148,18 @@ public class UserUnitTest extends BaseTestCase
 			Integer error;
 			openTestSession();
 			User user = userMapper.selectByUserId(USER_ID);
-			logger.info("before update : " + user);
+			logger.info("before update\n" + user);
 			user.setUserName(USER_NAMEC);
 			error = userMapper.update(user);
 			se.commit();
 			if (error == 1) {
 				user = userMapper.selectByUserId(USER_ID);
 				se.commit();
-				logger.info("update OK! : " + user);
+				logger.info("update OK!\n" + user);
 			} else {
 				user = userMapper.selectByUserId(USER_ID);
 				se.commit();
-				logger.error("update failed : " + user);
+				logger.error("update failed\n" + user);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -206,4 +197,26 @@ public class UserUnitTest extends BaseTestCase
 			closeTestSession();
 		}
 	}
+
+	public void clean()
+	{
+		try {
+			openTestSession();
+			LinkedList<User> l = userMapper.selectByValid(User.VALID);
+			LinkedList<User> l2 = userMapper.selectByValid(User.INVALID);
+			se.commit();
+			for (User tmp : l) {
+				userMapper.delete(tmp);
+			}
+			for (User tmp : l2) {
+				userMapper.delete(tmp);
+			}
+			se.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			closeTestSession();
+		}
+	}
+
 }

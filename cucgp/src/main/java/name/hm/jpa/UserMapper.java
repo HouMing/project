@@ -1,5 +1,6 @@
 package name.hm.jpa;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -22,8 +23,8 @@ public interface UserMapper extends Mapper
 	
 	final String SELECT_BY_USERID = "SELECT * FROM cucgp.`user` WHERE user_id = #{param1}";
 	final String SELECT_BY_USERNAME = "SELECT * FROM cucgp.`user` WHERE user_name = #{param1}";
-	final String SELECT_BY_USERVALID = "SELECT * FROM cucgp.`user` WHERE valid = #{param1}";
-	final String SELECT_BY_GROUPID = "SELECT * FROM cucgp.`user` WHERE group_id = #{param1}";
+	final String SELECT_BY_USERVALID = "SELECT * FROM cucgp.`user` WHERE valid = #{param1} ORDER BY user_id ASC";
+	final String SELECT_BY_GROUPID = "SELECT * FROM cucgp.`user` WHERE group_id = #{param1} ORDER BY user_id ASC";
 	
 	final String UPDATE = "UPDATE cucgp.`user` "
 			+ "SET user_name = #{userName}, password = #{password}, user_home = #{userHome}, "
@@ -61,7 +62,7 @@ public interface UserMapper extends Mapper
 			@Result(property = "valid", column = "valid"),
 			@Result(property = "userHome", column = "user_home") })
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
-	List<User> selectByValid(User.VALID valid);
+	LinkedList<User> selectByValid(User.Valid valid);
 
 	@Select(SELECT_BY_GROUPID)
 	@Results(value = { @Result(property = "userId", column = "user_id"),
@@ -71,7 +72,7 @@ public interface UserMapper extends Mapper
 			@Result(property = "valid", column = "valid"),
 			@Result(property = "userHome", column = "user_home") })
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
-	List<User> selectByGroupId(Integer groupId);
+	LinkedList<User> selectByGroupId(Integer groupId);
 
 	@Insert(INSERT_USER)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")

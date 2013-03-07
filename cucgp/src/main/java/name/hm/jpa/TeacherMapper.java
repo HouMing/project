@@ -24,6 +24,7 @@ public interface TeacherMapper extends Mapper
 	final String SELECT_BY_USER_NAME = "SELECT * FROM cucgp.`teacher` where user_name = #{param1} ORDER BY user_name ASC";
 	final String SELECT_BY_DEPARTMENT_NAME = "SELECT * FROM cucgp.`teacher` where department_name = #{param1} ORDER BY user_name ASC";
 	final String SELECT_BY_TITLE_NAME = "SELECT * FROM cucgp.`teacher` where title_name = #{param1} ORDER BY user_name ASC";
+	final String SELECT_ALL = "SELECT * FROM cucgp.`teacher` ORDER BY user_name ASC";
 	
 	final String UPDATE ="UPDATE cucgp.`teacher` SET teacher_name = #{teacherName}, telephone = #{telephone},"+
 			                 "email = #{email}, weibo = #{weibo}, introduction = #{introduction}, " +
@@ -72,6 +73,19 @@ public interface TeacherMapper extends Mapper
 			 @Result(property = "titleName", column = "title_name")
 			})
 	public LinkedList<Teacher> selectByTitleName(String titleName);
+	
+	@Select(SELECT_BY_TITLE_NAME)
+	@Results(value = {
+			 @Result(property = "userName", column = "user_name"),
+			 @Result(property = "teacherName", column = "teacher_name"),
+			 @Result(property = "telephone", column = "telephone"),
+			 @Result(property = "email", column = "email"),
+			 @Result(property = "weibo", column = "weibo"),
+			 @Result(property = "introduction", column = "introduction"),
+			 @Result(property = "departmentName", column = "department_name"),
+			 @Result(property = "titleName", column = "title_name")
+			})
+	public LinkedList<Teacher> selectAll();
 	
 	@Update(UPDATE)
 	public Integer update(Teacher teacher);
