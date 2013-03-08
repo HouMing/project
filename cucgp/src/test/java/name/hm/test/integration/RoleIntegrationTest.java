@@ -17,7 +17,6 @@ import name.hm.test.unit.WorkflowUnitTest;
 
 import org.junit.Test;
 
-// TODO INTEGRATION #0307
 public class RoleIntegrationTest extends BaseTestCase
 {
 	private static Role role;
