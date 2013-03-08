@@ -9,18 +9,18 @@ public class Action
 	Integer actionId;
 	String actionName;
 	String actionUrl;
-	STATUS actionStatus;
+	Status actionStatus;
 	Integer workflowId;
 	Integer roleId;
 
-	static public STATUS VALID = STATUS.valueOf("valid");
-	static public STATUS INVALID = STATUS.valueOf("invalid");
-	
+	static public Status VALID = Status.valueOf("valid");
+	static public Status INVALID = Status.valueOf("invalid");
+
 	public Action()
 	{}
 
 	public Action(Integer actionId, String actionName, String actionUrl,
-			STATUS actionStatus, Integer roleId, Integer workflowId)
+			Status actionStatus, Integer roleId, Integer workflowId)
 	{
 		this.actionId = actionId;
 		this.actionName = actionName;
@@ -60,12 +60,12 @@ public class Action
 		this.actionUrl = actionUrl;
 	}
 
-	public STATUS getActionStatus()
+	public Status getActionStatus()
 	{
 		return actionStatus;
 	}
 
-	public void setActionStatus(STATUS actionStatus)
+	public void setActionStatus(Status actionStatus)
 	{
 		this.actionStatus = actionStatus;
 	}
@@ -90,17 +90,38 @@ public class Action
 		this.roleId = roleId;
 	}
 
+	@Override
 	public String toString()
 	{
 		return JSONObject.toJSONString(this);
 	}
 
-	public enum STATUS
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof Action && obj.hashCode() == this.hashCode()) {
+			if (this.toString().equals(obj.toString())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return actionId;
+	}
+
+	public enum Status
 	{
 		valid("valid"), invalid("invalid");
 		String val;
 
-		STATUS(String val)
+		Status(String val)
 		{
 			this.val = val;
 		}

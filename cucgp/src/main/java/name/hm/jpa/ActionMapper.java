@@ -65,7 +65,7 @@ public interface ActionMapper extends Mapper
 			@Result(property="workflowId",column="workflow_id"),
 			@Result(property="actionStatus",column="action_status")
 	})
-	LinkedList<Action> selectByActionStatus(Action.STATUS status);
+	LinkedList<Action> selectByActionStatus(Action.Status status);
 
 	@Update(UPDATE)
 	Integer update(Action action);
