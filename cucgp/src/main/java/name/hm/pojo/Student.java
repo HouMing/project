@@ -93,6 +93,7 @@ public class Student
 		this.departmentName = departmentName;
 	}
 
+	@Override
 	public String toString()
 	{
 		return JSON.toJSONString(this);

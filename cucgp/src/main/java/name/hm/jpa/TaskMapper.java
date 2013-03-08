@@ -1,6 +1,6 @@
 package name.hm.jpa;
 
-//TODO MAPPER DESIGN
+//TODO IMPL MAPPER
 public interface TaskMapper
 {
 
