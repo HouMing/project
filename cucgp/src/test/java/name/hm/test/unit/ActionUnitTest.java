@@ -71,8 +71,6 @@ public class ActionUnitTest extends BaseTestCase
 					ACTION_VALID, RoleUnitTest.ROLE_ID1, WorkflowUnitTest.WORKFLOW_ID);
 			Action action2 = new Action(ACTION_ID2, ACTION_NAME2, ACTION_URL,
 					ACTION_INVALID, RoleUnitTest.ROLE_ID2, WorkflowUnitTest.WORKFLOW_ID);
-			logger.info("DDD " + RoleUnitTest.ROLE_ID + " " + RoleUnitTest.ROLE_ID1
-					+ " " + RoleUnitTest.ROLE_ID2);
 			error = actionMapper.insert(action) & error;
 			error = actionMapper.insert(action1) & error;
 			error = actionMapper.insert(action2) & error;

@@ -50,6 +50,7 @@ public class RoleUnitTest extends BaseTestCase
 	// PASS CELL #0306
 	protected void afterTest()
 	{
+		clean();
 		logger.info("finish RoleUnitTest");
 	}
 
@@ -87,12 +88,13 @@ public class RoleUnitTest extends BaseTestCase
 		try {
 			Integer error;
 			openTestSession();
-			ROLE_ID = roleMapper.lastInsertId();
+			
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
 			Role role2 = roleMapper.selectByRoleName(ROLE_NAME);
 			List<Role> l = roleMapper.selectByValid(ROLE_VALID);
 			List<Role> l2 = roleMapper.selectByValid(ROLE_INVALID);
 			se.commit();
+			
 			if (role != null) {
 				logger.info("selectByRoleId OK!\n" + role);
 			} else {
@@ -121,13 +123,16 @@ public class RoleUnitTest extends BaseTestCase
 		try {
 			Integer error;
 			openTestSession();
+			
 			Role role = roleMapper.selectByRoleId(ROLE_ID);
 			se.commit();
+			
 			logger.info("before update:\n" + role);
 			role.setRoleName(ROLE_NAMEC);
 			role.setValid(ROLE_INVALID);
 			error = roleMapper.update(role);
 			se.commit();
+			
 			if (error == 1) {
 				role = roleMapper.selectByRoleId(ROLE_ID);
 				se.commit();
