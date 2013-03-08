@@ -2,6 +2,8 @@ package name.hm.pojo;
 
 import com.alibaba.fastjson.JSON;
 
+//TODO TEST POJO - task : #0308
+//TODO hashCode, equals - interrupt : #0309
 public class Title
 {
 	Integer titleId;

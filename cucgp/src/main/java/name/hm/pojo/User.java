@@ -4,6 +4,8 @@ import name.hm.pojo.Role.VALID;
 
 import com.alibaba.fastjson.JSONObject;
 
+//TODO TEST POJO - task : #0308
+//TODO hashCode, equals - interrupt : #0309
 public class User
 {
 	Integer userId;

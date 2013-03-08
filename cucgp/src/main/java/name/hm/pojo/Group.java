@@ -8,7 +8,9 @@ import org.eclipse.jetty.util.ajax.JSON;
 
 import com.alibaba.fastjson.JSONObject;
 
-public class Group implements Serializable
+
+//TODO interrupt : #0309
+public class Group
 {
 	Integer groupId;
 	String groupName;

@@ -2,6 +2,7 @@ package name.hm.pojo;
 
 import com.alibaba.fastjson.JSON;
 
+//TODO interrupt : #0309
 public class Department
 {
 	protected Integer departmentId;

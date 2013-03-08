@@ -1,6 +1,7 @@
 package name.hm.pojo;
 
-//TODO TEST POJO
+//TODO TEST POJO - task : #0308
+//TODO hashCode, equals - interrupt : #0309
 public class Stua
 {
 	Integer stuaId;

@@ -7,6 +7,7 @@ import org.eclipse.jetty.util.ajax.JSON;
 
 import com.alibaba.fastjson.JSONObject;
 
+//TODO interrupt : #0309
 public class Role
 {
 	Integer roleId;
