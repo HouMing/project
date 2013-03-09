@@ -1,11 +1,11 @@
 package name.hm.pojo;
 
-import name.hm.pojo.Role.VALID;
+import name.hm.pojo.Role.Valid;
 
 import com.alibaba.fastjson.JSONObject;
 
 //TODO TEST POJO - task : #0308
-//TODO hashCode, equals - interrupt : #0309
+//TODO TEST hashCode, equals - interrupt : #0309
 public class User
 {
 	Integer userId;
@@ -15,9 +15,9 @@ public class User
 	String userHome;
 	Valid valid;
 
-	static final public Valid VALID = Valid.valueOf("valid");
-	static final public Valid INVALID = Valid.valueOf("invalid");
-	
+	public static final Valid VALID = Valid.valueOf("valid");
+	public static final Valid INVALID = Valid.valueOf("invalid");
+
 	public User()
 	{}
 
@@ -92,9 +92,30 @@ public class User
 		this.userHome = userHome;
 	}
 
+	@Override
 	public String toString()
 	{
 		return JSONObject.toJSONString(this);
+	}
+
+	@Override
+	public int hashCode()
+	{
+		return userId;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof User && obj.hashCode() == this.hashCode()) {
+			if (obj.toString().equals(this.toString())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 
 	public enum Valid

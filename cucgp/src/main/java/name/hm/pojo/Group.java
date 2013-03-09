@@ -2,14 +2,13 @@ package name.hm.pojo;
 
 import java.io.Serializable;
 
-import name.hm.pojo.Role.VALID;
+import name.hm.pojo.Role.Valid;
 
 import org.eclipse.jetty.util.ajax.JSON;
 
 import com.alibaba.fastjson.JSONObject;
 
-
-//TODO interrupt : #0309
+//TODO TEST hashCode, equals interrupt : #0309
 public class Group
 {
 	Integer groupId;
@@ -65,6 +64,26 @@ public class Group
 		return JSONObject.toJSONString(this);
 	}
 
+	@Override
+	public int hashCode()
+	{
+		return groupId;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof Group && obj.hashCode() == this.hashCode()) {
+			if (obj.toString().equals(this.toString())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+	
 	public enum Valid
 	{
 		valid("valid"), invalid("invalid");

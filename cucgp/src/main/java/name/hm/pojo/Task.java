@@ -3,7 +3,7 @@ package name.hm.pojo;
 import com.alibaba.fastjson.JSON;
 
 //TODO TEST POJO - task : #0308
-//TODO hashCode, equals - interrupt : #0309
+//TODO TEST hashCode, equals - interrupt : #0309
 public class Task
 {
 	Integer taskId;
@@ -93,5 +93,26 @@ public class Task
 	public String toString()
 	{
 		return JSON.toJSONString(this);
+	}
+	
+
+	@Override
+	public int hashCode()
+	{
+		return taskId;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof Task && obj.hashCode() == this.hashCode()) {
+			if (obj.toString().equals(this.toString())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
 	}
 }

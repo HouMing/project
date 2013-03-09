@@ -1,23 +1,18 @@
 package name.hm.pojo;
 
-import name.hm.pojo.Role.VALID;
-import name.hm.pojo.Workflow.STATUS;
-
-import org.eclipse.jetty.util.ajax.JSON;
-
 import com.alibaba.fastjson.JSONObject;
 
-//TODO interrupt : #0309
+//TODO TEST hashCode, equals interrupt : #0309
 public class Role
 {
 	Integer roleId;
 	String roleName;
-	VALID valid;
+	Valid valid;
 
 	public Role()
 	{}
 
-	public Role(Integer roleId, String roleName, VALID valid)
+	public Role(Integer roleId, String roleName, Valid valid)
 	{
 		this.roleId = roleId;
 		this.roleName = roleName;
@@ -44,44 +39,65 @@ public class Role
 		this.roleName = roleName;
 	}
 
-	public VALID getValid()
+	public Valid getValid()
 	{
 		return valid;
 	}
 
-	public void setValid(VALID valid)
+	public void setValid(Valid valid)
 	{
 		this.valid = valid;
 	}
 
+	@Override
 	public String toString()
 	{
 		return JSONObject.toJSONString(this);
 	}
 
-	public enum VALID
+	@Override
+	public int hashCode()
+	{
+		return roleId;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (obj instanceof Role && obj.hashCode() == this.hashCode()) {
+			if (obj.toString().equals(this.toString())) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
+		}
+	}
+
+	public enum Valid
 	{
 		valid("valid"), invalid("invalid");
-		String val;
+		String value;
 
-		VALID(String val_)
+		Valid(String value)
 		{
-			val = val_;
+			this.value = value;
 		}
 
 		public String toString()
 		{
-			return val;
+			return value;
 		}
 	}
 
-	public static VALID VALID(String str)
+	public static Valid VALID(String str)
 	{
 		switch (str) {
 		case "valid":
-			return VALID.valid;
+			return Valid.valid;
 		case "invalid":
-			return VALID.invalid;
+			return Valid.invalid;
 		default:
 			return null;
 		}

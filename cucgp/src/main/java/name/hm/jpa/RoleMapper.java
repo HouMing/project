@@ -63,7 +63,7 @@ public interface RoleMapper extends Mapper
 			@Result(property="valid",column="valid")
 	})
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
-	LinkedList<Role> selectByValid(Role.VALID valid);
+	LinkedList<Role> selectByValid(Role.Valid valid);
 	
 	@Update(UPDATE)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")

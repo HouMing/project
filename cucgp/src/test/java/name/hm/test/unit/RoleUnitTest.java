@@ -27,8 +27,8 @@ public class RoleUnitTest extends BaseTestCase
 	
 	static public Integer ROLE_ID2 = null;
 	static final public String ROLE_NAME2 = "测试角色2";
-	static final public Role.VALID ROLE_VALID = Role.VALID("valid");
-	static final public Role.VALID ROLE_INVALID = Role.VALID("invalid");
+	static final public Role.Valid ROLE_VALID = Role.VALID("valid");
+	static final public Role.Valid ROLE_INVALID = Role.VALID("invalid");
 
 	@Test
 	public void test()
