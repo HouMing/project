@@ -19,6 +19,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+// TODO 2 UNIT, Upgrade - task : #0310
 public class UserUnitTest extends BaseTestCase
 {
 	public static Integer USER_ID = null;

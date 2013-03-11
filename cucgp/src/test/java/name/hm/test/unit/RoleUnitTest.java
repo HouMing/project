@@ -16,6 +16,7 @@ import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 
 // PASS UNIT #0306
+//TODO 3 UNIT, Upgrade - task : #0310
 public class RoleUnitTest extends BaseTestCase
 {
 	static public Integer ROLE_ID = null;
@@ -27,8 +28,8 @@ public class RoleUnitTest extends BaseTestCase
 	
 	static public Integer ROLE_ID2 = null;
 	static final public String ROLE_NAME2 = "测试角色2";
-	static final public Role.Valid ROLE_VALID = Role.VALID("valid");
-	static final public Role.Valid ROLE_INVALID = Role.VALID("invalid");
+	static final public Role.Valid ROLE_VALID = Role.VALID;
+	static final public Role.Valid ROLE_INVALID = Role.INVALID;
 
 	@Test
 	public void test()

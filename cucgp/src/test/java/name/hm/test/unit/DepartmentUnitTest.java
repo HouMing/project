@@ -12,6 +12,7 @@ import name.hm.test.BaseTestCase;
 import org.junit.Test;
 
 // PASS UNIT #0307
+//TODO 7 UNIT, Upgrade - task : #0310
 public class DepartmentUnitTest extends BaseTestCase
 {
 	static public Integer DEPARTMENT_ID = null;

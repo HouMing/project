@@ -9,6 +9,9 @@ public class Role
 	String roleName;
 	Valid valid;
 
+	public static final Valid VALID = Valid.valueOf("valid");
+	public static final Valid INVALID = Valid.valueOf("invalid");
+
 	public Role()
 	{}
 
@@ -88,18 +91,6 @@ public class Role
 		public String toString()
 		{
 			return value;
-		}
-	}
-
-	public static Valid VALID(String str)
-	{
-		switch (str) {
-		case "valid":
-			return Valid.valid;
-		case "invalid":
-			return Valid.invalid;
-		default:
-			return null;
 		}
 	}
 

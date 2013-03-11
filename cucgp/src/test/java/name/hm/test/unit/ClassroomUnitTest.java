@@ -3,6 +3,7 @@ package name.hm.test.unit;
 import name.hm.test.BaseTestCase;
 
 //TODO IMPL UNIT
+//TODO 6 UNIT, Upgrade - task : #0310
 public class ClassroomUnitTest extends BaseTestCase
 {
 	public static Integer CLASSROOM_ID = null;

@@ -16,6 +16,7 @@ import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
 
 // PASS UNIT #0306
+//TODO 1 UNIT, Upgrade - task : #0310
 public class GroupUnitTest extends BaseTestCase
 {
 	public static Integer GROUP_ID = null;
