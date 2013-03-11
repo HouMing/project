@@ -13,9 +13,15 @@ public class Department
 
 	public Department(String departmentName)
 	{
-		this.departmentName = departmentName;
+		this(null, departmentName);
 	}
 
+	public Department(Integer departmentId, String departmentName)
+	{
+		this.departmentId = departmentId;
+		this.departmentName = departmentName;
+	}
+	
 	public Integer getDepartmentId()
 	{
 		return departmentId;

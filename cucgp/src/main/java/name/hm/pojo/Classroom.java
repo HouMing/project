@@ -8,6 +8,20 @@ public class Classroom
 	Integer classroomId;
 	String classroomName;
 
+	public Classroom()
+	{}
+
+	public Classroom(String classroomName)
+	{
+		this(null, classroomName);
+	}
+
+	public Classroom(Integer classroomId, String classroomName)
+	{
+		this.classroomId = classroomId;
+		this.classroomName = classroomName;
+	}
+
 	public Integer getClassroomId()
 	{
 		return classroomId;

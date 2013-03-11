@@ -32,6 +32,17 @@ public class User
 		this.valid = valid;
 	}
 
+	public User(String userName, String password,
+			String userHome, Valid valid, Integer groupId)
+	{
+		this.userId = null;
+		this.groupId = groupId;
+		this.userName = userName;
+		this.password = password;
+		this.userHome = userHome;
+		this.valid = valid;
+	}
+	
 	public Integer getUserId()
 	{
 		return userId;

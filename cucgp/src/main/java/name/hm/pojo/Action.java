@@ -1,6 +1,6 @@
 package name.hm.pojo;
 
-import name.hm.pojo.Workflow.STATUS;
+import name.hm.pojo.Workflow.Status;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -10,7 +10,6 @@ public class Action
 	String actionName;
 	String actionUrl;
 	Status actionStatus;
-	Integer workflowId;
 	Integer roleId;
 
 	static public Status VALID = Status.valueOf("valid");
@@ -19,14 +18,20 @@ public class Action
 	public Action()
 	{}
 
+
+	public Action(String actionName, String actionUrl,
+			Status actionStatus, Integer roleId)
+	{
+		this(null, actionName, actionUrl, actionStatus, roleId);
+	}
+
 	public Action(Integer actionId, String actionName, String actionUrl,
-			Status actionStatus, Integer roleId, Integer workflowId)
+			Status actionStatus, Integer roleId)
 	{
 		this.actionId = actionId;
 		this.actionName = actionName;
 		this.actionUrl = actionUrl;
 		this.actionStatus = actionStatus;
-		this.workflowId = workflowId;
 		this.roleId = roleId;
 	}
 
@@ -70,16 +75,6 @@ public class Action
 		this.actionStatus = actionStatus;
 	}
 
-	public Integer getWorkflowId()
-	{
-		return workflowId;
-	}
-
-	public void setWorkflowId(Integer workflow)
-	{
-		this.workflowId = workflow;
-	}
-
 	public Integer getRoleId()
 	{
 		return roleId;
@@ -119,16 +114,16 @@ public class Action
 	public enum Status
 	{
 		valid("valid"), invalid("invalid");
-		String val;
+		String value;
 
-		Status(String val)
+		Status(String value)
 		{
-			this.val = val;
+			this.value = value;
 		}
 
 		public String toString()
 		{
-			return val;
+			return value;
 		}
 
 	}

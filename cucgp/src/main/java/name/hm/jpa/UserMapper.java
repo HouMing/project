@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 
 import name.hm.pojo.User;
@@ -35,13 +36,13 @@ public interface UserMapper extends Mapper
 	final String LAST_INSERT_ID = "SELECT MAX(user_id) FROM cucgp.`user`";
 	
 	@Select(SELECT_BY_USERID)
-	@Results(value = { @Result(property = "userId", column = "user_id"),
+	@Results(value = { 
+			@Result(property = "userId", column = "user_id"),
 			@Result(property = "groupId", column = "group_id"),
 			@Result(property = "userName", column = "user_name"),
 			@Result(property = "password", column = "password"),
 			@Result(property = "valid", column = "valid"),
 			@Result(property = "userHome", column = "user_home") })
-	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
 	User selectByUserId(Integer userId);
 
 	@Select(SELECT_BY_USERNAME)
@@ -76,6 +77,7 @@ public interface UserMapper extends Mapper
 
 	@Insert(INSERT_USER)
 	@Options(useGeneratedKeys = true, keyProperty = "userId", keyColumn = "user_id")
+	@SelectKey(before = false, keyProperty = "userId", resultType = Integer.class, statement = { "SELECT MAX(user_id) AS user_id FROM cucgp.`user`" })
 	Integer insert(User cellTest);
 
 	@Update(UPDATE)

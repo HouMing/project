@@ -12,16 +12,17 @@ public class Title
 	public Title()
 	{}
 
+	public Title(String title_Name)
+	{
+		this(null, title_Name);
+	}
+	
 	public Title(Integer title_Id, String title_Name)
 	{
 		titleId = title_Id;
 		titleName = title_Name;
 	}
 
-	public Title(String title_Name)
-	{
-		this(new Integer(0), title_Name);
-	}
 
 	public Integer getTitleId()
 	{

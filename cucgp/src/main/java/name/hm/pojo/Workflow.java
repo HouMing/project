@@ -8,16 +8,24 @@ public class Workflow
 {
 	Integer workflowId;
 	String workflowName;
-	STATUS workflowStatus;
+	Status workflowStatus;
 
-	public static final STATUS VALID = STATUS.valueOf("valid");
-	public static final STATUS INVALID = STATUS.valueOf("invalid");
+	public static final Status APPLYING = Status.valueOf("applying");
+	public static final Status PUBLISHING = Status.valueOf("publishing");
+	public static final Status PROCESSING = Status.valueOf("processing");
+	public static final Status FINISHING = Status.valueOf("finishing");
 
 	public Workflow()
 	{}
 
+	public Workflow(String workflow_Name,
+			Status workflow_Status)
+	{
+		this(null, workflow_Name, workflow_Status);
+	}
+	
 	public Workflow(Integer workflow_Id, String workflow_Name,
-			STATUS workflow_Status)
+			Status workflow_Status)
 	{
 		workflowId = workflow_Id;
 		workflowName = workflow_Name;
@@ -44,12 +52,12 @@ public class Workflow
 		this.workflowName = workflowName;
 	}
 
-	public STATUS getWorkflowStatus()
+	public Status getWorkflowStatus()
 	{
 		return workflowStatus;
 	}
 
-	public void setWorkflowStatus(STATUS workflowStatus)
+	public void setWorkflowStatus(Status workflowStatus)
 	{
 		this.workflowStatus = workflowStatus;
 	}
@@ -80,20 +88,20 @@ public class Workflow
 		}
 	}
 
-/////////////////////////////////////////////////////////////
-	public enum STATUS
+	public enum Status
 	{
-		valid("valid"), invalid("invalid");
-		String val;
+		applying("教师申请"), publishing("审核发布"), processing("毕设进行"), finishing("毕设结束");
+		
+		String value;
 
-		STATUS(String val)
+		Status(String value)
 		{
-			this.val = val;
+			this.value = value;
 		}
 
 		public String toString()
 		{
-			return val;
+			return value;
 		}
 	}
 

@@ -14,7 +14,12 @@ public class Role
 
 	public Role()
 	{}
-
+	
+	public Role(String roleName, Valid valid)
+	{
+		this(null, roleName, valid);
+	}
+	
 	public Role(Integer roleId, String roleName, Valid valid)
 	{
 		this.roleId = roleId;

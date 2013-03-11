@@ -7,56 +7,62 @@ import name.hm.pojo.Title;
 import name.hm.pojo.User;
 import name.hm.test.BaseTestCase;
 
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
-// PASS UNIT #0306
-//TODO 8 UNIT, Upgrade - task : #0310
+//TODO 8 PASS, Upgrade - task : #0310
 public class TitleUnitTest extends BaseTestCase
 {
-	static public String TITLE_NAME = "测试职称";
-	static public String TITLE_NAMEC = "测试职称改";
-	static public String TITLE_NAME1 = "测试职称1";
-	static public String TITLE_NAME2 = "测试职称2";
-
+	public static Title TITLE0 = null;
+	protected static final String TITLE0_NAME = "测试职称";
+	protected static final String TITLE0_NAMEC = "测试职称改";
+	
+	public static Title TITLE1 = null;
+	protected static final String TITLE1_NAME = "教授";
+	
+	public static Title TITLE2 = null;
+	protected static final String TITLE2_NAME = "副教授";
+	
 	@Test
 	public void test()
 	{
-		beforeTest();
 		create();
 		read();
 		update();
 		delete();
-		afterTest();
 	}
 
-	// PASS CELL #0306
+	@Before
 	public void beforeTest()
 	{
 		logger.info("start TitleUnitTest");
 	}
 
+	@After
 	public void afterTest()
 	{
 		clean();
 		logger.info("finish TitleUnitTest");
 	}
 	
-	// PASS CELL #0306
 	public void create()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			Title title = new Title(TITLE_NAME);
-			Title title1 = new Title(TITLE_NAME1);
-			Title title2 = new Title(TITLE_NAME2);
-			error = titleMapper.insert(title);
-			error = titleMapper.insert(title1) & error;
-			error = titleMapper.insert(title2) & error;
+			TITLE0 = new Title(TITLE0_NAME);
+			TITLE1 = new Title(TITLE1_NAME);
+			TITLE2 = new Title(TITLE2_NAME);
+			error &= titleMapper.insert(TITLE0);
+			error &= titleMapper.insert(TITLE1);
+			error &= titleMapper.insert(TITLE2);
 			if (error == 1) {
-				logger.info("insert Title OK!\n" + title + title1 + title2);
+				logger.info("insert Title OK!\n" +"\n"+ TITLE0 +"\n"+ TITLE1 +"\n"+ TITLE2);
 			} else {
-				logger.error("insert Title failed\n" + title + title1 + title2);
+				logger.error("insert Title failed\n" +"\n"+ TITLE0 +"\n"+ TITLE1 +"\n"+ TITLE2);
+				Assert.fail("insert Title failed");
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -66,11 +72,10 @@ public class TitleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
 	public void read()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
 			LinkedList<Title> list = titleMapper.selectAll();
 			se.commit();
@@ -86,25 +91,21 @@ public class TitleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
 	public void update()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			LinkedList<Title> l = titleMapper.selectAll();
-			Title title = l.getFirst();
-			se.commit();
-			logger.info("before update:\n" + l);
-			title.setTitleName(TITLE_NAMEC);
-			error = titleMapper.update(title);
+			logger.info("before update:\n" + TITLE0);
+			TITLE0.setTitleName(TITLE0_NAMEC);
+			error &= titleMapper.update(TITLE0);
 			se.commit();
 			if (error == 1) {
-				l = titleMapper.selectAll();
+				TITLE0 = titleMapper.selectByTitleId(TITLE0.getTitleId());
 				se.commit();			
-				logger.info("update OK!\n" + l);
+				logger.info("update OK!\n" + TITLE0);
 			} else {
-				logger.error("update failed\n" + l);
+				logger.error("update failed\n" + TITLE0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -113,7 +114,6 @@ public class TitleUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0306
 	public void delete()
 	{
 		try {

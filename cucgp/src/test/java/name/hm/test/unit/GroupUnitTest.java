@@ -16,18 +16,18 @@ import name.hm.pojo.Group;
 import name.hm.test.BaseTestCase;
 
 // PASS UNIT #0306
-//TODO 1 UNIT, Upgrade - task : #0310
+//TODO 1 PASS, Upgrade - task : #0310
 public class GroupUnitTest extends BaseTestCase
 {
-	public static Integer GROUP_ID = null;
-	public static String GROUP_NAME = "测试组";
-	public static String GROUP_NAMEC = "测试组改";
+	public static Group G_Teacher = null;
+	public static String GROUP_NAME = "教师组";
+	public static String GROUP_NAMEC = "教师组改";
 
-	public static Integer GROUP_ID1 = null;
-	public static String GROUP_NAME1 = "测试组1";
+	public static Group GROUP_ADMIN = null;
+	public static String GROUP_NAME1 = "管理组";
 
-	public static Integer GROUP_ID2 = null;
-	public static String GROUP_NAME2 = "测试组2";
+	public static Group G_Student = null;
+	public static String GROUP_NAME2 = "学生组";
 
 	public static Group.Valid GROUP_VALID = Group.VALID;
 	public static Group.Valid GROUP_INVALID = Group.INVALID;
@@ -60,21 +60,18 @@ public class GroupUnitTest extends BaseTestCase
 		try {
 			Integer error = 1;
 			openTestSession();
-			Group group = new Group(GROUP_ID, GROUP_NAME, GROUP_VALID);
-			Group group1 = new Group(GROUP_ID1, GROUP_NAME1, GROUP_VALID);
-			Group group2 = new Group(GROUP_ID2, GROUP_NAME2, GROUP_INVALID);
-			error = groupMapper.insert(group) & error;
-			error = groupMapper.insert(group1) & error;
-			error = groupMapper.insert(group2) & error;
+			G_Teacher = new Group(GROUP_NAME, GROUP_VALID);
+			GROUP_ADMIN = new Group(GROUP_NAME1, GROUP_VALID);
+			G_Student = new Group(GROUP_NAME2, GROUP_INVALID);
+			error = groupMapper.insert(G_Teacher) & error;
+			error = groupMapper.insert(GROUP_ADMIN) & error;
+			error = groupMapper.insert(G_Student) & error;
 			se.commit();
 			if (error == 1) {
-				logger.info("insert OK!\n" + group + "\n" + group1 + "\n" + group2);
+				logger.info("insert OK!\n" + G_Teacher + "\n" + GROUP_ADMIN + "\n" + G_Student);
 			} else {
-				logger.info("insert failed\n" + group + "\n" + group1 + "\n" + group2);
+				logger.info("insert failed\n" + G_Teacher + "\n" + GROUP_ADMIN + "\n" + G_Student);
 			}
-			GROUP_ID = group.getGroupId();
-			GROUP_ID1 = group1.getGroupId();
-			GROUP_ID2 = group2.getGroupId();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -88,8 +85,8 @@ public class GroupUnitTest extends BaseTestCase
 		try {
 			Integer error = 1;
 			openTestSession();
-			Group group = groupMapper.selectByGroupId(GROUP_ID);
-			Group group1 = groupMapper.selectByGroupName(GROUP_NAME1);
+			Group group = groupMapper.selectByGroupId(G_Teacher.getGroupId());
+			Group group1 = groupMapper.selectByGroupName(G_Student.getGroupName());
 			List<Group> l = groupMapper.selectByValid(GROUP_VALID);
 			List<Group> l2 = groupMapper.selectByValid(GROUP_INVALID);
 			se.commit();
@@ -121,18 +118,18 @@ public class GroupUnitTest extends BaseTestCase
 		try {
 			Integer error;
 			openTestSession();
-			Group group = groupMapper.selectByGroupId(GROUP_ID);
+			Group group = groupMapper.selectByGroupId(G_Teacher.getGroupId());
 			se.commit();
 			logger.info("before update\n" + group);
 			group.setGroupName(GROUP_NAMEC);
 			error = groupMapper.update(group);
 			se.commit();
 			if (error == 1) {
-				group = groupMapper.selectByGroupId(GROUP_ID);
+				group = groupMapper.selectByGroupId(G_Teacher.getGroupId());
 				se.commit();
 				logger.info("update OK!\n" + group);
 			} else {
-				group = groupMapper.selectByGroupId(GROUP_ID);
+				group = groupMapper.selectByGroupId(G_Teacher.getGroupId());
 				se.commit();
 				logger.error("update failed\n" + group);
 			}
@@ -149,18 +146,18 @@ public class GroupUnitTest extends BaseTestCase
 		try {
 			Integer error = 1;
 			openTestSession();
-			Group group = groupMapper.selectByGroupId(GROUP_ID);
-			Group group1 = groupMapper.selectByGroupId(GROUP_ID1);
-			Group group2 = groupMapper.selectByGroupId(GROUP_ID2);
-			se.commit();
-			error = groupMapper.delete(group) & error;
-			error = groupMapper.delete(group1) & error;
-			error = groupMapper.delete(group2) & error;
+//			Group group = groupMapper.selectByGroupId(GROUP.getGroupId());
+//			Group group1 = groupMapper.selectByGroupId(GROUP1.getGroupId());
+//			Group group2 = groupMapper.selectByGroupId(GROUP2.getGroupId());
+//			se.commit();
+			error = groupMapper.delete(G_Teacher) & error;
+			error = groupMapper.delete(GROUP_ADMIN) & error;
+			error = groupMapper.delete(G_Student) & error;
 			se.commit();
 			if (error == 1) {
-				logger.info("delete OK!\n" + group);
+				logger.info("delete OK!\n" + G_Teacher + "\n" + GROUP_ADMIN + "\n" + G_Student);
 			} else {
-				logger.error("delete failed\n" + group);
+				logger.error("delete failed\n" + G_Teacher + "\n" + GROUP_ADMIN + "\n" + G_Student);
 			}
 			se.commit();
 		} catch (Exception e) {

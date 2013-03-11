@@ -49,7 +49,7 @@ public interface WorkflowMapper extends Mapper
 			@Result(property="workflowName",column="workflow_name"),
 			@Result(property="workflowStatus",column="workflow_status")
 	})
-	LinkedList<Workflow> selectByWorkflowStatus(Workflow.STATUS str);
+	LinkedList<Workflow> selectByWorkflowStatus(Workflow.Status str);
 
 	@Insert(INSERT_WORKFLOW)
 	@SelectKey(statement = "SELECT MAX(workflow_id) AS workflow_id FROM cucgp.`workflow`", keyProperty = "workflowId", before = false, resultType = Integer.class)

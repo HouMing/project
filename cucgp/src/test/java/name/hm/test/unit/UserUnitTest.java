@@ -19,25 +19,25 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-// TODO 2 UNIT, Upgrade - task : #0310
+// TODO 2 PASS, Upgrade - task : #0310
 public class UserUnitTest extends BaseTestCase
 {
-	public static Integer USER_ID = null;
-	public static final String USER_NAME = "TestUser";
-	public static final String USER_NAMEC = "TestUserC";
-	public static final String USER_HOME = "/" + USER_NAME + "/";
+	public static User USER_ADMIN = null;
+	protected static final String ADMIN_NAME = "1000";
+	protected static final String ADMIN_NAMEC = "1001";
+	protected static final String ADMIN_HOME = "/" + ADMIN_NAME + "/";
 
-	public static Integer USER_ID1 = null;
-	public static final String USER_NAME1 = "TestUser1";
-	public static final String USER_HOME1 = "/" + USER_NAME1 + "/";
+	public static User USER_TEACHER = null;
+	protected static final String TEACHER_NAME = "1900";
+	protected static final String TEACHER_HOME = "/" + TEACHER_NAME + "/";
 
-	public static Integer USER_ID2 = null;
-	public static final String USER_NAME2 = "TestUser2";
-	public static final String USER_HOME2 = "/" + USER_NAME2 + "/";
+	public static User USER_STUDENT = null;
+	protected static final String STUDENT_NAME= "200910013400";
+	protected static final String STUDENT_HOME = "/" + STUDENT_NAME + "/";
 
-	public static String PASSWORD = "123456";
-	static public final User.Valid USER_VALID = User.VALID;
-	static public final User.Valid USER_INVALID = User.INVALID;
+	protected static String PASSWORD = "123456";
+	protected static final User.Valid USER_VALID = User.VALID;
+	protected static final User.Valid USER_INVALID = User.INVALID;
 
 	@Test
 	public void test()
@@ -64,7 +64,7 @@ public class UserUnitTest extends BaseTestCase
 	public void afterTest()
 	{
 		GroupUnitTest unitGroup = new GroupUnitTest();
-		unitGroup.delete();
+		unitGroup.clean();
 		clean();
 		logger.info("finish UserUnitTest");
 	}
@@ -73,26 +73,20 @@ public class UserUnitTest extends BaseTestCase
 	public void create()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			User user = new User(null, USER_NAME, PASSWORD, USER_HOME, USER_VALID,
-					GroupUnitTest.GROUP_ID);
-			User user1 = new User(null, USER_NAME1, PASSWORD, USER_HOME1, USER_VALID,
-					GroupUnitTest.GROUP_ID);
-			User user2 = new User(null, USER_NAME2, PASSWORD, USER_HOME2, USER_VALID,
-					GroupUnitTest.GROUP_ID);
-			error = userMapper.insert(user);
-			error = userMapper.insert(user1);
-			error = userMapper.insert(user2);
+			USER_ADMIN = new User(ADMIN_NAME, PASSWORD, ADMIN_HOME, USER_VALID, GroupUnitTest.G_Teacher.getGroupId());
+			USER_TEACHER = new User(TEACHER_NAME, PASSWORD, TEACHER_HOME, USER_VALID, GroupUnitTest.GROUP_ADMIN.getGroupId());
+			USER_STUDENT = new User(STUDENT_NAME, PASSWORD, STUDENT_HOME, USER_VALID, GroupUnitTest.G_Student.getGroupId());
+			error = userMapper.insert(USER_ADMIN) & error;
+			error = userMapper.insert(USER_TEACHER) & error;
+			error = userMapper.insert(USER_STUDENT) & error;
 			if (error == 1) {
-				logger.info("create OK!\n" + user + user1 + user2);
+				logger.info("create OK!\n" + USER_ADMIN + "" +"\n"+ USER_TEACHER +"\n"+ USER_STUDENT);
 			} else {
-				logger.error("create failed\n" + user + user1 + user2);
+				logger.error("create failed\n" + USER_ADMIN + "" +"\n"+ USER_TEACHER +"\n"+ USER_STUDENT);
 			}
 			se.commit();
-			USER_ID = user.getUserId();
-			USER_ID1 = user1.getUserId();
-			USER_ID2 = user2.getUserId();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -105,22 +99,22 @@ public class UserUnitTest extends BaseTestCase
 	{
 		try {
 			openTestSession();
-			User user = userMapper.selectByUserId(USER_ID);
-			User user2 = userMapper.selectByUserName(USER_NAME);
+			User admin = userMapper.selectByUserId(USER_ADMIN.getUserId());
+			User teacher = userMapper.selectByUserName(USER_TEACHER.getUserName());
 			List<User> l = userMapper.selectByValid(UserUnitTest.USER_VALID);
 			List<User> l2 = userMapper.selectByValid(UserUnitTest.USER_INVALID);
-			List<User> l3 = userMapper.selectByGroupId(GroupUnitTest.GROUP_ID);
+			List<User> l3 = userMapper.selectByGroupId(GroupUnitTest.GROUP_ADMIN.getGroupId());
 			se.commit();
-			if (user != null) {
-				logger.info("selectByUserId OK!\n" + user);
+			if (admin != null) {
+				logger.info("selectByUserId OK!\n" + admin);
 			} else {
-				logger.error("selectByUserId failed\n" + user);
+				logger.error("selectByUserId failed\n" + USER_ADMIN);
 			}
 
-			if (user2 != null) {
-				logger.info("selectByUserName OK!\n" + user2);
+			if (teacher != null) {
+				logger.info("selectByUserName OK!\n" + teacher);
 			} else {
-				logger.error("selectByUserName failed\n" + user2);
+				logger.error("selectByUserName failed\n" + teacher);
 			}
 
 			if (l.size() > 0 || l2.size() > 0) {
@@ -128,7 +122,7 @@ public class UserUnitTest extends BaseTestCase
 			} else {
 				logger.error("selectByValid failed\n" + l + l2);
 			}
-
+			
 			if (l3.size() > 0) {
 				logger.info("selectByGroupId OK!\n" + l3);
 			} else {
@@ -148,19 +142,17 @@ public class UserUnitTest extends BaseTestCase
 		try {
 			Integer error;
 			openTestSession();
-			User user = userMapper.selectByUserId(USER_ID);
-			logger.info("before update\n" + user);
-			user.setUserName(USER_NAMEC);
-			error = userMapper.update(user);
+			User admin = userMapper.selectByUserId(USER_ADMIN.getUserId());
+			logger.info("before update\n" + admin);
+			admin.setUserName(ADMIN_NAMEC);
+			error = userMapper.update(admin);
+			se.commit();
+			admin = userMapper.selectByUserId(USER_ADMIN.getUserId());
 			se.commit();
 			if (error == 1) {
-				user = userMapper.selectByUserId(USER_ID);
-				se.commit();
-				logger.info("update OK!\n" + user);
+				logger.info("update OK!\n" + admin);
 			} else {
-				user = userMapper.selectByUserId(USER_ID);
-				se.commit();
-				logger.error("update failed\n" + user);
+				logger.error("update failed\n" + admin);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -173,24 +165,20 @@ public class UserUnitTest extends BaseTestCase
 	public void delete()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			User user = userMapper.selectByUserId(USER_ID);
-			User user1 = userMapper.selectByUserId(USER_ID1);
-			User user2 = userMapper.selectByUserId(USER_ID2);
+			error = userMapper.delete(USER_ADMIN) & error;
+			error = userMapper.delete(USER_TEACHER) & error;
+			error = userMapper.delete(USER_STUDENT) & error;
 			se.commit();
-			error = userMapper.delete(user);
-			error = userMapper.delete(user1) & error;
-			error = userMapper.delete(user2) & error;
-			se.commit();
-			user = userMapper.selectByUserId(USER_ID);
-			user1 = userMapper.selectByUserId(USER_ID1);
-			user2 = userMapper.selectByUserId(USER_ID2);
+			USER_ADMIN = userMapper.selectByUserId(USER_ADMIN.getUserId());
+			USER_TEACHER = userMapper.selectByUserId(USER_TEACHER.getUserId());
+			USER_STUDENT = userMapper.selectByUserId(USER_STUDENT.getUserId());
 			se.commit();
 			if (error == 1) {
-				logger.info("delete OK!\n" + user + user1 + user2);
+				logger.info("delete OK!\n" + USER_ADMIN +"\n"+ USER_TEACHER +"\n"+ USER_STUDENT);
 			} else {
-				logger.error("delete failed\n" + user + user1 + user2);
+				logger.error("delete failed\n" + USER_ADMIN +"\n"+ USER_TEACHER +"\n"+ USER_STUDENT);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

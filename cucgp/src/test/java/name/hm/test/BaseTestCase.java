@@ -31,6 +31,7 @@ public class BaseTestCase implements ITestCase, ILogger
 	protected TeacherMapper teacherMapper = null;
 	protected DepartmentMapper departmentMapper = null;
 	protected TitleMapper titleMapper = null;
+	protected ClassroomMapper classroomMapper = null;
 
 	static {
 		String resource = CONF_FILE_NAME;
@@ -173,5 +174,15 @@ public class BaseTestCase implements ITestCase, ILogger
 	public void setTitleMapper(TitleMapper titleMapper)
 	{
 		this.titleMapper = titleMapper;
+	}
+
+	public ClassroomMapper getClassroomMapper()
+	{
+		return classroomMapper;
+	}
+
+	public void setClassroomMapper(ClassroomMapper classroomMapper)
+	{
+		this.classroomMapper = classroomMapper;
 	}
 }

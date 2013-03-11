@@ -21,7 +21,7 @@ public interface TeacherMapper extends Mapper
 			                  "(#{userName}, #{teacherName}, #{telephone}, #{email}, " +
 			                  "#{weibo}, #{introduction}, #{departmentName}, #{titleName})";
 	
-	final String SELECT_BY_USER_NAME = "SELECT * FROM cucgp.`teacher` where user_name = #{param1} ORDER BY user_name ASC";
+	final String SELECT_BY_USER_NAME = "SELECT * FROM cucgp.`teacher` where user_name = #{param1}";
 	final String SELECT_BY_DEPARTMENT_NAME = "SELECT * FROM cucgp.`teacher` where department_name = #{param1} ORDER BY user_name ASC";
 	final String SELECT_BY_TITLE_NAME = "SELECT * FROM cucgp.`teacher` where title_name = #{param1} ORDER BY user_name ASC";
 	final String SELECT_ALL = "SELECT * FROM cucgp.`teacher` ORDER BY user_name ASC";

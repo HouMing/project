@@ -3,27 +3,30 @@ package name.hm.test.unit;
 import java.util.LinkedList;
 import java.util.List;
 
+import junit.framework.Assert;
+
 import name.hm.jpa.DepartmentMapper;
 import name.hm.pojo.Action;
 import name.hm.pojo.Department;
 import name.hm.pojo.User;
 import name.hm.test.BaseTestCase;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-// PASS UNIT #0307
-//TODO 7 UNIT, Upgrade - task : #0310
+//TODO 7 PASS, Upgrade - task : #0310
 public class DepartmentUnitTest extends BaseTestCase
 {
-	static public Integer DEPARTMENT_ID = null;
-	static public String DEPARTMENT_NAME = "测试系";
-	static public String DEPARTMENT_NAMEC = "测试系改";
+public static Department DEPARTMENT0 = null;
+protected static String DEPARTMENT0_NAME = "广播电视工程系";
+protected static String DEPARTMENT0_NAMEC = "广电工系";
 
-	static public Integer DEPARTMENT_ID1 = null;
-	static public String DEPARTMENT_NAME1 = "测试系1";
+public static Department DEPARTMENT1 = null;
+protected static String DEPARTMENT1_NAME = "数字媒体技术";
 
-	static public Integer DEPARTMENT_ID2 = null;
-	static public String DEPARTMENT_NAME2 = "测试系2";
+public static Department DEPARTMENT2 = null;
+protected static String DEPARTMENT2_NAME = "自动化";
 
 	@Test
 	public void test()
@@ -36,37 +39,36 @@ public class DepartmentUnitTest extends BaseTestCase
 		afterTest();
 	}
 
-	// PASS CELL #0307
+	@Before
 	public void beforeTest()
 	{
 		logger.info("start DepartmentUnitTest");
 	}
 
-	// PASS CELL #0307
+	@After
 	public void afterTest()
 	{
 		clean();
 		logger.info("finish DepartmentUnitTest");
 	}
 
-	// PASS CELL #0307
 	public void create()
 	{
 		try {
-			Integer error;
+			Integer error = 1;
 			openTestSession();
-			Department department = new Department(DEPARTMENT_NAME);
-			Department department1 = new Department(DEPARTMENT_NAME1);
-			Department department2 = new Department(DEPARTMENT_NAME2);
-			error = departmentMapper.insert(department);
-			error = departmentMapper.insert(department1) & error;
-			error = departmentMapper.insert(department2) & error;
+			DEPARTMENT0 = new Department(DEPARTMENT0_NAME);
+			DEPARTMENT1 = new Department(DEPARTMENT1_NAME);
+			DEPARTMENT2 = new Department(DEPARTMENT2_NAME);
+			error &= departmentMapper.insert(DEPARTMENT0);
+			error &= departmentMapper.insert(DEPARTMENT1);
+			error &= departmentMapper.insert(DEPARTMENT2);
 			se.commit();
 			if (error == 1) {
-				logger.info("insert OK!\n" + department + department1 + department2);
+				logger.info("insert OK!\n" + DEPARTMENT0 + DEPARTMENT1 + DEPARTMENT2);
 			} else {
-				logger
-						.error("insert failed\n" + department + department1 + department2);
+				logger.error("insert failed\n" + DEPARTMENT0 + DEPARTMENT1 + DEPARTMENT2);
+				Assert.fail("insert failed");
 			}
 			se.commit();
 		} catch (Exception e) {
@@ -76,7 +78,6 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0307
 	public void read()
 	{
 		try {
@@ -87,6 +88,7 @@ public class DepartmentUnitTest extends BaseTestCase
 				logger.info("selectAll OK!\n" + l);
 			} else {
 				logger.error("selectAll failed\n" + l);
+				Assert.fail("selectAll failed");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,35 +97,21 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0307
 	public void update()
 	{
 		try {
 			Integer error = 1;
 			openTestSession();
-			LinkedList<Department> l = departmentMapper.selectAll();
-			se.commit();
-			logger.info("before update\n:" + l);
-			String pre;
-			String cur;
-			pre = l.get(0).getDepartmentName();
-			cur = pre;
-			l.get(0).setDepartmentName(DEPARTMENT_NAMEC);
-			for (int i = 1; i < l.size(); ++i) {
-				cur = l.get(i).getDepartmentName();
-				l.get(i).setDepartmentName(pre);
-				pre = cur;
-			}
-			for (int i = 0; i < l.size(); ++i) {
-				error = departmentMapper.update(l.get(i)) & error;
-			}
-			se.commit();
-			l = departmentMapper.selectAll();
+			logger.info("before update\n:" + DEPARTMENT0);
+			DEPARTMENT0.setDepartmentName(DEPARTMENT0_NAMEC);
+			error &= departmentMapper.update(DEPARTMENT0);
 			se.commit();
 			if (error == 1) {
-				logger.info("update OK!\n" + l);
+				DEPARTMENT0 = departmentMapper.selectByDepartmentId(DEPARTMENT0.getDepartmentId());
+				logger.info("update OK!\n");
 			} else {
-				logger.error("update failed\n" + l);
+				logger.error("update failed\n");
+				Assert.fail("update failed");
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +120,6 @@ public class DepartmentUnitTest extends BaseTestCase
 		}
 	}
 
-	// PASS CELL #0307
 	public void delete()
 	{
 		try {
@@ -140,9 +127,10 @@ public class DepartmentUnitTest extends BaseTestCase
 			openTestSession();
 			LinkedList<Department> l = departmentMapper.selectAll();
 			se.commit();
+			logger.info("before delete:\n" + l);
 			for (; l.size() > 0;) {
 				Department tmp = l.pop();
-				error = departmentMapper.delete(tmp) & error;
+				error &= departmentMapper.delete(tmp);
 			}
 			l = departmentMapper.selectAll();
 			se.commit();

@@ -5,8 +5,7 @@ import name.hm.pojo.Student;
 import name.hm.pojo.Teacher;
 import name.hm.test.BaseTestCase;
 
-// TODO IMPL UNIT
-//TODO 13 UNIT, Upgrade - task : #0310
+//TODO 13 IMPL, Upgrade - task : #0310
 public class StuaUnitTest extends BaseTestCase
 {
 	public static Integer STUA_ID = null;

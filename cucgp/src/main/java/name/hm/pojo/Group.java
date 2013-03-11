@@ -28,6 +28,13 @@ public class Group
 		this.valid = valid;
 	}
 
+	public Group(String groupName, Valid valid)
+	{
+		this.groupId = null;
+		this.groupName = groupName;
+		this.valid = valid;
+	}
+	
 	public Integer getGroupId()
 	{
 		return groupId;
