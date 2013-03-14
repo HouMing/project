@@ -1,11 +1,12 @@
 package name.hm.test.unit;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.Assert;
 
-import name.hm.pojo.Action;
-import name.hm.pojo.User;
+import name.hm.m.Action;
+import name.hm.m.User;
 import name.hm.test.BaseTestCase;
 
 import org.junit.After;
@@ -23,17 +24,19 @@ public class ActionUnitTest extends BaseTestCase
 	protected static final String ACTION_ADMIN_NAME = "管理员操作";
 	protected static final String ACTION_ADMIN_NAMEC = "管理员操作改";
 	protected static final String ACTION_ADMIN_URL = "/admin/unit/test.do";
+	protected static final String ACTION_ADMIN_DESCRIPTION = "/admin/unit/test.do";
+	
 
 	public static Action ACTION_TEACHER = null;
 	protected static final String ACTION_TEACHER_NAME = "教师操作";
 	protected static final String ACTION_TEACHER_URL = "/teacher/unit/test.do";
-
+	protected static final String ACTION_TEACHER_DESCRIPTION = "/admin/unit/test.do";
+	
 	public static Action ACTION_STUDENT = null;
 	protected static final String ACTION_STUDENT_NAME = "学生操作";
 	protected static final String ACTION_STUDENT_URL = "/student/unit/test.do";
-
-	public static final Action.Status ACTION_VALID = Action.VALID;
-	public static final Action.Status ACTION_INVALID = Action.INVALID;
+	protected static final String ACTION_STUDENT_DESCRIPTION = "/admin/unit/test.do";
+	
 
 	@Test
 	public void test()
@@ -75,15 +78,15 @@ public class ActionUnitTest extends BaseTestCase
 			openTestSession();
 			ACTION_ADMIN = new Action(ACTION_ADMIN_NAME, 
 					ACTION_ADMIN_URL,
-					ACTION_VALID, 
+					ACTION_ADMIN_DESCRIPTION, 
 					RoleUnitTest.ROLE_ADMIN.getRoleId());
 			ACTION_TEACHER = new Action(ACTION_TEACHER_NAME, 
 					ACTION_TEACHER_URL, 
-					ACTION_INVALID, 
+					ACTION_TEACHER_DESCRIPTION, 
 					RoleUnitTest.ROLE_TEACHER.getRoleId());
 			ACTION_STUDENT = new Action(ACTION_STUDENT_NAME,
 					ACTION_STUDENT_URL,
-					ACTION_INVALID,
+					ACTION_STUDENT_DESCRIPTION,
 					RoleUnitTest.ROLE_STUDENT.getRoleId());
 			error = actionMapper.insert(ACTION_ADMIN) & error;
 			error = actionMapper.insert(ACTION_TEACHER) & error;
@@ -111,8 +114,6 @@ public class ActionUnitTest extends BaseTestCase
 			openTestSession();
 			Action action_admin = actionMapper.selectByActionId(ACTION_ADMIN.getActionId());
 			Action action_teacher = actionMapper.selectByActionName(ACTION_TEACHER.getActionName());
-			List<Action> l = actionMapper.selectByActionStatus(ACTION_VALID);
-			List<Action> l2 = actionMapper.selectByActionStatus(ACTION_INVALID);
 			se.commit();
 			if (action_admin != null) {
 				Assert.assertEquals(action_admin, ACTION_ADMIN);
@@ -128,12 +129,6 @@ public class ActionUnitTest extends BaseTestCase
 				logger.error("selectByActionName failed\n" + ACTION_TEACHER);
 				Assert.fail("selectByActionName failed\n");
 			}
-			if (l.size() > 0 || l2.size() > 0) {
-				logger.info("selectByActionStatus OK!\n" + l + "\n" + l2);
-			} else {
-				logger.error("selectByActionStatus failed\n" + l + "\n" + l2);
-				Assert.fail("selectByActionStatus failed\n");
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -147,22 +142,22 @@ public class ActionUnitTest extends BaseTestCase
 		try {
 			Integer error;
 			openTestSession();
-			if (ACTION_TEACHER == null) {
+			if (ACTION_ADMIN == null) {
 				logger.error("update failed");
 				Assert.fail("update failed");
 			} else {
-				logger.info("before update\n" + ACTION_TEACHER);
+				logger.info("before update\n" + ACTION_ADMIN);
 			}
-			Action action_teacher = actionMapper.selectByActionId(ACTION_TEACHER.getActionId());
+			Action action_admin = actionMapper.selectByActionId(ACTION_ADMIN.getActionId());
 			se.commit();
-			action_teacher.setActionStatus(ACTION_VALID);
-			error = actionMapper.update(action_teacher);
+			action_admin.setActionName(ACTION_ADMIN_NAMEC);
+			error = actionMapper.update(action_admin);
 			se.commit();
-			action_teacher = actionMapper.selectByActionId(ACTION_TEACHER.getActionId());
+			action_admin = actionMapper.selectByActionId(ACTION_ADMIN.getActionId());
 			se.commit();
 			if (error == 1) {
-				Assert.assertTrue(!ACTION_TEACHER.equals(action_teacher));
-				logger.info("update OK!\n" + action_teacher);
+				Assert.assertTrue(!ACTION_ADMIN.equals(action_admin));
+				logger.info("update OK!\n" + action_admin);
 			} else {
 				logger.error("update failed");
 				Assert.fail("update failed");
@@ -201,13 +196,9 @@ public class ActionUnitTest extends BaseTestCase
 	{
 		try {
 			openTestSession();
-			List<Action> l = actionMapper.selectByActionStatus(Action.VALID);
-			List<Action> l2 = actionMapper.selectByActionStatus(Action.INVALID);
+      ArrayList<Action> l = actionMapper.selectAll();			
 			se.commit();
 			for (Action tmp : l) {
-				actionMapper.delete(tmp);
-			}
-			for (Action tmp : l2) {
 				actionMapper.delete(tmp);
 			}
 			se.commit();

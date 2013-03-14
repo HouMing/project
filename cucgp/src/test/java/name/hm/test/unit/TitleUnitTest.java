@@ -3,8 +3,8 @@ package name.hm.test.unit;
 import java.util.LinkedList;
 import java.util.List;
 
-import name.hm.pojo.Title;
-import name.hm.pojo.User;
+import name.hm.m.Title;
+import name.hm.m.User;
 import name.hm.test.BaseTestCase;
 
 import org.junit.After;

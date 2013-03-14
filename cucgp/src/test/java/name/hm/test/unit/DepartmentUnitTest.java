@@ -5,10 +5,10 @@ import java.util.List;
 
 import junit.framework.Assert;
 
-import name.hm.jpa.DepartmentMapper;
-import name.hm.pojo.Action;
-import name.hm.pojo.Department;
-import name.hm.pojo.User;
+import name.hm.m.Action;
+import name.hm.m.Department;
+import name.hm.m.User;
+import name.hm.orm.DepartmentMapper;
 import name.hm.test.BaseTestCase;
 
 import org.junit.After;

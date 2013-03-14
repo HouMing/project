@@ -1,10 +1,10 @@
 package name.hm.test.integration;
 
-import name.hm.pojo.Action;
-import name.hm.pojo.Group;
-import name.hm.pojo.Role;
-import name.hm.pojo.User;
-import name.hm.pojo.Workflow;
+import name.hm.m.Action;
+import name.hm.m.Group;
+import name.hm.m.Role;
+import name.hm.m.User;
+import name.hm.m.Workflow;
 import name.hm.test.BaseTestCase;
 import name.hm.test.unit.ActionUnitTest;
 import name.hm.test.unit.DepartmentUnitTest;

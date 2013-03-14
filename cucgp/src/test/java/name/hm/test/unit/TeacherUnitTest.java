@@ -4,18 +4,20 @@ import java.util.LinkedList;
 
 import junit.framework.Assert;
 
-import name.hm.pojo.Department;
-import name.hm.pojo.Teacher;
-import name.hm.pojo.Title;
-import name.hm.pojo.User;
+import name.hm.m.Department;
+import name.hm.m.Teacher;
+import name.hm.m.Title;
+import name.hm.m.User;
 import name.hm.test.BaseTestCase;
 
 import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 //TODO 10 PASS, Upgrade - task : #0310
-public class TeacherUnitTest extends BaseTestCase
+public class TeacherUnitTest extends BaseTestCase implements POJOTest
 {
 	public static Teacher TEACHER0 = null;
 	protected static String TEACHER0_NAME = "测试老师";
@@ -158,13 +160,16 @@ public class TeacherUnitTest extends BaseTestCase
 	public void clean()
 	{
 		try {
+			Integer error = 1;
 			openTestSession();
 			LinkedList<Teacher> l = teacherMapper.selectAll();
 			se.commit();
 			for (Teacher t : l) {
-				teacherMapper.delete(t);
+				error &= teacherMapper.delete(t);
 			}
 			se.commit();
+			if (error == 1)
+			{logger.info("clean");}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

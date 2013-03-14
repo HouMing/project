@@ -8,22 +8,21 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import name.hm.pojo.Classroom;
+import name.hm.m.Classroom;
 import name.hm.test.BaseTestCase;
 
-//TODO IMPL UNIT
 //TODO 6 PASS, Upgrade - task : #0310
 public class ClassroomUnitTest extends BaseTestCase
 {
 	public static Classroom CLASSROOM0 = null;
-	public static String CLASSROOM0_NAME = "广播电视工程0班";
-	public static String CLASSROOM0_NAMEC = "广播电视工程0班改";
+	protected static String CLASSROOM0_NAME = "广播电视工程0班";
+	protected static String CLASSROOM0_NAMEC = "广播电视工程0班改";
 
 	public static Classroom CLASSROOM1 = null;
-	public static String CLASSROOM1_NAME = "广播电视工程1班";
+	protected static String CLASSROOM1_NAME = "广播电视工程1班";
 
 	public static Classroom CLASSROOM2 = null;
-	public static String CLASSROOM2_NAME = "广播电视工程2班";
+	protected static String CLASSROOM2_NAME = "广播电视工程2班";
 
 	@Test
 	public void test()

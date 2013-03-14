@@ -3,12 +3,12 @@ package name.hm.test.unit;
 import java.util.LinkedList;
 import java.util.List;
 
-import name.hm.jpa.GroupMapper;
-import name.hm.jpa.UserMapper;
-import name.hm.pojo.Group;
-import name.hm.pojo.Title;
-import name.hm.pojo.User;
-import name.hm.pojo.User.Valid;
+import name.hm.m.Group;
+import name.hm.m.Title;
+import name.hm.m.User;
+import name.hm.m.User.Valid;
+import name.hm.orm.GroupMapper;
+import name.hm.orm.UserMapper;
 import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 

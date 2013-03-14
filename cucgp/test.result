@@ -19,7 +19,7 @@
 [INFO] 
 [INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ cucgp ---
 [INFO] Changes detected - recompiling the module!
-[INFO] Compiling 12 source files to /home/houming/workspace/project/cucgp/target/test-classes
+[INFO] Compiling 18 source files to /home/houming/workspace/project/cucgp/target/test-classes
 [INFO] 
 [INFO] --- maven-surefire-plugin:2.10:test (default-test) @ cucgp ---
 [INFO] Surefire report directory: /home/houming/workspace/project/cucgp/target/surefire-reports
@@ -28,378 +28,561 @@
  T E S T S
 -------------------------------------------------------
 Running name.hm.test.unit.DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:41) 
+[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:45) 
 start DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:65) 
+[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:45) 
+start DepartmentUnitTest
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
 insert OK!
-{"departmentId":19,"departmentName":"测试系"}{"departmentId":20,"departmentName":"测试系1"}{"departmentId":21,"departmentName":"测试系2"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.read(DepartmentUnitTest.java:86) 
+{"departmentId":1,"departmentName":"广播电视工程系"}{"departmentId":2,"departmentName":"数字媒体技术"}{"departmentId":3,"departmentName":"自动化"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.read(DepartmentUnitTest.java:88) 
 selectAll OK!
-[{"departmentId":19,"departmentName":"测试系"}, {"departmentId":20,"departmentName":"测试系1"}, {"departmentId":21,"departmentName":"测试系2"}]
+[{"departmentId":1,"departmentName":"广播电视工程系"}, {"departmentId":2,"departmentName":"数字媒体技术"}, {"departmentId":3,"departmentName":"自动化"}]
 [INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:105) 
 before update
-:[{"departmentId":19,"departmentName":"测试系"}, {"departmentId":20,"departmentName":"测试系1"}, {"departmentId":21,"departmentName":"测试系2"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:123) 
+:{"departmentId":1,"departmentName":"广播电视工程系"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:111) 
 update OK!
-[{"departmentId":19,"departmentName":"测试系改"}, {"departmentId":20,"departmentName":"测试系"}, {"departmentId":21,"departmentName":"测试系1"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:149) 
+
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
+before delete:
+[{"departmentId":1,"departmentName":"广电工系"}, {"departmentId":2,"departmentName":"数字媒体技术"}, {"departmentId":3,"departmentName":"自动化"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
 delete OK!
 []
-[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:48) 
+[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:52) 
 finish DepartmentUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.739 sec
+[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:52) 
+finish DepartmentUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.716 sec
 Running name.hm.test.unit.WorkflowUnitTest
-[INFO ] name.hm.test.unit.WorkflowUnitTest.beforeTest(WorkflowUnitTest.java:44) 
+[INFO ] name.hm.test.unit.WorkflowUnitTest.beforeTest(WorkflowUnitTest.java:45) 
 start WorkflowUnitTest
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:70) 
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
 create OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}
-{"workflowId":8,"workflowName":"测试工作流1","workflowStatus":"valid"}
-{"workflowId":9,"workflowName":"测试工作流2","workflowStatus":"invalid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:95) 
+{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}
+{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
+{"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:90) 
 selectByWorkflowId OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:100) 
+{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:95) 
 selectByWorkflowName OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:105) 
+{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:100) 
 selectByWorkflowStatus OK!
-[{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}, {"workflowId":8,"workflowName":"测试工作流1","workflowStatus":"valid"}]
-[{"workflowId":9,"workflowName":"测试工作流2","workflowStatus":"invalid"}]
-[INFO ] name.hm.test.unit.WorkflowUnitTest.update(WorkflowUnitTest.java:129) 
+[{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}, {"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}, {"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}]
+[INFO ] name.hm.test.unit.WorkflowUnitTest.update(WorkflowUnitTest.java:123) 
 update OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"invalid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:159) 
+{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"publishing"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:149) 
 delete OK!
-null
-null
-null
-[INFO ] name.hm.test.unit.WorkflowUnitTest.afterTest(WorkflowUnitTest.java:50) 
+{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"publishing"}
+{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
+{"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.afterTest(WorkflowUnitTest.java:51) 
 finish WorkflowUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.303 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.994 sec
 Running name.hm.test.unit.GroupUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.beforeTest(GroupUnitTest.java:47) 
+[INFO ] name.hm.test.unit.GroupUnitTest.beforeTest(GroupUnitTest.java:48) 
 start GroupUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:70) 
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
 insert OK!
-{"groupId":25,"groupName":"测试组","valid":"valid"}
-{"groupId":26,"groupName":"测试组1","valid":"valid"}
-{"groupId":27,"groupName":"测试组2","valid":"invalid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:96) 
+{"groupId":1,"groupName":"教师组","valid":"valid"}
+{"groupId":2,"groupName":"管理组","valid":"valid"}
+{"groupId":3,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:94) 
 selectByGroupId OK!
-{"groupId":25,"groupName":"测试组","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:101) 
+{"groupId":1,"groupName":"教师组","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:99) 
 selectByGroupName OK!
-{"groupId":26,"groupName":"测试组1","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:106) 
+{"groupId":3,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:104) 
 selectByValid OK!
-[{"groupId":25,"groupName":"测试组","valid":"valid"}, {"groupId":26,"groupName":"测试组1","valid":"valid"}][{"groupId":27,"groupName":"测试组2","valid":"invalid"}]
-[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:125) 
+[{"groupId":1,"groupName":"教师组","valid":"valid"}, {"groupId":2,"groupName":"管理组","valid":"valid"}][{"groupId":3,"groupName":"学生组","valid":"invalid"}]
+[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:123) 
 before update
-{"groupId":25,"groupName":"测试组","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:132) 
+{"groupId":1,"groupName":"教师组","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:130) 
 update OK!
-{"groupId":25,"groupName":"测试组改","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:160) 
+{"groupId":1,"groupName":"教师组改","valid":"valid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
 delete OK!
-{"groupId":25,"groupName":"测试组改","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.afterTest(GroupUnitTest.java:53) 
+{"groupId":1,"groupName":"教师组","valid":"valid"}
+{"groupId":2,"groupName":"管理组","valid":"valid"}
+{"groupId":3,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.GroupUnitTest.afterTest(GroupUnitTest.java:54) 
 finish GroupUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.216 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.353 sec
 Running name.hm.test.unit.ActionUnitTest
-[INFO ] name.hm.test.unit.ActionUnitTest.beforeTest(ActionUnitTest.java:44) 
+[INFO ] name.hm.test.unit.ActionUnitTest.beforeTest(ActionUnitTest.java:51) 
 start ActionUnit test
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:74) 
+[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
 create Role OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:70) 
+{"roleId":1,"roleName":"管理员","valid":"valid"}
+{"roleId":2,"roleName":"教师","valid":"invalid"}
+{"roleId":3,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
 create OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}
-{"workflowId":8,"workflowName":"测试工作流1","workflowStatus":"valid"}
-{"workflowId":9,"workflowName":"测试工作流2","workflowStatus":"invalid"}
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:74) 
-DDD 7 8 9
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:84) 
+{"workflowId":4,"workflowName":"2013年毕设","workflowStatus":"applying"}
+{"workflowId":5,"workflowName":"2012年毕设","workflowStatus":"applying"}
+{"workflowId":6,"workflowName":"2011年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:93) 
 insert Action OK!
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-{"actionId":27,"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/","roleId":8,"workflowId":7}
-{"actionId":28,"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":9,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:108) 
+{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}
+{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
+{"actionId":3,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":3}
+[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:119) 
 selectByActionId OK!
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:113) 
+{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}
+[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:126) 
 selectByActionName OK!
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:118) 
+{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
+[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:132) 
 selectByActionStatus OK!
-[{"actionId":24,"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/"}, {"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}, {"actionId":27,"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/","roleId":8,"workflowId":7}]
-[{"actionId":25,"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/"}, {"actionId":28,"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":9,"workflowId":7}]
-[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:139) 
+[{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}]
+[{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}, {"actionId":3,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":3}]
+[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:154) 
 before update
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:148) 
+{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
+[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:165) 
 update OK!
-{"actionId":26,"actionName":"测试操作改","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:166) 
-before delete
-{"actionId":26,"actionName":"测试操作改","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:169) 
+{"actionId":2,"actionName":"教师操作","actionStatus":"valid","actionUrl":"/teacher/unit/test.do","roleId":2}
+[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:188) 
 delete OK!
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:172) 
-after delete
-null
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:160) 
-before delete
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:166) 
-delete OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:159) 
-delete OK!
-null
-null
-null
-[INFO ] name.hm.test.unit.ActionUnitTest.afterTest(ActionUnitTest.java:59) 
+[INFO ] name.hm.test.unit.ActionUnitTest.afterTest(ActionUnitTest.java:67) 
 finish ActionUnit test
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.526 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.271 sec
 Running name.hm.test.unit.TeacherUnitTest
-[INFO ] name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:43) 
+[INFO ] name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:46) 
 start TeacherUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:65) 
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
 insert OK!
-{"departmentId":22,"departmentName":"测试系"}{"departmentId":23,"departmentName":"测试系1"}{"departmentId":24,"departmentName":"测试系2"}
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:56) 
+{"departmentId":4,"departmentName":"广播电视工程系"}{"departmentId":5,"departmentName":"数字媒体技术"}{"departmentId":6,"departmentName":"自动化"}
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
 insert Title OK!
-{"titleId":19,"titleName":"测试职称"}{"titleId":20,"titleName":"测试职称1"}{"titleId":21,"titleName":"测试职称2"}
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:70) 
+
+{"titleId":1,"titleName":"测试职称"}
+{"titleId":2,"titleName":"教授"}
+{"titleId":3,"titleName":"副教授"}
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
 insert OK!
-{"groupId":28,"groupName":"测试组","valid":"valid"}
-{"groupId":29,"groupName":"测试组1","valid":"valid"}
-{"groupId":30,"groupName":"测试组2","valid":"invalid"}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:87) 
+{"groupId":4,"groupName":"教师组","valid":"valid"}
+{"groupId":5,"groupName":"管理组","valid":"valid"}
+{"groupId":6,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
 create OK!
-{"groupId":28,"password":"123456","userHome":"/TestUser/","userId":19,"userName":"TestUser","valid":"valid"}{"groupId":28,"password":"123456","userHome":"/TestUser1/","userId":20,"userName":"TestUser1","valid":"valid"}{"groupId":28,"password":"123456","userHome":"/TestUser2/","userId":21,"userName":"TestUser2","valid":"valid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:110) 
+{"groupId":4,"password":"123456","userHome":"/1000/","userId":1,"userName":"1000","valid":"valid"}
+{"groupId":5,"password":"123456","userHome":"/1900/","userId":2,"userName":"1900","valid":"valid"}
+{"groupId":6,"password":"123456","userHome":"/200910013400/","userId":3,"userName":"200910013400","valid":"valid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.create(TeacherUnitTest.java:87) 
+create OK!
+
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:106) 
 selectByUserName OK!
-{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:115) 
-selectByDepartmentName OK!
-[{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser1","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser2","weibo":"@testTeacher"}]
-[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:120) 
-selectByTitleName OK!
-[{"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser1","weibo":"@testTeacher"}, {"departmentName":"测试系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13461370223","titleName":"测试职称","userName":"TestUser2","weibo":"@testTeacher"}]
-[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:168) 
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.update(TeacherUnitTest.java:127) 
+update OK!
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师改","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:148) 
 delete OK!
-nullnullnull
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:149) 
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师改","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
+before delete:
+[{"departmentId":4,"departmentName":"广播电视工程系"}, {"departmentId":5,"departmentName":"数字媒体技术"}, {"departmentId":6,"departmentName":"自动化"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
 delete OK!
 []
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:123) 
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
 before delete:
-[{"titleId":19,"titleName":"测试职称"}, {"titleId":20,"titleName":"测试职称1"}, {"titleId":21,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:131) 
+[{"titleId":1,"titleName":"测试职称"}, {"titleId":2,"titleName":"教授"}, {"titleId":3,"titleName":"副教授"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
 delete Title OK!
 []
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:190) 
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
 delete OK!
-nullnullnull
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:160) 
+null
+null
+null
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
 delete OK!
-{"groupId":28,"groupName":"测试组","valid":"valid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.afterTest(TeacherUnitTest.java:66) 
+{"groupId":4,"groupName":"教师组","valid":"valid"}
+{"groupId":5,"groupName":"管理组","valid":"valid"}
+{"groupId":6,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.clean(TeacherUnitTest.java:172) 
+clean
+[INFO ] name.hm.test.unit.TeacherUnitTest.afterTest(TeacherUnitTest.java:69) 
 end TeacherUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.632 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.42 sec
 Running name.hm.test.unit.TitleUnitTest
-[INFO ] name.hm.test.unit.TitleUnitTest.beforeTest(TitleUnitTest.java:34) 
+[INFO ] name.hm.test.unit.TitleUnitTest.beforeTest(TitleUnitTest.java:40) 
 start TitleUnitTest
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:56) 
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
 insert Title OK!
-{"titleId":22,"titleName":"测试职称"}{"titleId":23,"titleName":"测试职称1"}{"titleId":24,"titleName":"测试职称2"}
-[INFO ] name.hm.test.unit.TitleUnitTest.read(TitleUnitTest.java:77) 
+
+{"titleId":4,"titleName":"测试职称"}
+{"titleId":5,"titleName":"教授"}
+{"titleId":6,"titleName":"副教授"}
+[INFO ] name.hm.test.unit.TitleUnitTest.read(TitleUnitTest.java:83) 
 selectAll OK!
-[{"titleId":22,"titleName":"测试职称"}, {"titleId":23,"titleName":"测试职称1"}, {"titleId":24,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:97) 
+[{"titleId":4,"titleName":"测试职称"}, {"titleId":5,"titleName":"教授"}, {"titleId":6,"titleName":"副教授"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:99) 
 before update:
-[{"titleId":22,"titleName":"测试职称"}, {"titleId":23,"titleName":"测试职称1"}, {"titleId":24,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:104) 
+{"titleId":4,"titleName":"测试职称"}
+[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:106) 
 update OK!
-[{"titleId":22,"titleName":"测试职称改"}, {"titleId":23,"titleName":"测试职称1"}, {"titleId":24,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:123) 
+{"titleId":4,"titleName":"测试职称改"}
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
 before delete:
-[{"titleId":22,"titleName":"测试职称改"}, {"titleId":23,"titleName":"测试职称1"}, {"titleId":24,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:131) 
+[{"titleId":4,"titleName":"测试职称改"}, {"titleId":5,"titleName":"教授"}, {"titleId":6,"titleName":"副教授"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
 delete Title OK!
 []
-[INFO ] name.hm.test.unit.TitleUnitTest.afterTest(TitleUnitTest.java:40) 
+[INFO ] name.hm.test.unit.TitleUnitTest.afterTest(TitleUnitTest.java:47) 
 finish TitleUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.156 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.85 sec
+Running name.hm.test.unit.ClassroomUnitTest
+[INFO ] name.hm.test.unit.ClassroomUnitTest.beforeTest(ClassroomUnitTest.java:39) 
+start ClassroomUnitTest
+[INFO ] name.hm.test.unit.ClassroomUnitTest.create(ClassroomUnitTest.java:62) 
+create OK!
+{"classroomId":1,"classroomName":"广播电视工程0班"}
+{"classroomId":2,"classroomName":"广播电视工程1班"}
+{"classroomId":3,"classroomName":"广播电视工程2班"}
+[INFO ] name.hm.test.unit.ClassroomUnitTest.read(ClassroomUnitTest.java:88) 
+selectByClassroomId OK!
+{"classroomId":1,"classroomName":"广播电视工程0班"}
+[INFO ] name.hm.test.unit.ClassroomUnitTest.read(ClassroomUnitTest.java:95) 
+selectByClassroomName OK!
+{"classroomId":2,"classroomName":"广播电视工程1班"}
+[INFO ] name.hm.test.unit.ClassroomUnitTest.update(ClassroomUnitTest.java:122) 
+update OK!
+{"classroomId":1,"classroomName":"广播电视工程0班改"}
+[INFO ] name.hm.test.unit.ClassroomUnitTest.delete(ClassroomUnitTest.java:144) 
+delete OK!
+[INFO ] name.hm.test.unit.ClassroomUnitTest.afterTest(ClassroomUnitTest.java:46) 
+finish ClassroomUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.692 sec
+Running name.hm.test.unit.StudentUnitTest
+[INFO ] name.hm.test.unit.StudentUnitTest.beforeTest(StudentUnitTest.java:31) 
+start StudentUnitTest
+org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
+### The error may involve name.hm.jpa.UserMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO cucgp.`user` (user_id, group_id, user_name, password, valid, user_home) VALUES (?, ?, ?, ?, ?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
+	at sun.proxy.$Proxy18.insert(Unknown Source)
+	at name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:81)
+	at name.hm.test.unit.StudentUnitTest.beforeTest(StudentUnitTest.java:33)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:27)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
+	... 35 more
+[INFO ] name.hm.test.unit.ClassroomUnitTest.create(ClassroomUnitTest.java:62) 
+create OK!
+{"classroomId":4,"classroomName":"广播电视工程0班"}
+{"classroomId":5,"classroomName":"广播电视工程1班"}
+{"classroomId":6,"classroomName":"广播电视工程2班"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
+insert OK!
+{"departmentId":7,"departmentName":"广播电视工程系"}{"departmentId":8,"departmentName":"数字媒体技术"}{"departmentId":9,"departmentName":"自动化"}
+org.apache.ibatis.exceptions.PersistenceException: 
+### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
+### The error may involve name.hm.jpa.StudentMapper.insert-Inline
+### The error occurred while setting parameters
+### SQL: INSERT INTO cucgp.`student` (user_name, student_name, telephone, email, weibo, introduction, classroom_name, department_name)VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
+	at sun.proxy.$Proxy25.insert(Unknown Source)
+	at name.hm.test.unit.StudentUnitTest.create(StudentUnitTest.java:73)
+	at name.hm.test.unit.StudentUnitTest.test(StudentUnitTest.java:57)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
+	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:601)
+	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
+	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
+	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
+	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
+	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.Util.getInstance(Util.java:386)
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
+	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
+	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
+	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
+	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
+	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
+	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
+	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
+	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
+	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
+	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
+	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
+	... 36 more
+[INFO ] name.hm.test.unit.StudentUnitTest.afterTest(StudentUnitTest.java:50) 
+finish StudentUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.085 sec
 Running name.hm.test.unit.RoleUnitTest
-[INFO ] name.hm.test.unit.RoleUnitTest.beforeTest(RoleUnitTest.java:47) 
+[INFO ] name.hm.test.unit.RoleUnitTest.beforeTest(RoleUnitTest.java:49) 
 start RoleUnitTest
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:74) 
+[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
 create Role OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:99) 
+{"roleId":4,"roleName":"管理员","valid":"valid"}
+{"roleId":5,"roleName":"教师","valid":"invalid"}
+{"roleId":6,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:98) 
 selectByRoleId OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:104) 
+{"roleId":4,"roleName":"管理员","valid":"valid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:103) 
 selectByRoleName OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:109) 
+{"roleId":5,"roleName":"教师","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:108) 
 selectByValid OK!
-[{"roleId":7,"roleName":"测试角色","valid":"valid"}, {"roleId":8,"roleName":"测试角色1","valid":"valid"}][{"roleId":9,"roleName":"测试角色2","valid":"invalid"}]
-[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:130) 
+[{"roleId":4,"roleName":"管理员","valid":"valid"}][{"roleId":5,"roleName":"教师","valid":"invalid"}, {"roleId":6,"roleName":"学生","valid":"invalid"}]
+[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:126) 
 before update:
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:139) 
+{"roleId":4,"roleName":"管理员","valid":"valid"}
+{"roleId":5,"roleName":"教师","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:138) 
 update OK!
-{"roleId":7,"roleName":"测试角色改","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:160) 
+{"roleId":4,"roleName":"管理员改","valid":"valid"}
+{"roleId":5,"roleName":"教师","valid":"valid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:156) 
 before delete
-{"roleId":7,"roleName":"测试角色改","valid":"invalid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:166) 
+{"roleId":4,"roleName":"管理员改","valid":"valid"}
+{"roleId":5,"roleName":"教师","valid":"valid"}
+{"roleId":6,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:162) 
 delete OK!
-{"roleId":7,"roleName":"测试角色改","valid":"invalid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.afterTest(RoleUnitTest.java:54) 
+{"roleId":4,"roleName":"管理员改","valid":"valid"}
+{"roleId":5,"roleName":"教师","valid":"valid"}
+{"roleId":6,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.afterTest(RoleUnitTest.java:56) 
 finish RoleUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.344 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.03 sec
 Running name.hm.test.unit.UserUnitTest
-[INFO ] name.hm.test.unit.UserUnitTest.beforeTest(UserUnitTest.java:58) 
+[INFO ] name.hm.test.unit.UserUnitTest.beforeTest(UserUnitTest.java:59) 
 start UserUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:70) 
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
 insert OK!
-{"groupId":31,"groupName":"测试组","valid":"valid"}
-{"groupId":32,"groupName":"测试组1","valid":"valid"}
-{"groupId":33,"groupName":"测试组2","valid":"invalid"}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:87) 
+{"groupId":7,"groupName":"教师组","valid":"valid"}
+{"groupId":8,"groupName":"管理组","valid":"valid"}
+{"groupId":9,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
 create OK!
-{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}{"groupId":31,"password":"123456","userHome":"/TestUser1/","userId":23,"userName":"TestUser1","valid":"valid"}{"groupId":31,"password":"123456","userHome":"/TestUser2/","userId":24,"userName":"TestUser2","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:114) 
+{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
+{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}
+{"groupId":9,"password":"123456","userHome":"/200910013400/","userId":7,"userName":"200910013400","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:109) 
 selectByUserId OK!
-{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:120) 
+{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:115) 
 selectByUserName OK!
-{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:126) 
+{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:121) 
 selectByValid OK!
-[{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}, {"groupId":31,"password":"123456","userHome":"/TestUser1/","userId":23,"userName":"TestUser1","valid":"valid"}, {"groupId":31,"password":"123456","userHome":"/TestUser2/","userId":24,"userName":"TestUser2","valid":"valid"}][]
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:132) 
+[{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}, {"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}, {"groupId":9,"password":"123456","userHome":"/200910013400/","userId":7,"userName":"200910013400","valid":"valid"}][]
+[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:127) 
 selectByGroupId OK!
-[{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}, {"groupId":31,"password":"123456","userHome":"/TestUser1/","userId":23,"userName":"TestUser1","valid":"valid"}, {"groupId":31,"password":"123456","userHome":"/TestUser2/","userId":24,"userName":"TestUser2","valid":"valid"}]
-[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:151) 
+[{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}]
+[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:146) 
 before update
-{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUser","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:158) 
+{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:153) 
 update OK!
-{"groupId":31,"password":"123456","userHome":"/TestUser/","userId":22,"userName":"TestUserC","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:190) 
+{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1001","valid":"valid"}
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
 delete OK!
-nullnullnull
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:160) 
-delete OK!
-{"groupId":31,"groupName":"测试组","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.afterTest(UserUnitTest.java:68) 
-finish UserUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.376 sec
-Running name.hm.test.integration.RoleIntegrationTest
-[INFO ] name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:41) 
-start RoleIntegrationTest
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:56) 
-insert Title OK!
-{"titleId":25,"titleName":"测试职称"}{"titleId":26,"titleName":"测试职称1"}{"titleId":27,"titleName":"测试职称2"}
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:70) 
-insert OK!
-{"groupId":34,"groupName":"测试组","valid":"valid"}
-{"groupId":35,"groupName":"测试组1","valid":"valid"}
-{"groupId":36,"groupName":"测试组2","valid":"invalid"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:65) 
-insert OK!
-{"departmentId":25,"departmentName":"测试系"}{"departmentId":26,"departmentName":"测试系1"}{"departmentId":27,"departmentName":"测试系2"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:70) 
-create OK!
-{"workflowId":7,"workflowName":"测试工作流","workflowStatus":"valid"}
-{"workflowId":8,"workflowName":"测试工作流1","workflowStatus":"valid"}
-{"workflowId":9,"workflowName":"测试工作流2","workflowStatus":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:74) 
-create Role OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:74) 
-DDD 7 8 9
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:84) 
-insert Action OK!
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-{"actionId":27,"actionName":"测试操作1","actionStatus":"valid","actionUrl":"/test/unit/","roleId":8,"workflowId":7}
-{"actionId":28,"actionName":"测试操作2","actionStatus":"invalid","actionUrl":"/test/unit/","roleId":9,"workflowId":7}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:87) 
-create OK!
-{"groupId":34,"password":"123456","userHome":"/TestUser/","userId":25,"userName":"TestUser","valid":"valid"}{"groupId":34,"password":"123456","userHome":"/TestUser1/","userId":26,"userName":"TestUser1","valid":"valid"}{"groupId":34,"password":"123456","userHome":"/TestUser2/","userId":27,"userName":"TestUser2","valid":"valid"}
-[INFO ] name.hm.test.integration.RoleIntegrationTest.afterTest(RoleIntegrationTest.java:72) 
-start RoleIntegrationTest
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:166) 
-before delete
-{"actionId":26,"actionName":"测试操作","actionStatus":"valid","actionUrl":"/test/unit/","roleId":7,"workflowId":7}
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:169) 
-delete OK!
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:172) 
-after delete
 null
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:149) 
+null
+null
+[INFO ] name.hm.test.unit.UserUnitTest.afterTest(UserUnitTest.java:69) 
+finish UserUnitTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.112 sec
+Running name.hm.test.integration.RoleIntegrationTest
+[INFO ] name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:40) 
+start RoleIntegrationTest
+[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
+insert Title OK!
+
+{"titleId":7,"titleName":"测试职称"}
+{"titleId":8,"titleName":"教授"}
+{"titleId":9,"titleName":"副教授"}
+[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
+insert OK!
+{"groupId":10,"groupName":"教师组","valid":"valid"}
+{"groupId":11,"groupName":"管理组","valid":"valid"}
+{"groupId":12,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
+insert OK!
+{"departmentId":10,"departmentName":"广播电视工程系"}{"departmentId":11,"departmentName":"数字媒体技术"}{"departmentId":12,"departmentName":"自动化"}
+[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
+create OK!
+{"workflowId":7,"workflowName":"2013年毕设","workflowStatus":"applying"}
+{"workflowId":8,"workflowName":"2012年毕设","workflowStatus":"applying"}
+{"workflowId":9,"workflowName":"2011年毕设","workflowStatus":"applying"}
+[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
+create Role OK!
+{"roleId":7,"roleName":"管理员","valid":"valid"}
+{"roleId":8,"roleName":"教师","valid":"invalid"}
+{"roleId":9,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:93) 
+insert Action OK!
+{"actionId":4,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":7}
+{"actionId":5,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":8}
+{"actionId":6,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":9}
+[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
+create OK!
+{"groupId":10,"password":"123456","userHome":"/1000/","userId":8,"userName":"1000","valid":"valid"}
+{"groupId":11,"password":"123456","userHome":"/1900/","userId":9,"userName":"1900","valid":"valid"}
+{"groupId":12,"password":"123456","userHome":"/200910013400/","userId":10,"userName":"200910013400","valid":"valid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.create(TeacherUnitTest.java:87) 
+create OK!
+
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
+[INFO ] name.hm.test.integration.RoleIntegrationTest.afterTest(RoleIntegrationTest.java:71) 
+start RoleIntegrationTest
+[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:188) 
+delete OK!
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
+before delete:
+[{"departmentId":10,"departmentName":"广播电视工程系"}, {"departmentId":11,"departmentName":"数字媒体技术"}, {"departmentId":12,"departmentName":"自动化"}]
+[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
 delete OK!
 []
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:160) 
+[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
 delete OK!
-{"groupId":34,"groupName":"测试组","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:160) 
+{"groupId":10,"groupName":"教师组","valid":"valid"}
+{"groupId":11,"groupName":"管理组","valid":"valid"}
+{"groupId":12,"groupName":"学生组","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:156) 
 before delete
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:166) 
+{"roleId":7,"roleName":"管理员","valid":"valid"}
+{"roleId":8,"roleName":"教师","valid":"invalid"}
+{"roleId":9,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:162) 
 delete OK!
-{"roleId":7,"roleName":"测试角色","valid":"valid"}
-{"roleId":8,"roleName":"测试角色1","valid":"valid"}
-{"roleId":9,"roleName":"测试角色2","valid":"invalid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:168) 
+{"roleId":7,"roleName":"管理员","valid":"valid"}
+{"roleId":8,"roleName":"教师","valid":"invalid"}
+{"roleId":9,"roleName":"学生","valid":"invalid"}
+[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:148) 
 delete OK!
-nullnullnull
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:123) 
+{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
 before delete:
-[{"titleId":25,"titleName":"测试职称"}, {"titleId":26,"titleName":"测试职称1"}, {"titleId":27,"titleName":"测试职称2"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:131) 
+[{"titleId":7,"titleName":"测试职称"}, {"titleId":8,"titleName":"教授"}, {"titleId":9,"titleName":"副教授"}]
+[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
 delete Title OK!
 []
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:190) 
-delete OK!
-nullnullnull
-[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:159) 
+[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
 delete OK!
 null
 null
 null
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.003 sec
+[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:149) 
+delete OK!
+{"workflowId":7,"workflowName":"2013年毕设","workflowStatus":"applying"}
+{"workflowId":8,"workflowName":"2012年毕设","workflowStatus":"applying"}
+{"workflowId":9,"workflowName":"2011年毕设","workflowStatus":"applying"}
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.483 sec
 
 Results :
 
-Tests run: 9, Failures: 0, Errors: 0, Skipped: 0
+Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
 
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 19.106s
-[INFO] Finished at: Fri Mar 08 10:56:14 CST 2013
-[INFO] Final Memory: 14M/117M
+[INFO] Total time: 34.616s
+[INFO] Finished at: Wed Mar 13 10:46:32 CST 2013
+[INFO] Final Memory: 13M/118M
 [INFO] ------------------------------------------------------------------------

@@ -10,9 +10,9 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import name.hm.jpa.GroupMapper;
-import name.hm.pojo.Department;
-import name.hm.pojo.Group;
+import name.hm.m.Department;
+import name.hm.m.Group;
+import name.hm.orm.GroupMapper;
 import name.hm.test.BaseTestCase;
 
 // PASS UNIT #0306

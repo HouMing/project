@@ -1,6 +1,6 @@
 package name.hm.test.unit;
 
-import name.hm.pojo.Tca;
+import name.hm.m.Tca;
 import name.hm.test.BaseTestCase;
 
 //TODO 12 IMPL, Upgrade - task : #0310
@@ -23,6 +23,4 @@ public class TcaUnitTest extends BaseTestCase
 	public static final Integer NUMERATOR = 1;
 	public static final Integer APPLYCOUNT = 1000;
 	
-	Tca.Status S1 = Tca.S1;
-	Tca.Status S2 = Tca.S2;
 }

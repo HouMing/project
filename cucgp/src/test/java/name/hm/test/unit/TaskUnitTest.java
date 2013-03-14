@@ -1,13 +1,12 @@
 package name.hm.test.unit;
 
-import name.hm.pojo.Student;
-import name.hm.pojo.Teacher;
+import name.hm.m.Student;
+import name.hm.m.Teacher;
 import name.hm.test.BaseTestCase;
 
 //TODO 14 IMPL, Upgrade - task : #0310
 public class TaskUnitTest extends BaseTestCase
 {
-
 	public static Integer TASK_ID = null;
 	public static Integer STUA_ID = null;
 	public static Student STUDENT = null;

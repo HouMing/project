@@ -12,7 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 
-import name.hm.jpa.*;
+import name.hm.orm.*;
 
 public class BaseTestCase implements ITestCase, ILogger
 {
@@ -28,10 +28,13 @@ public class BaseTestCase implements ITestCase, ILogger
 	protected UserMapper userMapper = null;
 	protected WorkflowMapper workflowMapper = null;
 	protected ActionMapper actionMapper = null;
-	protected TeacherMapper teacherMapper = null;
 	protected DepartmentMapper departmentMapper = null;
 	protected TitleMapper titleMapper = null;
 	protected ClassroomMapper classroomMapper = null;
+	protected TeacherMapper teacherMapper = null;
+	protected StudentMapper studentMapper = null;
+	protected StuaMapper stuaMapper = null;
+	protected TcaMapper tcaMapper = null;
 
 	static {
 		String resource = CONF_FILE_NAME;
@@ -184,5 +187,35 @@ public class BaseTestCase implements ITestCase, ILogger
 	public void setClassroomMapper(ClassroomMapper classroomMapper)
 	{
 		this.classroomMapper = classroomMapper;
+	}
+
+	public StudentMapper getStudentMapper()
+	{
+		return studentMapper;
+	}
+
+	public void setStudentMapper(StudentMapper studentMapper)
+	{
+		this.studentMapper = studentMapper;
+	}
+
+	public StuaMapper getStuaMapper()
+	{
+		return stuaMapper;
+	}
+
+	public void setStuaMapper(StuaMapper stuaMapper)
+	{
+		this.stuaMapper = stuaMapper;
+	}
+
+	public TcaMapper getTcaMapper()
+	{
+		return tcaMapper;
+	}
+
+	public void setTcaMapper(TcaMapper tcaMapper)
+	{
+		this.tcaMapper = tcaMapper;
 	}
 }

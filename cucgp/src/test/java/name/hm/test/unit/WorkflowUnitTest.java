@@ -3,7 +3,7 @@ package name.hm.test.unit;
 import java.util.LinkedList;
 import java.util.List;
 
-import name.hm.pojo.Workflow;
+import name.hm.m.Workflow;
 import name.hm.test.BaseTestCase;
 
 import org.junit.Test;
