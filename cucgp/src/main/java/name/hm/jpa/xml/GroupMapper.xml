@@ -5,32 +5,33 @@
 	<resultMap type="Group" id="group">
 		<id javaType="Integer" column="group_id" property="groupId" />
 		<result javaType="String" column="group_name" property="groupName" />
-		<result javaType="name.hm.m.Group$Valid" column="valid"
-			property="valid" />
 		<collection property="roles" ofType="Integer" select="rolesId" column="role_id" />
 	</resultMap>
 
 	<select id="rolesId" parameterType="Integer" resultType="Integer">
-		SELECT role_id from role_has_group
-		WHERE group_id = #{param1} ORDER BY role_id ASC;
+		SELECT role_id 
+		from role_has_group
+		WHERE group_id = #{param1}
+		ORDER BY role_id ASC;
 	</select>
 
 	<select id="selectByGroupId" parameterType="Integer" resultMap="group">
-		SELECT group_id, group_name, valid FROM cucgp.`group`
+		SELECT group_id, group_name
+		FROM cucgp.`group`
 		WHERE group_id = #{param1};
 	</select>
 	
 	<select id="selectAll" parameterType="Group" resultMap="group">
-	  SELECT group_id, group_name, valid FROM cucgp.`group`;
+	  SELECT group_id, group_name FROM cucgp.`group`;
 	</select>
 
 	<insert id="insert" parameterType="Group">
-		INSERT INTO cucgp.`group` (group_id, group_name, valid)
-		VALUES
-		(#{groupId}, #{groupName}, #{valid});
-		<selectKey keyProperty="groupId" order="AFTER" resultType="Integer">
-			SELECT MAX(group_id) AS group_id FROM cucgp.`group`;
+		<selectKey keyProperty="groupId" order="BEFORE" resultType="Integer">
+			SELECT IFNULL(MAX(group_id+1),1) AS group_id FROM cucgp.`group`;
 		</selectKey>
+		INSERT INTO cucgp.`group` (group_id, group_name)
+		VALUES
+		(#{groupId}, #{groupName});
 	</insert>
 
 	<delete id="delete" parameterType="Group">

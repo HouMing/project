@@ -1,7 +1,11 @@
 package name.hm.test.unit;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+
+import junit.framework.Assert;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -19,61 +23,74 @@ import name.hm.test.integration.RoleIntegrationTest;
 //TODO 3 PASS, Upgrade - task : #0310
 public class RoleUnitTest extends BaseTestCase
 {
-	public static Role ROLE_ADMIN = null;
-	protected static final String ROLENAME_ADMIN = "管理员";
+	public static Role R_Admin = null;
+	protected static final String R_Admin_NAME = "管理员";
 	protected static final String ROLENAME_ADMINC = "管理员改";
 
-	public static Role ROLE_TEACHER = null;
- 	protected static final String ROLENAME_TEACHER = "教师";
+	public static Role R_Teacher = null;
+ 	protected static final String R_Teacher_NAME = "教师";
 
- 	public static Role ROLE_STUDENT = null;
-	protected static final String ROLENAME_STUDENT = "学生";
+ 	public static Role R_Student = null;
+	protected static final String R_Student_NAME = "学生";
 	
-	public static final Role.Valid ROLE_VALID = Role.VALID;
-	public static final Role.Valid ROLE_INVALID = Role.INVALID;
-
 	@Test
 	public void test()
 	{
 		beforeTest();
 		create();
-		read();
-		update();
+//		read();
+//		update();
 		delete();
 		afterTest();
 	}
 
-	// PASS CELL #0306
 	protected void beforeTest()
 	{
 		logger.info("start RoleUnitTest");
+		GroupUnitTest groupUnit = new GroupUnitTest();
+		groupUnit.create();
 	}
 
-	// PASS CELL #0306
 	protected void afterTest()
 	{
 		clean();
+		GroupUnitTest groupUnit = new GroupUnitTest();
+		groupUnit.clean();
 		logger.info("finish RoleUnitTest");
 	}
 
-	// PASS CELL #0306
 	public void create()
 	{
 		try {
 			Integer error = 1;
 			openTestSession();
-			ROLE_ADMIN = new Role(ROLENAME_ADMIN, ROLE_VALID);
-			ROLE_TEACHER = new Role(ROLENAME_TEACHER, ROLE_INVALID);
-			ROLE_STUDENT = new Role(ROLENAME_STUDENT, ROLE_INVALID);
-			error = roleMapper.insert(ROLE_ADMIN) & error;
-			error = roleMapper.insert(ROLE_TEACHER) & error;
-			error = roleMapper.insert(ROLE_STUDENT) & error;
+			ArrayList<Integer> xizhuren = new ArrayList<Integer>();
+			ArrayList<Integer> teacher = new ArrayList<Integer>();
+			ArrayList<Integer> student = new ArrayList<Integer>();
+			xizhuren.add(GroupUnitTest.G_Admin.getGroupId());
+			xizhuren.add(GroupUnitTest.G_Teacher.getGroupId());
+			teacher.add(GroupUnitTest.G_Teacher.getGroupId());
+			student.add(GroupUnitTest.G_Student.getGroupId());
+			R_Admin = new Role(R_Admin_NAME);
+			R_Admin.setGroups(xizhuren);
+			R_Teacher = new Role(R_Teacher_NAME);
+			R_Teacher.setGroups(teacher);
+			R_Student = new Role(R_Student_NAME);
+			R_Student.setGroups(student);
+			error &=
+			roleMapper.insert(R_Admin);
+			roleMapper.insertList(R_Admin);
+			error &=
+			roleMapper.insert(R_Teacher);
+			roleMapper.insertList(R_Teacher);
+			error &=
+			roleMapper.insert(R_Student);
+			roleMapper.insertList(R_Student);
 			se.commit();
 			if (error == 1) {
-				logger.info("create Role OK!\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
+				logger.info("create Role OK!\n" + R_Admin + "\n" + R_Teacher + "\n" + R_Student);
 			} else {
-				logger
-						.info("create Role failed\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
+				logger.info("create Role failed\n" + R_Admin + "\n" + R_Teacher + "\n" + R_Student);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -87,27 +104,12 @@ public class RoleUnitTest extends BaseTestCase
 	{
 		try {
 			openTestSession();
-
-			Role admin = roleMapper.selectByRoleId(ROLE_ADMIN.getRoleId());
-			Role teacher = roleMapper.selectByRoleName(ROLE_TEACHER.getRoleName());
-			List<Role> l = roleMapper.selectByValid(ROLE_VALID);
-			List<Role> l2 = roleMapper.selectByValid(ROLE_INVALID);
+			Role admin = roleMapper.selectByRoleId(R_Admin.getRoleId());
 			se.commit();
-
 			if (admin != null) {
 				logger.info("selectByRoleId OK!\n" + admin);
 			} else {
-				logger.error("selectByRoleId failed\n" + ROLE_ADMIN);
-			}
-			if (teacher != null) {
-				logger.info("selectByRoleName OK!\n" + teacher);
-			} else {
-				logger.error("selectByRoleName failed\n" + ROLE_TEACHER);
-			}
-			if (l.size() > 0 || l2.size() > 0) {
-				logger.info("selectByValid OK!\n" + l + l2);
-			} else {
-				logger.error("selectByValid failed\n" + l + l2);
+				logger.error("selectByRoleId failed\n" + R_Admin);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -119,72 +121,69 @@ public class RoleUnitTest extends BaseTestCase
 	// PASS CELL #0306
 	public void update()
 	{
-		try {
-			Integer error = 1;
-			openTestSession();
-
-			logger.info("before update:\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
-			ROLE_ADMIN.setRoleName(ROLENAME_ADMINC);
-			ROLE_TEACHER.setValid(ROLE_VALID);
-			error = roleMapper.update(ROLE_ADMIN) & error;
-			error = roleMapper.update(ROLE_TEACHER) & error;
-			se.commit();
-
-			ROLE_ADMIN = roleMapper.selectByRoleId(ROLE_ADMIN.getRoleId());
-			ROLE_TEACHER = roleMapper.selectByRoleId(ROLE_TEACHER.getRoleId());
-			se.commit();
-
-			if (error == 1) {
-				logger.info("update OK!\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
-			} else {
-				logger.error("update failed\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+//		try {
+//			Integer error = 1;
+//			openTestSession();
+//
+//			logger.info("before update:\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
+//			ROLE_ADMIN.setRoleName(ROLENAME_ADMINC);
+//			ROLE_TEACHER.setValid(ROLE_VALID);
+//			error = roleMapper.update(ROLE_ADMIN);
+//			error = roleMapper.update(ROLE_TEACHER);
+//			se.commit();
+//
+//			ROLE_ADMIN = roleMapper.selectByRoleId(ROLE_ADMIN.getRoleId());
+//			ROLE_TEACHER = roleMapper.selectByRoleId(ROLE_TEACHER.getRoleId());
+//			se.commit();
+//
+//			if (error == 1) {
+//				logger.info("update OK!\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
+//			} else {
+//				logger.error("update failed\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER);
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			closeTestSession();
+//		}
 	}
 
 	// PASS CELL #0306
 	public void delete()
 	{
-		try {
-			Integer error = 1;
-			openTestSession();
-			logger.info("before delete\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
-			error = roleMapper.delete(ROLE_ADMIN) & error;
-			error = roleMapper.delete(ROLE_TEACHER) & error;
-			error = roleMapper.delete(ROLE_STUDENT) & error;
-			se.commit();
-			if (error == 1) {
-				logger.info("delete OK!\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
-			} else {
-				logger.error("delete failed\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			closeTestSession();
-		}
+//		try {
+//			Integer error = 1;
+//			openTestSession();
+//			logger.info("before delete\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
+//			error = roleMapper.delete(ROLE_ADMIN);
+//			error = roleMapper.delete(ROLE_TEACHER);
+//			error = roleMapper.delete(ROLE_STUDENT);
+//			se.commit();
+//			if (error == 1) {
+//				logger.info("delete OK!\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
+//			} else {
+//				logger.error("delete failed\n" + ROLE_ADMIN + "\n" + ROLE_TEACHER + "\n" + ROLE_STUDENT);
+//			}
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			closeTestSession();
+//		}
 	}
 
 	public void clean()
 	{
 		try {
+			Integer error = 1;
 			openTestSession();
-			LinkedList<Role> l = roleMapper.selectByValid(ROLE_VALID);
-			LinkedList<Role> l2 = roleMapper.selectByValid(ROLE_INVALID);
+			ArrayList<Role> l = roleMapper.selectAll();
 			se.commit();
 			for (Role tmp : l) {
-				roleMapper.delete(tmp);
+				error &= roleMapper.delete(tmp);
+				se.commit();
 			}
-			for (Role tmp : l2) {
-				roleMapper.delete(tmp);
-			}
-			se.commit();
-			roleMapper.selectByValid(ROLE_INVALID);
+			Assert.assertEquals(new Integer(1), error);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

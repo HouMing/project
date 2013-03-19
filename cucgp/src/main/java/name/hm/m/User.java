@@ -1,7 +1,5 @@
 package name.hm.m;
 
-import name.hm.m.Role.Valid;
-
 import com.alibaba.fastjson.JSONObject;
 
 //TODO TEST POJO - task : #0308
@@ -15,26 +13,23 @@ public class User
 
 	Integer groupId;
 
-	public static final Valid ConstValid = Valid.valueOf("valid");
-	public static final Valid ConstInvalid = Valid.valueOf("invalid");
-
 	public User()
 	{}
 
+	public User(String userName, String password,
+			String userHome, Integer groupId)
+	{
+		this(null, userName, password, userHome, groupId);
+	}
+	
 	public User(Integer userId, String userName, String password,
-			String userHome, Valid valid, Integer groupId)
+			String userHome, Integer groupId)
 	{
 		this.userId = userId;
 		this.userName = userName;
 		this.password = password;
 		this.userHome = userHome;
 		this.groupId = groupId;
-	}
-
-	public User(String userName, String password,
-			String userHome, Valid valid, Integer groupId)
-	{
-		this(null, userName, password, userHome, valid, groupId);
 	}
 	
 	public Integer getUserId()

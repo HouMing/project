@@ -19,17 +19,12 @@ import org.junit.Test;
 
 public class UserIntegrationTest extends BaseTestCase
 {
-	private static Role role;
-	private static Group group;
-	private static User user;
-	private static Workflow workflow;
-	private static Action action;
 
 	@Test
 	public void test()
 	{
 			beforeTest();
-//			afterTest();
+			afterTest();
 	}
 
 	// PASS CELL #0307
@@ -47,14 +42,10 @@ public class UserIntegrationTest extends BaseTestCase
 			UserUnitTest userUnit = new UserUnitTest();
 			WorkflowUnitTest workflowUnit = new WorkflowUnitTest();
 			
-			titleUnit.create();
 			groupUnit.create();
-			departmentUnit.create();
-			workflowUnit.create();
 			roleUnit.create();
 			actionUnit.create();
 			userUnit.create();
-			teacherUnit.create();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

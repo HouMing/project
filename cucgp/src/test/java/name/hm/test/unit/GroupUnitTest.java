@@ -32,9 +32,6 @@ public class GroupUnitTest extends BaseTestCase
 	public static Group G_Student = null;
 	public static String G_Student_NAME = "学生组";
 
-	public static Group.Valid GROUP_VALID = Group.ConstValid;
-	public static Group.Valid GROUP_INVALID = Group.ConstInvalid;
-
 	@Test
 	public void test()
 	{
@@ -63,9 +60,9 @@ public class GroupUnitTest extends BaseTestCase
 		try {
 			Integer error = 1;
 			openTestSession();
-			G_Teacher = new Group(G_Teacher_NAME, GROUP_VALID);
-			G_Admin = new Group(G_Admin_NAME, GROUP_VALID);
-			G_Student = new Group(G_Student_NAME, GROUP_INVALID);
+			G_Teacher = new Group(G_Teacher_NAME);
+			G_Admin = new Group(G_Admin_NAME);
+			G_Student = new Group(G_Student_NAME);
 			error = groupMapper.insert(G_Teacher) & error;
 			error = groupMapper.insert(G_Admin) & error;
 			error = groupMapper.insert(G_Student) & error;

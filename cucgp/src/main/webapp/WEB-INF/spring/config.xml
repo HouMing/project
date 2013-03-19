@@ -17,8 +17,10 @@
 	</bean>
 
 	<context:component-scan base-package="name.hm.c" />
-	
-	<bean id="userRightController" class="name.hm.c.login.UserRightController">
+
+	<context:component-scan base-package="name.hm.s" />
+
+	<bean id="userRightService" class="name.hm.s.UserRightService">
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 

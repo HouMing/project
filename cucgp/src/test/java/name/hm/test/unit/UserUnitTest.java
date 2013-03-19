@@ -1,24 +1,11 @@
 package name.hm.test.unit;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
-import name.hm.jpa.GroupMapper;
-import name.hm.jpa.UserMapper;
-import name.hm.m.Group;
-import name.hm.m.Title;
 import name.hm.m.User;
-import name.hm.m.User.Valid;
 import name.hm.test.BaseTestCase;
-import name.hm.test.integration.RoleIntegrationTest;
 
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.log4j.Logger;
-import org.junit.AfterClass;
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 // TODO 2 PASS, Upgrade - task : #0310
@@ -38,8 +25,6 @@ public class UserUnitTest extends BaseTestCase
 	protected static final String STUDENT_HOME = "/" + U_Student_NAME + "/";
 
 	protected static String PASSWORD = "123456";
-	protected static final User.Valid USER_VALID = User.ConstValid;
-	protected static final User.Valid USER_INVALID = User.ConstInvalid;
 
 	@Test
 	public void test()
@@ -77,9 +62,9 @@ public class UserUnitTest extends BaseTestCase
 		try {
 			Integer error = 1;
 			openTestSession();
-			U_Admin = new User(U_Admin_NAME, PASSWORD, ADMIN_HOME, USER_VALID, GroupUnitTest.G_Teacher.getGroupId());
-			U_Teacher = new User(U_Teacher_NAME, PASSWORD, TEACHER_HOME, USER_VALID, GroupUnitTest.G_Admin.getGroupId());
-			U_Student = new User(U_Student_NAME, PASSWORD, STUDENT_HOME, USER_VALID, GroupUnitTest.G_Student.getGroupId());
+			U_Admin = new User(U_Admin_NAME, PASSWORD, ADMIN_HOME, GroupUnitTest.G_Teacher.getGroupId());
+			U_Teacher = new User(U_Teacher_NAME, PASSWORD, TEACHER_HOME, GroupUnitTest.G_Admin.getGroupId());
+			U_Student = new User(U_Student_NAME, PASSWORD, STUDENT_HOME, GroupUnitTest.G_Student.getGroupId());
 			error &= userMapper.insert(U_Admin);
 			error &= userMapper.insert(U_Teacher);
 			error &= userMapper.insert(U_Student);

@@ -10,41 +10,36 @@ public class Role
 {
 	Integer roleId;
 	String roleName;
-	Valid valid;
 	
 	ArrayList<Integer> actions;
-	HashSet<Integer> groupIds;
-
-	public static final Valid ConstValid = Valid.valueOf("valid");
-	public static final Valid ConstInvalid = Valid.valueOf("invalid");
-	
-	public HashSet<Integer> getGroupIds()
-	{
-		return groupIds;
-	}
-
-	public void setGroupIds(HashSet<Integer> groupIds)
-	{
-		this.groupIds = groupIds;
- }
+	ArrayList<Integer> groups;
 
 	public Role()
 	{}
 
-	public Role(Integer roleId, String roleName, Valid valid,
-			ArrayList<Integer> actions)
+	public Role(String roleName)
+	{
+		this(null, roleName, null, null);
+	}
+
+	public Role(Integer roleId, String roleName, ArrayList<Integer> actions, ArrayList<Integer> groups)
 	{
 		this.roleId = roleId;
 		this.roleName = roleName;
-		this.valid = valid;
 		this.actions = actions;
+		this.groups = groups;
 	}
 
-	public Role(String roleName, Valid valid, ArrayList<Integer> actions)
+	public ArrayList<Integer> getGroups()
 	{
-		this(null, roleName, valid, actions);
+		return groups;
 	}
 
+	public void setGroups(ArrayList<Integer> groups)
+	{
+		this.groups = groups;
+  }
+	
 	public Integer getRoleId()
 	{
 		return roleId;
@@ -63,16 +58,6 @@ public class Role
 	public void setRoleName(String roleName)
 	{
 		this.roleName = roleName;
-	}
-
-	public Valid getValid()
-	{
-		return valid;
-	}
-
-	public void setValid(Valid valid)
-	{
-		this.valid = valid;
 	}
 
 	public void setActions(ArrayList<Integer> actions)
@@ -108,22 +93,6 @@ public class Role
 			}
 		} else {
 			return false;
-		}
-	}
-
-	public enum Valid
-	{
-		valid("valid"), invalid("invalid");
-		String value;
-
-		Valid(String value)
-		{
-			this.value = value;
-		}
-
-		public String toString()
-		{
-			return value;
 		}
 	}
 

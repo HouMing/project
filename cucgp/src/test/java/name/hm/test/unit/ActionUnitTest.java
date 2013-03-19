@@ -79,15 +79,15 @@ public class ActionUnitTest extends BaseTestCase
 			ACTION_ADMIN = new Action(ACTION_ADMIN_NAME, 
 					ACTION_ADMIN_URL,
 					ACTION_ADMIN_DESCRIPTION, 
-					RoleUnitTest.ROLE_ADMIN.getRoleId());
+					RoleUnitTest.R_Admin.getRoleId());
 			ACTION_TEACHER = new Action(ACTION_TEACHER_NAME, 
 					ACTION_TEACHER_URL, 
 					ACTION_TEACHER_DESCRIPTION, 
-					RoleUnitTest.ROLE_TEACHER.getRoleId());
+					RoleUnitTest.R_Teacher.getRoleId());
 			ACTION_STUDENT = new Action(ACTION_STUDENT_NAME,
 					ACTION_STUDENT_URL,
 					ACTION_STUDENT_DESCRIPTION,
-					RoleUnitTest.ROLE_STUDENT.getRoleId());
+					RoleUnitTest.R_Student.getRoleId());
 			error = actionMapper.insert(ACTION_ADMIN) & error;
 			error = actionMapper.insert(ACTION_TEACHER) & error;
 			error = actionMapper.insert(ACTION_STUDENT) & error;
