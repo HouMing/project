@@ -1,5 +1,8 @@
 package name.hm.m;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 import com.alibaba.fastjson.JSONObject;
 
 //TODO TEST hashCode, equals interrupt : #0309
@@ -8,23 +11,38 @@ public class Role
 	Integer roleId;
 	String roleName;
 	Valid valid;
+	
+	ArrayList<Integer> actions;
+	HashSet<Integer> groupIds;
 
-	public static final Valid VALID = Valid.valueOf("valid");
-	public static final Valid INVALID = Valid.valueOf("invalid");
+	public static final Valid ConstValid = Valid.valueOf("valid");
+	public static final Valid ConstInvalid = Valid.valueOf("invalid");
+	
+	public HashSet<Integer> getGroupIds()
+	{
+		return groupIds;
+	}
+
+	public void setGroupIds(HashSet<Integer> groupIds)
+	{
+		this.groupIds = groupIds;
+ }
 
 	public Role()
 	{}
-	
-	public Role(String roleName, Valid valid)
-	{
-		this(null, roleName, valid);
-	}
-	
-	public Role(Integer roleId, String roleName, Valid valid)
+
+	public Role(Integer roleId, String roleName, Valid valid,
+			ArrayList<Integer> actions)
 	{
 		this.roleId = roleId;
 		this.roleName = roleName;
 		this.valid = valid;
+		this.actions = actions;
+	}
+
+	public Role(String roleName, Valid valid, ArrayList<Integer> actions)
+	{
+		this(null, roleName, valid, actions);
 	}
 
 	public Integer getRoleId()
@@ -55,6 +73,16 @@ public class Role
 	public void setValid(Valid valid)
 	{
 		this.valid = valid;
+	}
+
+	public void setActions(ArrayList<Integer> actions)
+	{
+		this.actions = actions;
+	}
+
+	public ArrayList<Integer> getActions()
+	{
+		return this.actions;
 	}
 
 	@Override

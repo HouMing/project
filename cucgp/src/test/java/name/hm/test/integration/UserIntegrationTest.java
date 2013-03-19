@@ -17,7 +17,7 @@ import name.hm.test.unit.WorkflowUnitTest;
 
 import org.junit.Test;
 
-public class RoleIntegrationTest extends BaseTestCase
+public class UserIntegrationTest extends BaseTestCase
 {
 	private static Role role;
 	private static Group group;
@@ -29,7 +29,7 @@ public class RoleIntegrationTest extends BaseTestCase
 	public void test()
 	{
 			beforeTest();
-			afterTest();
+//			afterTest();
 	}
 
 	// PASS CELL #0307

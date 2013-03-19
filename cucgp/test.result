@@ -4,12 +4,14 @@
 [INFO] Building Graduation Project of HouMing 1.0
 [INFO] ------------------------------------------------------------------------
 [INFO] 
+[INFO] >>> jetty-maven-plugin:7.3.1.v20110307:run (default-cli) @ cucgp >>>
+[INFO] 
 [INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ cucgp ---
 [debug] execute contextualize
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
-[INFO] Copying 0 resource
+[INFO] Copying 1 resource
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.0:compile (default-compile) @ cucgp ---
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ cucgp ---
 [INFO] Nothing to compile - all classes are up to date
 [INFO] 
 [INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ cucgp ---
@@ -17,572 +19,906 @@
 [INFO] Using 'UTF-8' encoding to copy filtered resources.
 [INFO] Copying 2 resources
 [INFO] 
-[INFO] --- maven-compiler-plugin:3.0:testCompile (default-testCompile) @ cucgp ---
-[INFO] Changes detected - recompiling the module!
-[INFO] Compiling 18 source files to /home/houming/workspace/project/cucgp/target/test-classes
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ cucgp ---
+[INFO] Nothing to compile - all classes are up to date
 [INFO] 
-[INFO] --- maven-surefire-plugin:2.10:test (default-test) @ cucgp ---
-[INFO] Surefire report directory: /home/houming/workspace/project/cucgp/target/surefire-reports
-
--------------------------------------------------------
- T E S T S
--------------------------------------------------------
-Running name.hm.test.unit.DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:45) 
-start DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.beforeTest(DepartmentUnitTest.java:45) 
-start DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
-insert OK!
-{"departmentId":1,"departmentName":"广播电视工程系"}{"departmentId":2,"departmentName":"数字媒体技术"}{"departmentId":3,"departmentName":"自动化"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.read(DepartmentUnitTest.java:88) 
-selectAll OK!
-[{"departmentId":1,"departmentName":"广播电视工程系"}, {"departmentId":2,"departmentName":"数字媒体技术"}, {"departmentId":3,"departmentName":"自动化"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:105) 
-before update
-:{"departmentId":1,"departmentName":"广播电视工程系"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.update(DepartmentUnitTest.java:111) 
-update OK!
-
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
-before delete:
-[{"departmentId":1,"departmentName":"广电工系"}, {"departmentId":2,"departmentName":"数字媒体技术"}, {"departmentId":3,"departmentName":"自动化"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
-delete OK!
-[]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:52) 
-finish DepartmentUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.afterTest(DepartmentUnitTest.java:52) 
-finish DepartmentUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.716 sec
-Running name.hm.test.unit.WorkflowUnitTest
-[INFO ] name.hm.test.unit.WorkflowUnitTest.beforeTest(WorkflowUnitTest.java:45) 
-start WorkflowUnitTest
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
-create OK!
-{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}
-{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
-{"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:90) 
-selectByWorkflowId OK!
-{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:95) 
-selectByWorkflowName OK!
-{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.read(WorkflowUnitTest.java:100) 
-selectByWorkflowStatus OK!
-[{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"applying"}, {"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}, {"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}]
-[INFO ] name.hm.test.unit.WorkflowUnitTest.update(WorkflowUnitTest.java:123) 
-update OK!
-{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"publishing"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:149) 
-delete OK!
-{"workflowId":1,"workflowName":"2013年毕设","workflowStatus":"publishing"}
-{"workflowId":2,"workflowName":"2012年毕设","workflowStatus":"applying"}
-{"workflowId":3,"workflowName":"2011年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.afterTest(WorkflowUnitTest.java:51) 
-finish WorkflowUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.994 sec
-Running name.hm.test.unit.GroupUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.beforeTest(GroupUnitTest.java:48) 
-start GroupUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
-insert OK!
-{"groupId":1,"groupName":"教师组","valid":"valid"}
-{"groupId":2,"groupName":"管理组","valid":"valid"}
-{"groupId":3,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:94) 
-selectByGroupId OK!
-{"groupId":1,"groupName":"教师组","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:99) 
-selectByGroupName OK!
-{"groupId":3,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.select(GroupUnitTest.java:104) 
-selectByValid OK!
-[{"groupId":1,"groupName":"教师组","valid":"valid"}, {"groupId":2,"groupName":"管理组","valid":"valid"}][{"groupId":3,"groupName":"学生组","valid":"invalid"}]
-[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:123) 
-before update
-{"groupId":1,"groupName":"教师组","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.update(GroupUnitTest.java:130) 
-update OK!
-{"groupId":1,"groupName":"教师组改","valid":"valid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
-delete OK!
-{"groupId":1,"groupName":"教师组","valid":"valid"}
-{"groupId":2,"groupName":"管理组","valid":"valid"}
-{"groupId":3,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.GroupUnitTest.afterTest(GroupUnitTest.java:54) 
-finish GroupUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.353 sec
-Running name.hm.test.unit.ActionUnitTest
-[INFO ] name.hm.test.unit.ActionUnitTest.beforeTest(ActionUnitTest.java:51) 
-start ActionUnit test
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
-create Role OK!
-{"roleId":1,"roleName":"管理员","valid":"valid"}
-{"roleId":2,"roleName":"教师","valid":"invalid"}
-{"roleId":3,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
-create OK!
-{"workflowId":4,"workflowName":"2013年毕设","workflowStatus":"applying"}
-{"workflowId":5,"workflowName":"2012年毕设","workflowStatus":"applying"}
-{"workflowId":6,"workflowName":"2011年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:93) 
-insert Action OK!
-{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}
-{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
-{"actionId":3,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":3}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:119) 
-selectByActionId OK!
-{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:126) 
-selectByActionName OK!
-{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
-[INFO ] name.hm.test.unit.ActionUnitTest.read(ActionUnitTest.java:132) 
-selectByActionStatus OK!
-[{"actionId":1,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":1}]
-[{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}, {"actionId":3,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":3}]
-[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:154) 
-before update
-{"actionId":2,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":2}
-[INFO ] name.hm.test.unit.ActionUnitTest.update(ActionUnitTest.java:165) 
-update OK!
-{"actionId":2,"actionName":"教师操作","actionStatus":"valid","actionUrl":"/teacher/unit/test.do","roleId":2}
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:188) 
-delete OK!
-[INFO ] name.hm.test.unit.ActionUnitTest.afterTest(ActionUnitTest.java:67) 
-finish ActionUnit test
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.271 sec
-Running name.hm.test.unit.TeacherUnitTest
-[INFO ] name.hm.test.unit.TeacherUnitTest.beforeTest(TeacherUnitTest.java:46) 
-start TeacherUnitTest
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
-insert OK!
-{"departmentId":4,"departmentName":"广播电视工程系"}{"departmentId":5,"departmentName":"数字媒体技术"}{"departmentId":6,"departmentName":"自动化"}
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
-insert Title OK!
-
-{"titleId":1,"titleName":"测试职称"}
-{"titleId":2,"titleName":"教授"}
-{"titleId":3,"titleName":"副教授"}
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
-insert OK!
-{"groupId":4,"groupName":"教师组","valid":"valid"}
-{"groupId":5,"groupName":"管理组","valid":"valid"}
-{"groupId":6,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
-create OK!
-{"groupId":4,"password":"123456","userHome":"/1000/","userId":1,"userName":"1000","valid":"valid"}
-{"groupId":5,"password":"123456","userHome":"/1900/","userId":2,"userName":"1900","valid":"valid"}
-{"groupId":6,"password":"123456","userHome":"/200910013400/","userId":3,"userName":"200910013400","valid":"valid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.create(TeacherUnitTest.java:87) 
-create OK!
-
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.read(TeacherUnitTest.java:106) 
-selectByUserName OK!
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.update(TeacherUnitTest.java:127) 
-update OK!
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师改","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:148) 
-delete OK!
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师改","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
-before delete:
-[{"departmentId":4,"departmentName":"广播电视工程系"}, {"departmentId":5,"departmentName":"数字媒体技术"}, {"departmentId":6,"departmentName":"自动化"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
-delete OK!
-[]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
-before delete:
-[{"titleId":1,"titleName":"测试职称"}, {"titleId":2,"titleName":"教授"}, {"titleId":3,"titleName":"副教授"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
-delete Title OK!
-[]
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
-delete OK!
-null
-null
-null
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
-delete OK!
-{"groupId":4,"groupName":"教师组","valid":"valid"}
-{"groupId":5,"groupName":"管理组","valid":"valid"}
-{"groupId":6,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.clean(TeacherUnitTest.java:172) 
-clean
-[INFO ] name.hm.test.unit.TeacherUnitTest.afterTest(TeacherUnitTest.java:69) 
-end TeacherUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.42 sec
-Running name.hm.test.unit.TitleUnitTest
-[INFO ] name.hm.test.unit.TitleUnitTest.beforeTest(TitleUnitTest.java:40) 
-start TitleUnitTest
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
-insert Title OK!
-
-{"titleId":4,"titleName":"测试职称"}
-{"titleId":5,"titleName":"教授"}
-{"titleId":6,"titleName":"副教授"}
-[INFO ] name.hm.test.unit.TitleUnitTest.read(TitleUnitTest.java:83) 
-selectAll OK!
-[{"titleId":4,"titleName":"测试职称"}, {"titleId":5,"titleName":"教授"}, {"titleId":6,"titleName":"副教授"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:99) 
-before update:
-{"titleId":4,"titleName":"测试职称"}
-[INFO ] name.hm.test.unit.TitleUnitTest.update(TitleUnitTest.java:106) 
-update OK!
-{"titleId":4,"titleName":"测试职称改"}
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
-before delete:
-[{"titleId":4,"titleName":"测试职称改"}, {"titleId":5,"titleName":"教授"}, {"titleId":6,"titleName":"副教授"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
-delete Title OK!
-[]
-[INFO ] name.hm.test.unit.TitleUnitTest.afterTest(TitleUnitTest.java:47) 
-finish TitleUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.85 sec
-Running name.hm.test.unit.ClassroomUnitTest
-[INFO ] name.hm.test.unit.ClassroomUnitTest.beforeTest(ClassroomUnitTest.java:39) 
-start ClassroomUnitTest
-[INFO ] name.hm.test.unit.ClassroomUnitTest.create(ClassroomUnitTest.java:62) 
-create OK!
-{"classroomId":1,"classroomName":"广播电视工程0班"}
-{"classroomId":2,"classroomName":"广播电视工程1班"}
-{"classroomId":3,"classroomName":"广播电视工程2班"}
-[INFO ] name.hm.test.unit.ClassroomUnitTest.read(ClassroomUnitTest.java:88) 
-selectByClassroomId OK!
-{"classroomId":1,"classroomName":"广播电视工程0班"}
-[INFO ] name.hm.test.unit.ClassroomUnitTest.read(ClassroomUnitTest.java:95) 
-selectByClassroomName OK!
-{"classroomId":2,"classroomName":"广播电视工程1班"}
-[INFO ] name.hm.test.unit.ClassroomUnitTest.update(ClassroomUnitTest.java:122) 
-update OK!
-{"classroomId":1,"classroomName":"广播电视工程0班改"}
-[INFO ] name.hm.test.unit.ClassroomUnitTest.delete(ClassroomUnitTest.java:144) 
-delete OK!
-[INFO ] name.hm.test.unit.ClassroomUnitTest.afterTest(ClassroomUnitTest.java:46) 
-finish ClassroomUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.692 sec
-Running name.hm.test.unit.StudentUnitTest
-[INFO ] name.hm.test.unit.StudentUnitTest.beforeTest(StudentUnitTest.java:31) 
-start StudentUnitTest
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-### The error may involve name.hm.jpa.UserMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`user` (user_id, group_id, user_name, password, valid, user_home) VALUES (?, ?, ?, ?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy18.insert(Unknown Source)
-	at name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:81)
-	at name.hm.test.unit.StudentUnitTest.beforeTest(StudentUnitTest.java:33)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:27)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`user`, CONSTRAINT `fk_user_group` FOREIGN KEY (`group_id`) REFERENCES `group` (`group_id`) ON DELETE SET NULL ON UPDATE CASCADE)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 35 more
-[INFO ] name.hm.test.unit.ClassroomUnitTest.create(ClassroomUnitTest.java:62) 
-create OK!
-{"classroomId":4,"classroomName":"广播电视工程0班"}
-{"classroomId":5,"classroomName":"广播电视工程1班"}
-{"classroomId":6,"classroomName":"广播电视工程2班"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
-insert OK!
-{"departmentId":7,"departmentName":"广播电视工程系"}{"departmentId":8,"departmentName":"数字媒体技术"}{"departmentId":9,"departmentName":"自动化"}
-org.apache.ibatis.exceptions.PersistenceException: 
-### Error updating database.  Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
-### The error may involve name.hm.jpa.StudentMapper.insert-Inline
-### The error occurred while setting parameters
-### SQL: INSERT INTO cucgp.`student` (user_name, student_name, telephone, email, weibo, introduction, classroom_name, department_name)VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-### Cause: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
-	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:23)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:147)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.insert(DefaultSqlSession.java:134)
-	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:79)
-	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:40)
-	at sun.proxy.$Proxy25.insert(Unknown Source)
-	at name.hm.test.unit.StudentUnitTest.create(StudentUnitTest.java:73)
-	at name.hm.test.unit.StudentUnitTest.test(StudentUnitTest.java:57)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
-	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
-	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
-	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
-	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:28)
-	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:31)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
-	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
-	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
-	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
-	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
-	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
-	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
-	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:53)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:123)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:104)
-	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
-	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
-	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
-	at java.lang.reflect.Method.invoke(Method.java:601)
-	at org.apache.maven.surefire.util.ReflectionUtils.invokeMethodWithArray(ReflectionUtils.java:164)
-	at org.apache.maven.surefire.booter.ProviderFactory$ProviderProxy.invoke(ProviderFactory.java:110)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:175)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcessWhenForked(SurefireStarter.java:107)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:68)
-Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException: Cannot add or update a child row: a foreign key constraint fails (`cucgp`.`student`, CONSTRAINT `fk_student_user` FOREIGN KEY (`user_name`) REFERENCES `user` (`user_name`) ON DELETE CASCADE ON UPDATE CASCADE)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:57)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.lang.reflect.Constructor.newInstance(Constructor.java:525)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.Util.getInstance(Util.java:386)
-	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1040)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4120)
-	at com.mysql.jdbc.MysqlIO.checkErrorPacket(MysqlIO.java:4052)
-	at com.mysql.jdbc.MysqlIO.sendCommand(MysqlIO.java:2503)
-	at com.mysql.jdbc.MysqlIO.sqlQueryDirect(MysqlIO.java:2664)
-	at com.mysql.jdbc.ConnectionImpl.execSQL(ConnectionImpl.java:2794)
-	at com.mysql.jdbc.PreparedStatement.executeInternal(PreparedStatement.java:2155)
-	at com.mysql.jdbc.PreparedStatement.execute(PreparedStatement.java:1379)
-	at org.apache.ibatis.executor.statement.PreparedStatementHandler.update(PreparedStatementHandler.java:41)
-	at org.apache.ibatis.executor.statement.RoutingStatementHandler.update(RoutingStatementHandler.java:66)
-	at org.apache.ibatis.executor.SimpleExecutor.doUpdate(SimpleExecutor.java:45)
-	at org.apache.ibatis.executor.BaseExecutor.update(BaseExecutor.java:108)
-	at org.apache.ibatis.executor.CachingExecutor.update(CachingExecutor.java:75)
-	at org.apache.ibatis.session.defaults.DefaultSqlSession.update(DefaultSqlSession.java:145)
-	... 36 more
-[INFO ] name.hm.test.unit.StudentUnitTest.afterTest(StudentUnitTest.java:50) 
-finish StudentUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.085 sec
-Running name.hm.test.unit.RoleUnitTest
-[INFO ] name.hm.test.unit.RoleUnitTest.beforeTest(RoleUnitTest.java:49) 
-start RoleUnitTest
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
-create Role OK!
-{"roleId":4,"roleName":"管理员","valid":"valid"}
-{"roleId":5,"roleName":"教师","valid":"invalid"}
-{"roleId":6,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:98) 
-selectByRoleId OK!
-{"roleId":4,"roleName":"管理员","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:103) 
-selectByRoleName OK!
-{"roleId":5,"roleName":"教师","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.read(RoleUnitTest.java:108) 
-selectByValid OK!
-[{"roleId":4,"roleName":"管理员","valid":"valid"}][{"roleId":5,"roleName":"教师","valid":"invalid"}, {"roleId":6,"roleName":"学生","valid":"invalid"}]
-[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:126) 
-before update:
-{"roleId":4,"roleName":"管理员","valid":"valid"}
-{"roleId":5,"roleName":"教师","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.update(RoleUnitTest.java:138) 
-update OK!
-{"roleId":4,"roleName":"管理员改","valid":"valid"}
-{"roleId":5,"roleName":"教师","valid":"valid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:156) 
-before delete
-{"roleId":4,"roleName":"管理员改","valid":"valid"}
-{"roleId":5,"roleName":"教师","valid":"valid"}
-{"roleId":6,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:162) 
-delete OK!
-{"roleId":4,"roleName":"管理员改","valid":"valid"}
-{"roleId":5,"roleName":"教师","valid":"valid"}
-{"roleId":6,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.afterTest(RoleUnitTest.java:56) 
-finish RoleUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.03 sec
-Running name.hm.test.unit.UserUnitTest
-[INFO ] name.hm.test.unit.UserUnitTest.beforeTest(UserUnitTest.java:59) 
-start UserUnitTest
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
-insert OK!
-{"groupId":7,"groupName":"教师组","valid":"valid"}
-{"groupId":8,"groupName":"管理组","valid":"valid"}
-{"groupId":9,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
-create OK!
-{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
-{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}
-{"groupId":9,"password":"123456","userHome":"/200910013400/","userId":7,"userName":"200910013400","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:109) 
-selectByUserId OK!
-{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:115) 
-selectByUserName OK!
-{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:121) 
-selectByValid OK!
-[{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}, {"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}, {"groupId":9,"password":"123456","userHome":"/200910013400/","userId":7,"userName":"200910013400","valid":"valid"}][]
-[INFO ] name.hm.test.unit.UserUnitTest.read(UserUnitTest.java:127) 
-selectByGroupId OK!
-[{"groupId":8,"password":"123456","userHome":"/1900/","userId":6,"userName":"1900","valid":"valid"}]
-[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:146) 
-before update
-{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1000","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.update(UserUnitTest.java:153) 
-update OK!
-{"groupId":7,"password":"123456","userHome":"/1000/","userId":5,"userName":"1001","valid":"valid"}
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
-delete OK!
-null
-null
-null
-[INFO ] name.hm.test.unit.UserUnitTest.afterTest(UserUnitTest.java:69) 
-finish UserUnitTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.112 sec
-Running name.hm.test.integration.RoleIntegrationTest
-[INFO ] name.hm.test.integration.RoleIntegrationTest.beforeTest(RoleIntegrationTest.java:40) 
-start RoleIntegrationTest
-[INFO ] name.hm.test.unit.TitleUnitTest.create(TitleUnitTest.java:62) 
-insert Title OK!
-
-{"titleId":7,"titleName":"测试职称"}
-{"titleId":8,"titleName":"教授"}
-{"titleId":9,"titleName":"副教授"}
-[INFO ] name.hm.test.unit.GroupUnitTest.create(GroupUnitTest.java:71) 
-insert OK!
-{"groupId":10,"groupName":"教师组","valid":"valid"}
-{"groupId":11,"groupName":"管理组","valid":"valid"}
-{"groupId":12,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.DepartmentUnitTest.create(DepartmentUnitTest.java:68) 
-insert OK!
-{"departmentId":10,"departmentName":"广播电视工程系"}{"departmentId":11,"departmentName":"数字媒体技术"}{"departmentId":12,"departmentName":"自动化"}
-[INFO ] name.hm.test.unit.WorkflowUnitTest.create(WorkflowUnitTest.java:68) 
-create OK!
-{"workflowId":7,"workflowName":"2013年毕设","workflowStatus":"applying"}
-{"workflowId":8,"workflowName":"2012年毕设","workflowStatus":"applying"}
-{"workflowId":9,"workflowName":"2011年毕设","workflowStatus":"applying"}
-[INFO ] name.hm.test.unit.RoleUnitTest.create(RoleUnitTest.java:73) 
-create Role OK!
-{"roleId":7,"roleName":"管理员","valid":"valid"}
-{"roleId":8,"roleName":"教师","valid":"invalid"}
-{"roleId":9,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.ActionUnitTest.create(ActionUnitTest.java:93) 
-insert Action OK!
-{"actionId":4,"actionName":"管理员操作","actionStatus":"valid","actionUrl":"/admin/unit/test.do","roleId":7}
-{"actionId":5,"actionName":"教师操作","actionStatus":"invalid","actionUrl":"/teacher/unit/test.do","roleId":8}
-{"actionId":6,"actionName":"学生操作","actionStatus":"invalid","actionUrl":"/student/unit/test.do","roleId":9}
-[INFO ] name.hm.test.unit.UserUnitTest.create(UserUnitTest.java:85) 
-create OK!
-{"groupId":10,"password":"123456","userHome":"/1000/","userId":8,"userName":"1000","valid":"valid"}
-{"groupId":11,"password":"123456","userHome":"/1900/","userId":9,"userName":"1900","valid":"valid"}
-{"groupId":12,"password":"123456","userHome":"/200910013400/","userId":10,"userName":"200910013400","valid":"valid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.create(TeacherUnitTest.java:87) 
-create OK!
-
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
-[INFO ] name.hm.test.integration.RoleIntegrationTest.afterTest(RoleIntegrationTest.java:71) 
-start RoleIntegrationTest
-[INFO ] name.hm.test.unit.ActionUnitTest.delete(ActionUnitTest.java:188) 
-delete OK!
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:130) 
-before delete:
-[{"departmentId":10,"departmentName":"广播电视工程系"}, {"departmentId":11,"departmentName":"数字媒体技术"}, {"departmentId":12,"departmentName":"自动化"}]
-[INFO ] name.hm.test.unit.DepartmentUnitTest.delete(DepartmentUnitTest.java:138) 
-delete OK!
-[]
-[INFO ] name.hm.test.unit.GroupUnitTest.delete(GroupUnitTest.java:158) 
-delete OK!
-{"groupId":10,"groupName":"教师组","valid":"valid"}
-{"groupId":11,"groupName":"管理组","valid":"valid"}
-{"groupId":12,"groupName":"学生组","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:156) 
-before delete
-{"roleId":7,"roleName":"管理员","valid":"valid"}
-{"roleId":8,"roleName":"教师","valid":"invalid"}
-{"roleId":9,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.RoleUnitTest.delete(RoleUnitTest.java:162) 
-delete OK!
-{"roleId":7,"roleName":"管理员","valid":"valid"}
-{"roleId":8,"roleName":"教师","valid":"invalid"}
-{"roleId":9,"roleName":"学生","valid":"invalid"}
-[INFO ] name.hm.test.unit.TeacherUnitTest.delete(TeacherUnitTest.java:148) 
-delete OK!
-{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师","telephone":"13400010001","titleName":"测试职称","userName":"1900","weibo":"@testTeacher"}{"departmentName":"广播电视工程系","email":"10197786@qq.com","introduction":"测试介绍内容如下：。。。。","teacherName":"测试老师1","telephone":"13400010001","titleName":"测试职称","userName":"1000","weibo":"@testTeacher"}
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:124) 
-before delete:
-[{"titleId":7,"titleName":"测试职称"}, {"titleId":8,"titleName":"教授"}, {"titleId":9,"titleName":"副教授"}]
-[INFO ] name.hm.test.unit.TitleUnitTest.delete(TitleUnitTest.java:132) 
-delete Title OK!
-[]
-[INFO ] name.hm.test.unit.UserUnitTest.delete(UserUnitTest.java:179) 
-delete OK!
-null
-null
-null
-[INFO ] name.hm.test.unit.WorkflowUnitTest.delete(WorkflowUnitTest.java:149) 
-delete OK!
-{"workflowId":7,"workflowName":"2013年毕设","workflowStatus":"applying"}
-{"workflowId":8,"workflowName":"2012年毕设","workflowStatus":"applying"}
-{"workflowId":9,"workflowName":"2011年毕设","workflowStatus":"applying"}
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.483 sec
-
-Results :
-
-Tests run: 11, Failures: 0, Errors: 0, Skipped: 0
-
+[INFO] <<< jetty-maven-plugin:7.3.1.v20110307:run (default-cli) @ cucgp <<<
+[INFO] 
+[INFO] --- jetty-maven-plugin:7.3.1.v20110307:run (default-cli) @ cucgp ---
+[INFO] Configuring Jetty for project: Graduation Project of HouMing
+[INFO] webAppSourceDirectory /home/houming/workspace/project/cucgp/src/main/webapp does not exist. Defaulting to /home/houming/workspace/project/cucgp/src/main/webapp
+[INFO] Reload Mechanic: automatic
+[INFO] Classes = /home/houming/workspace/project/cucgp/target/classes
+[INFO] Context path = /
+[INFO] Tmp directory = /home/houming/workspace/project/cucgp/target/tmp
+[INFO] Web defaults = org/eclipse/jetty/webapp/webdefault.xml
+[INFO] Web overrides =  none
+[INFO] web.xml file = file:/home/houming/workspace/project/cucgp/src/main/webapp/WEB-INF/web.xml
+[INFO] Webapp directory = /home/houming/workspace/project/cucgp/src/main/webapp
+[INFO] Starting jetty 7.3.1.v20110307 ...
+[DEBUG] org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:120) 
+Initializing servlet 'springServlet'
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardServletEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [servletConfigInitParams] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [servletContextInitParams] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [jndiProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,jndiProperties,systemProperties,systemEnvironment]
+[INFO ] org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:453) 
+FrameworkServlet 'springServlet': initialization started
+[DEBUG] org.springframework.web.servlet.FrameworkServlet.createWebApplicationContext(FrameworkServlet.java:581) 
+Servlet with name 'springServlet' will try to create custom WebApplicationContext context of class 'org.springframework.web.context.support.XmlWebApplicationContext', using parent context [null]
+[DEBUG] org.springframework.core.env.MutablePropertySources.replace(MutablePropertySources.java:172) 
+Replacing [servletContextInitParams] PropertySource with [servletContextInitParams]
+[DEBUG] org.springframework.core.env.MutablePropertySources.replace(MutablePropertySources.java:172) 
+Replacing [servletConfigInitParams] PropertySource with [servletConfigInitParams]
+[INFO ] org.springframework.context.support.AbstractApplicationContext.prepareRefresh(AbstractApplicationContext.java:510) 
+Refreshing WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) 
+Loading XML bean definitions from ServletContext resource [/WEB-INF/spring.xml]
+[DEBUG] org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:72) 
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.getSchemaMappings(PluggableSchemaResolver.java:140) 
+Loading schema mappings from [META-INF/spring.schemas]
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.getSchemaMappings(PluggableSchemaResolver.java:146) 
+Loaded schema mappings: {http://mybatis.org/schema/mybatis-spring-1.2.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/util/spring-util.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-3.2.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd=org/springframework/web/servlet/config/spring-mvc-3.1.xsd, http://www.springframework.org/schema/beans/spring-beans-3.1.xsd=org/springframework/beans/factory/xml/spring-beans-3.1.xsd, http://www.springframework.org/schema/task/spring-task.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/cache/spring-cache.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-3.0.xsd=org/springframework/aop/config/spring-aop-3.0.xsd, http://www.springframework.org/schema/aop/spring-aop-2.0.xsd=org/springframework/aop/config/spring-aop-2.0.xsd, http://www.springframework.org/schema/task/spring-task-3.1.xsd=org/springframework/scheduling/config/spring-task-3.1.xsd, http://www.springframework.org/schema/tool/spring-tool-2.5.xsd=org/springframework/beans/factory/xml/spring-tool-2.5.xsd, http://www.springframework.org/schema/beans/spring-beans.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-2.5.xsd=org/springframework/ejb/config/spring-jee-2.5.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.1.xsd=org/springframework/jdbc/config/spring-jdbc-3.1.xsd, http://www.springframework.org/schema/tool/spring-tool-3.1.xsd=org/springframework/beans/factory/xml/spring-tool-3.1.xsd, http://www.springframework.org/schema/aop/spring-aop.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-3.1.xsd=org/springframework/ejb/config/spring-jee-3.1.xsd, http://www.springframework.org/schema/tx/spring-tx-3.2.xsd=org/springframework/transaction/config/spring-tx-3.2.xsd, http://www.springframework.org/schema/context/spring-context-3.2.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/util/spring-util-3.2.xsd=org/springframework/beans/factory/xml/spring-util-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-2.0.xsd=org/springframework/beans/factory/xml/spring-beans-2.0.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd=org/springframework/web/servlet/config/spring-mvc-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.2.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.0.xsd=org/springframework/beans/factory/xml/spring-beans-3.0.xsd, http://www.springframework.org/schema/cache/spring-cache-3.2.xsd=org/springframework/cache/config/spring-cache-3.2.xsd, http://www.springframework.org/schema/task/spring-task-3.0.xsd=org/springframework/scheduling/config/spring-task-3.0.xsd, http://mybatis.org/schema/mybatis-spring.xsd=org/mybatis/spring/config/mybatis-spring-1.2.xsd, http://www.springframework.org/schema/tx/spring-tx-2.5.xsd=org/springframework/transaction/config/spring-tx-2.5.xsd, http://www.springframework.org/schema/context/spring-context-2.5.xsd=org/springframework/context/config/spring-context-2.5.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd=org/springframework/jdbc/config/spring-jdbc-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool-3.0.xsd=org/springframework/beans/factory/xml/spring-tool-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx.xsd=org/springframework/transaction/config/spring-tx-3.2.xsd, http://www.springframework.org/schema/util/spring-util-2.5.xsd=org/springframework/beans/factory/xml/spring-util-2.5.xsd, http://www.springframework.org/schema/tool/spring-tool-2.0.xsd=org/springframework/beans/factory/xml/spring-tool-2.0.xsd, http://www.springframework.org/schema/lang/spring-lang.xsd=org/springframework/scripting/config/spring-lang-3.2.xsd, http://www.springframework.org/schema/lang/spring-lang-2.5.xsd=org/springframework/scripting/config/spring-lang-2.5.xsd, http://www.springframework.org/schema/aop/spring-aop-3.2.xsd=org/springframework/aop/config/spring-aop-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee-3.0.xsd=org/springframework/ejb/config/spring-jee-3.0.xsd, http://www.springframework.org/schema/tx/spring-tx-3.1.xsd=org/springframework/transaction/config/spring-tx-3.1.xsd, http://www.springframework.org/schema/jee/spring-jee-2.0.xsd=org/springframework/ejb/config/spring-jee-2.0.xsd, http://www.springframework.org/schema/context/spring-context-3.1.xsd=org/springframework/context/config/spring-context-3.1.xsd, http://www.springframework.org/schema/util/spring-util-3.1.xsd=org/springframework/beans/factory/xml/spring-util-3.1.xsd, http://www.springframework.org/schema/lang/spring-lang-3.1.xsd=org/springframework/scripting/config/spring-lang-3.1.xsd, http://www.springframework.org/schema/cache/spring-cache-3.1.xsd=org/springframework/cache/config/spring-cache-3.1.xsd, http://www.springframework.org/schema/context/spring-context.xsd=org/springframework/context/config/spring-context-3.2.xsd, http://www.springframework.org/schema/jee/spring-jee.xsd=org/springframework/ejb/config/spring-jee-3.2.xsd, http://www.springframework.org/schema/aop/spring-aop-2.5.xsd=org/springframework/aop/config/spring-aop-2.5.xsd, http://www.springframework.org/schema/mvc/spring-mvc.xsd=org/springframework/web/servlet/config/spring-mvc-3.2.xsd, http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd=org/springframework/web/servlet/config/spring-mvc-3.2.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc.xsd=org/springframework/jdbc/config/spring-jdbc-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-3.2.xsd=org/springframework/beans/factory/xml/spring-beans-3.2.xsd, http://www.springframework.org/schema/tx/spring-tx-2.0.xsd=org/springframework/transaction/config/spring-tx-2.0.xsd, http://www.springframework.org/schema/aop/spring-aop-3.1.xsd=org/springframework/aop/config/spring-aop-3.1.xsd, http://www.springframework.org/schema/task/spring-task-3.2.xsd=org/springframework/scheduling/config/spring-task-3.2.xsd, http://www.springframework.org/schema/tx/spring-tx-3.0.xsd=org/springframework/transaction/config/spring-tx-3.0.xsd, http://www.springframework.org/schema/context/spring-context-3.0.xsd=org/springframework/context/config/spring-context-3.0.xsd, http://www.springframework.org/schema/tool/spring-tool.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/util/spring-util-3.0.xsd=org/springframework/beans/factory/xml/spring-util-3.0.xsd, http://www.springframework.org/schema/util/spring-util-2.0.xsd=org/springframework/beans/factory/xml/spring-util-2.0.xsd, http://www.springframework.org/schema/lang/spring-lang-3.0.xsd=org/springframework/scripting/config/spring-lang-3.0.xsd, http://www.springframework.org/schema/lang/spring-lang-2.0.xsd=org/springframework/scripting/config/spring-lang-2.0.xsd, http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd=org/springframework/jdbc/config/spring-jdbc-3.2.xsd, http://www.springframework.org/schema/tool/spring-tool-3.2.xsd=org/springframework/beans/factory/xml/spring-tool-3.2.xsd, http://www.springframework.org/schema/beans/spring-beans-2.5.xsd=org/springframework/beans/factory/xml/spring-beans-2.5.xsd}
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:108) 
+Loading bean definitions
+[INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) 
+Loading XML bean definitions from ServletContext resource [/WEB-INF/spring/config.xml]
+[DEBUG] org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:72) 
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd] in classpath: org/springframework/web/servlet/config/spring-mvc-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/tool/spring-tool-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-tool-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/context/spring-context-3.0.xsd] in classpath: org/springframework/context/config/spring-context-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:108) 
+Loading bean definitions
+[DEBUG] org.springframework.beans.factory.xml.DefaultNamespaceHandlerResolver.getHandlerMappings(DefaultNamespaceHandlerResolver.java:156) 
+Loaded NamespaceHandler mappings: {http://www.springframework.org/schema/p=org.springframework.beans.factory.xml.SimplePropertyNamespaceHandler, http://www.springframework.org/schema/mvc=org.springframework.web.servlet.config.MvcNamespaceHandler, http://www.springframework.org/schema/util=org.springframework.beans.factory.xml.UtilNamespaceHandler, http://www.springframework.org/schema/jee=org.springframework.ejb.config.JeeNamespaceHandler, http://www.springframework.org/schema/aop=org.springframework.aop.config.AopNamespaceHandler, http://www.springframework.org/schema/jdbc=org.springframework.jdbc.config.JdbcNamespaceHandler, http://www.springframework.org/schema/cache=org.springframework.cache.config.CacheNamespaceHandler, http://mybatis.org/schema/mybatis-spring=org.mybatis.spring.config.NamespaceHandler, http://www.springframework.org/schema/c=org.springframework.beans.factory.xml.SimpleConstructorNamespaceHandler, http://www.springframework.org/schema/tx=org.springframework.transaction.config.TxNamespaceHandler, http://www.springframework.org/schema/task=org.springframework.scheduling.config.TaskNamespaceHandler, http://www.springframework.org/schema/lang=org.springframework.scripting.config.LangNamespaceHandler, http://www.springframework.org/schema/context=org.springframework.context.config.ContextNamespaceHandler}
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[INFO ] org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.registerDefaultFilters(ClassPathScanningCandidateComponentProvider.java:230) 
+JSR-330 'javax.inject.Named' annotation found and supported for component scanning
+[DEBUG] org.springframework.core.io.support.PathMatchingResourcePatternResolver.doFindMatchingFileSystemResources(PathMatchingResourcePatternResolver.java:550) 
+Looking for matching resources in directory tree [/home/houming/workspace/project/cucgp/target/classes/name/hm/c]
+[DEBUG] org.springframework.core.io.support.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles(PathMatchingResourcePatternResolver.java:612) 
+Searching directory [/home/houming/workspace/project/cucgp/target/classes/name/hm/c] for files matching pattern [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/**/*.class]
+[DEBUG] org.springframework.core.io.support.PathMatchingResourcePatternResolver.doRetrieveMatchingFiles(PathMatchingResourcePatternResolver.java:612) 
+Searching directory [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login] for files matching pattern [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/**/*.class]
+[DEBUG] org.springframework.core.io.support.PathMatchingResourcePatternResolver.findPathMatchingResources(PathMatchingResourcePatternResolver.java:351) 
+Resolved location pattern [classpath*:name/hm/c/**/*.class] to resources [file [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login/BaseController.class], file [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login/UserRightController.class]]
+[DEBUG] org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:264) 
+Identified candidate component class: file [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login/BaseController.class]
+[DEBUG] org.springframework.context.annotation.ClassPathScanningCandidateComponentProvider.findCandidateComponents(ClassPathScanningCandidateComponentProvider.java:264) 
+Identified candidate component class: file [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login/UserRightController.class]
+[INFO ] org.springframework.beans.factory.support.DefaultListableBeanFactory.registerBeanDefinition(DefaultListableBeanFactory.java:663) 
+Overriding bean definition for bean 'userRightController': replacing [Generic bean: class [name.hm.c.login.UserRightController]; scope=singleton; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in file [/home/houming/workspace/project/cucgp/target/classes/name/hm/c/login/UserRightController.class]] with [Generic bean: class [name.hm.c.login.BaseController]; scope=; abstract=false; lazyInit=false; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodName=null; destroyMethodName=null; defined in ServletContext resource [/WEB-INF/spring/config.xml]]
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:264) 
+Imported 18 bean definitions from relative location [spring/config.xml]
+[INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) 
+Loading XML bean definitions from ServletContext resource [/WEB-INF/mybatis/context.xml]
+[DEBUG] org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:72) 
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+[DEBUG] org.springframework.beans.factory.xml.PluggableSchemaResolver.resolveEntity(PluggableSchemaResolver.java:118) 
+Found XML schema [http://www.springframework.org/schema/beans/spring-beans-3.0.xsd] in classpath: org/springframework/beans/factory/xml/spring-beans-3.0.xsd
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:108) 
+Loading bean definitions
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:264) 
+Imported 16 bean definitions from relative location [mybatis/context.xml]
+[INFO ] org.springframework.beans.factory.xml.XmlBeanDefinitionReader.loadBeanDefinitions(XmlBeanDefinitionReader.java:315) 
+Loading XML bean definitions from ServletContext resource [/WEB-INF/mybatis/config.xml]
+[DEBUG] org.springframework.beans.factory.xml.DefaultDocumentLoader.loadDocument(DefaultDocumentLoader.java:72) 
+Using JAXP provider [com.sun.org.apache.xerces.internal.jaxp.DocumentBuilderFactoryImpl]
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.registerBeanDefinitions(DefaultBeanDefinitionDocumentReader.java:108) 
+Loading bean definitions
+[DEBUG] org.springframework.beans.factory.xml.DefaultBeanDefinitionDocumentReader.importBeanDefinitionResource(DefaultBeanDefinitionDocumentReader.java:264) 
+Imported 0 bean definitions from relative location [mybatis/config.xml]
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanDefinitionReader.loadBeanDefinitions(AbstractBeanDefinitionReader.java:216) 
+Loaded 34 bean definitions from location pattern [/WEB-INF/spring.xml]
+[DEBUG] org.springframework.context.support.AbstractApplicationContext.obtainFreshBeanFactory(AbstractApplicationContext.java:540) 
+Bean factory for WebApplicationContext for namespace 'springServlet-servlet': org.springframework.beans.factory.support.DefaultListableBeanFactory@736f59d6: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,viewResolver,baseController,userRightController,dataSource,transactionManager,sqlSessionFactory,actionMapper,classroomMapper,departmentMapper,groupMapper,roleMapper,stuaMapper,studentMapper,taskMapper,tcaMapper,teacherMapper,titleMapper,userMapper,workflowMapper]; root of factory hierarchy
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+[INFO ] org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.<init>(AutowiredAnnotationBeanPostProcessor.java:140) 
+JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+[DEBUG] org.springframework.context.support.AbstractApplicationContext.initMessageSource(AbstractApplicationContext.java:807) 
+Unable to locate MessageSource with name 'messageSource': using default [org.springframework.context.support.DelegatingMessageSource@41cd1a20]
+[DEBUG] org.springframework.context.support.AbstractApplicationContext.initApplicationEventMulticaster(AbstractApplicationContext.java:831) 
+Unable to locate ApplicationEventMulticaster with name 'applicationEventMulticaster': using default [org.springframework.context.event.SimpleApplicationEventMulticaster@2e04aeeb]
+[DEBUG] org.springframework.ui.context.support.UiApplicationContextUtils.initThemeSource(UiApplicationContextUtils.java:85) 
+Unable to locate ThemeSource with name 'themeSource': using default [org.springframework.ui.context.support.ResourceBundleThemeSource@73668c22]
+[INFO ] org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:596) 
+Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@736f59d6: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,viewResolver,baseController,userRightController,dataSource,transactionManager,sqlSessionFactory,actionMapper,classroomMapper,departmentMapper,groupMapper,roleMapper,stuaMapper,studentMapper,taskMapper,tcaMapper,teacherMapper,titleMapper,userMapper,workflowMapper,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'mvcContentNegotiationManager' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)'
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.beans.BeanUtils.findEditorByConvention(BeanUtils.java:443) 
+No property editor [org.springframework.web.context.request.WebRequestInterceptorEditor] found for type org.springframework.web.context.request.WebRequestInterceptor according to 'Editor' suffix convention
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.handler.MappedInterceptor#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0'
+[DEBUG] org.springframework.web.servlet.handler.AbstractHandlerMethodMapping.initHandlerMethods(AbstractHandlerMethodMapping.java:98) 
+Looking for request mappings in application context: WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+Logging initialized using 'class org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl' adapter.
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'actionMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'actionMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'actionMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'sqlSessionFactory' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'dataSource'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'dataSource'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'dataSource' to allow for resolving potential circular references
+[INFO ] org.springframework.jdbc.datasource.DriverManagerDataSource.setDriverClassName(DriverManagerDataSource.java:153) 
+Loaded JDBC driver: com.mysql.jdbc.Driver
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'dataSource'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'sqlSessionFactory'
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+PooledDataSource forcefully closed/removed all connections.
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+PooledDataSource forcefully closed/removed all connections.
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+PooledDataSource forcefully closed/removed all connections.
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+PooledDataSource forcefully closed/removed all connections.
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+Parsed configuration file: 'ServletContext resource [/WEB-INF/mybatis/config.xml]'
+[DEBUG] org.springframework.jdbc.datasource.DriverManagerDataSource.getConnectionFromDriver(DriverManagerDataSource.java:162) 
+Creating new JDBC DriverManager Connection to [jdbc:mysql://127.0.0.1:3306/cucgp?characterEncoding=UTF-8]
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+Property 'mapperLocations' was not specified or no matching resources found
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'actionMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'actionMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'classroomMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'classroomMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'classroomMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'classroomMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'classroomMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'departmentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'departmentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'departmentMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'departmentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'departmentMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'groupMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'groupMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'groupMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'groupMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'groupMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'roleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'roleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'roleMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'roleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'roleMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'stuaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'stuaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'stuaMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'stuaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'stuaMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'studentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'studentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'studentMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'studentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'studentMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'taskMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'taskMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'taskMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'taskMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'taskMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'tcaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'tcaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'tcaMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'tcaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'tcaMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'teacherMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'teacherMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'teacherMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'teacherMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'teacherMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'titleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'titleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'titleMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'titleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'titleMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'userMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'userMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'userMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'userMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'userMapper'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'workflowMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'workflowMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'workflowMapper' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'workflowMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'workflowMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#1'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#1'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#2'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#2'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#3'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#3'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#4'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#4'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#5'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#5'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#6'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#6'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#7'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#7'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0'
+[DEBUG] org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.initControllerAdviceCache(RequestMappingHandlerAdapter.java:619) 
+Looking for controller advice: WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'mvcContentNegotiationManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#8'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#8'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#9'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#9'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#10'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#10'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#11'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#11'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#12'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#12'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean '(inner bean)#13'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean '(inner bean)#13'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+[DEBUG] org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver.initExceptionHandlerAdviceCache(ExceptionHandlerExceptionResolver.java:284) 
+Looking for exception mappings: WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.handler.MappedInterceptor#0'
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:71) 
+Looking for URL mappings in application context: WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'mvcContentNegotiationManager': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.format.support.FormattingConversionServiceFactoryBean#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.handler.MappedInterceptor#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.internalRequiredAnnotationProcessor': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.internalCommonAnnotationProcessor': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'viewResolver': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'baseController': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'userRightController': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'dataSource': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'transactionManager': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'sqlSessionFactory': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'actionMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'classroomMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'departmentMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'groupMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'roleMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'stuaMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'studentMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'taskMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'tcaMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'teacherMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'titleMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'userMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'workflowMapper': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'environment': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'systemProperties': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'systemEnvironment': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'servletContext': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'servletConfig': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'contextParameters': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'contextAttributes': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importRegistry': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'messageSource': no URL paths identified
+[DEBUG] org.springframework.web.servlet.handler.AbstractDetectingUrlHandlerMapping.detectHandlers(AbstractDetectingUrlHandlerMapping.java:86) 
+Rejected bean name 'applicationEventMulticaster': no URL paths identified
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalConfigurationAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalAutowiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalRequiredAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.context.annotation.internalCommonAnnotationProcessor'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'viewResolver'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'viewResolver'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'viewResolver' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'viewResolver'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'baseController'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'baseController'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'baseController' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'baseController'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'userRightController'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'userRightController'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'userRightController' to allow for resolving potential circular references
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:112) 
+Initializing new StandardEnvironment
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemProperties] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.MutablePropertySources.addLast(MutablePropertySources.java:107) 
+Adding [systemEnvironment] PropertySource with lowest search precedence
+[DEBUG] org.springframework.core.env.AbstractEnvironment.<init>(AbstractEnvironment.java:116) 
+Initialized StandardEnvironment with PropertySources [systemProperties,systemEnvironment]
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'userRightController'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'dataSource'
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:215) 
+Creating shared instance of singleton bean 'transactionManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'transactionManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:509) 
+Eagerly caching bean 'transactionManager' to allow for resolving potential circular references
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'dataSource'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1529) 
+Invoking afterPropertiesSet() on bean with name 'transactionManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'transactionManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'actionMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'classroomMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'departmentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'groupMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'roleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'stuaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'studentMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'taskMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'tcaMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'teacherMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'titleMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'userMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'workflowMapper'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor'
+[DEBUG] org.springframework.context.support.AbstractApplicationContext.initLifecycleProcessor(AbstractApplicationContext.java:858) 
+Unable to locate LifecycleProcessor with name 'lifecycleProcessor': using default [org.springframework.context.support.DefaultLifecycleProcessor@5d076000]
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'lifecycleProcessor'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.web.servlet.DispatcherServlet.initMultipartResolver(DispatcherServlet.java:467) 
+Unable to locate MultipartResolver with name 'multipartResolver': no multipart request handling provided
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+[DEBUG] org.springframework.web.servlet.DispatcherServlet.initLocaleResolver(DispatcherServlet.java:489) 
+Unable to locate LocaleResolver with name 'localeResolver': using default [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@10628e42]
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+[DEBUG] org.springframework.web.servlet.DispatcherServlet.initThemeResolver(DispatcherServlet.java:511) 
+Unable to locate ThemeResolver with name 'themeResolver': using default [org.springframework.web.servlet.theme.FixedThemeResolver@3da2c68]
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+[DEBUG] org.springframework.web.servlet.DispatcherServlet.initRequestToViewNameTranslator(DispatcherServlet.java:649) 
+Unable to locate RequestToViewNameTranslator with name 'viewNameTranslator': using default [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@2e8fb305]
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'viewResolver'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:435) 
+Creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+[DEBUG] org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:463) 
+Finished creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+[DEBUG] org.springframework.web.servlet.DispatcherServlet.initFlashMapManager(DispatcherServlet.java:711) 
+Unable to locate FlashMapManager with name 'flashMapManager': using default [org.springframework.web.servlet.support.SessionFlashMapManager@66d9ce6e]
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:70) 
+Searching for key 'spring.liveBeansView.mbeanDomain' in [servletConfigInitParams]
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:70) 
+Searching for key 'spring.liveBeansView.mbeanDomain' in [servletContextInitParams]
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:70) 
+Searching for key 'spring.liveBeansView.mbeanDomain' in [jndiProperties]
+[DEBUG] org.springframework.jndi.JndiTemplate.lookup(JndiTemplate.java:150) 
+Looking up JNDI object with name [java:comp/env/spring.liveBeansView.mbeanDomain]
+[DEBUG] org.springframework.jndi.JndiLocatorSupport.lookup(JndiLocatorSupport.java:101) 
+Converted JNDI name [java:comp/env/spring.liveBeansView.mbeanDomain] not found - trying original name [spring.liveBeansView.mbeanDomain]. javax.naming.NameNotFoundException; remaining name 'spring.liveBeansView.mbeanDomain'
+[DEBUG] org.springframework.jndi.JndiTemplate.lookup(JndiTemplate.java:150) 
+Looking up JNDI object with name [spring.liveBeansView.mbeanDomain]
+[DEBUG] org.springframework.jndi.JndiPropertySource.getProperty(JndiPropertySource.java:87) 
+JNDI lookup for name [spring.liveBeansView.mbeanDomain] threw NamingException with message: null. Returning null.
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:70) 
+Searching for key 'spring.liveBeansView.mbeanDomain' in [systemProperties]
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:70) 
+Searching for key 'spring.liveBeansView.mbeanDomain' in [systemEnvironment]
+[DEBUG] org.springframework.core.env.PropertySourcesPropertyResolver.getProperty(PropertySourcesPropertyResolver.java:93) 
+Could not find key 'spring.liveBeansView.mbeanDomain' in any property source. Returning [null]
+[DEBUG] org.springframework.web.servlet.FrameworkServlet.initWebApplicationContext(FrameworkServlet.java:532) 
+Published WebApplicationContext of servlet 'springServlet' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.springServlet]
+[INFO ] org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:472) 
+FrameworkServlet 'springServlet': initialization completed in 9994 ms
+[DEBUG] org.springframework.web.servlet.HttpServletBean.init(HttpServletBean.java:141) 
+Servlet 'springServlet' configured successfully
+[INFO] Started Jetty Server
+[INFO] Starting scanner at interval of 1 seconds.
+[INFO] Jetty server exiting.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time: 34.616s
-[INFO] Finished at: Wed Mar 13 10:46:32 CST 2013
-[INFO] Final Memory: 13M/118M
+[INFO] Total time: 32.248s
+[INFO] Finished at: Mon Mar 18 15:06:19 CST 2013
+[INFO] Final Memory: 17M/118M
 [INFO] ------------------------------------------------------------------------
+[DEBUG] org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl.debug(JakartaCommonsLoggingImpl.java:46) 
+PooledDataSource forcefully closed/removed all connections.
+[INFO ] org.springframework.context.support.AbstractApplicationContext.doClose(AbstractApplicationContext.java:1042) 
+Closing WebApplicationContext for namespace 'springServlet-servlet': startup date [Mon Mar 18 15:05:58 CST 2013]; root of context hierarchy
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'sqlSessionFactory'
+[DEBUG] org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:246) 
+Returning cached instance of singleton bean 'lifecycleProcessor'
+[INFO ] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroySingletons(DefaultSingletonBeanRegistry.java:444) 
+Destroying singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@736f59d6: defining beans [mvcContentNegotiationManager,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping#0,org.springframework.format.support.FormattingConversionServiceFactoryBean#0,org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0,org.springframework.web.servlet.handler.MappedInterceptor#0,org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0,org.springframework.web.servlet.mvc.annotation.ResponseStatusExceptionResolver#0,org.springframework.web.servlet.mvc.support.DefaultHandlerExceptionResolver#0,org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping,org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter,org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,viewResolver,baseController,userRightController,dataSource,transactionManager,sqlSessionFactory,actionMapper,classroomMapper,departmentMapper,groupMapper,roleMapper,stuaMapper,studentMapper,taskMapper,tcaMapper,teacherMapper,titleMapper,userMapper,workflowMapper,org.springframework.context.annotation.ConfigurationClassPostProcessor.importAwareProcessor]; root of factory hierarchy
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:500) 
+Retrieved dependent beans for bean '(inner bean)#8': [org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver#0]
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:500) 
+Retrieved dependent beans for bean '(inner bean)#1': [org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter#0]
+[DEBUG] org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.destroyBean(DefaultSingletonBeanRegistry.java:500) 
+Retrieved dependent beans for bean '(inner bean)': [org.springframework.web.servlet.handler.MappedInterceptor#0]

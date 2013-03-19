@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -14,8 +14,7 @@ import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import name.hm.m.Workflow;
-
-@Repository
+// @Repository
 public interface WorkflowMapper extends Mapper
 {
 	final String SELECT_BY_WORKFLOWID = "SELECT * FROM `workflow` WHERE workflow_id = #{param1}";
@@ -27,40 +26,31 @@ public interface WorkflowMapper extends Mapper
 			              "SET workflow_name = #{workflowName}, workflow_status = #{workflowStatus} " +
 			              "WHERE workflow_id = #{workflowId}";
 	final String DELETE = "DELETE FROM `workflow` WHERE workflow_id = #{workflowId}";
-	
-	@Select(SELECT_BY_WORKFLOWID)
-	@Results(value = {
-			@Result(property="workflowId",column="workflow_id"),
-			@Result(property="workflowName",column="workflow_name"),
-			@Result(property="workflowStatus",column="workflow_status")
-	})
+// @Select(SELECT_BY_WORKFLOWID)
+// @Results(value = {
+// @Result(property="workflowId",column="workflow_id"),
+// @Result(property="workflowName",column="workflow_name"),
+// @Result(property="workflowStatus",column="workflow_status")})
 	Workflow selectByWorkflowId(Integer workflowId);
-
-	@Select(SELECT_BY_WORKFLOWNAME)
-	@Results(value = {
-			@Result(property="workflowId",column="workflow_id"),
-			@Result(property="workflowName",column="workflow_name"),
-			@Result(property="workflowStatus",column="workflow_status")
-	})
+// @Select(SELECT_BY_WORKFLOWNAME)
+// @Results(value = {
+// @Result(property="workflowId",column="workflow_id"),
+// @Result(property="workflowName",column="workflow_name"),
+// @Result(property="workflowStatus",column="workflow_status")})
 	Workflow selectByWorkflowName(String workflowName);
-
-	@Select(SELECT_BY_WORKFLOWSTATUS)
-	@Results(value = {
-			@Result(property="workflowId",column="workflow_id"),
-			@Result(property="workflowName",column="workflow_name"),
-			@Result(property="workflowStatus",column="workflow_status")
-	})
+// @Select(SELECT_BY_WORKFLOWSTATUS)
+// @Results(value = {
+// @Result(property="workflowId",column="workflow_id"),
+// @Result(property="workflowName",column="workflow_name"),
+// @Result(property="workflowStatus",column="workflow_status")})
 	LinkedList<Workflow> selectByWorkflowStatus(Workflow.Status str);
-
-	@Insert(INSERT_WORKFLOW)
-	@SelectKey(statement = "SELECT MAX(workflow_id) AS workflow_id FROM cucgp.`workflow`", keyProperty = "workflowId", before = false, resultType = Integer.class)
-	@Options(useGeneratedKeys = true, keyProperty = "workflowId", keyColumn = "workflow_id")
+// @Insert(INSERT_WORKFLOW)
+// @SelectKey(statement = "SELECT MAX(workflow_id) AS workflow_id FROM cucgp.`workflow`", keyProperty = "workflowId", before = false, resultType = Integer.class)
+// @Options(useGeneratedKeys = true, keyProperty = "workflowId", keyColumn = "workflow_id")
 	Integer insert(Workflow workflow);
-	
-	@Update(UPDATE)
+// @Update(UPDATE)
 	Integer update(Workflow workflow);
-
-	@Delete(DELETE)
+// @Delete(DELETE)
 	Integer delete(Workflow workflow);
 
 }

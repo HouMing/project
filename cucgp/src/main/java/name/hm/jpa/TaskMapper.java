@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import name.hm.m.Task;
 

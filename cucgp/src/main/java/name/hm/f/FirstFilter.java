@@ -30,6 +30,8 @@ public class FirstFilter implements Filter
 	public void doFilter(ServletRequest request, ServletResponse response,
 			FilterChain chain) throws IOException, ServletException
 	{
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		if (!(request instanceof HttpServletRequest)) {
 			request.getRequestDispatcher("/error/protocolError.html").forward(request, response);
 			logger.warn("不支持该协议！" + request.getRemoteAddr());

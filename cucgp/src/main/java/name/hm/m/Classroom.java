@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 // TODO TEST hashCode, equals interrupt : #0309
 public class Classroom
 {
-	Integer classroomId;
+	Group classroomId;
 	String classroomName;
 
 	public Classroom()
@@ -16,18 +16,18 @@ public class Classroom
 		this(null, classroomName);
 	}
 
-	public Classroom(Integer classroomId, String classroomName)
+	public Classroom(Group classroomId, String classroomName)
 	{
 		this.classroomId = classroomId;
 		this.classroomName = classroomName;
 	}
 
-	public Integer getClassroomId()
+	public Group getClassroomId()
 	{
 		return classroomId;
 	}
 
-	public void setClassroomId(Integer classroomId)
+	public void setClassroomId(Group classroomId)
 	{
 		this.classroomId = classroomId;
 	}

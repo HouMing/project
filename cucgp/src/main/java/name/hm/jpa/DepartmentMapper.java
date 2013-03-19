@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import java.util.LinkedList;
 
@@ -14,7 +14,6 @@ import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
-@Repository
 public interface DepartmentMapper extends Mapper
 {
 	final String INSERT = "INSERT INTO cucgp.`department` (department_name) VALUES (#{departmentName})";
@@ -26,35 +25,35 @@ public interface DepartmentMapper extends Mapper
 	final String UPDATE = "UPDATE cucgp.`department` SET department_name = #{departmentName} where department_id = #{departmentId}";
 	final String DELETE = "DELETE FROM cucgp.`department` WHERE department_name = #{departmentName}";
 
-	@Insert(INSERT)
+//	@Insert(INSERT)
 	@Options(useGeneratedKeys = true, keyProperty = "departmentId", keyColumn = "department_id")
 	Integer insert(Department department);
 	
-	@Select(SELECT_ALL)
+//	@Select(SELECT_ALL)
 	@Results(value = {
 			@Result(property = "departmentId", column = "department_id"),
 			@Result(property = "departmentName", column = "department_name") 
 			})
 	LinkedList<Department> selectAll();
 	
-	@Select(SELECT_BY_ID)
+//	@Select(SELECT_BY_ID)
 	@Results(value = {
 			@Result(property = "departmentId", column = "department_id"),
 			@Result(property = "departmentName", column = "department_name") 
 			})
 	Department selectByDepartmentId(Integer departmentId);
 
-	@Select(SELECT_BY_NAME)
+//	@Select(SELECT_BY_NAME)
 	@Results(value = {
 			@Result(property = "departmentId", column = "department_id"),
 			@Result(property = "departmentName", column = "department_name") 
 			})
 	Department selectByDepartmentName(String departmentName);
 	
-	@Delete(DELETE)
+//	@Delete(DELETE)
 	Integer delete(Department department);
 
-	@Update(UPDATE)
+//	@Update(UPDATE)
 	Integer update(Department department);
 
 }

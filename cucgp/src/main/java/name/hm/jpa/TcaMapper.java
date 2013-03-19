@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -24,37 +24,32 @@ public interface TcaMapper
 			"WHERE tca_id = #{tcaId}";
 
 	final String DELETE = "DELETE FROM cucgp.`tca` WHERE tca_id = #{tcaId}";
-
-	@Insert(INSERT)
-	@SelectKey(before = false, keyProperty = "tcaId", resultType = Integer.class, statement = "SELECT MAX(tca_id) AS tca_id FROM cucgp.`tca`")
+// @Insert(INSERT)
+// @SelectKey(before = false, keyProperty = "tcaId", resultType = Integer.class, statement = "SELECT MAX(tca_id) AS tca_id FROM cucgp.`tca`")
 	public Integer insert(Tca tca);
-
-	@Select(SELECT_BY_ID)
-	@Results(value = { @Result(property = "tcaId", column = "tca_id"),
-			@Result(property = "userName", column = "user_name"),
-			@Result(property = "tcaName", column = "tca_name"),
-			@Result(property = "introduction", column = "introduction"),
-			@Result(property = "requirement", column = "requirement"),
-			@Result(property = "numerator", column = "numerator"),
-			@Result(property = "applycount", column = "applycount"),
-			@Result(property = "status", column = "status") })
+// @Select(SELECT_BY_ID)
+// @Results(value = { @Result(property = "tcaId", column = "tca_id"),
+// @Result(property = "userName", column = "user_name"),
+// @Result(property = "tcaName", column = "tca_name"),
+// @Result(property = "introduction", column = "introduction"),
+// @Result(property = "requirement", column = "requirement"),
+// @Result(property = "numerator", column = "numerator"),
+// @Result(property = "applycount", column = "applycount"),
+// @Result(property = "status", column = "status") })
 	public Tca selectByTcaId(Integer tcaId);
-
-	@Select(SELECT_BY_USERNAME)
-	@Results(value = { @Result(property = "tcaId", column = "tca_id"),
-			@Result(property = "userName", column = "user_name"),
-			@Result(property = "tcaName", column = "tca_name"),
-			@Result(property = "introduction", column = "introduction"),
-			@Result(property = "requirement", column = "requirement"),
-			@Result(property = "numerator", column = "numerator"),
-			@Result(property = "applycount", column = "applycount"),
-			@Result(property = "status", column = "status") })
+// @Select(SELECT_BY_USERNAME)
+// @Results(value = { @Result(property = "tcaId", column = "tca_id"),
+// @Result(property = "userName", column = "user_name"),
+// @Result(property = "tcaName", column = "tca_name"),
+// @Result(property = "introduction", column = "introduction"),
+// @Result(property = "requirement", column = "requirement"),
+// @Result(property = "numerator", column = "numerator"),
+// @Result(property = "applycount", column = "applycount"),
+// @Result(property = "status", column = "status") })
 	public Tca selectByUserName(String userName);
-
-	@Update(UPDATE)
+// @Update(UPDATE)
 	public Integer update(Tca tca);
-
-	@Delete(DELETE)
+// @Delete(DELETE)
 	public Integer delete(Tca tca);
 
 }

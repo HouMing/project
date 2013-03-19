@@ -5,68 +5,49 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import javax.inject.Inject;
+import javax.inject.Singleton;
+
+import org.mybatis.guice.transactional.Transactional;
 import org.springframework.stereotype.Component;
 
+import name.hm.jpa.ActionMapper;
+import name.hm.jpa.RoleMapper;
 import name.hm.m.Action;
 import name.hm.m.Role;
-import name.hm.orm.ActionMapper;
-import name.hm.orm.RoleMapper;
 
 @Component
+@Singleton
 public class Rights
 {
 	static HashMap<Integer, String> urls = new HashMap<Integer, String>();
 
-	protected ActionMapper actionMapper = null;
-	protected RoleMapper roleMapper = null;
+	@Inject
+	protected ActionMapper actionMapper;
 
-	boolean isInited = false;
+	@Inject
+	protected RoleMapper roleMapper;
 
+	@Transactional(
+			)
 	public void loadRights() throws Exception
 	{
-		if ( !isInited || !isInited() )
-		{
-			throw new Exception("not init");
-		}
-		synchronized (urls) {
-			ArrayList<Action> actions = actionMapper.selectAll();
-			ArrayList<Role> roles = roleMapper.selectByAll();
-			for (Role role : roles) {
-				for (Action action : actions) {
-					if (role.getRoleId() == action.getRoleId()) {
-						urls.put(role.getRoleId(), action.getActionUrl());
-						actions.remove(action);
-					}
+		ArrayList<Action> actions = actionMapper.selectAll();
+		ArrayList<Role> roles = roleMapper.selectAll();
+		for (Role role : roles) {
+			for (Action action : actions) {
+				if (role.getRoleId() == action.getRoleId()) {
+					urls.put(role.getRoleId(), action.getActionUrl());
+					actions.remove(action);
 				}
-				roles.remove(role);
 			}
-			urls.notify();
+			roles.remove(role);
 		}
-	}
-
-	private boolean isInited()
-	{
-		if (actionMapper != null && roleMapper != null) {
-			isInited = true;
-		} else {
-			isInited = false;
-		}
-		return isInited;
-	}
-
-	public ActionMapper getActionMapper()
-	{
-		return actionMapper;
 	}
 
 	public void setActionMapper(ActionMapper actionMapper)
 	{
 		this.actionMapper = actionMapper;
-	}
-
-	public RoleMapper getRoleMapper()
-	{
-		return roleMapper;
 	}
 
 	public void setRoleMapper(RoleMapper roleMapper)

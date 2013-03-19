@@ -9,14 +9,14 @@ import com.alibaba.fastjson.JSONObject;
 public class User
 {
 	Integer userId;
-	Integer groupId;
 	String userName;
 	String password;
 	String userHome;
-	Valid valid;
 
-	public static final Valid VALID = Valid.valueOf("valid");
-	public static final Valid INVALID = Valid.valueOf("invalid");
+	Integer groupId;
+
+	public static final Valid ConstValid = Valid.valueOf("valid");
+	public static final Valid ConstInvalid = Valid.valueOf("invalid");
 
 	public User()
 	{}
@@ -25,22 +25,16 @@ public class User
 			String userHome, Valid valid, Integer groupId)
 	{
 		this.userId = userId;
-		this.groupId = groupId;
 		this.userName = userName;
 		this.password = password;
 		this.userHome = userHome;
-		this.valid = valid;
+		this.groupId = groupId;
 	}
 
 	public User(String userName, String password,
 			String userHome, Valid valid, Integer groupId)
 	{
-		this.userId = null;
-		this.groupId = groupId;
-		this.userName = userName;
-		this.password = password;
-		this.userHome = userHome;
-		this.valid = valid;
+		this(null, userName, password, userHome, valid, groupId);
 	}
 	
 	public Integer getUserId()
@@ -83,16 +77,6 @@ public class User
 		this.password = password;
 	}
 
-	public Valid getValid()
-	{
-		return valid;
-	}
-
-	public void setValid(Valid valid)
-	{
-		this.valid = valid;
-	}
-
 	public String getUserHome()
 	{
 		return userHome;
@@ -126,22 +110,6 @@ public class User
 			}
 		} else {
 			return false;
-		}
-	}
-
-	public enum Valid
-	{
-		valid("valid"), invalid("invalid");
-		String value;
-
-		Valid(String value)
-		{
-			this.value = value;
-		}
-
-		public String toString()
-		{
-			return value;
 		}
 	}
 

@@ -74,10 +74,10 @@ public class TeacherUnitTest extends BaseTestCase implements POJOTest
 		try {
 			Integer error = 1;
 			openTestSession();
-			TEACHER0 = new Teacher(UserUnitTest.USER_TEACHER.getUserName(), TEACHER0_NAME,
+			TEACHER0 = new Teacher(UserUnitTest.U_Teacher.getUserName(), TEACHER0_NAME,
 					TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
 					DepartmentUnitTest.DEPARTMENT0.getDepartmentName(), TitleUnitTest.TITLE0.getTitleName());
-			TEACHER1 = new Teacher(UserUnitTest.USER_ADMIN.getUserName(), TEACHER1_NAME,
+			TEACHER1 = new Teacher(UserUnitTest.U_Admin.getUserName(), TEACHER1_NAME,
 					TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
 					DepartmentUnitTest.DEPARTMENT0.getDepartmentName(), TitleUnitTest.TITLE0.getTitleName());
 			error &= teacherMapper.insert(TEACHER0);
@@ -100,7 +100,7 @@ public class TeacherUnitTest extends BaseTestCase implements POJOTest
 	{
 		try {
 			openTestSession();
-			Teacher teacher = teacherMapper.selectByUserName(UserUnitTest.ADMIN_NAME);
+			Teacher teacher = teacherMapper.selectByUserName(UserUnitTest.U_Admin_NAME);
 			se.commit();
 			if (teacher != null) {
 				logger.info("selectByUserName OK!\n" + teacher);

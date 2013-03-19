@@ -1,10 +1,7 @@
 package name.hm.m;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 
-import name.hm.m.Role.Valid;
-
-import org.eclipse.jetty.util.ajax.JSON;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -14,9 +11,10 @@ public class Group
 	Integer groupId;
 	String groupName;
 	Valid valid;
+	ArrayList<Integer> roles;
 
-	public static final Valid VALID = Valid.valueOf("valid");
-	public static final Valid INVALID = Valid.valueOf("invalid");
+	public static final Valid ConstValid = Valid.valueOf("valid");
+	public static final Valid ConstInvalid = Valid.valueOf("invalid");
 
 	public Group()
 	{}
@@ -65,6 +63,16 @@ public class Group
 		this.valid = valid;
 	}
 
+	public ArrayList<Integer> getRoles()
+	{
+		return roles;
+	}
+
+	public void setRoleIds(ArrayList<Integer> roles)
+	{
+		this.roles = roles;
+	}
+
 	@Override
 	public String toString()
 	{
@@ -93,7 +101,7 @@ public class Group
 	
 	public enum Valid
 	{
-		valid("valid"), invalid("invalid");
+		valid("有效"), invalid("无效");
 		String value;
 
 		Valid(String value)

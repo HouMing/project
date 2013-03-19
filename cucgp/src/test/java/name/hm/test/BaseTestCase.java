@@ -11,8 +11,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
+import org.springframework.util.Assert;
 
-import name.hm.orm.*;
+import name.hm.jpa.*;
 
 public class BaseTestCase implements ITestCase, ILogger
 {
@@ -43,13 +44,6 @@ public class BaseTestCase implements ITestCase, ILogger
 			reader = Resources.getResourceAsReader(resource);
 			if (sqlSessionFactory == null) {
 				sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-				Method[] ms = BaseTestCase.class.getMethods();
-				for (Method m: ms) {
-					if (m.getName().matches("^set.*")) {
-						Class<?>[] types = m.getParameterTypes();
-						sqlSessionFactory.getConfiguration().addMapper(types[0]);
-					}
-				}
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -60,12 +54,9 @@ public class BaseTestCase implements ITestCase, ILogger
 
 	public void openTestSession() throws Exception
 	{
-		if ( se == null) {
-		  se = sqlSessionFactory.openSession();
-		} else {
-			throw new Exception("openTestSession failed!");
-		}
-		Class c = this.getClass();
+		se = sqlSessionFactory.openSession();
+		Assert.notNull(se,"openTestSession failed!");
+		Class c = BaseTestCase.class;
 		Method[] ms = c.getMethods();
 		for (Method m: ms) {
 			if (m.getName().matches("^set.*")) {
@@ -78,12 +69,12 @@ public class BaseTestCase implements ITestCase, ILogger
 
 	public void closeTestSession()
 	{
-		Class c = this.getClass();
+		Class c = BaseTestCase.class;
 		Method[] ms = c.getMethods();
 		for (Method m : ms) {
 			if(m.getName().matches("^set.*")) {
 				try {
-					m.invoke(this,(Object)null);
+					m.invoke(this, (Object)null);
 				} catch (IllegalAccessException e) {
 					e.printStackTrace();
 				} catch (IllegalArgumentException e) {

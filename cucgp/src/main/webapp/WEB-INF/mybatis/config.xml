@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-
 	<typeAliases>
-		<typeAlias alias="ActionMapper" type="name.hm.jpa.ActionMapper" />
-		<typeAlias alias="ClassroomMapper" type="name.hm.jpa.ClassroomMapper" />
-		<typeAlias alias="DepartmentMapper" type="name.hm.jpa.DepartmentMapper" />
-		<typeAlias alias="GroupMapper" type="name.hm.jpa.GroupMapper" />
-		<typeAlias alias="RoleMapper" type="name.hm.jpa.RoleMapper" />
-		<typeAlias alias="StuaMapper" type="name.hm.jpa.StuaMapper" />
-		<typeAlias alias="StudentMapper" type="name.hm.jpa.StudentMapper" />
-		<typeAlias alias="TaskMapper" type="name.hm.jpa.TaskMapper" />
-		<typeAlias alias="TcaMapper" type="name.hm.jpa.TcaMapper" />
-		<typeAlias alias="TeacherMapper" type="name.hm.jpa.TeacherMapper" />
-		<typeAlias alias="TitleMapper" type="name.hm.jpa.TitleMapper" />
-		<typeAlias alias="UserMapper" type="name.hm.jpa.UserMapper" />
-		<typeAlias alias="WorkflowMapper" type="name.hm.jpa.WorkflowMapper" />
-		
 		<typeAlias alias="Action" type="name.hm.m.Action" />
 		<typeAlias alias="Classroom" type="name.hm.m.Classroom" />
 		<typeAlias alias="Department" type="name.hm.m.Department" />
@@ -60,5 +45,4 @@
 		<mapper resource="name/hm/jpa/xml/UserMapper.xml" />
 		<mapper resource="name/hm/jpa/xml/WorkflowMapper.xml" />
 	</mappers>
-
 </configuration>

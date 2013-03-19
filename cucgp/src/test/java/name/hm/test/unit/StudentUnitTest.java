@@ -66,7 +66,7 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 		try {
 			Integer error = 1;
 			openTestSession();
-			STUDENT0 = new Student(UserUnitTest.USER_STUDENT.getUserName(),
+			STUDENT0 = new Student(UserUnitTest.U_Student.getUserName(),
 					STUDENT0_NAME, TELEPHONE, EMAIL, WEIBO, INTRODUCTION,
 					ClassroomUnitTest.CLASSROOM0.getClassroomName(),
 					DepartmentUnitTest.DEPARTMENT0.getDepartmentName());

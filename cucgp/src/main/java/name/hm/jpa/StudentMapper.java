@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -22,17 +22,13 @@ public interface StudentMapper
 			"classroom_name = #{classroomName}, department_name = #{departmentName} WHERE user_name = #{userName}";
 
 	final String DELETE = "DELETE FROM cucgp.`student` WHERE user_name = #{userName}";
-
-	@Insert(INSERT)
+// @Insert(INSERT)
 	public Integer insert(Student student);
-
-	@Select(SELECT_BY_USERNAME)
+// @Select(SELECT_BY_USERNAME)
 	public Student selectByUserName(String userName);
-
-	@Update(UPDATE)
+// @Update(UPDATE)
 	public Integer update(Student student);
-
-	@Delete(DELETE)
+// @Delete(DELETE)
 	public Integer delete(Student student);
 
 }

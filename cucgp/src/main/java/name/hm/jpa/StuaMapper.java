@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
@@ -22,22 +22,18 @@ public interface StuaMapper
 	final String UPDATE = "UPDATE cucgp.`stua` SET tca_id = #{tcaId}, status = #{status}, teacher_user_name = #{teacherUserName}, student_user_name = #{studentUserName} WHERE tca_id = #{tcaId}";
 
 	final String DELETE = "DELETE FROM cucgp.`stua` WHERE tca_id = #{tcaId}";
-
-	@Insert(INSERT)
-	@SelectKey(before = false, keyProperty = "stuaId", resultType = Integer.class, statement = "SELECT MAX(stua_id) AS stua_id FROM cucgp.`stua`")
+// @Insert(INSERT)
+// @SelectKey(before = false, keyProperty = "stuaId", resultType = Integer.class, statement = "SELECT MAX(stua_id) AS stua_id FROM cucgp.`stua`")
 	public Integer insert(Stua stua);
-
-	@Select(SELECT_BY_STUAID)
-	@Results(value = { @Result(column = "stua_id", property = "tcaId"),
-			@Result(column = "status", property = "status"),
-			@Result(column = "tca_id", property = "tcaId"),
-			@Result(column = "teacher_user_name", property = "teacherUserName"),
-			@Result(column = "student_user_name", property = "studentUserName") })
+// @Select(SELECT_BY_STUAID)
+// @Results(value = { @Result(column = "stua_id", property = "tcaId"),
+// @Result(column = "status", property = "status"),
+// @Result(column = "tca_id", property = "tcaId"),
+// @Result(column = "teacher_user_name", property = "teacherUserName"),
+// @Result(column = "student_user_name", property = "studentUserName") })
 	public Stua selectByStuaId(Integer stuaId);
-
-	@Update(UPDATE)
+// @Update(UPDATE)
 	public Integer update(Stua stua);
-	
-	@Delete(DELETE)
+// @Delete(DELETE)
 	public Integer delete(Stua stua);
 }

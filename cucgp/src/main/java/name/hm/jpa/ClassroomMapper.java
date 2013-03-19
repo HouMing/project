@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import java.util.LinkedList;
 
@@ -26,12 +26,12 @@ public interface ClassroomMapper
 
 	final String DELETE = "DELETE FROM cucgp.`classroom` WHERE classroom_id = #{classroomId}";
 	
-	@Insert(INSERT)
+//	@Insert(INSERT)
 	@SelectKey(before = false, keyProperty = "classroomId", resultType = Integer.class, statement = { "SELECT MAX(classroom_id) AS classroom_id FROM cucgp.`classroom`" })
 	@Options(useGeneratedKeys = true, keyProperty = "classroomId", keyColumn = "classroom_id")
 	Integer insert(Classroom cLASSROOM2);
 
-	@Select(SELECT_BY_CLASSROOM_ID)
+//	@Select(SELECT_BY_CLASSROOM_ID)
 	@Results(value = {
 	@Result(property = "classroomId", column = "classroom_id"),
 	@Result(property = "classroomName", column = "classroom_name")
@@ -39,24 +39,24 @@ public interface ClassroomMapper
 	Classroom selectByClassroomId(Integer classroomId);
 
 
-	@Select(SELECT_BY_CLASSROOM_NAME)
+//	@Select(SELECT_BY_CLASSROOM_NAME)
 	@Results(value = {
 	@Result(property = "classroomId", column = "classroom_id"),
 	@Result(property = "classroomName", column = "classroom_name")
 	})
 	Classroom selectByClassroomName(String classroomName);
 
-	@Select(SELECT_ALL)
+//	@Select(SELECT_ALL)
 	@Results(value = {
 	@Result(property = "classroomId", column = "classroom_id"),
 	@Result(property = "classroomName", column = "classroom_name")
 	})
 	LinkedList<Classroom> selectAll();
 
-	@Update(UPDATE)
+//	@Update(UPDATE)
 	Integer update(Classroom classroom);
 
-	@Delete(DELETE)
+//	@Delete(DELETE)
 	Integer delete(Classroom cLASSROOM2);
 	
 }

@@ -1,4 +1,4 @@
-package name.hm.orm;
+package name.hm.jpa;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;

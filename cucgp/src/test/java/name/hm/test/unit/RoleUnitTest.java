@@ -10,8 +10,8 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import name.hm.jpa.RoleMapper;
 import name.hm.m.Role;
-import name.hm.orm.RoleMapper;
 import name.hm.test.BaseTestCase;
 import name.hm.test.integration.RoleIntegrationTest;
 
