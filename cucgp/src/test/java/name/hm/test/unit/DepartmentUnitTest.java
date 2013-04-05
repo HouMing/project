@@ -34,7 +34,7 @@ protected static String DEPARTMENT2_NAME = "自动化";
 		beforeTest();
 		create();
 		read();
-		update();
+//		update();
 		delete();
 		afterTest();
 	}
@@ -96,7 +96,7 @@ protected static String DEPARTMENT2_NAME = "自动化";
 			closeTestSession();
 		}
 	}
-
+/*
 	public void update()
 	{
 		try {
@@ -119,7 +119,7 @@ protected static String DEPARTMENT2_NAME = "自动化";
 			closeTestSession();
 		}
 	}
-
+*/
 	public void delete()
 	{
 		try {

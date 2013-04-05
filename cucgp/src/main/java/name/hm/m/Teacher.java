@@ -2,8 +2,6 @@ package name.hm.m;
 
 import com.alibaba.fastjson.JSON;
 
-//TODO TEST POJO - task : #0308
-//TODO TEST hashCode, equals - interrupt : #0309
 public class Teacher
 {
 	String userName;

@@ -113,7 +113,7 @@ public class ActionUnitTest extends BaseTestCase
 		try {
 			openTestSession();
 			Action action_admin = actionMapper.selectByActionId(ACTION_ADMIN.getActionId());
-			Action action_teacher = actionMapper.selectByActionName(ACTION_TEACHER.getActionName());
+//			Action action_teacher = actionMapper.selectByActionName(ACTION_TEACHER.getActionName());
 			se.commit();
 			if (action_admin != null) {
 				Assert.assertEquals(action_admin, ACTION_ADMIN);
@@ -122,13 +122,13 @@ public class ActionUnitTest extends BaseTestCase
 				logger.error("selectByActionName faild\n" + ACTION_ADMIN);
 				Assert.fail("selectByActionName faild\n");
 			}
-			if (action_teacher != null) {
-				Assert.assertEquals(action_teacher, ACTION_TEACHER);
-				logger.info("selectByActionName OK!\n" + action_teacher);
-			} else {
-				logger.error("selectByActionName failed\n" + ACTION_TEACHER);
-				Assert.fail("selectByActionName failed\n");
-			}
+//			if (action_teacher != null) {
+//				Assert.assertEquals(action_teacher, ACTION_TEACHER);
+//				logger.info("selectByActionName OK!\n" + action_teacher);
+//			} else {
+//				logger.error("selectByActionName failed\n" + ACTION_TEACHER);
+//				Assert.fail("selectByActionName failed\n");
+//			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

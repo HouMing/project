@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <%@ include file="/header.html" %>
-<body>
-</body>
+<script>
+window.location = "logout.ac";
+</script>
 </html>

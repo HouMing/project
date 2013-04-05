@@ -1,0 +1,26 @@
+Date:   Tue Mar 24 14:16:00 2013 +0800
+
+    new - task:#0405 mainPage module    
+    --------
+    completed - task:#0310 login module
+    
+Date:   Tue Mar 24 14:16:00 2013 +0800
+
+    delete test:#0309, task:#0310.
+
+    2/5 - task:#0314 add login module
+    --------
+    [Ing] test (test with task:#0310)
+    [OK] change annotation configuration to xml configuration.
+    [OK] add mybatis and spring configuration xml.
+
+Date:   Tue Mar 19 21:40:24 2013 +0800
+
+    2/5 - task:#0314 add login module
+    --------
+    [Ing] test (test with task:#0310)
+    [OK] change annotation configuration to xml configuration.
+    [OK] add mybatis and spring configuration xml.
+    ========
+    task : #0310 - upgrade all UnitTest case.
+    test : #0309 - hashCode(), equals() for all POJOs

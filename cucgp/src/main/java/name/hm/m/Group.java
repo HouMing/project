@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 import com.alibaba.fastjson.JSONObject;
 
-//TODO TEST hashCode, equals interrupt : #0309
 public class Group
 {
 	Integer groupId;
@@ -15,15 +14,16 @@ public class Group
 	public Group()
 	{}
 
-	public Group(Integer groupId, String groupName)
+	public Group(Integer groupId, String groupName,ArrayList<Integer> roles)
 	{
 		this.groupId = groupId;
 		this.groupName = groupName;
+		this.roles = roles;
 	}
 
 	public Group(String groupName)
 	{
-		this(null, groupName);
+		this(null, groupName, new ArrayList<Integer>(5));
 	}
 	
 	public Integer getGroupId()
@@ -51,7 +51,7 @@ public class Group
 		return roles;
 	}
 
-	public void setRoleIds(ArrayList<Integer> roles)
+	public void setRoles(ArrayList<Integer> roles)
 	{
 		this.roles = roles;
 	}

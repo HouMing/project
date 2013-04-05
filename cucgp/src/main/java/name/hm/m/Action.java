@@ -15,13 +15,6 @@ public class Action
 	public Action()
 	{}
 
-
-	public Action(String actionName, String actionUrl,
-			String description, Integer roleId)
-	{
-		this(null, actionName, actionUrl, description, roleId);
-	}
-
 	public Action(Integer actionId, String actionName, String actionUrl,
 			String description, Integer roleId)
 	{
@@ -32,6 +25,12 @@ public class Action
 		this.roleId = roleId;
 	}
 
+	public Action(String actionName, String actionUrl,
+			String description, Integer roleId)
+	{
+		this(null, actionName, actionUrl, description, roleId);
+	}
+	
 	public Integer getActionId()
 	{
 		return actionId;

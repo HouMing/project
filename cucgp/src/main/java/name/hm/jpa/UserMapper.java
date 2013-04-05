@@ -26,7 +26,6 @@ public interface UserMapper extends Mapper
 	
 	Integer insert(User cellTest);
 	
-	@Deprecated
 	Integer update(User user);
 
 	Integer delete(User user);

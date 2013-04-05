@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+<%@ include file="/header.html" %>
 <meta charset="UTF-8"/>
-<script>
-window.location = "/";
-</script>
 <body>
 <div>
-${requestScope.user }
+${user }
 <br>
-${requestScope.roles }
+${roles }
 <br>
-${requestScope.actions }
+${actions }
 </div>
 </body>
 </html>

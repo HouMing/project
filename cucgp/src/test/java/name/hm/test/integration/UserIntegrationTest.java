@@ -31,7 +31,7 @@ public class UserIntegrationTest extends BaseTestCase
 	public void beforeTest()
 	{
 		try {
-			Group error;
+			Integer error = 1;
 			logger.info("start RoleIntegrationTest");
 			ActionUnitTest actionUnit = new ActionUnitTest();
 			DepartmentUnitTest departmentUnit = new DepartmentUnitTest();

@@ -28,8 +28,8 @@ public class ClassroomUnitTest extends BaseTestCase
 	public void test()
 	{
 		create();
-		read();
-		update();
+//		read();
+//		update();
 		delete();
 	}
 
@@ -72,7 +72,7 @@ public class ClassroomUnitTest extends BaseTestCase
 			closeTestSession();
 		}
 	}
-
+/*
 	public void read()
 	{
 		try {
@@ -104,7 +104,8 @@ public class ClassroomUnitTest extends BaseTestCase
 			closeTestSession();
 		}
 	}
-
+*/
+/*
 	public void update()
 	{
 		try {
@@ -130,7 +131,7 @@ public class ClassroomUnitTest extends BaseTestCase
 			closeTestSession();
 		}
 	}
-
+*/
 	public void delete()
 	{
 		try {

@@ -21,6 +21,15 @@
 		cucgp.`user`
 		WHERE user_name = #{param1};
 	</select>
+	
+	<update id="update" parameterType="User">
+	UPDATE cucgp.`user` SET
+	group_id = #{groupId},
+	user_name = #{userName},
+	password = #{password},
+	user_home = #{userHome}
+	WHERE user_id = #{userId};
+	</update>
 
 	<insert id="insert" parameterType="User" useGeneratedKeys="true"
 	        keyColumn="user_id" keyProperty="userId">

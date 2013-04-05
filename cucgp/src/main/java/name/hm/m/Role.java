@@ -5,7 +5,6 @@ import java.util.HashSet;
 
 import com.alibaba.fastjson.JSONObject;
 
-//TODO TEST hashCode, equals interrupt : #0309
 public class Role
 {
 	Integer roleId;

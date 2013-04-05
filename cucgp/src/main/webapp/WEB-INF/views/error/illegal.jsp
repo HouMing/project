@@ -1,3 +1,4 @@
+<%@ page isErrorPage="true" %>
 <!DOCTYPE HTML>
 <html>
 <title>404 failed</title>

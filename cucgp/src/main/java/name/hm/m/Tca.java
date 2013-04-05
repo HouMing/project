@@ -1,6 +1,5 @@
 package name.hm.m;
 
-//TODO TEST hashCode, equals - interrupt : #0309
 public class Tca
 {
 	Integer tcaId;
