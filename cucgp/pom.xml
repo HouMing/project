@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+
 	<groupId>name.hm</groupId>
 	<artifactId>cucgp</artifactId>
 	<version>1.0</version>
@@ -47,6 +48,11 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>3.2.0.RELEASE</version>
 		</dependency>
+<dependency>
+	<groupId>org.springframework.webflow</groupId>
+	<artifactId>org.springframework.js</artifactId>
+	<version>2.0.5.RELEASE</version>
+</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
@@ -55,7 +61,7 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.1.27</version>
+			<version>1.1.28</version>
 		</dependency>
 		<dependency>
 			<groupId>org.eclipse.jetty</groupId>
@@ -124,8 +130,5 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-compiler-plugin</artifactId> 
-			<version>3.0</version> <configuration> <source>1.6</source> <target>1.6</target> 
-			<encoding>UTF-8</encoding> </configuration> </plugin> -->
 	</build>
 </project>

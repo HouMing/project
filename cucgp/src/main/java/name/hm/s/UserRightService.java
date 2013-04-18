@@ -1,6 +1,7 @@
 package name.hm.s;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import name.hm.m.Action;
 import name.hm.m.Group;
@@ -8,6 +9,7 @@ import name.hm.m.Role;
 import name.hm.m.User;
 import name.hm.s.e.LoginException;
 import name.hm.s.e.RightException;
+import name.hm.s.e.ServiceException;
 
 public class UserRightService extends BaseService
 {
@@ -57,17 +59,15 @@ public class UserRightService extends BaseService
 			endService();
 			throw new LoginException(LoginException.NoLogin);
 		}
-		
 		group = groupMapper.selectByGroupId(user.getGroupId());
-		se.commit();
-		group.setRoles(groupMapper.getRoles(group.getGroupId()));
 		se.commit();
 		if (group == null) {
 			endService();
 			throw new RightException(RightException.NoGroup);
 		}
 		
-		rolesId = group.getRoles();
+		rolesId = groupMapper.getRoles(group.getGroupId());
+		se.commit();
 		if (rolesId == null || rolesId.size() == 0) {
 			endService();
 			throw new RightException(RightException.NoRole);
@@ -83,21 +83,47 @@ public class UserRightService extends BaseService
 
 	public ArrayList<Action> loadActions(User user) throws LoginException, RightException
 	{
-		ArrayList<Action> ret = new ArrayList<Action>();
+		Group group;
+		ArrayList<Integer> rolesId;
+		ArrayList<Role> roles = new ArrayList<Role>();
+		ArrayList<Action> actions = new ArrayList<Action>();
 		if (user == null) {
 			endService();
-      throw	new  LoginException(LoginException.NoUser);
+			throw new LoginException(LoginException.NoLogin);
 		}
-		ArrayList<Role> roles = loadRoles(user);
-		for(Role role : roles) {
-			ArrayList<Action> tmp_actions = actionMapper.selectByRoleId(role.getRoleId());
-			ret.addAll(tmp_actions);
-		}
-		if (ret.size() == 0) {
+		group = groupMapper.selectByGroupId(user.getGroupId());
+		se.commit();
+		if (group == null) {
 			endService();
-			throw new RightException(RightException.NoAction);
+			throw new RightException(RightException.NoGroup);
 		}
-		return ret;
+		rolesId = groupMapper.getRoles(group.getGroupId());
+		se.commit();
+		if (rolesId == null || rolesId.size() == 0) {
+			endService();
+			throw new RightException(RightException.NoRole);
+		}
+		
+		for (Integer roleId : rolesId) {
+			ArrayList<Action> tmp_actions = actionMapper.selectByRoleId(roleId);
+			se.commit();
+			actions.addAll(tmp_actions);
+		}
+		return actions;
+	}
+
+	public void actionCheck(User user, String url) throws RightException,ServiceException
+	{
+		startService();
+		boolean ret = false;
+		ArrayList<Action> actions = loadActions(user);
+		for (Action ac : actions) {
+			ret |= ac.getActionUrl().equals(url);
+		}
+		endService();
+		if (ret == false) {
+			throw new RightException(RightException.IllegalAction);
+		}
 	}
 
 }

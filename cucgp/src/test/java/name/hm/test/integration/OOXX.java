@@ -95,15 +95,17 @@ public class OOXX extends BaseTestCase
 	  Action ac2 = new Action("addUser","addUser","添加用户",r_admin.getRoleId());
 	  Action ac3 = new Action("deleteUser","deleteUser","删除用户",r_admin.getRoleId());
 	  Action ac4 = new Action("editUser","editUser","编辑用户",r_admin.getRoleId());
+	  Action ac7 = new Action("editStudent", "editStudent", "学生管理", r_admin.getRoleId());
+	  
 	  Action ac5 = new Action("editTeacherInfo","editTeacherInfo","编辑个人信息",r_teacher.getRoleId());
 	  Action ac6 = new Action("editStudentInfo","editStudentInfo","编辑个人信息",r_student.getRoleId());
-    
 	  actionMapper.insert(ac1);
 	  actionMapper.insert(ac2);
 	  actionMapper.insert(ac3);
 	  actionMapper.insert(ac4);
 	  actionMapper.insert(ac5);
 	  actionMapper.insert(ac6);
+	  actionMapper.insert(ac7);
 	  se.commit();
 	  
 	}

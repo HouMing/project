@@ -1,6 +1,14 @@
 body {
-  width:100%;
+  width:1300px;
   height:800px;
   overflow:hidden;
   background:#DDDDDD;
+}
+
+.li-button {
+	float:left;
+	list-style:none;
+	width:200px;
+	height:30px;
+	color:red;
 }

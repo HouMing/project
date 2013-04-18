@@ -1,6 +1,7 @@
+<%@ page contentType = "text/html;charset=UTF-8" %>
 <!DOCTYPE html>
-<html lang="zh-cn">
-<%@ include file="/header.html"%>
+<html>
+<%@ include file="header.jsp"%>
 <body>
 	<div id="loginWin" class="easyui-window" title="login"
 		style="width: 350px; height: 188px; padding: 5px;" minimizable="false"
@@ -42,13 +43,15 @@
 				url : "login.ac",
 				data : $("#loginForm").serialize(), //序列化               
 				error : function(response) {
-					console.info(response);
-					$.messager.alert('Warning', response.responseText);  
+					$.messager.alert('Warning', response.responseText);
 				},
 				success : function(data) {
-					$(document).empty();
-					console.info(data);
-					document.write(data);
+        json = JSON.parse(data);
+        if(json.result == "yes") {
+					window.location = "com/main.ac";
+        } else {
+        	window.reload();
+        }
 				}
 			});
 		}

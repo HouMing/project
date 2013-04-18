@@ -34,8 +34,18 @@ public class MainController extends BaseController
 	public UserRightService userRightService;
 
 	@RequestMapping(method = { RequestMethod.GET }, value = { "/com/main.ac" })
-	public String loginGet(HttpServletRequest req, HttpServletResponse resp)
+	public String loginGet(HttpServletRequest req, HttpServletResponse resp, Model model) throws ServiceException
 	{
+		userRightService.startService();
+		User user = (User) req.getSession().getAttribute("user");
+		
+		ArrayList<Role> roles = userRightService.loadRoles(user);
+		ArrayList<Action> actions = userRightService.loadActions(user);
+		
+		model.addAttribute("roles", roles);
+		model.addAttribute("actions", actions);
+		
+		userRightService.endService();
 		return "com/main";
 	}
 

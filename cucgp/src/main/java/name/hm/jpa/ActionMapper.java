@@ -28,13 +28,6 @@ public interface ActionMapper extends Mapper
 	@Deprecated
 	public Integer update(Action action);
 	
+	@Deprecated
 	public Integer delete(Action action);
-	
-	final String SELECT_BY_ACTIONNAME = "SELECT * FROM cucgp.`action` WHERE action_name = #{param1}";
-	final String SELECT_ALL = "SELECT * FROM cucgp.`action` ORDER BY action_id ASC";
-	final String UPDATE = "UPDATE cucgp.`action` " +
-			              "SET action_name = #{actionName}, action_url = #{actionUrl}," +
-			              "role_id = #{roleId}, description = #{description}" +
-			              "WHERE action_id = #{actionId}";
-
 }

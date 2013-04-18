@@ -2,6 +2,8 @@ package name.hm.c;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -27,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alibaba.fastjson.JSON;
+
 @Controller
 public class UserRightController extends BaseController
 {
@@ -39,6 +43,7 @@ public class UserRightController extends BaseController
 		req.getSession().removeAttribute("user");
 		req.getSession().removeAttribute("roles");
 		req.getSession().removeAttribute("actions");
+		req.getSession().invalidate();
 		resp.sendRedirect("login.ac");
 	}
 	
@@ -54,7 +59,7 @@ public class UserRightController extends BaseController
 	}
 
 	@RequestMapping(method = { RequestMethod.POST }, value = { "/login.ac" })
-	public void loginPost(HttpServletRequest req, HttpServletResponse resp, Model model) throws RightException, LoginException, ServiceException, IOException
+	public String loginPost(HttpServletRequest req, HttpServletResponse resp, Model model) throws RightException, LoginException, ServiceException, IOException
 	{
 		String userName, password;
 		User user;
@@ -63,19 +68,23 @@ public class UserRightController extends BaseController
 		ArrayList<Action> actions = new ArrayList<Action>();
 		userName = req.getParameter("userName");
 		password = req.getParameter("password");
+		
 		userRightService.startService();
 		user = userRightService.loadUser(userName, password);
 		group = userRightService.loadGroup(user);
 		roles = userRightService.loadRoles(user);
 		actions = userRightService.loadActions(user);
-		model.addAttribute("user", user);
-		model.addAttribute("group", group);
-		model.addAttribute("roles", roles);
-		model.addAttribute("actions", actions);		
+		
 		userRightService.endService();
+		
 		req.getSession().setAttribute("user", user);
-		req.getSession().setAttribute("roles", roles);
-		resp.sendRedirect("com/main.ac");
+		
+		Map<String, String> map = new HashMap<String, String>();
+		
+		map.put("result", "yes");
+		model.addAttribute("json",JSON.toJSON(map));
+		
+		return "json";
 	}
 
 	@RequestMapping(method = { RequestMethod.DELETE, RequestMethod.HEAD,

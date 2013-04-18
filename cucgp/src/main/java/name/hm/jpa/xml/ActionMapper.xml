@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="name.hm.jpa.ActionMapper">
 	<resultMap type="Action" id="action">
-		<id property="actionId" column="action_id" javaType="Integer" />
-		<result property="actionName" column="action_name" javaType="String" />
-		<result property="actionUrl" column="action_url" javaType="String" />
-		<result property="description" column="description" javaType="String" />
-		<result property="roleId" column="role_id" javaType="Integer" />
+		<id property="actionId" column="action_id" />
+		<result property="actionName" column="action_name" />
+		<result property="actionUrl" column="action_url" />
+		<result property="description" column="description" />
+		<result property="roleId" column="role_id" />
 	</resultMap>
 
 	<select id="selectByActionId" resultMap="action" parameterType="Integer">
