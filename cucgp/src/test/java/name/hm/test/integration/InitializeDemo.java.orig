@@ -1,13 +1,20 @@
 package name.hm.test.integration;
 
+<<<<<<< HEAD
 import java.util.ArrayList;//{{{
+=======
+import java.util.ArrayList;
+>>>>>>> ad4d5f2230840e669e48b4f2a16fd86a253491fa
 
 import org.junit.Test;
 
 import name.hm.test.BaseTestCase;
 import name.hm.m.*;
+<<<<<<< HEAD
 import org.apache.commons.codec.digest.*;//}}}
 =======
+import org.apache.commons.codec.digest.*;
+>>>>>>> ad4d5f2230840e669e48b4f2a16fd86a253491fa
 
 public class InitializeDemo extends BaseTestCase
 {
@@ -15,6 +22,10 @@ public class InitializeDemo extends BaseTestCase
 	@Test
 	public void in()
 	{
+<<<<<<< HEAD
+    System.out.println("InitializeDemo UnitTest");
+=======
+>>>>>>> ad4d5f2230840e669e48b4f2a16fd86a253491fa
 		try {
 			openTestSession();
 		} catch (Exception e) {
@@ -109,7 +120,11 @@ public class InitializeDemo extends BaseTestCase
 	  
 	}
 
+<<<<<<< HEAD
+	//@Test
+=======
 	// @Test
+>>>>>>> ad4d5f2230840e669e48b4f2a16fd86a253491fa
 	void out()
 	{
     
