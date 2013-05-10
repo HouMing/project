@@ -1,0 +1,24 @@
+package org.wave.jpa;
+
+import java.util.List;
+
+import org.wave.define.IMole;
+
+public class Inorganic implements IMole
+{
+	public String _id;
+  public String name;
+  public List<String> molecules;
+
+  protected Integer mole;
+
+	public Integer getMole()
+	{
+		return mole;
+	}
+
+	public void setMole()
+	{
+		mole += 1;
+	}
+}

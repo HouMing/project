@@ -1,0 +1,8 @@
+package org.wave.define;
+
+public interface I
+{
+  public String getId() {
+  	
+  }
+}

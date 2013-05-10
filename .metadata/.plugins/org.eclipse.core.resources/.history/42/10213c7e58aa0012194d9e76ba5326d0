@@ -1,0 +1,53 @@
+package org.wave.jpa;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.mongodb.util.JSON;
+
+@Document(collection = "Vocal")
+public class Vocal
+{
+	@Id
+  String id;
+  String name;
+  String time;
+  String position;
+  
+	public String getId()
+	{
+		return id;
+	}
+	public void setId(String id)
+	{
+		this.id = id;
+	}
+	public String getName()
+	{
+		return name;
+	}
+	public void setName(String name)
+	{
+		this.name = name;
+	}
+	public String getTime()
+	{
+		return time;
+	}
+	public void setTime(String time)
+	{
+		this.time = time;
+	}
+	public String getPosition()
+	{
+		return position;
+	}
+	public void setPosition(String position)
+	{
+		this.position = position;
+	}
+	
+	public toString() {
+		return JSON.serialize(this);
+	}
+}

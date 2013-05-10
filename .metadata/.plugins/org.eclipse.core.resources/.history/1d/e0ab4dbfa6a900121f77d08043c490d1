@@ -1,0 +1,48 @@
+package org.wave.define;
+
+import java.util.List;
+import java.util.Map;
+
+import com.alibaba.fastjson.JSON;
+
+public class Wave implements IMole
+{
+  public String _id;
+  public List<String> molecules;
+  public List<String> waves;
+  public List<String> inorganics;
+
+  protected Map<Object, Object> objects;
+
+  protected Integer mole;
+
+  public Wave(String _id, List<String> molecules) {
+  	this._id = _id;
+  	this.molecules = molecules;
+  }
+
+  public Object attribute(Object object){
+  	return objects.get(object);
+  }
+
+  public void attribute() {
+  	
+  }
+	public Integer getMole()
+	{
+		return mole;
+	}
+
+	public void setMole()
+	{
+		mole += 1;
+	}
+
+	public String toString() {
+		return _id;
+	}
+	
+	public String display() {
+		return JSON.toJSONString(this);
+	}
+}

@@ -1,0 +1,23 @@
+package org.wave.define;
+
+public class Molecule implements IMole, I
+{
+	public String _id;
+	public volatile String name;
+
+  protected Integer mole;
+
+  public Molecule(String _id, String name) {
+  	this._id = _id;
+  	this.name = name;
+  }
+  
+  public Integer getMole() {
+  	return mole;
+  }
+
+  public void setMole() {
+  	mole += 1;
+  }
+
+}

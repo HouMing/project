@@ -1,0 +1,23 @@
+package tmp;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.commons.codec.digest.Md5Crypt;
+import org.wave.define.Molecule;
+import org.wave.define.Wave;
+
+public class InitWorld
+{
+  public static void main(String[] argv) {
+  	Molecule node = new Molecule("1", "node");
+  	Molecule soul = new Molecule("2", "soul");
+  	List<String> molecules = new ArrayList<String>();
+  	molecules.add(node._id);
+  	molecules.add(soul._id);
+  	
+  	// U need a _id crypt, and the _id must a fuzzy variable;
+  	Wave band = new Wave("1", molecules);
+  	System.out.println(band._id + " " + band.display());
+  }
+}

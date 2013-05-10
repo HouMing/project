@@ -1,0 +1,9 @@
+package org.wave.mvc.m.dao;
+
+public interface DAO<T>
+{
+  void create(T obj);
+  T read(T obj);
+  void update(T obj);
+  void delete(T obj);
+}

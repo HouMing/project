@@ -1,0 +1,23 @@
+
+package tmp;
+
+import java.net.UnknownHostException;
+
+import com.mongodb.DB;
+import com.mongodb.MongoClient;
+
+public class HelloMongo
+{
+
+	static void main(String[] argv) {
+		System.out.println("hello mongo");
+	MongoClient mongoClient = nul;
+	try {
+		mongoClient = new MongoClient( "localhost" , 28017 );
+	} catch (UnknownHostException e) {
+		e.printStackTrace();
+	}
+	DB db = mongoClient.getDB( "waves" );
+	
+	}
+}

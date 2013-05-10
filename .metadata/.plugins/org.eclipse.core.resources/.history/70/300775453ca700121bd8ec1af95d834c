@@ -1,0 +1,37 @@
+package name.hm.spring.data.jpa;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Result
+{
+	List<Integer> lq;
+	List<Integer> la;
+	Integer user_oid;
+	public Result(ArrayList<Integer> la, ArrayList<Integer> lq)
+	{
+		this.lq = lq;
+		this.la = la;
+	}
+
+	public List<Integer> getLq()
+	{
+		return lq;
+	}
+
+	public void setLq(List<Integer> lq)
+	{
+		this.lq = lq;
+	}
+
+	public List<Integer> getLa()
+	{
+		return la;
+	}
+
+	public void setLa(List<Integer> la)
+	{
+		this.la = la;
+	}
+	
+}

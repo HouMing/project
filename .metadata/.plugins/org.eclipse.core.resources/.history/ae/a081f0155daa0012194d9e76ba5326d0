@@ -1,0 +1,11 @@
+package org.wave.jpa;
+
+import com.mongodb.util.JSON;
+
+public abstract class Domain
+{
+	@Override
+  public String toString() {
+		return JSON.serialize(this);
+	}
+}

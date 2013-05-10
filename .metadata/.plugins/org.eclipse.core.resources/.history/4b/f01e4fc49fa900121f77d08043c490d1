@@ -1,0 +1,10 @@
+package org.wave.jpa;
+
+public class Molecule
+{
+	public String _id;
+  public String name;
+  
+  protected Integer mole;
+  
+}

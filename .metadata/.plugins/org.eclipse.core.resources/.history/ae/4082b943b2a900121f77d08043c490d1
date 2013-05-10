@@ -1,0 +1,9 @@
+package org.wave.jpa.dao.exception;
+
+public class DAOCreateException extends Exception
+{
+	public DAOCreateException(String msg)
+	{
+		super(msg);
+	}
+}

@@ -1,0 +1,16 @@
+package org.wave.mvc.m.dao;
+
+import org.springframework.data.mongodb.core.MongoTemplate;
+
+
+public abstract class DAO<T>
+{
+  void create(T obj) {
+  	getMongoTemplate().insert(obj);
+  }
+  void delete(T obj) {
+  	
+  }
+  
+  public abstract MongoTemplate getMongoTemplate();
+}

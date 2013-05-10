@@ -1,0 +1,9 @@
+package org.wave.define;
+
+public interface Mole
+{
+  public Integer getMole();
+  
+  public void setMole();
+  
+}

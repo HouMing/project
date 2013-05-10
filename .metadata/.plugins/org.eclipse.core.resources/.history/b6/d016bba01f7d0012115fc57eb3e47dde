@@ -1,0 +1,138 @@
+package name.hm.test.cell;
+
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.log4j.Logger;
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.categories.Category;
+
+import name.hm.jpa.GroupMapper;
+import name.hm.pojo.Group;
+import name.hm.test.CellTest;
+
+//WORKING
+/**
+ * TODO test ISUD of Group Table
+ */
+@Category(CellTest.class)
+  public class GroupCellTest {
+    static SqlSessionFactory factory;
+    static SqlSession se = null;
+    static GroupMapper mp = null;
+    private static Logger logger = Logger.getLogger("celltest");
+    @BeforeClass
+     static public void init() {
+    	logger.info("start GroupCellTest");
+        factory = EnvTest.getSqlSessionFactory();
+        se = factory.openSession();
+        mp = se.getMapper(GroupMapper.class);
+      }
+
+    @AfterClass
+     static public void clean() {
+    	logger.info("end GroupCellTest");
+        se.close();
+      }
+
+    @Test
+      public void insertGroup() {
+        logger.info("GroupCellTest - insertGroup\n" +
+                           " PASSED 2013/02/22 20:00\n" +
+                           " insert group\n" +
+                           " #groupId(0)\n" +
+                           " #groupName(\"CellTest\")\n" +
+                           " #valide('invalide')\n");
+        try {
+          se.flushStatements();
+          Group cellTest = new Group();
+          cellTest.setGroupId(0);
+          cellTest.setGroupName("CellTest");
+          cellTest.setValide("invalide");
+          mp.insert(cellTest);
+          se.commit();
+        } catch (Exception e) {
+          se.rollback();
+          e.printStackTrace();
+        }
+      }
+
+    /**
+     * TODO
+     * select group
+     * PASSED #groupId(0)
+     * #groupName("CellTest")
+     * #valide('valide') => #valide('invadile')
+     */
+    @Test
+      public void selectGroup() {
+        try {
+          se.flushStatements();
+          Group grp = mp.selectByGroupId(0);
+          Group grp2 = mp.selectByGroupName("CellTest");
+          se.commit();
+          logger.info(grp.toString());
+          logger.info(grp2.toString());
+        } catch (Exception e) {
+          se.rollback();
+          e.printStackTrace();
+        }
+      }
+
+    /**
+     * TODO update group 
+     * #groupName("CellTest" <--> "CellTestChange")
+     * #valide('invalide' -> 'valide')
+     */
+    @Test
+      public void updateGroup() {
+        logger.info(null);
+        StringBuilder strb = new StringBuilder();
+        try {
+          se.flushStatements();
+          strb.append("#groupName(\"CellTest\" <--> \"CellTestChange\") \n");
+          Group grp = mp.selectByGroupId(0);
+          strb.append(grp + "\n");
+
+          grp.setGroupName("CellTestChange");
+          mp.update(grp);
+          grp = mp.selectByGroupId(0);
+          se.commit();
+          strb.append(grp + "\n");
+
+          grp.setGroupName("CellTest");
+          mp.update(grp);
+          grp = mp.selectByGroupId(0);
+          se.commit();
+          strb.append(grp + "\n");
+
+          strb.append("#valide('invalide' -> 'valide')\n");
+          grp.setValide("valide");
+          mp.update(grp);
+          grp = mp.selectByGroupId(0);
+          se.commit();
+          strb.append(grp + "\n");
+
+          logger.info(strb.toString());
+        } catch(Exception e) {
+        	e.printStackTrace();
+        }
+      }
+
+    /**
+     * TODO delete group #groupId(0)
+     */
+    @Test
+      public void deleteGroup() {
+    	try{
+    	logger.info(null);
+    	Group grp = mp.selectByGroupId(0);
+    	mp.delete(grp);
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+      }
+  }

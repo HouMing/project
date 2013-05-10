@@ -1,0 +1,47 @@
+package org.wave.jpa;
+
+import org.apache.commons.codec.digest.Md5Crypt;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.util.JSON;
+
+@Document(collection = this.getClass())
+public class Band extends BasicDBObject
+{
+/*
+ * String id;
+ * String name;
+ */
+  public Band(String id, String name) {
+  	put("_id", id);
+  	put("name", name);
+  }
+  
+  public Band(String name) {
+  	put("_id",Md5Crypt.apr1Crypt(name + System.currentTimeMillis()));
+  	put("name", name);
+  }
+  
+	public Integer getId()
+	{
+		return getInt("_id", 0);
+	}
+	public void setId(Integer id)
+	{
+		put("_id", id);
+	}
+	public String getName()
+	{
+		return getString("name", "未填写");
+	}
+	public void setName(String name)
+	{
+		put("name", name);
+	}
+
+  public String toString() {
+  	return JSON.serialize(this);
+  }
+
+}

@@ -1,0 +1,10 @@
+
+package tmp;
+
+public class HelloMongo
+{
+
+	static void main(String[] argv) {
+		System.out.pringln();
+	}
+}

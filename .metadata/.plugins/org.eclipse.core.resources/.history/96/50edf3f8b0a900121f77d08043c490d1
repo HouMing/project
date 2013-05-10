@@ -1,0 +1,13 @@
+package org.wave.jpa.dao.exception;
+
+public class DAOCreateException extends Exception
+{
+  public enum Type {
+  	NullObject("nulObject");
+  	protected String value;
+  	
+  	public Type(String value) {
+  		this.value = value;
+  	}
+  }
+}

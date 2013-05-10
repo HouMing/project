@@ -1,0 +1,18 @@
+package org.wave.mvc.s;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.wave.mvc.m.dao.BandDAO;
+
+@Service(value = "debugService")
+public class DebugService
+{
+  @Autowired
+  BandDAO bdao;
+	
+	public Band findBand()
+	{
+		return bdao.findBand();
+	}
+  
+}

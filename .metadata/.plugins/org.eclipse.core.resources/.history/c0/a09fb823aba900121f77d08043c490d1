@@ -1,0 +1,9 @@
+package org.wave.jpa;
+
+public class Vocal
+{
+  String id;
+  String name;
+  String time;
+  String position;
+}

@@ -1,0 +1,6 @@
+package org.wave.jpa.dao;
+
+public interface DAO
+{
+  Integer create(Object obj);
+}

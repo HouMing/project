@@ -1,0 +1,9 @@
+package org.wave.jpa.dao.exception;
+
+public class DAOReadException extends NullPointerException
+{
+	public DAOReadException(String msg)
+	{
+		super(msg);
+	}
+}

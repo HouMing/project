@@ -1,0 +1,9 @@
+package org.wave.mvc.exception;
+
+public class DAODeleteException extends NullPointerException
+{
+	public DAODeleteException(String msg)
+	{
+		super(msg);
+	}
+} 

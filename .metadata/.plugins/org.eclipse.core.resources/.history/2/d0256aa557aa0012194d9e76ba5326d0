@@ -1,0 +1,43 @@
+package org.wave.mvc.m.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.stereotype.Component;
+import org.wave.jpa.Band;
+import org.wave.jpa.dao.exception.DAOCreateException;
+import org.wave.jpa.dao.exception.DAOReadException;
+import org.wave.jpa.support.CollectionFactory;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.DBCollection;
+
+@Component
+public class BandDAO implements DAO<Band>
+{
+	@Autowired
+	MongoTemplate mongoTemplate;
+
+	public void create(Band obj)
+	{
+		if (obj == null || !(obj instanceof Band)) {
+			throw new DAOCreateException("缺少说明");
+		}
+		mongoTemplate.insert(obj);
+	}
+
+	@Deprecated
+	public Band read(Band obj)
+	{
+		return null;
+	}
+
+	@Deprecated
+	public void update(Band obj)
+	{}
+
+	public void delete(Band obj)
+	{
+		mongoTemplate.remove(obj);
+	}
+
+}

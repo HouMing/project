@@ -1,0 +1,10 @@
+<%@ page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE HTML>
+<html>
+<base src="/questionnaire/"/>
+<link href="resources/css/site.css"/>
+<body class="claro">
+<div>
+</div>
+</body>
+</html>

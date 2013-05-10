@@ -1,0 +1,20 @@
+package org.wave.jpa;
+
+import org.apache.commons.codec.digest.Md5Crypt;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.mongodb.BasicDBObject;
+import com.mongodb.util.JSON;
+
+@Document(collection = "Band")
+public class Band extends BasicDBObject
+{
+	String id;
+	String name;
+
+	public String toString()
+	{
+		return JSON.serialize(this);
+	}
+
+}

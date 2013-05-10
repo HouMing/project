@@ -1,0 +1,18 @@
+package org.wave.define;
+
+public class Molecule
+{
+	public String _id;
+	public volatile String name;
+
+  protected Integer mole;
+
+  public Integer getMole() {
+  	return mole;
+  }
+
+  public void setMole() {
+  	mole += 1;
+  }
+
+}

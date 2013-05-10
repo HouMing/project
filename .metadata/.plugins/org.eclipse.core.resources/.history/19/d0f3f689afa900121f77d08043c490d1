@@ -1,0 +1,30 @@
+package org.wave.jpa.support;
+
+import java.net.UnknownHostException;
+
+import org.springframework.util.Assert;
+
+import com.mongodb.DB;
+import com.mongodb.DBCollection;
+import com.mongodb.MongoClient;
+
+public class CollectionFactory
+{
+	DBCollection collection = null;
+	
+	public void init() {
+		MongoClient client = null;
+		try {
+			client = new MongoClient( "localhost" , 27017 );
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+		}
+		Assert.notNull(client);
+		DB db = client.getDB( "wave" );
+	  collection = db.getCollection("waves");
+	}
+
+	public void getCollection() {
+		
+	}
+}

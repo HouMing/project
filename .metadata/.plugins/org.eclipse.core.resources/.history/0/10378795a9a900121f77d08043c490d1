@@ -1,0 +1,36 @@
+package org.wave.define;
+
+import java.util.List;
+
+
+public class Organic implements IMole, I
+{
+	public String _id;
+  public String name;
+  public String time;
+
+  public List<String> molecules;
+
+  protected Integer mole;
+
+  public Organic(String _id, String name) {
+  	this._id = _id;
+  	this.name = name;
+  }
+
+	public Integer getMole()
+	{
+		return mole;
+	}
+
+	public void setMole()
+	{
+		mole += 1;
+	}
+
+	public String get_id()
+	{
+		return _id;
+	}
+	
+}

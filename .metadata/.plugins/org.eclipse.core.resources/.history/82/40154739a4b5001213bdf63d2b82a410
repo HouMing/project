@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias alias="ActionMapper" type="name.hm.jpa.ActionMapper" />
+		<typeAlias alias="ClassroomMapper" type="name.hm.jpa.ClassroomMapper" />
+		<typeAlias alias="DepartmentMapper" type="name.hm.jpa.DepartmentMapper" />
+		<typeAlias alias="GroupMapper" type="name.hm.jpa.GroupMapper" />
+		<typeAlias alias="RoleMapper" type="name.hm.jpa.RoleMapper" />
+		<typeAlias alias="StuaMapper" type="name.hm.jpa.StuaMapper" />
+		<typeAlias alias="StudentMapper" type="name.hm.jpa.StudentMapper" />
+		<typeAlias alias="TaskMapper" type="name.hm.jpa.TaskMapper" />
+		<typeAlias alias="TcaMapper" type="name.hm.jpa.TcaMapper" />
+		<typeAlias alias="TeacherMapper" type="name.hm.jpa.TeacherMapper" />
+		<typeAlias alias="TitleMapper" type="name.hm.jpa.TitleMapper" />
+		<typeAlias alias="UserMapper" type="name.hm.jpa.UserMapper" />
+		<typeAlias alias="WorkflowMapper" type="name.hm.jpa.WorkflowMapper" />
+		
+		<typeAlias alias="Action" type="name.hm.m.Action" />
+		<typeAlias alias="Classroom" type="name.hm.m.Classroom" />
+		<typeAlias alias="Department" type="name.hm.m.Department" />
+		<typeAlias alias="Group" type="name.hm.m.Group" />
+		<typeAlias alias="Role" type="name.hm.m.Role" />
+		<typeAlias alias="Stua" type="name.hm.m.Stua" />
+		<typeAlias alias="Student" type="name.hm.m.Student" />
+		<typeAlias alias="Task" type="name.hm.m.Task" />
+		<typeAlias alias="Tca" type="name.hm.m.Tca" />
+		<typeAlias alias="Teacher" type="name.hm.m.Teacher" />
+		<typeAlias alias="Title" type="name.hm.m.Title" />
+		<typeAlias alias="User" type="name.hm.m.User" />
+		<typeAlias alias="Workflow" type="name.hm.m.Workflow" />
+	</typeAliases>
+	
+	<environments default="dev">
+		<environment id="dev">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver" />
+				<property name="url"
+					value="jdbc:mysql://localhost:3306/cucgp?characterEncoding=utf8" />
+				<property name="username" value="root" />
+				<property name="password" value="" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="classpath:/xml/ActionMapper.xml" />
+		<mapper resource="/xml/ClassroomMapper.xml" />
+		<mapper resource="/xml/DepartmentMapper.xml" />
+		<mapper resource="/xml/GroupMapper.xml" />
+		<mapper resource="/xml/RoleMapper.xml" />
+		<mapper resource="/xml/StuaMapper.xml" />
+		<mapper resource="/xml/StudentMapper.xml" />
+		<mapper resource="/xml/TaskMapper.xml" />
+		<mapper resource="/xml/TcaMapper.xml" />
+		<mapper resource="/xml/TeacherMapper.xml" />
+		<mapper resource="/xml/TitleMapper.xml" />
+		<mapper resource="/xml/UserMapper.xml" />
+		<mapper resource="/xml/WorkflowMapper.xml" />
+	</mappers>
+
+</configuration>

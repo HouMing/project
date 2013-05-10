@@ -29,12 +29,12 @@
   </filter-mapping>
 
   <filter>
-    <filter-name>UserRightFilter</filter-name>
-    <filter-class>name.hm.f.UserRightFilter</filter-class>
+    <filter-name>AuthorizationFilter</filter-name>
+    <filter-class>name.hm.f.AuthorizationFilter</filter-class>
   </filter>
   <filter-mapping>
-    <filter-name>UserRightFilter</filter-name>
-    <url-pattern>/**/*.ac</url-pattern>
+    <filter-name>AuthorizationFilter</filter-name>
+    <url-pattern>/*</url-pattern>
   </filter-mapping>
 
   <!-- Processes application requests -->
@@ -45,12 +45,11 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>/WEB-INF/spring.xml</param-value>
     </init-param>
-    <load-on-startup>1</load-on-startup>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>springServlet</servlet-name>
-    <url-pattern>/</url-pattern>
+    <url-pattern>/rest/*</url-pattern>
   </servlet-mapping>
 
 </web-app>

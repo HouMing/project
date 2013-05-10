@@ -1,0 +1,9 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+<!DOCTYPE html>
+<html>
+<div data-role="content">
+    <div id="map_canvas" style="width: 400px; height: 400px">
+    </div>
+</div>
+</html>
+

@@ -1,0 +1,35 @@
+package org.wave.mvc.c;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.wave.jpa.Band;
+import org.wave.mvc.s.DebugService;
+
+@Controller(value = "/")
+public class DebugController
+{
+	@Autowired
+	DebugService debugService;
+	
+	@RequestMapping(value = {""}, method = {RequestMethod.GET})
+  public String index(Model model) {
+  	return "index";
+  }
+	
+	@RequestMapping(value = {"/insertBand"}, method = {RequestMethod.GET})
+  public String insertBand(Model model) {
+		Band band = debugService.findBand();
+		debugService.insertBand(band);
+		model.addAttribute("msg", band);
+  	return "debug";
+  }
+	
+	@RequestMapping(value = {"/debug"}, method = {RequestMethod.GET})
+  public String debug(Model model) {
+  	return "";
+  }
+	
+}

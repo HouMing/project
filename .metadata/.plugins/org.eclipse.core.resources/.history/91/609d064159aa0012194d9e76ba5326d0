@@ -1,0 +1,13 @@
+package org.wave.mvc.c;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller(value = "/")
+public class MainController
+{
+	@RequestMapping(value = {"hello"}, RequestMethod = {})
+  public String hello() {
+  	
+  }
+}

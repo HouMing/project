@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="">
+<%@ include file="/header.html"%>
+<body>
+<div class="easyui-panel" title="登录" style="width:400px;">
+	<form action="login.ac" method="POST">
+		<input type="text" name="userName" /> <input type="password"
+			name="password" /> <input type="submit" name="submit" />
+	</form>
+</div>
+</body>
+</html>

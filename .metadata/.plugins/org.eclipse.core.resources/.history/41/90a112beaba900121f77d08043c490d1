@@ -1,0 +1,10 @@
+package test;
+
+import org.wave.jpa.Band;
+
+public class Main
+{
+	public static void main(String[] args) {
+    Band band = new Band("黑豹");		
+	}
+}

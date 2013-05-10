@@ -1,0 +1,32 @@
+package org.wave.mvc.m.dao;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.stereotype.Component;
+import org.wave.jpa.Band;
+
+@Component
+public class BandDAO extends DAO<Band>
+{
+	@Autowired
+	MongoTemplate mongoTemplate;
+
+	@Override
+	public MongoTemplate getMongoTemplate()
+	{
+		return mongoTemplate;
+	}
+	
+	public Band findBand() {
+		return new Band("测试乐队1");
+	}
+
+	public Band findBand(String id)
+	{
+		Band band = mongoTemplate.findOne(new Query(Criteria.where("name").is("测试乐队1")), Band.class);
+		return band;
+	}
+
+}

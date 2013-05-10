@@ -1,0 +1,18 @@
+
+package tmp;
+
+public class HelloMongo
+{
+
+	static void main(String[] argv) {
+		System.out.println("hello mongo");
+		
+	MongoClient mongoClient = new MongoClient( "localhost" , 28017 );
+	// or, to connect to a replica set, supply a seed list of members
+	MongoClient mongoClient = new MongoClient(Arrays.asList(new ServerAddress("localhost", 27017),
+	                                      new ServerAddress("localhost", 27018),
+	                                      new ServerAddress("localhost", 27019)));
+
+	DB db = mongoClient.getDB( "waves" );
+	}
+}

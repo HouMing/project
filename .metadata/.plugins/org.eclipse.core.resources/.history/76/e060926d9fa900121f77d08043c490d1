@@ -1,0 +1,19 @@
+package org.wave.jpa;
+
+import java.util.List;
+import java.util.Map;
+
+public class Wave
+{
+  public String _id;
+  public List<String> molecules;
+  public List<String> waves;
+  public List<String> inorganics;
+  
+  protected Map<Object, Object> attributes;
+
+  public Object getAttribute(String Object){
+  	return attributes.get(attributeName);
+  }
+
+}

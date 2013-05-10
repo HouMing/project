@@ -1,0 +1,9 @@
+<%@ page contentType = "text/html;charset=UTF-8" %>
+<!DOCTYPE HTML>
+<html>
+<strong>all:</strong> ${all }<br>
+<strong>msg:</strong> ${msg }<br>
+<strong>map:</strong> ${map }<br>
+<strong>list:</strong> ${list }<br>
+<strong>linkto:</strong> ${link }<br>
+</html>

@@ -3,7 +3,6 @@ package name.hm.s;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import name.hm.c.BaseController;
 import name.hm.jpa.ActionMapper;
 import name.hm.jpa.ClassroomMapper;
 import name.hm.jpa.DepartmentMapper;
@@ -15,10 +14,10 @@ import name.hm.jpa.TaskMapper;
 import name.hm.jpa.TcaMapper;
 import name.hm.jpa.TeacherMapper;
 import name.hm.jpa.TitleMapper;
+import name.hm.jpa.UltimateMapper;
 import name.hm.jpa.UserMapper;
 import name.hm.jpa.WorkflowMapper;
 import name.hm.s.e.ServiceException;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
@@ -31,19 +30,22 @@ public abstract class BaseService
 	protected SqlSessionFactory sqlSessionFactory;
 
 	protected ActionMapper actionMapper;
+	protected UserMapper userMapper;
+	protected UltimateMapper ultimateMapper;
+	protected RoleMapper roleMapper;
+	protected GroupMapper groupMapper;
+
+	/*
 	protected ClassroomMapper classrommMapper;
 	protected DepartmentMapper departmentMapper;
-	protected GroupMapper groupMapper;
-	protected RoleMapper roleMapper;
 	protected StuaMapper stuaMapper;
 	protected StudentMapper studentMapper;
 	protected TaskMapper taskMapper;
 	protected TcaMapper tcaMapper;
 	protected TeacherMapper teacherMapper;
 	protected TitleMapper titleMapper;
-	protected UserMapper userMapper;
 	protected WorkflowMapper workflowMapper;
-
+  */
 	protected SqlSession se;
   protected boolean started = false;
 	
@@ -119,26 +121,6 @@ public abstract class BaseService
 		this.actionMapper = actionMapper;
 	}
 
-	public ClassroomMapper getClassrommMapper()
-	{
-		return classrommMapper;
-	}
-
-	public void setClassrommMapper(ClassroomMapper classrommMapper)
-	{
-		this.classrommMapper = classrommMapper;
-	}
-
-	public DepartmentMapper getDepartmentMapper()
-	{
-		return departmentMapper;
-	}
-
-	public void setDepartmentMapper(DepartmentMapper departmentMapper)
-	{
-		this.departmentMapper = departmentMapper;
-	}
-
 	public GroupMapper getGroupMapper()
 	{
 		return groupMapper;
@@ -159,65 +141,6 @@ public abstract class BaseService
 		this.roleMapper = roleMapper;
 	}
 
-	public StuaMapper getStuaMapper()
-	{
-		return stuaMapper;
-	}
-
-	public void setStuaMapper(StuaMapper stuaMapper)
-	{
-		this.stuaMapper = stuaMapper;
-	}
-
-	public StudentMapper getStudentMapper()
-	{
-		return studentMapper;
-	}
-
-	public void setStudentMapper(StudentMapper studentMapper)
-	{
-		this.studentMapper = studentMapper;
-	}
-
-	public TaskMapper getTaskMapper()
-	{
-		return taskMapper;
-	}
-
-	public void setTaskMapper(TaskMapper taskMapper)
-	{
-		this.taskMapper = taskMapper;
-	}
-
-	public TcaMapper getTcaMapper()
-	{
-		return tcaMapper;
-	}
-
-	public void setTcaMapper(TcaMapper tcaMapper)
-	{
-		this.tcaMapper = tcaMapper;
-	}
-
-	public TeacherMapper getTeacherMapper()
-	{
-		return teacherMapper;
-	}
-
-	public void setTeacherMapper(TeacherMapper teacherMapper)
-	{
-		this.teacherMapper = teacherMapper;
-	}
-
-	public TitleMapper getTitleMapper()
-	{
-		return titleMapper;
-	}
-
-	public void setTitleMapper(TitleMapper titleMapper)
-	{
-		this.titleMapper = titleMapper;
-	}
 
 	public UserMapper getUserMapper()
 	{
@@ -229,13 +152,14 @@ public abstract class BaseService
 		this.userMapper = userMapper;
 	}
 
-	public WorkflowMapper getWorkflowMapper()
+	public UltimateMapper getUltimateMapper()
 	{
-		return workflowMapper;
+		return ultimateMapper;
 	}
 
-	public void setWorkflowMapper(WorkflowMapper workflowMapper)
+	public void setUltimateMapper(UltimateMapper ultimateMapper)
 	{
-		this.workflowMapper = workflowMapper;
+		this.ultimateMapper = ultimateMapper;
 	}
+	
 }
