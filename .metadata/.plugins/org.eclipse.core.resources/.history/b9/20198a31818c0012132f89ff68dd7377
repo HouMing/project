@@ -1,9 +1,0 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<meta charset="UTF-8" />
-<script>
-window.location = "http://google.com";
-</script>
-<body>
-</body>
-</html>

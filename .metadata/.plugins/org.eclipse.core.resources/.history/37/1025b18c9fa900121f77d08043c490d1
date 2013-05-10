@@ -1,6 +1,0 @@
-package org.wave.jpa;
-
-public class Molecule
-{
-  public String 
-}

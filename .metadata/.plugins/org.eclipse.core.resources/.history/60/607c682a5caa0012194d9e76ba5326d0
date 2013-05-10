@@ -1,9 +1,0 @@
-package org.wave.mvc.exception;
-
-public class DAOReadException extends NullPointerException
-{
-	public DAOReadException(String msg)
-	{
-		super(msg);
-	}
-}

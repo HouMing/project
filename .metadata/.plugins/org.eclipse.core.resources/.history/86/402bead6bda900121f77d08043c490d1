@@ -1,9 +1,0 @@
-package org.wave.jpa.dao;
-
-public interface DAO<T>
-{
-  void create(Object obj);
-  Object read(Object obj);
-  void update(Object obj);
-  void delete(Object obj);
-}

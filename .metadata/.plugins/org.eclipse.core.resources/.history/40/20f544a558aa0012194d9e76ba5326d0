@@ -1,9 +1,0 @@
-package org.wave.jpa;
-
-public abstract class Domain
-{
-	@Override
-  public String toString() {
-		
-	}
-}

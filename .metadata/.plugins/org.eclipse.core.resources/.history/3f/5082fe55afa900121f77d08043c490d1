@@ -1,6 +1,0 @@
-package org.wave.jpa.support;
-
-public class CollectionFactory
-{
-
-}
