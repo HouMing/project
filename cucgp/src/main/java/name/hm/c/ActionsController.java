@@ -13,7 +13,7 @@ import name.hm.m.Action;
 import name.hm.m.Group;
 import name.hm.m.User;
 import name.hm.m.Role;
-import name.hm.s.UserRightService;
+import name.hm.s.AuthorizationService;
 import name.hm.s.e.LoginException;
 import name.hm.s.e.RightException;
 import name.hm.s.e.ServiceException;
@@ -24,43 +24,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class ActionsController extends BaseController
+@RequestMapping(value = {"/actions"})
+public class ActionsController
 {
 	@Autowired
-	public UserRightService userRightService;
+	public AuthorizationService authorizationService;
 
-	@RequestMapping(method = { RequestMethod.GET }, value = { "/editStudent" })
-	public String editStudent(HttpServletRequest req, HttpServletResponse resp, Model model) throws ServiceException
-	{
-		HttpSession se = req.getSession();
-		User user = (User) se.getAttribute("user");
-		userRightService.actionCheck(user,"editStudent");
-		return "student/ManageStudent";
-	}
-
-	static int i = 0;
-	@RequestMapping(method = { RequestMethod.POST }, value = { "/getStudents" })
-	public String getStudents(HttpServletRequest req, HttpServletResponse resp, Model model) throws ServiceException
-	{
-		++i;
-		String userName = req.getParameter("userName");
-		System.out.println("req times:" + i);
-		System.out.println(userName);
-		return "debug";
+	@RequestMapping(value = {"/{roleId}/{actionUrl}"}, method = {RequestMethod.GET} )
+	public String dispatcher(@PathVariable Integer roleId, @PathVariable String actionUrl, HttpServletRequest req) throws ServiceException {
+		authorizationService.startService();
+		User user = (User) req.getSession().getAttribute("user");
+		boolean ret = authorizationService.userIsRole(user.getUserId(), roleId);
+		if (ret == false) {
+			authorizationService.endService();
+			return "error";
+		}
+		authorizationService.endService();
+		return actionUrl;
 	}
 	
-	@RequestMapping(method = { RequestMethod.GET }, value = { "/getStudent" })
-	public String getStudent(HttpServletRequest req, HttpServletResponse resp, Model model) throws ServiceException
-	{
-		++i;
-		String userName = req.getParameter("userName");
-		System.out.println("req times:" + i);
-		System.out.println(userName);
-		return "student/StudentInfoForm";
-	}
 }

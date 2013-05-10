@@ -1,16 +1,13 @@
 package name.hm.test.unit;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import name.hm.m.Student;
 import name.hm.test.BaseTestCase;
 
-//TODO 11 IMPL, Upgrade - task : #0310
 public class StudentUnitTest extends BaseTestCase implements POJOTest
 {
 	public static Student STUDENT0 = null;
@@ -24,7 +21,6 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 	public static String WEIBO = "@涨三三";
 	public static String INTRODUCTION = "这是张三三的个人介绍";
 
-	@Override
 	@Before
 	public void beforeTest()
 	{
@@ -37,7 +33,6 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 		unitDepart.create();
 	}
 
-	@Override
 	@After
 	public void afterTest()
 	{
@@ -50,7 +45,6 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 		logger.info("finish StudentUnitTest");
 	}
 
-	@Override
 	@Test
 	public void test()
 	{
@@ -60,7 +54,6 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 		delete();
 	}
 
-	@Override
 	public void create()
 	{
 		try {
@@ -85,19 +78,15 @@ public class StudentUnitTest extends BaseTestCase implements POJOTest
 		}
 	}
 
-	@Override
 	public void read()
 	{}
 
-	@Override
 	public void update()
 	{}
 
-	@Override
 	public void delete()
 	{}
 
-	@Override
 	public void clean()
 	{}
 

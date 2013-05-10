@@ -22,7 +22,7 @@ import name.hm.m.Group;
 import name.hm.m.Role;
 import name.hm.m.User;
 import name.hm.m.Workflow;
-import name.hm.s.UserRightService;
+import name.hm.s.AuthorizationService;
 import name.hm.test.unit.ActionUnitTest;
 import name.hm.test.unit.DepartmentUnitTest;
 import name.hm.test.unit.GroupUnitTest;
@@ -46,7 +46,6 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import org.springframework.util.Assert;
 
 
-//@ContextConfiguration(locations = {  })
 public class BaseServiceTest // extends AbstractJUnit4SpringContextTests
 {
 	static public String CONF_FILE_NAME = "appContext-MyBATIS.xml";

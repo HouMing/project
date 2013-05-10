@@ -3,7 +3,6 @@ package name.hm.s;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-import name.hm.c.BaseController;
 import name.hm.jpa.ActionMapper;
 import name.hm.jpa.ClassroomMapper;
 import name.hm.jpa.DepartmentMapper;
@@ -15,10 +14,10 @@ import name.hm.jpa.TaskMapper;
 import name.hm.jpa.TcaMapper;
 import name.hm.jpa.TeacherMapper;
 import name.hm.jpa.TitleMapper;
+import name.hm.jpa.UltimateMapper;
 import name.hm.jpa.UserMapper;
 import name.hm.jpa.WorkflowMapper;
 import name.hm.s.e.ServiceException;
-
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
@@ -43,6 +42,7 @@ public abstract class BaseService
 	protected TitleMapper titleMapper;
 	protected UserMapper userMapper;
 	protected WorkflowMapper workflowMapper;
+	protected UltimateMapper ultimateMapper;
 
 	protected SqlSession se;
   protected boolean started = false;
@@ -238,4 +238,15 @@ public abstract class BaseService
 	{
 		this.workflowMapper = workflowMapper;
 	}
+
+	public UltimateMapper getUltimateMapper()
+	{
+		return ultimateMapper;
+	}
+
+	public void setUltimateMapper(UltimateMapper ultimateMapper)
+	{
+		this.ultimateMapper = ultimateMapper;
+	}
+	
 }

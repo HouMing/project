@@ -7,7 +7,7 @@ import name.hm.m.Group;
 import name.hm.m.Role;
 import name.hm.m.User;
 import name.hm.m.Workflow;
-import name.hm.s.UserRightService;
+import name.hm.s.AuthorizationService;
 import name.hm.s.e.LoginException;
 import name.hm.s.e.RightException;
 import name.hm.test.BaseServiceTest;
@@ -30,10 +30,10 @@ public class UserRightServiceTest extends BaseServiceTest
 	@Autowired
 	protected SqlSessionFactory sqlSessionFactory;
 	
-	UserRightService userRightService;
+	AuthorizationService userRightService;
 	
 	{
-		userRightService = new UserRightService();
+		userRightService = new AuthorizationService();
 		userRightService.setSqlSessionFactory(sqlSessionFactory);
 	}
 
