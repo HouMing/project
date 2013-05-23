@@ -1,0 +1,78 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 250,
+        "width": 400,
+        "designer|userClassName": "Actions",
+        "title": "功能区",
+        "columnLines": false,
+        "disableSelection": true,
+        "enableColumnHide": false,
+        "enableColumnMove": false,
+        "enableColumnResize": false,
+        "forceFit": true,
+        "sortableColumns": false,
+        "store": "Actions"
+    },
+    "designerId": "de852162-e48b-4783-b8d9-419cb857fdd2",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "description",
+                "text": "操作按钮"
+            },
+            "designerId": "c29c7196-b226-4061-b335-2e3df8a54257"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "e516b04a-dc80-43a8-bed2-b37b8466746b"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onGridpanelCellClick",
+                "implHandler": [
+                    "var tmp = Ext.create(record.data.actionUrl);",
+                    "Ext.getCmp('idMain').add(tmp);"
+                ],
+                "name": "cellclick",
+                "scope": "me"
+            },
+            "designerId": "573e033a-1c68-4f65-a2f3-48f527ff2e19"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "actionUrl",
+                "text": ""
+            },
+            "designerId": "ddc7dab7-e330-485f-8be3-0432efc00999"
+        }
+    ]
+}

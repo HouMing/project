@@ -1,0 +1,195 @@
+{
+    "type": "Ext.container.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 600,
+        "id": "idViewport",
+        "width": 1320,
+        "designer|userClassName": "Index",
+        "designer|initialView": true,
+        "layout": "border"
+    },
+    "designerId": "e507577f-4df4-4cd4-b23c-16e2c3e7c55e",
+    "cn": [
+        {
+            "type": "Ext.form.Panel",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "center",
+                "container|align": "stretch",
+                "id": "idLogin",
+                "layout": "vbox",
+                "bodyPadding": 10,
+                "title": "中国传媒大学毕业设计平台",
+                "titleAlign": "center"
+            },
+            "designerId": "d16ff263-6456-49ca-878b-5585fd230d03",
+            "cn": [
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "id": "idUserName",
+                        "fieldLabel": "用户号码"
+                    },
+                    "designerId": "ae6e9778-eeae-45db-b953-e8341787cc97"
+                },
+                {
+                    "type": "Ext.form.field.Text",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "id": "idPassword",
+                        "fieldLabel": "密码",
+                        "inputType": "password"
+                    },
+                    "designerId": "b8d51578-1a7d-4b12-9735-ca0e1ade4cca"
+                },
+                {
+                    "type": "Ext.button.Button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "layout|flex": 1,
+                        "text": "登录"
+                    },
+                    "designerId": "6ddc7eb2-f4df-4ebd-8e23-edfb25a4e2e5",
+                    "cn": [
+                        {
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onButtonClick",
+                                "implHandler": [
+                                    "var form = Ext.getCmp('idLogin');",
+                                    "//var password = form.findField('password').getValue();",
+                                    "//var encrypt = hex_md5(password);",
+                                    "",
+                                    "var encrypt = \"e10adc3949ba59abbe56e057f20f883e\";        ",
+                                    "//form.findField('password').setValue(encrypt);",
+                                    "if (form.isValid()) {",
+                                    "    Ext.Ajax.request({",
+                                    "        url : 'rest/auth/login',",
+                                    "        headers : {",
+                                    "            \"Accept\" : \"application/json\"",
+                                    "        },",
+                                    "        method : 'POST',",
+                                    "        params : {",
+                                    "            'userName' : Ext.getCmp('idUserName').getValue(),",
+                                    "            'password' : encrypt",
+                                    "        },",
+                                    "        success : function(response, opts) {",
+                                    "            var t = JSON.parse(response.responseText);",
+                                    "            if (t.status === \"-1\") {",
+                                    "                Ext.Msg.alert(\"登录失败！\" + t.msg);",
+                                    "                return;",
+                                    "            } else if (t.status === \"0\") {",
+                                    "                viewport = Ext.getCmp('idViewport');",
+                                    "                viewport.removeAll();",
+                                    "                loader = Ext.create('Cucgp.view.Loader');",
+                                    "                viewport.insert(loader);",
+                                    "                return;",
+                                    "            }",
+                                    "        },",
+                                    "        failure : function(response, opts) {",
+                                    "            var t = JSON.parse(response.responseText);",
+                                    "            Ext.Msg.alert(\"登录失败！ErrorMsg:\" + t.msg);",
+                                    "            return;",
+                                    "        }",
+                                    "    });",
+                                    "}",
+                                    "return;",
+                                    ""
+                                ],
+                                "name": "click",
+                                "scope": "me"
+                            },
+                            "designerId": "1fbabf6a-f25e-418d-8c2e-18352beb4551"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "south",
+                "height": 150
+            },
+            "designerId": "eef4bf99-058e-4d01-8eb2-f4d62a6f8e35"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "west",
+                "width": 150
+            },
+            "designerId": "04130dc4-6807-472c-85c3-431741847905"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "east",
+                "width": 150
+            },
+            "designerId": "eadb68a4-be1c-47e4-9d20-b6b2edeac9e4"
+        },
+        {
+            "type": "Ext.container.Container",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|flex": 1,
+                "layout|region": "north",
+                "height": 150
+            },
+            "designerId": "9e7c6867-4a5f-4d1a-a870-9bd3d898ad94"
+        }
+    ]
+}

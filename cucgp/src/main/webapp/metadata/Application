@@ -1,0 +1,36 @@
+{
+    "type": "Ext.app.Application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Action",
+            "User",
+            "Student",
+            "Workflow"
+        ],
+        "stores": [
+            "Actions",
+            "Users",
+            "Students",
+            "Workflows"
+        ],
+        "views": [
+            "Index",
+            "Loader",
+            "Main",
+            "Actions",
+            "Users",
+            "Students",
+            "MyPanel",
+            "Workflows",
+            "Tca"
+        ],
+        "autoCreateViewport": true,
+        "name": "Cucgp"
+    },
+    "designerId": "application"
+}

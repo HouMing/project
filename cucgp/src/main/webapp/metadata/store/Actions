@@ -1,0 +1,73 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "Action",
+        "storeId": "sActions",
+        "designer|userClassName": "Actions"
+    },
+    "designerId": "0e8503cb-0a1b-4617-9f05-d8d8ba01108a",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "                    create: 'rest/actions/creates',",
+                    "                    read: 'rest/actions/reads',",
+                    "                    update: 'rest/actions/updates',",
+                    "                    destroy: 'rest/actions/deletes'",
+                    "}"
+                ],
+                "url": "rest/actions/reads",
+                "headers": [
+                    "{Accept : 'application/json'}"
+                ]
+            },
+            "designerId": "51e17890-3635-4ce5-8849-4f61b9c08dc2",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "actions"
+                    },
+                    "designerId": "6994e64b-5353-4607-8598-c8656e66deb6"
+                }
+            ]
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onStoreBeforeLoad",
+                "implHandler": [
+                    "Ext.Ajax.defaultHeaders = {",
+                    "    'Accept' : 'application/json'",
+                    "};"
+                ],
+                "name": "beforeload",
+                "scope": "me"
+            },
+            "designerId": "045eda9d-3b34-40ea-835a-54754d4afaf0"
+        }
+    ]
+}

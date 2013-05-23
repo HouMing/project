@@ -1,0 +1,109 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "tbar": [
+            "[",
+            "                {",
+            "                    text: '教师申报',",
+            "                    handler: function() {",
+            "",
+            "                            }",
+            "                }, {",
+            "                    text: '审核发布',",
+            "                    handler: function() {",
+            "",
+            "                            }",
+            "                }, {",
+            "                    text: '学生执行',",
+            "                    handler: function() {",
+            "",
+            "                    }",
+            "                }, {",
+            "                    text: '总评分数',",
+            "                    handler: function() {",
+            "",
+            "                    }",
+            "                }, {",
+            "                    text: '关闭流程',",
+            "                    handler: function() {",
+            "",
+            "                    }",
+            "                }",
+            "    ]"
+        ],
+        "height": 250,
+        "id": "idWorkflows",
+        "width": 400,
+        "designer|userClassName": "Workflows",
+        "title": "My Grid Panel",
+        "store": "Workflows"
+    },
+    "configAlternates": {
+        "tbar": "array"
+    },
+    "designerId": "027084d7-1db5-4201-94ab-25c04091dcf8",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "tbar",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "workflowName",
+                "text": "流程名"
+            },
+            "designerId": "71c0ea8e-a6cc-4ee3-9c88-c76ed64ac8cd"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "workflowStatus",
+                "text": "流程状态"
+            },
+            "designerId": "15cb585d-205c-4984-ad56-880566fb1f43"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "designer|displayName": "workflowEdit"
+            },
+            "designerId": "0ddb8ec9-b96e-4ff8-8a37-29106b1a73ee"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "状态说明"
+            },
+            "designerId": "6dd46be7-566c-4d03-a61d-658de4499c8f"
+        }
+    ]
+}

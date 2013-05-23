@@ -1,0 +1,39 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "designer|userClassName": "Workflow",
+        "singleton": true
+    },
+    "designerId": "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "workflowName"
+            },
+            "designerId": "649937bd-104c-4a67-8ea3-bd8206f34851"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "workflowStatus"
+            },
+            "designerId": "b26ab198-e042-4d80-b731-6d75a34a4613"
+        }
+    ]
+}

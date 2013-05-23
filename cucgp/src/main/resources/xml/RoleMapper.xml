@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="name.hm.jpa.RoleMapper">
+  <resultMap id="role" type="Role">
+    <id property="roleId" column="role_id" javaType="Integer" />
+    <result property="roleName" column="role_name" javaType="String" />
+    <collection property="actions" column="action_id" javaType="arraylist" 
+      ofType="Integer" select="selectActions" />
+    <collection property="groups" column="group_id" javaType="arraylist" 
+      ofType="Integer" select="selectGroups"/>
+  </resultMap>
+
+  <select id="selectActions" resultType="Integer" >
+    SELECT action_id
+    FROM cucgp.`action`
+    WHERE role_id = #{roleId}
+    ORDER BY action_id ASC;
+  </select>
+
+  <select id="selectGroups" resultType="Integer" >
+    SELECT group_id
+    FROM cucgp.`role_has_group`
+    WHERE role_id = #{roleId}
+    ORDER BY group_id ASC;
+  </select>
+
+  <select id="selectAll" resultMap="role">
+    SELECT role_id, role_name
+    FROM cucgp.`role` 
+    ORDER BY role_id ASC;
+  </select>
+
+  <select id="selectByRoleId" resultMap="role" parameterType="Integer">
+    SELECT role_id, role_name
+    FROM cucgp.`role`
+    WHERE role_id = #{param1};
+  </select>
+
+  <insert id="insert" parameterType="Role" >
+    <selectKey keyProperty="roleId" resultType="Integer" order="BEFORE">
+      SELECT IFNULL(MAX(role_id + 1), 1) AS role_id FROM cucgp.`role`;
+    </selectKey>
+    INSERT INTO cucgp.`role`
+    (role_id, role_name)
+    VALUES
+    (#{roleId}, #{roleName});
+  </insert>
+
+  <insert id="insertList" parameterType="Role">
+    INSERT INTO cucgp.`role_has_group`(role_id, group_id)
+    VALUES
+    <foreach collection="groups" item="item" separator="," close=";">
+      (#{roleId}, #{item})
+    </foreach>
+  </insert>
+
+  <delete id="delete" parameterType="Role">
+    DELETE FROM cucgp.`role`
+    WHERE role_id = #{roleId};
+  </delete>
+
+</mapper>

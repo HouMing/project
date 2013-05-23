@@ -1,0 +1,37 @@
+{
+    "type": "Ext.container.Container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 600,
+        "width": 1320,
+        "designer|userClassName": "Loader",
+        "layout": "border"
+    },
+    "designerId": "16f34a33-6540-4da2-838e-a0c0f670a60a",
+    "cn": [
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onContainerBeforeRender",
+                "implHandler": [
+                    "var actions = Ext.create('Cucgp.view.Actions', {region : 'west', flex: 1});",
+                    "var main = Ext.create('Cucgp.view.Main', {region : 'center', flex : 5});",
+                    "this.add(actions);",
+                    "this.add(main);"
+                ],
+                "name": "beforerender",
+                "scope": "me"
+            },
+            "designerId": "4f3988f2-3d46-4868-9e51-d455b506721b"
+        }
+    ]
+}

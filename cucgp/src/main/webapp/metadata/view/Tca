@@ -1,0 +1,59 @@
+{
+    "type": "Ext.form.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 371,
+        "width": 636,
+        "designer|userClassName": "Tca",
+        "bodyPadding": 10,
+        "title": "My Form"
+    },
+    "designerId": "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126",
+    "cn": [
+        {
+            "type": "Ext.form.field.Text",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "fieldLabel": "项目名称"
+            },
+            "designerId": "3b2ffe2a-05cc-460c-a5da-45638445e92b"
+        },
+        {
+            "type": "Ext.form.field.Number",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "fieldLabel": "项目人数"
+            },
+            "designerId": "27bb2bc3-be48-45e1-91ee-a9fb15aa93eb"
+        },
+        {
+            "type": "Ext.form.field.HtmlEditor",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "layout|anchor": "100%",
+                "height": 150,
+                "designer|displayName": "introduction",
+                "fieldLabel": ""
+            },
+            "designerId": "16183c4d-46c2-4ac9-8950-0be53597139c"
+        }
+    ]
+}

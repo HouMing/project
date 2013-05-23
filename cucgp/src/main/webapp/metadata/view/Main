@@ -1,0 +1,15 @@
+{
+    "type": "Ext.tab.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "idMain",
+        "width": 100,
+        "designer|userClassName": "Main",
+        "title": "视图区"
+    },
+    "designerId": "78d5ae0e-46e8-4275-a047-2b76d482fead"
+}

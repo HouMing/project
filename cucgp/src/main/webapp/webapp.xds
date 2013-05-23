@@ -1,0 +1,194 @@
+{
+    "name": "webapp",
+    "settings": {
+        "spacesToIndent": 4,
+        "lineEnding": "LF",
+        "genTimestamps": false,
+        "cacheBust": false,
+        "urlPrefix": "",
+        "exportPath": "",
+        "buildShouldOverwriteIndex": true
+    },
+    "xdsVersion": "2.2.2",
+    "xdsBuild": 971,
+    "schemaVersion": 1,
+    "upgradeVersion": 210000000501,
+    "framework": "ext42",
+    "topInstanceFileMap": {
+        "d9a9cf89-80ae-4c31-9c0c-47c454a7572d": {
+            "paths": [
+                "metadata/resource/Library"
+            ],
+            "className": "Library"
+        },
+        "e507577f-4df4-4cd4-b23c-16e2c3e7c55e": {
+            "paths": [
+                "metadata/view/Index",
+                "app/view/override/Index.js",
+                "app/view/Index.js",
+                "app/view/Viewport.js"
+            ],
+            "className": "Index"
+        },
+        "16f34a33-6540-4da2-838e-a0c0f670a60a": {
+            "paths": [
+                "metadata/view/Loader",
+                "app/view/override/Loader.js",
+                "app/view/Loader.js"
+            ],
+            "className": "Loader"
+        },
+        "0e8503cb-0a1b-4617-9f05-d8d8ba01108a": {
+            "paths": [
+                "metadata/store/Actions",
+                "app/store/override/Actions.js",
+                "app/store/Actions.js"
+            ],
+            "className": "Actions"
+        },
+        "78d5ae0e-46e8-4275-a047-2b76d482fead": {
+            "paths": [
+                "metadata/view/Main",
+                "app/view/override/Main.js",
+                "app/view/Main.js"
+            ],
+            "className": "Main"
+        },
+        "12fd623d-8377-42f0-ad29-840036efe487": {
+            "paths": [
+                "metadata/model/Action",
+                "app/model/override/Action.js",
+                "app/model/Action.js"
+            ],
+            "className": "Action"
+        },
+        "de852162-e48b-4783-b8d9-419cb857fdd2": {
+            "paths": [
+                "metadata/view/Actions",
+                "app/view/override/Actions.js",
+                "app/view/Actions.js"
+            ],
+            "className": "Actions"
+        },
+        "27c0ee75-310c-4297-887d-2015629422e1": {
+            "paths": [
+                "metadata/view/Users",
+                "app/view/override/Users.js",
+                "app/view/Users.js"
+            ],
+            "className": "Users"
+        },
+        "41a114f0-e9a6-4593-9dae-01000956de7e": {
+            "paths": [
+                "metadata/store/Users",
+                "app/store/override/Users.js",
+                "app/store/Users.js"
+            ],
+            "className": "Users"
+        },
+        "aea1199e-ceab-4553-b4d5-0c593de77901": {
+            "paths": [
+                "metadata/model/User",
+                "app/model/override/User.js",
+                "app/model/User.js"
+            ],
+            "className": "User"
+        },
+        "077dd8ea-0c6b-441a-871f-06cb419d1e78": {
+            "paths": [
+                "metadata/view/Students",
+                "app/view/override/Students.js",
+                "app/view/Students.js"
+            ],
+            "className": "Students"
+        },
+        "3dd218f4-5dc6-4186-8556-86597fd9337f": {
+            "paths": [
+                "metadata/model/Student",
+                "app/model/override/Student.js",
+                "app/model/Student.js"
+            ],
+            "className": "Student"
+        },
+        "53b05f35-63cc-4b83-86a5-aef7c46106c7": {
+            "paths": [
+                "metadata/store/Students",
+                "app/store/override/Students.js",
+                "app/store/Students.js"
+            ],
+            "className": "Students"
+        },
+        "854215e0-951b-4fd5-8313-5434e37629f4": {
+            "paths": [
+                "metadata/view/MyPanel",
+                "app/view/override/MyPanel.js",
+                "app/view/MyPanel.js"
+            ],
+            "className": "MyPanel"
+        },
+        "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e": {
+            "paths": [
+                "metadata/model/Workflow",
+                "app/model/override/Workflow.js",
+                "app/model/Workflow.js"
+            ],
+            "className": "Workflow"
+        },
+        "027084d7-1db5-4201-94ab-25c04091dcf8": {
+            "paths": [
+                "metadata/view/Workflows",
+                "app/view/override/Workflows.js",
+                "app/view/Workflows.js"
+            ],
+            "className": "Workflows"
+        },
+        "d072611c-1230-445f-bc84-f0ae1d7df63c": {
+            "paths": [
+                "metadata/store/Workflows",
+                "app/store/override/Workflows.js",
+                "app/store/Workflows.js"
+            ],
+            "className": "Workflows"
+        },
+        "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126": {
+            "paths": [
+                "metadata/view/Tca",
+                "app/view/override/Tca.js",
+                "app/view/Tca.js"
+            ],
+            "className": "Tca"
+        }
+    },
+    "viewOrderMap": {
+        "view": [
+            "e507577f-4df4-4cd4-b23c-16e2c3e7c55e",
+            "16f34a33-6540-4da2-838e-a0c0f670a60a",
+            "78d5ae0e-46e8-4275-a047-2b76d482fead",
+            "de852162-e48b-4783-b8d9-419cb857fdd2",
+            "27c0ee75-310c-4297-887d-2015629422e1",
+            "077dd8ea-0c6b-441a-871f-06cb419d1e78",
+            "854215e0-951b-4fd5-8313-5434e37629f4",
+            "027084d7-1db5-4201-94ab-25c04091dcf8",
+            "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126"
+        ],
+        "store": [
+            "0e8503cb-0a1b-4617-9f05-d8d8ba01108a",
+            "41a114f0-e9a6-4593-9dae-01000956de7e",
+            "53b05f35-63cc-4b83-86a5-aef7c46106c7",
+            "d072611c-1230-445f-bc84-f0ae1d7df63c"
+        ],
+        "controller": [],
+        "model": [
+            "12fd623d-8377-42f0-ad29-840036efe487",
+            "aea1199e-ceab-4553-b4d5-0c593de77901",
+            "3dd218f4-5dc6-4186-8556-86597fd9337f",
+            "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e"
+        ],
+        "resource": [
+            "d9a9cf89-80ae-4c31-9c0c-47c454a7572d"
+        ],
+        "app": [
+            "application"
+        ]
+    }
+}

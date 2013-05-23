@@ -1,0 +1,55 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "User",
+        "storeId": "MyStore1",
+        "designer|userClassName": "Users"
+    },
+    "designerId": "41a114f0-e9a6-4593-9dae-01000956de7e",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "      create : 'rest/users/creates',",
+                    "      read : 'rest/users/reads',",
+                    "      update : 'rest/users/updates',",
+                    "      destroy : 'rest/users/deletes'",
+                    "}"
+                ],
+                "headers": [
+                    " {",
+                    "    'Accept' : 'application/json'",
+                    " }"
+                ]
+            },
+            "designerId": "5236ff79-7cd2-4969-858b-0ec7f04e2742",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "users"
+                    },
+                    "designerId": "bfa527e9-a3b5-419c-9377-288c42419cad"
+                }
+            ]
+        }
+    ]
+}

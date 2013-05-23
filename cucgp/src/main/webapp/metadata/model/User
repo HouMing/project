@@ -1,0 +1,80 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "idProperty": "userId",
+        "designer|userClassName": "User"
+    },
+    "designerId": "aea1199e-ceab-4553-b4d5-0c593de77901",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "groupId",
+                "type": "int"
+            },
+            "designerId": "aab0e2dc-9211-48f3-8169-a82b7f83ff8e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userName",
+                "type": "string"
+            },
+            "designerId": "198d8156-7d8f-4770-accb-75a3e856cb5b"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "password",
+                "type": "string"
+            },
+            "designerId": "8c606767-7027-4b82-8138-65ed4c26d875"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userHome",
+                "type": "string"
+            },
+            "designerId": "94dc5280-e0dc-4888-b1fb-4d25e6a818ba"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "userId",
+                "type": "int"
+            },
+            "designerId": "bf0d4364-27c3-491a-986c-7dcbd998a5f2"
+        }
+    ]
+}

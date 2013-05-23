@@ -1,0 +1,51 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "autoSync": true,
+        "model": "Student",
+        "storeId": "Students",
+        "designer|userClassName": "Students"
+    },
+    "designerId": "53b05f35-63cc-4b83-86a5-aef7c46106c7",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "                    create: 'rest/students/creates',",
+                    "                    read: 'rest/students/reads',",
+                    "                    update: 'rest/students/updates',",
+                    "                    destroy: 'rest/students/deletes'",
+                    "}"
+                ]
+            },
+            "designerId": "a491d968-dc4a-40f9-80e6-696cdffd289e",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "students"
+                    },
+                    "designerId": "e96e8d1c-3dd7-4302-82f1-749d2ea35e0a"
+                }
+            ]
+        }
+    ]
+}

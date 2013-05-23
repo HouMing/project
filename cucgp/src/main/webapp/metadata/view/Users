@@ -1,0 +1,220 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": 427,
+        "id": "idUsers",
+        "width": 716,
+        "designer|userClassName": "Users",
+        "title": "账户管理",
+        "forceFit": false,
+        "store": "Users"
+    },
+    "designerId": "27c0ee75-310c-4297-887d-2015629422e1",
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "userId",
+                "text": "用户ID"
+            },
+            "designerId": "e7d98a4d-29ed-438d-8632-24494921ada8"
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "482e7d5a-d526-4035-9917-32073d700175",
+            "cn": [
+                {
+                    "type": "Ext.grid.plugin.DragDrop",
+                    "reference": {
+                        "name": "plugins",
+                        "type": "array"
+                    },
+                    "codeClass": "Ext.grid.plugin.DragDrop",
+                    "designerId": "02372222-b428-4c28-89cc-f1a358530de2"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "userName",
+                "text": "账户"
+            },
+            "designerId": "873dd277-53ad-459f-ae0b-39f01c8095bd",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "8aa05f2b-a24c-4f2b-affe-2ea9bf1129a6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "password",
+                "text": "密码"
+            },
+            "designerId": "5234a7a0-9f4d-4eb5-b1a0-8ebd92ac9ebb",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "a127b0eb-8b8e-46d9-92a7-a9a02af1ffb5"
+                }
+            ]
+        },
+        {
+            "type": "Ext.toolbar.Paging",
+            "reference": {
+                "name": "dockedItems",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dock": "bottom",
+                "width": 360,
+                "displayInfo": true,
+                "store": "Users"
+            },
+            "designerId": "2d29e2ac-cb6b-4eca-a6ee-e3626e24031d"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "pluginId": "usersEdit"
+            },
+            "designerId": "ea84b902-bb31-41bf-b9a2-237c3a36d65e",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRowEditingCanceledit",
+                        "implHandler": [
+                            "Ext.MessageBox.confirm('取消编辑','确认取消变更么？',",
+                            "                       function (button) {",
+                            "                           if(button == 'yes') {",
+                            "                             console.debug('已取消');",
+                            "                           } else {",
+                            "                               console.debug('未取消');",
+                            "                           }",
+                            "                       }",
+                            "                      );"
+                        ],
+                        "name": "canceledit",
+                        "scope": "me"
+                    },
+                    "designerId": "3f1bade6-fc04-4036-a346-eca53584a7e8"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRowEditingEdit",
+                        "implHandler": [
+                            "Ext.MessageBox.confirm('更改','确认变更么？',",
+                            "                       function (button) {",
+                            "                           if(button == 'yes') {",
+                            "                             console.debug('已取消');",
+                            "                           } else {",
+                            "                               console.debug('未取消');",
+                            "                           }",
+                            "                       }",
+                            "                      );"
+                        ],
+                        "name": "edit",
+                        "scope": "me"
+                    },
+                    "designerId": "7dcebf16-3c27-4a0f-97b7-f2e9404acdd8"
+                },
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRowEditingBeforeEdit",
+                        "implHandler": [
+                            "",
+                            "Ext.getCmp('idUsers').getPlugin('usersEdit').startEdit(0,0);"
+                        ],
+                        "name": "beforeedit",
+                        "scope": "me"
+                    },
+                    "designerId": "e73af618-a298-4c52-a21d-26f04767bdc3"
+                }
+            ]
+        },
+        {
+            "type": "Ext.selection.RowModel",
+            "reference": {
+                "name": "selModel",
+                "type": "object"
+            },
+            "codeClass": "Ext.selection.RowModel",
+            "designerId": "bd8230f4-c6ff-43f6-80f6-4b4e86514c29"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "groupId",
+                "text": "分组"
+            },
+            "designerId": "6b1e4947-cef6-4d3b-a5d2-bfdcee81e943"
+        }
+    ]
+}

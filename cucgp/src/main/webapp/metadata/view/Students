@@ -1,0 +1,362 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "tbar": [
+            "[",
+            "    {",
+            "            text: '添加学生',",
+            "            iconCls: 'employee-add',",
+            "            handler: function() {",
+            "                Ext.getCmp('idStudents').plugins[0].cancelEdit();",
+            "                // Create a record instance through the ModelManager",
+            "                var r = Cucgp.model.Student.create();",
+            "                Ext.getStore('Students').insert(0, r);",
+            "                Ext.getCmp('idStudents').plugins[0].startEdit(0, 0);",
+            "            }",
+            "        }, {",
+            "            ",
+            "            text: '删除学生',",
+            "            iconCls: 'employee-remove',",
+            "            handler: function() {",
+            "                var sm = Ext.getCmp('idStudents').getSelectionModel();",
+            "                Ext.getCmp('idStudents').plugins[0].cancelEdit();",
+            "                Ext.getStore('Students').remove(sm.getSelection());",
+            "                sm.select(0);",
+            "            }",
+            "        }",
+            "]"
+        ],
+        "frame": true,
+        "height": 250,
+        "id": "idStudents",
+        "width": 800,
+        "designer|userClassName": "Students",
+        "anchorSize": null,
+        "title": "学生信息管理",
+        "store": "Students"
+    },
+    "configAlternates": {
+        "tbar": "array"
+    },
+    "designerId": "077dd8ea-0c6b-441a-871f-06cb419d1e78",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "tbar",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "userId",
+                "text": "用户ID"
+            },
+            "designerId": "fef1a343-7dcb-4e10-9103-8db7c1817537",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "be830f2f-f3f4-42fc-9802-3168b7debbc9"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "userName",
+                "text": "学号"
+            },
+            "designerId": "a1635df7-49e3-41b4-aeb8-87199fc96c52",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "c9242406-9bc0-458a-a251-ef905d80c967"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "password",
+                "text": "密码"
+            },
+            "designerId": "3c88c075-4de6-4523-a9f2-9990f5a5a52f",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "b444f48b-f46b-4d20-80ac-51714e30b0a6"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "studentName",
+                "text": "姓名"
+            },
+            "designerId": "392750dd-4cf8-4cf5-8871-f6b4738026cc",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "4e9cdb76-d96a-434f-aa05-4bd15c2d6dc8"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "telephone",
+                "text": "电话"
+            },
+            "designerId": "ad7c6cd1-ef2d-4205-9e6f-026056d05dd3",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "4f5a35d2-f0ba-4844-a0f4-7840f9b4c90b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "email",
+                "text": "邮箱"
+            },
+            "designerId": "85e31e4f-5aed-4034-8101-b062762bbaa7",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "86ec04d1-6d09-4f1f-bf01-5f19ff888c3d"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "6d70e29c-cfe3-42e8-9ebd-a02a1afbafc1"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "weibo",
+                "text": "微博"
+            },
+            "designerId": "98e1ee7c-84dc-477e-99b0-c5710a0c76df",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "98057314-b905-435e-b4f1-924df3c5b804"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "introduction",
+                "text": "个人介绍"
+            },
+            "designerId": "6fac9849-3013-479c-ba04-adf190357755",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "274ffa9e-3098-4e41-8cf2-22ff0ccb8c40"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "classroomName",
+                "text": "班级"
+            },
+            "designerId": "75d0f1c3-43c1-47de-9b1e-d3c85c19977b",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "d439307e-c5e2-42dc-a857-8d215439ef7f"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "departmentName",
+                "text": "院系"
+            },
+            "designerId": "dd88c90f-af8b-4b28-ac8e-77f47c3b9015",
+            "cn": [
+                {
+                    "type": "Ext.form.field.ComboBox",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "03301845-294d-417e-bbb0-832251a7c8bd"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "userConfig": {
+                "pluginId": "studentRow",
+                "designer|displayName": "studentRow"
+            },
+            "designerId": "1fc95caf-77c9-4e84-9b97-4e65d125c5e5",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onRowEditingEdit",
+                        "implHandler": [
+                            "Ext.getStore('Students').sync();",
+                            "Ext.getStore('Students').load();"
+                        ],
+                        "name": "edit",
+                        "scope": "me"
+                    },
+                    "designerId": "93285c49-7a22-4616-8c87-042de77058a4"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "groupId",
+                "text": "分组"
+            },
+            "designerId": "8e1b616b-6142-4d0e-ab33-2e767fe8277f",
+            "cn": [
+                {
+                    "type": "Ext.form.field.TextArea",
+                    "reference": {
+                        "name": "editor",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "designerId": "0e1307ae-10b5-437f-8c31-1dd45cbd1a51"
+                }
+            ]
+        }
+    ]
+}

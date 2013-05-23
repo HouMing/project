@@ -1,0 +1,50 @@
+{
+    "type": "Ext.data.Store",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "autoLoad": true,
+        "model": "Workflow",
+        "storeId": "MyStore3",
+        "designer|userClassName": "Workflows"
+    },
+    "designerId": "d072611c-1230-445f-bc84-f0ae1d7df63c",
+    "cn": [
+        {
+            "type": "Ext.data.proxy.Ajax",
+            "reference": {
+                "name": "proxy",
+                "type": "object"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "api": [
+                    "{",
+                    "                    create: 'rest/workflows/creates',",
+                    "                    read: 'rest/workflows/reads',",
+                    "                    update: 'rest/workflows/updates',",
+                    "                    destroy: 'rest/workflows/deletes'",
+                    "}"
+                ]
+            },
+            "designerId": "bdedeab6-20e5-49d4-8359-5f4748882d80",
+            "cn": [
+                {
+                    "type": "Ext.data.reader.Json",
+                    "reference": {
+                        "name": "reader",
+                        "type": "object"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "root": "workflows"
+                    },
+                    "designerId": "4325bdd7-61c7-42b8-9ba7-0e07a88ba8d8"
+                }
+            ]
+        }
+    ]
+}

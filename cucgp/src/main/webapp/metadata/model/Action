@@ -1,0 +1,77 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "idProperty": "actionId",
+        "designer|userClassName": "Action"
+    },
+    "designerId": "12fd623d-8377-42f0-ad29-840036efe487",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "actionId",
+                "type": "int"
+            },
+            "designerId": "debd500d-2047-4679-ab14-98f38804227e"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "roleId",
+                "type": "int"
+            },
+            "designerId": "7ffe9e48-ed0a-48b8-9880-5dc3d2a75a7d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "actionName"
+            },
+            "designerId": "4b4ed55c-057a-4393-9397-3bb5a7728f2f"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "actionUrl"
+            },
+            "designerId": "e1a98b76-da1f-474c-9396-1fa2aa1d110a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "description"
+            },
+            "designerId": "807e628a-946b-455e-a3a8-5056b0a59001"
+        }
+    ]
+}
