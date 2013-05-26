@@ -1,24 +1,57 @@
 package me.hm.m;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 
-@Deprecated
+
+//@Deprecated
 public class Tca
 {
 	Integer tcaId;
-	String userName;
+	String teacherName;
 	String tcaName;
 	String introduction;
 	String requirement;
 	Integer numerator;
 	Integer applycount;
+	Integer status;
+	
+	/*
 	Status status;
-
 	public static final Status APPLY = Status.valueOf("apply");
 	public static final Status PASS = Status.valueOf("pass");
-  public static final Status NOTPASS = Status.valueOf("notpass");
+    public static final Status NOTPASS = Status.valueOf("notpass");
 	public static final Status PUBLISHED = Status.valueOf("published");
 	public static final Status TRASH = Status.valueOf("trash");
+	*/
+
+//	@Temp
+	public Tca(Integer tcaId, String tcaName, String teacherName, String introduction, Integer status, Integer numerator, Integer applycount) {
+		this.tcaId = tcaId;
+		this.teacherName = teacherName;
+		this.tcaName = tcaName;
+		this.introduction = introduction;
+		this.numerator = numerator;
+		this.status = status;
+		this.applycount = applycount;
+		this.requirement = "测试中.";
+	}
 	
+	public Tca(String teacherName, String tcaName, String introduction, Integer status, Integer numerator, Integer applycount) {
+		this(null, tcaName, teacherName, introduction, status, numerator, applycount);
+	}
+
+	public Tca(JSONObject jsb) {
+		this.tcaId = jsb.getInteger("tcaId");
+		this.teacherName = jsb.getString("teacherName");
+		this.tcaName = jsb.getString("tcaName");
+		this.introduction = jsb.getString("introduction");
+		this.requirement = jsb.getString("requirement");
+		this.numerator = jsb.getInteger("numerator");
+		this.applycount = jsb.getInteger("applycount");
+		this.status = jsb.getInteger("status");
+	}
+
 	@Override
 	public int hashCode()
 	{
@@ -49,14 +82,14 @@ public class Tca
 		this.tcaId = tcaId;
 	}
 
-	public String getUserName()
+	public String getTeacherName()
 	{
-		return userName;
+		return teacherName;
 	}
 
-	public void setUserName(String userName)
+	public void setTeacherName(String userName)
 	{
-		this.userName = userName;
+		this.teacherName = userName;
 	}
 
 	public String getIntroduction()
@@ -109,16 +142,22 @@ public class Tca
 		this.applycount = applycount;
 	}
 
-	public Status getStatus()
+	public Integer getStatus()
 	{
 		return status;
 	}
 
-	public void setStatus(Status status)
+	public void setStatus(Integer status)
 	{
 		this.status = status;
 	}
-
+	
+	@Override
+    public String toString() {
+    	return JSON.toJSONString(this);
+    }
+	
+	/*
 	public enum Status
 	{
 		apply("申请中"), pass("通过"), notpass("未通过"), published("已发布"), trash("已作废");
@@ -135,4 +174,5 @@ public class Tca
 			return value;
 		}
 	}
+	*/
 }

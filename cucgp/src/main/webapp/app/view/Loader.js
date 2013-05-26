@@ -27,8 +27,8 @@ Ext.define('Cucgp.view.Loader', {
 
         Ext.applyIf(me, {
             listeners: {
-                beforerender: {
-                    fn: me.onContainerBeforeRender,
+                afterrender: {
+                    fn: me.onContainerAfterRender,
                     scope: me
                 }
             }
@@ -37,11 +37,12 @@ Ext.define('Cucgp.view.Loader', {
         me.callParent(arguments);
     },
 
-    onContainerBeforeRender: function(component, eOpts) {
+    onContainerAfterRender: function(component, eOpts) {
         var actions = Ext.create('Cucgp.view.Actions', {region : 'west', flex: 1});
         var main = Ext.create('Cucgp.view.Main', {region : 'center', flex : 5});
         this.add(actions);
         this.add(main);
+        actions.getStore().reload();
     }
 
 });

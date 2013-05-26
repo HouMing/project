@@ -103,7 +103,12 @@ public class User implements Comparable<User>
 	@Override
 	public int compareTo(User o) {
 		// TODO Auto-generated method stub
-		return this.userId.compareTo(o.userId);
+		if (o != null) {
+		return o.userId.compareTo(userId);
+		}
+		else {
+		return 1;	
+		}
 	}
 
 }

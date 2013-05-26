@@ -34,7 +34,7 @@ public class AuthorizationFilter implements Filter
     HttpServletResponse resp = (HttpServletResponse) response;
 
     System.out.println(req.getRequestURI());
-    // js/css
+    // 加Extjs后，基本没用了。留着吧。也许以后用的着。可以考虑吧正则规则整合到一起。
     if (req.getRequestURI().matches("^(.*)(\\.js)$") ||
         req.getRequestURI().matches("^(.*)(\\.css)$") ||
         req.getRequestURI().matches("^(.*)(\\.jpg)$") ||

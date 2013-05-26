@@ -76,12 +76,8 @@ public class AuthorizationService {
 		ArrayList<Action> actions = new ArrayList<Action>();
 		for (Role role : roles) {
 			for (Integer actionId : role.getActions()) {
-				try {
-					Action action = actionDao.readById(actionId);
-					actions.add(action);
-				} catch (DataAccessException e) {
-					continue;
-				}
+		        Action action = actionDao.readById(actionId);
+				actions.add(action);
 			}
 		}
 		if (actions.size() == 0) {

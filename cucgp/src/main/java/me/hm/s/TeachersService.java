@@ -3,8 +3,8 @@ package me.hm.s;
 import java.util.ArrayList;
 import java.util.List;
 
-import me.hm.jpa.StudentDao;
-import me.hm.m.Student;
+import me.hm.jpa.TeacherDao;
+import me.hm.m.Teacher;
 import me.hm.m.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,19 +16,19 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class TeachersManagerService {
+public class TeachersService {
 
 	@Autowired
-	StudentDao studentDao;
+	TeacherDao teacherDao;
 	
-	public List<Student> readStudents() {
-		List<Student> students = new ArrayList<Student>();
-		students.addAll(studentDao.readAll());
+	public List<Teacher> readTeachers() {
+		List<Teacher> students = new ArrayList<Teacher>();
+		students.addAll(teacherDao.readAll());
 		return students;
 	}
 
-	public void insertStudent(Student student) {
-		studentDao.create(student);
+	public void insertTeacher(Teacher teacher) {
+		teacherDao.create(teacher);
 	}
 
 	@Deprecated

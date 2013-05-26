@@ -29,7 +29,7 @@
                     "                    destroy: 'rest/actions/deletes'",
                     "}"
                 ],
-                "url": "rest/actions/reads",
+                "url": null,
                 "headers": [
                     "{Accept : 'application/json'}"
                 ]
@@ -60,9 +60,11 @@
             "userConfig": {
                 "fn": "onStoreBeforeLoad",
                 "implHandler": [
+                    "/*",
                     "Ext.Ajax.defaultHeaders = {",
                     "    'Accept' : 'application/json'",
-                    "};"
+                    "};",
+                    "*/"
                 ],
                 "name": "beforeload",
                 "scope": "me"

@@ -6,13 +6,11 @@
     },
     "codeClass": null,
     "userConfig": {
-        "autoLoad": true,
-        "autoSync": true,
-        "model": "Workflow",
-        "storeId": "MyStore3",
-        "designer|userClassName": "Workflows"
+        "model": "Stua",
+        "storeId": "MyStore5",
+        "designer|userClassName": "Stuas"
     },
-    "designerId": "d072611c-1230-445f-bc84-f0ae1d7df63c",
+    "designerId": "5d1d7f21-b9e3-4766-9e06-eabe67ad596f",
     "cn": [
         {
             "type": "Ext.data.proxy.Ajax",
@@ -24,14 +22,15 @@
             "userConfig": {
                 "api": [
                     "{",
-                    "                    create: 'rest/workflows/creates',",
-                    "                    read: 'rest/workflows/reads',",
-                    "                    update: 'rest/workflows/updates',",
-                    "                    destroy: 'rest/workflows/deletes'",
-                    "}"
+                    "create: 'rest/stuas/creates',",
+                    "read: 'rest/stuas/reads',",
+                    "update: 'rest/stuas/updates',",
+                    "destroy: 'rest/stuas/deletes'",
+                    "}",
+                    ""
                 ]
             },
-            "designerId": "bdedeab6-20e5-49d4-8359-5f4748882d80",
+            "designerId": "168ce322-7e96-4339-a1cc-e5eed3d29dd4",
             "cn": [
                 {
                     "type": "Ext.data.reader.Json",
@@ -41,9 +40,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "root": "workflows"
+                        "root": "stuas"
                     },
-                    "designerId": "4325bdd7-61c7-42b8-9ba7-0e07a88ba8d8"
+                    "designerId": "2a01f965-f5aa-4cfd-bb2c-b2cd6235c8ce"
                 }
             ]
         }

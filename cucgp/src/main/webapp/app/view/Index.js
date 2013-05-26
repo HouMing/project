@@ -91,7 +91,13 @@ Ext.define('Cucgp.view.Index', {
                     region: 'north',
                     height: 150
                 }
-            ]
+            ],
+            listeners: {
+                beforerender: {
+                    fn: me.onIdViewportBeforeRender,
+                    scope: me
+                }
+            }
         });
 
         me.callParent(arguments);
@@ -137,6 +143,12 @@ Ext.define('Cucgp.view.Index', {
         }
         return;
 
+    },
+
+    onIdViewportBeforeRender: function(component, eOpts) {
+        Ext.Ajax.defaultHeaders = {
+            'Accept' : 'application/json'
+        };
     }
 
 });

@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class GroupsManagerService {
+public class GroupsService {
 
 	@Autowired
 	GroupDao groupDao;

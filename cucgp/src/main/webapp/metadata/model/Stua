@@ -1,0 +1,80 @@
+{
+    "type": "Ext.data.Model",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "idProperty": "stuaId",
+        "designer|userClassName": "Stua"
+    },
+    "designerId": "eebccfec-cc09-41aa-8551-7108d31e88df",
+    "cn": [
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "stuaId",
+                "type": "int"
+            },
+            "designerId": "044f411c-e0b7-4d01-baa5-272dfb0853b2"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "tcaId",
+                "type": "int"
+            },
+            "designerId": "bce60171-a168-4aa7-be71-64376e41243a"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "status",
+                "type": "int"
+            },
+            "designerId": "3df9f98e-e634-4862-a5ef-4834b9000a3d"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "teacherNumber",
+                "type": "string"
+            },
+            "designerId": "53c53049-c89b-4e87-92e6-a4ed180a7901"
+        },
+        {
+            "type": "Ext.data.Field",
+            "reference": {
+                "name": "fields",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "name": "studentNumber",
+                "type": "string"
+            },
+            "designerId": "2c1e01af-1d9f-4fae-bffc-b7e58606d739"
+        }
+    ]
+}

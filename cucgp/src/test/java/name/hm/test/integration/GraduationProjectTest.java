@@ -1,13 +1,13 @@
 package name.hm.test.integration;
 
-import me.hm.s.ActionsManagerService;
+import me.hm.s.ActionsService;
 import me.hm.s.AuthorizationService;
-import me.hm.s.GroupsManagerService;
-import me.hm.s.RolesManagerService;
-import me.hm.s.StudentsManagerService;
-import me.hm.s.TeachersManagerService;
-import me.hm.s.UsersManagerService;
-import me.hm.s.WorkflowsManagerService;
+import me.hm.s.GroupsService;
+import me.hm.s.RolesService;
+import me.hm.s.StudentService;
+import me.hm.s.TeachersService;
+import me.hm.s.UsersService;
+import me.hm.s.WorkflowsService;
 
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +27,20 @@ public class GraduationProjectTest {
 	@Autowired
 	public JdbcTemplate jdbcTemplate;
 	@Autowired
-	public UsersManagerService userService;
+	public UsersService userService;
 	@Autowired
 	public AuthorizationService auService;
 	@Autowired
-	public GroupsManagerService groupService;
+	public GroupsService groupService;
 	@Autowired
-	public RolesManagerService roleService;
+	public RolesService roleService;
 	@Autowired
-	public ActionsManagerService actionService;
+	public ActionsService actionService;
 	@Autowired
-	public StudentsManagerService studentService;
+	public StudentService studentService;
 	@Autowired
-	public TeachersManagerService teacherService;
+	public TeachersService teacherService;
 	@Autowired
-	public WorkflowsManagerService workflowService;
+	public WorkflowsService workflowService;
 	
-	
-
 }

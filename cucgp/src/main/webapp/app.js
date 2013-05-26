@@ -23,13 +23,17 @@ Ext.application({
         'Action',
         'User',
         'Student',
-        'Workflow'
+        'Workflow',
+        'Tca',
+        'Stua'
     ],
     stores: [
         'Actions',
         'Users',
         'Students',
-        'Workflows'
+        'Workflows',
+        'Tcas',
+        'Stuas'
     ],
     views: [
         'Index',
@@ -38,9 +42,11 @@ Ext.application({
         'Actions',
         'Users',
         'Students',
-        'MyPanel',
         'Workflows',
-        'Tca'
+        'Tca',
+        'Tcas',
+        'ApplyTcas',
+        'Logout'
     ],
     autoCreateViewport: true,
     name: 'Cucgp'

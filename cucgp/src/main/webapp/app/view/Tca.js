@@ -17,35 +17,76 @@ Ext.define('Cucgp.view.Tca', {
     extend: 'Ext.form.Panel',
 
     height: 371,
+    id: 'idTca',
     width: 636,
     bodyPadding: 10,
-    title: 'My Form',
+    closable: true,
+    title: '毕业设计申报表',
+    titleAlign: 'center',
+    method: 'POST',
+    url: 'rest/tcas/creates',
 
     initComponent: function() {
         var me = this;
+
+        me.initialConfig = Ext.apply({
+            method: 'POST',
+            url: 'rest/tcas/creates'
+        }, me.initialConfig);
 
         Ext.applyIf(me, {
             items: [
                 {
                     xtype: 'textfield',
                     anchor: '100%',
-                    fieldLabel: '项目名称'
+                    id: '',
+                    fieldLabel: '项目名称',
+                    inputId: 'tcaName'
                 },
                 {
                     xtype: 'numberfield',
                     anchor: '100%',
-                    fieldLabel: '项目人数'
+                    fieldLabel: '项目人数',
+                    inputId: 'numerator',
+                    inputType: 'number'
                 },
                 {
                     xtype: 'htmleditor',
                     anchor: '100%',
                     height: 150,
-                    fieldLabel: ''
+                    id: 'id',
+                    fieldLabel: '',
+                    name: 'introduction',
+                    defaultValue: '填写相关说明，以及对学生的要求'
+                },
+                {
+                    xtype: 'button',
+                    text: '提交',
+                    listeners: {
+                        click: {
+                            fn: me.onButtonClick,
+                            scope: me
+                        }
+                    }
                 }
             ]
         });
 
         me.callParent(arguments);
+    },
+
+    onButtonClick: function(button, e, eOpts) {
+        var form = this;
+        if (form.isValid()) {
+            form.submit({
+                success: function(form, action) {
+                    Ext.Msg.alert('Success', action.result.msg);
+                },
+                failure: function(form, action) {
+                    Ext.Msg.alert('Failed', action.result.msg);
+                }
+            });
+        }
     }
 
 });

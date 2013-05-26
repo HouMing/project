@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class ActionsManagerService {
+public class ActionsService {
 
 	@Autowired
 	ActionDao actionDao;

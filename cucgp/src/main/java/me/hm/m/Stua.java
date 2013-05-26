@@ -1,21 +1,44 @@
 package me.hm.m;
 
+import com.alibaba.fastjson.JSON;
 
-@Deprecated
+
 public class Stua
 {
 	Integer stuaId;
 	Integer tcaId;
-	Status status;
-	String teacherUserName;
-	String studentUserName;
-
-	public static Status APPLY = Status.valueOf("apply");
-	public static Status PASS = Status.valueOf("pass");
-	public static Status NOTPASS = Status.valueOf("notpass");
-  public static Status PROCESS = Status.valueOf("process");
-  public static Status FINISH = Status.valueOf("finish");
+	Integer status;
+	String teacherNumber;
+	String studentNumber;
 	
+	public Stua(Integer stuaId, Integer tcaId, Integer status, String teacherNumber, String studentNumber ) {
+		this.stuaId  = stuaId;
+		this.tcaId = tcaId;
+		this.status = status;
+		this.teacherNumber = teacherNumber;
+		this.studentNumber = studentNumber;
+	}
+	
+	public Stua(Integer tcaId, Integer status, String teacherNumber, String studentNumber ) {
+		this(null, tcaId, status, teacherNumber, studentNumber);
+	}
+	
+	public String getTeacherNumber() {
+		return teacherNumber;
+	}
+
+	public void setTeacherNumber(String teacherNumber) {
+		this.teacherNumber = teacherNumber;
+	}
+
+	public String getStudentNumber() {
+		return studentNumber;
+	}
+
+	public void setStudentNumber(String studentNumber) {
+		this.studentNumber = studentNumber;
+	}
+
 	public Integer getStuaId()
 	{
 		return stuaId;
@@ -36,34 +59,14 @@ public class Stua
 		this.tcaId = tcaId;
 	}
 
-	public Status getStatus()
+	public Integer getStatus()
 	{
 		return status;
 	}
 
-	public void setStatus(Status status)
+	public void setStatus(Integer status)
 	{
 		this.status = status;
-	}
-
-	public String getTeacherUserName()
-	{
-		return teacherUserName;
-	}
-
-	public void setTeacherUserName(String teacherUserName)
-	{
-		this.teacherUserName = teacherUserName;
-	}
-
-	public String getStudentUserName()
-	{
-		return studentUserName;
-	}
-
-	public void setStudentUserName(String studentUserName)
-	{
-		this.studentUserName = studentUserName;
 	}
 
 	@Override
@@ -85,21 +88,10 @@ public class Stua
 			return false;
 		}
 	}
-
-	public enum Status
-	{
-		apply("申请中"), pass("通过"), notpass("未通过"), process("进行中"), finish("完成");
-		String value;
-
-		Status(String value)
-		{
-			this.value = value;
-		}
-
-		public String toString()
-		{
-			return value;
-		}
+    
+	@Override
+	public String toString() {
+		return JSON.toJSONString(this);
 	}
-
+	
 }

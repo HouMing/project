@@ -11,7 +11,7 @@ import me.hm.m.Action;
 import me.hm.m.Student;
 import me.hm.m.User;
 import me.hm.s.AuthorizationService;
-import me.hm.s.StudentsManagerService;
+import me.hm.s.StudentService;
 import me.hm.s.e.AuthorizationException;
 import me.hm.s.e.ServerException;
 
@@ -33,7 +33,7 @@ public class StudentsManagerController {
 	@Autowired
 	public AuthorizationService authorizationService;
 	@Autowired
-	public StudentsManagerService studentsManagerService;
+	public StudentService studentsManagerService;
 
 	// TODO 加入权限控制!
 	@RequestMapping(value = { "/reads" }, method = { RequestMethod.GET })

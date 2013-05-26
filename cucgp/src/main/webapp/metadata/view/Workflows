@@ -11,27 +11,52 @@
             "                {",
             "                    text: '教师申报',",
             "                    handler: function() {",
-            "",
-            "                            }",
+            "                      var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                      var record = this.up('grid').getStore().getAt(s.index);",
+            "                      record.set(\"workflowStatus\", 0);",
+            "                      record.commit();",
+            "                      this.up('grid').getStore().commitChanges();",
+            "                      this.up('grid').plugins[0].cancelEdit();   ",
+            "                   }",
             "                }, {",
             "                    text: '审核发布',",
             "                    handler: function() {",
-            "",
+            "                      var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                      var record = this.up('grid').getStore().getAt(s.index);",
+            "                      record.set(\"workflowStatus\", 1);",
+            "                      record.commit();",
+            "                      this.up('grid').getStore().commitChanges();",
+            "                      this.up('grid').plugins[0].cancelEdit();   ",
             "                            }",
             "                }, {",
             "                    text: '学生执行',",
             "                    handler: function() {",
-            "",
+            "                      var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                      var record = this.up('grid').getStore().getAt(s.index);",
+            "                      record.set(\"workflowStatus\", 2);",
+            "                      record.commit();",
+            "                      this.up('grid').getStore().commitChanges();",
+            "                      this.up('grid').plugins[0].cancelEdit();   ",
             "                    }",
             "                }, {",
             "                    text: '总评分数',",
             "                    handler: function() {",
-            "",
+            "                      var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                      var record = this.up('grid').getStore().getAt(s.index);",
+            "                      record.set(\"workflowStatus\", 3);",
+            "                      record.commit();",
+            "                      this.up('grid').getStore().commitChanges();",
+            "                      this.up('grid').plugins[0].cancelEdit();   ",
             "                    }",
             "                }, {",
             "                    text: '关闭流程',",
             "                    handler: function() {",
-            "",
+            "                      var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                      var record = this.up('grid').getStore().getAt(s.index);",
+            "                      record.set(\"workflowStatus\", 4);",
+            "                      record.commit();",
+            "                      this.up('grid').getStore().commitChanges();",
+            "                      this.up('grid').plugins[0].cancelEdit();   ",
             "                    }",
             "                }",
             "    ]"
@@ -40,7 +65,9 @@
         "id": "idWorkflows",
         "width": 400,
         "designer|userClassName": "Workflows",
-        "title": "My Grid Panel",
+        "closable": true,
+        "title": "流程管理",
+        "titleAlign": "center",
         "store": "Workflows"
     },
     "configAlternates": {
@@ -79,7 +106,47 @@
                 "dataIndex": "workflowStatus",
                 "text": "流程状态"
             },
-            "designerId": "15cb585d-205c-4984-ad56-880566fb1f43"
+            "designerId": "15cb585d-205c-4984-ad56-880566fb1f43",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "if (value == 0) {",
+                            "    return \"教师申报\";",
+                            "}",
+                            "if (value == 1) {",
+                            "    return \"审核发布\";",
+                            "}",
+                            "if (value == 2) {",
+                            "    return \"学生执行\";",
+                            "}",
+                            "if (value == 3) {",
+                            "    return \"总评分数\";",
+                            "}",
+                            "if (value == 4) {",
+                            "    return \"关闭流程\";",
+                            "}"
+                        ]
+                    },
+                    "designerId": "c4fcda95-a895-4e5a-94d4-4ed92c3a33ad"
+                }
+            ]
         },
         {
             "type": "Ext.grid.plugin.RowEditing",
@@ -101,6 +168,7 @@
             },
             "codeClass": null,
             "userConfig": {
+                "dataIndex": "workflowStatus",
                 "text": "状态说明"
             },
             "designerId": "6dd46be7-566c-4d03-a61d-658de4499c8f"

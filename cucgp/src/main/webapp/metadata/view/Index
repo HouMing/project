@@ -190,6 +190,25 @@
                 "height": 150
             },
             "designerId": "9e7c6867-4a5f-4d1a-a870-9bd3d898ad94"
+        },
+        {
+            "type": "basiceventbinding",
+            "reference": {
+                "name": "listeners",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onIdViewportBeforeRender",
+                "implHandler": [
+                    "Ext.Ajax.defaultHeaders = {",
+                    "    'Accept' : 'application/json'",
+                    "};"
+                ],
+                "name": "beforerender",
+                "scope": "me"
+            },
+            "designerId": "a6b036b5-112e-48f2-aeac-3b4504ed4733"
         }
     ]
 }

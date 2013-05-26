@@ -23,23 +23,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = {"/actions"})
-public class ActionsController
+public class ActionsApi
 {
 	@Autowired
 	public AuthorizationService authorizationService;
 
 	@RequestMapping(value = {"/reads"}, method = {RequestMethod.GET})
-	public @ResponseBody Object lsActions (HttpServletRequest req, Model model) {
+	public @ResponseBody Object lsActions (HttpServletRequest req, Model model) throws AuthorizationException {
 		User user = (User) req.getSession().getAttribute("user");
 		ArrayList<Action> lsActions;
-		try {
-			lsActions = authorizationService.lsActions(user);
-			model.addAttribute("actions", lsActions);
-            model.addAttribute("success", "true");
-		} catch (AuthorizationException e) {
-			model.addAttribute("actions", "");
-            model.addAttribute("success", "ture");
-		}
+		lsActions = authorizationService.lsActions(user);
+		model.addAttribute("actions", lsActions);
+        model.addAttribute("success", "true");
 		return model;
 	}
 	

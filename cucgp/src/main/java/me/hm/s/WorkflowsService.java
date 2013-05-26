@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class WorkflowsManagerService {
+public class WorkflowsService {
 
 	@Autowired
 	WorkflowDao roleDao;

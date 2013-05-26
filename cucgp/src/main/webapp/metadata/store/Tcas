@@ -8,11 +8,11 @@
     "userConfig": {
         "autoLoad": true,
         "autoSync": true,
-        "model": "Workflow",
-        "storeId": "MyStore3",
-        "designer|userClassName": "Workflows"
+        "model": "Tca",
+        "storeId": "MyStore4",
+        "designer|userClassName": "Tcas"
     },
-    "designerId": "d072611c-1230-445f-bc84-f0ae1d7df63c",
+    "designerId": "b98b272c-ee26-4a97-a9f7-9877beaf9a62",
     "cn": [
         {
             "type": "Ext.data.proxy.Ajax",
@@ -24,14 +24,14 @@
             "userConfig": {
                 "api": [
                     "{",
-                    "                    create: 'rest/workflows/creates',",
-                    "                    read: 'rest/workflows/reads',",
-                    "                    update: 'rest/workflows/updates',",
-                    "                    destroy: 'rest/workflows/deletes'",
+                    "                    create: 'rest/tcas/creates',",
+                    "                    read: 'rest/tcas/reads',",
+                    "                    update: 'rest/tcas/updates',",
+                    "                    destroy: 'rest/tcas/deletes'",
                     "}"
                 ]
             },
-            "designerId": "bdedeab6-20e5-49d4-8359-5f4748882d80",
+            "designerId": "369c87f6-d93b-4118-8eed-0d4c7f24d6fa",
             "cn": [
                 {
                     "type": "Ext.data.reader.Json",
@@ -41,9 +41,9 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "root": "workflows"
+                        "root": "tcas"
                     },
-                    "designerId": "4325bdd7-61c7-42b8-9ba7-0e07a88ba8d8"
+                    "designerId": "dbefdbc7-f4d7-426b-a45d-68712ab84063"
                 }
             ]
         }

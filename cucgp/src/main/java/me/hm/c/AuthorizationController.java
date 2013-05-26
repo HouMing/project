@@ -47,8 +47,7 @@ public class AuthorizationController {
 	}
 	
 
-	@RequestMapping(value = { "/logout" }, method = { RequestMethod.POST,
-			RequestMethod.GET })
+	@RequestMapping(value = { "/logout" }, method = { RequestMethod.POST, RequestMethod.GET })
 	public String logout(HttpServletRequest req, HttpServletResponse resp)
 			throws IOException {
 		req.getSession().removeAttribute("user");

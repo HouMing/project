@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import me.hm.m.Action;
 import me.hm.m.User;
 import me.hm.s.AuthorizationService;
-import me.hm.s.UsersManagerService;
+import me.hm.s.UsersService;
 import me.hm.s.e.AuthorizationException;
 import me.hm.s.e.ServerException;
 
@@ -28,7 +28,7 @@ public class UsersManagerController {
 	@Autowired
 	public AuthorizationService authorizationService;
 	@Autowired
-	public UsersManagerService usersManagerService;
+	public UsersService usersManagerService;
 
 	// TODO 加入权限控制!
 	@RequestMapping(value = { "/reads" }, method = { RequestMethod.GET })

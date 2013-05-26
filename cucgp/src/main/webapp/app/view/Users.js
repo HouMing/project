@@ -19,6 +19,7 @@ Ext.define('Cucgp.view.Users', {
     height: 427,
     id: 'idUsers',
     width: 716,
+    closable: true,
     title: '账户管理',
     forceFit: false,
     store: 'Users',

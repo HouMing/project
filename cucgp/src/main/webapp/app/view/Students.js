@@ -20,6 +20,7 @@ Ext.define('Cucgp.view.Students', {
     height: 250,
     id: 'idStudents',
     width: 800,
+    closable: true,
     title: '学生信息管理',
     store: 'Students',
 

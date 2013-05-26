@@ -7,10 +7,15 @@
     "codeClass": null,
     "userConfig": {
         "height": 371,
+        "id": "idTca",
         "width": 636,
         "designer|userClassName": "Tca",
         "bodyPadding": 10,
-        "title": "My Form"
+        "closable": true,
+        "title": "毕业设计申报表",
+        "titleAlign": "center",
+        "method": "POST",
+        "url": "rest/tcas/creates"
     },
     "designerId": "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126",
     "cn": [
@@ -23,7 +28,10 @@
             "codeClass": null,
             "userConfig": {
                 "layout|anchor": "100%",
-                "fieldLabel": "项目名称"
+                "id": "",
+                "designer|displayName": "tcaName",
+                "fieldLabel": "项目名称",
+                "inputId": "tcaName"
             },
             "designerId": "3b2ffe2a-05cc-460c-a5da-45638445e92b"
         },
@@ -36,7 +44,10 @@
             "codeClass": null,
             "userConfig": {
                 "layout|anchor": "100%",
-                "fieldLabel": "项目人数"
+                "designer|displayName": "numerator",
+                "fieldLabel": "项目人数",
+                "inputId": "numerator",
+                "inputType": "number"
             },
             "designerId": "27bb2bc3-be48-45e1-91ee-a9fb15aa93eb"
         },
@@ -50,10 +61,54 @@
             "userConfig": {
                 "layout|anchor": "100%",
                 "height": 150,
+                "id": "id",
                 "designer|displayName": "introduction",
-                "fieldLabel": ""
+                "fieldLabel": "",
+                "name": "introduction",
+                "defaultValue": "填写相关说明，以及对学生的要求"
             },
             "designerId": "16183c4d-46c2-4ac9-8950-0be53597139c"
+        },
+        {
+            "type": "Ext.button.Button",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "text": "提交"
+            },
+            "designerId": "08026e54-7902-4885-ac2b-16ffb7cb762b",
+            "cn": [
+                {
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onButtonClick",
+                        "implHandler": [
+                            " var form = this;",
+                            "            if (form.isValid()) {",
+                            "                form.submit({",
+                            "                    success: function(form, action) {",
+                            "                       Ext.Msg.alert('Success', action.result.msg);",
+                            "                    },",
+                            "                    failure: function(form, action) {",
+                            "                        Ext.Msg.alert('Failed', action.result.msg);",
+                            "                    }",
+                            "                });",
+                            "            }"
+                        ],
+                        "name": "click",
+                        "scope": "me"
+                    },
+                    "designerId": "e0eb3d65-0bf3-4d50-ab8d-32fca9999d69"
+                }
+            ]
         }
     ]
 }

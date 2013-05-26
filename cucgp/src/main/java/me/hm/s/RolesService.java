@@ -15,7 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @Transactional
-public class RolesManagerService {
+public class RolesService {
 
 	@Autowired
 	RoleDao roleDao;

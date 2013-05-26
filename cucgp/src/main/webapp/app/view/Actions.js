@@ -18,6 +18,7 @@ Ext.define('Cucgp.view.Actions', {
 
     height: 250,
     width: 400,
+    closable: true,
     title: '功能区',
     columnLines: false,
     disableSelection: true,
@@ -58,6 +59,8 @@ Ext.define('Cucgp.view.Actions', {
     onGridpanelCellClick: function(tableview, td, cellIndex, record, tr, rowIndex, e, eOpts) {
         var tmp = Ext.create(record.data.actionUrl);
         Ext.getCmp('idMain').add(tmp);
+        Ext.getCmp('idMain').setActiveTab(tmp);
+        //存在bug。在加入tmp后，应该将tab的激活页面转至tmp。
     }
 
 });

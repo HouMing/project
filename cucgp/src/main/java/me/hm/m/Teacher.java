@@ -8,13 +8,12 @@ public class Teacher extends User
 	String telephone;
 	String email;
 	String weibo;
-	String introduction;
 	String departmentName;
+	String introduction;
 	String titleName;
 
 	public Teacher(Integer userId, Integer groupId, String userName, String password, String userHome, String teacherName, String telephone,
-			String email, String weibo, String introduction, String departmentName,
-			String titleName)
+			String email, String weibo, String introduction, String departmentName,	String titleName)
 	{
 		super(userId, groupId, userName, password, userHome);
 		this.teacherName = teacherName;

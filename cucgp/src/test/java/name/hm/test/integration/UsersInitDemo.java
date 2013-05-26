@@ -15,14 +15,14 @@ import me.hm.m.Student;
 import me.hm.m.Teacher;
 import me.hm.m.User;
 import me.hm.m.Workflow;
-import me.hm.s.ActionsManagerService;
+import me.hm.s.ActionsService;
 import me.hm.s.AuthorizationService;
-import me.hm.s.GroupsManagerService;
-import me.hm.s.RolesManagerService;
-import me.hm.s.StudentsManagerService;
-import me.hm.s.TeachersManagerService;
-import me.hm.s.UsersManagerService;
-import me.hm.s.WorkflowsManagerService;
+import me.hm.s.GroupsService;
+import me.hm.s.RolesService;
+import me.hm.s.StudentService;
+import me.hm.s.TeachersService;
+import me.hm.s.UsersService;
+import me.hm.s.WorkflowsService;
 import name.hm.test.BaseTestCase;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -46,26 +46,26 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
     @Autowired
     public JdbcTemplate jdbcTemplate;
     @Autowired
-    public UsersManagerService userService;
+    public UsersService userService;
     @Autowired
     public AuthorizationService auService;
     @Autowired
-    public GroupsManagerService groupService;
+    public GroupsService groupService;
     @Autowired
-    public RolesManagerService roleService;
+    public RolesService roleService;
     @Autowired
-    public ActionsManagerService actionService;
+    public ActionsService actionService;
     @Autowired
-    public StudentsManagerService studentService;
+    public StudentService studentService;
     @Autowired
-    public TeachersManagerService teacherService;
+    public TeachersService teacherService;
     @Autowired
-    public WorkflowsManagerService workflowService;
+    public WorkflowsService workflowService;
 
-    public Group gpL = null;
-    public Group gpA = null;
-    public Group gpT = null;
-    public Group gpS = null;
+    public Group gpLeader = null;
+    public Group gpAssitent = null;
+    public Group gpTeacher = null;
+    public Group gpStudent = null;
 
     List<User> users = new ArrayList<User>();
     public Map<String, Group> groups = new HashMap<String, Group>();
@@ -130,7 +130,7 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
       }
     }
 
-    private void insertWorkflow() {
+	private void insertWorkflow() {
     	Workflow workflow = new Workflow("09级工学院流程",0);
     	Workflow workflow2 = new Workflow("09级工学院广电工流程",0);
     	Workflow workflow3 = new Workflow("09级工学院自动化流程",0);
@@ -155,6 +155,12 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
       Action idUser = new Action("idUser", "Cucgp.view.User", "账户管理");
       Action idWelcome = new Action("idWelcome", "Cucgp.view.Welcome", "首页");
       Action idWorkflow = new Action("idWorkflows", "Cucgp.view.Workflows", "流程管理");
+
+      Action idTca = new Action("idTca", "Cucgp.view.Tca", "申报课题");
+      Action idTcas = new Action("idTcas", "Cucgp.view.Tcas", "审核教师申报");
+
+      Action idApplyTcas = new Action("idApplyTcas", "Cucgp.view.ApplyTcas", "申请课题");
+      
       actions.put("idLogout", idLogout);
       actions.put("idUsers", idUsers);
       actions.put("idStudents", idStudents);
@@ -164,22 +170,29 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
       actions.put("idUser", idUser);
       actions.put("idWelcome", idWelcome);
       actions.put("idWorkflow", idWorkflow);
+      actions.put("idTca", idTca);
+      actions.put("idTcas", idTcas);
+      actions.put("idApplyTcas", idApplyTcas);
       Set<String> keys = actions.keySet();
       for (String key : keys ) {
         actionService.insertAction(actions.get(key));
       }
+      
       //@ Guest
       idLogout.getRoles().add(roles.get("rGuest").getRoleId());
       idWelcome.getRoles().add(roles.get("rGuest").getRoleId());
+      idUser.getRoles().add(roles.get("rGuest").getRoleId());
 
       idUsers.getRoles().add(roles.get("rAdmin").getRoleId());
       idStudents.getRoles().add(roles.get("rAdmin").getRoleId());
       idTeachers.getRoles().add(roles.get("rAdmin").getRoleId());
 
       idTeacher.getRoles().add(roles.get("rTeacher").getRoleId());
+      
       idStudent.getRoles().add(roles.get("rStudent").getRoleId());
+      
+      idApplyTcas.getRoles().add(roles.get("rStudent").getRoleId());
 
-      idUser.getRoles().add(roles.get("rGuest").getRoleId());
       keys = actions.keySet();
       for (String key : keys) {
         actionService.updateAction(actions.get(key));
@@ -201,19 +214,19 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
         roleService.insertRole(roles.get(key));
       }
 
-      gpL.getRoles().add(rAdmin.getRoleId());
-      gpL.getRoles().add(rTeacher.getRoleId());
-      gpL.getRoles().add(rGuest.getRoleId());
+      gpLeader.getRoles().add(rAdmin.getRoleId());
+      gpLeader.getRoles().add(rTeacher.getRoleId());
+      gpLeader.getRoles().add(rGuest.getRoleId());
 
-      gpA.getRoles().add(rAdmin.getRoleId());
-      gpA.getRoles().add(rGuest.getRoleId());
+      gpAssitent.getRoles().add(rAdmin.getRoleId());
+      gpAssitent.getRoles().add(rGuest.getRoleId());
 
-      gpT.getRoles().add(rTeacher.getRoleId());
-      gpT.getRoles().add(rGuest.getRoleId());
+      gpTeacher.getRoles().add(rTeacher.getRoleId());
+      gpTeacher.getRoles().add(rGuest.getRoleId());
 
-      gpS.getRoles().add(rStudent.getRoleId());
-      gpS.getRoles().add(rGuest.getRoleId());
-
+      gpStudent.getRoles().add(rStudent.getRoleId());
+      gpStudent.getRoles().add(rGuest.getRoleId());
+      
       keys = groups.keySet();
       for (String key : keys) {
         groupService.updateGroup(groups.get(key));
@@ -221,18 +234,15 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
     }
 
     private void insertStudent() {
-      Student zhang1 = new Student(null, gpS.getGroupId(), "200910013471", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013471") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang2 = new Student(null, gpS.getGroupId(), "200910013472", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013472") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang3 = new Student(null, gpS.getGroupId(), "200910013473", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013473") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang4 = new Student(null, gpS.getGroupId(), "200910013474", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013474") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang5 = new Student(null, gpS.getGroupId(), "200910013475", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013475") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang6 = new Student(null, gpS.getGroupId(), "200910013476", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013476") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang7 = new Student(null, gpS.getGroupId(), "200910013477", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013477") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang8 = new Student(null, gpS.getGroupId(), "200910013478", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013478") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Student zhang9 = new Student(null, gpS.getGroupId(), "200910013479", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013479") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      
-  //    Student zhang10 = new Student(null, gpS.getGroupId(), "200910013479", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013479") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
- //     users.add(zhang10);
+      Student zhang1 = new Student(null, gpStudent.getGroupId(), "200910013471", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013471") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang2 = new Student(null, gpStudent.getGroupId(), "200910013472", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013472") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang3 = new Student(null, gpStudent.getGroupId(), "200910013473", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013473") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang4 = new Student(null, gpStudent.getGroupId(), "200910013474", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013474") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang5 = new Student(null, gpStudent.getGroupId(), "200910013475", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013475") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang6 = new Student(null, gpStudent.getGroupId(), "200910013476", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013476") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang7 = new Student(null, gpStudent.getGroupId(), "200910013477", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013477") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang8 = new Student(null, gpStudent.getGroupId(), "200910013478", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013478") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Student zhang9 = new Student(null, gpStudent.getGroupId(), "200910013479", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("200910013479") + "/", "张1", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
       
       users.add(zhang1);
       users.add(zhang2);
@@ -256,9 +266,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
     }
 
     private void insertTeacher() {
-      Teacher yangshuang = new Teacher(null, gpT.getGroupId(), "1900", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1900") + "/", "杨", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Teacher shidongxin = new Teacher(null, gpT.getGroupId(), "1901", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1901") + "/", "石", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
-      Teacher wenhui = new Teacher(null, gpT.getGroupId(), "1902", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1902") + "/", "文", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Teacher yangshuang = new Teacher(null, gpTeacher.getGroupId(), "1900", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1900") + "/", "杨", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Teacher shidongxin = new Teacher(null, gpTeacher.getGroupId(), "1901", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1901") + "/", "石", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
+      Teacher wenhui = new Teacher(null, gpTeacher.getGroupId(), "1902", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1902") + "/", "文", "123456789", "123456789@qq.com", "@123456789", "个人介绍", null, null);
 
       teacher.put("yangshuang", yangshuang);
       teacher.put("shidongxin", shidongxin);
@@ -266,26 +276,28 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
       users.add(yangshuang);
       users.add(shidongxin);
       users.add(wenhui);
-      Set<String> keys = teacher.keySet();
-      for (String key : keys) {
-        userService.insertUser(teacher.get(key));
+
+      for (User user : users) {
+    	  if (user instanceof Teacher) {
+    		  teacherService.insertTeacher((Teacher)user);
+    	  }
       }
 
     }
 
     private void insertAssistent() {
-      User zhong = new User(null, gpA.getGroupId(), "1500", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1500") + "/");
-      zhong.setGroupId(gpA.getGroupId());
+      User zhong = new User(null, gpAssitent.getGroupId(), "1500", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1500") + "/");
+      zhong.setGroupId(gpAssitent.getGroupId());
       admin.put("zhong", zhong);
       userService.insertUser(zhong);
       allUser.add(zhong);
     }
 
     protected void insertLeader() {
-      User jiang= new User(null, gpL.getGroupId(), "1000", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1000") + "/");
-      User shi = new User(null, gpL.getGroupId(), "1001", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1001") + "/");
-      User yang = new User(null, gpL.getGroupId(), "1002", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1002") + "/");
-      User meng = new User(null, gpL.getGroupId(), "1003", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1003") + "/");
+      User jiang= new User(null, gpLeader.getGroupId(), "1000", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1000") + "/");
+      User shi = new User(null, gpLeader.getGroupId(), "1001", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1001") + "/");
+      User yang = new User(null, gpLeader.getGroupId(), "1002", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1002") + "/");
+      User meng = new User(null, gpLeader.getGroupId(), "1003", DigestUtils.md5Hex("123456"), "/" + DigestUtils.md5Hex("1003") + "/");
       admin.put("jiang", jiang);
       admin.put("shi", shi);
       admin.put("yang", yang);
@@ -298,21 +310,21 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
     }
 
     protected void insertGroups() {
-      gpL = new Group("系主任");
-      gpA = new Group("教秘");
-      gpT = new Group("教师");
-      gpS = new Group("学生");
-      groups.put("gLeader", gpL);
-      groups.put("gAssit", gpA);
-      groups.put("gTeacher", gpT);
-      groups.put("gStudent", gpS);
+      gpLeader = new Group("系主任");
+      gpAssitent = new Group("教秘");
+      gpTeacher = new Group("教师");
+      gpStudent = new Group("学生");
+      groups.put("gLeader", gpLeader);
+      groups.put("gAssit", gpAssitent);
+      groups.put("gTeacher", gpTeacher);
+      groups.put("gStudent", gpStudent);
       Set<String> keys = groups.keySet();
       for (String key : keys) {
         groupService.insertGroup(groups.get(key));
       }
     }
 
-   @Test
+//   @Test
     public void clean() {
       List<User> users = userService.readUsers();
       for (User user : users) {
@@ -330,11 +342,9 @@ import org.springframework.test.context.transaction.TransactionConfiguration;
       for (Action action : actions) {
         actionService.deleteAction(action);
       }
-      
       List<Workflow> workflows = workflowService.readWorkflows();
       for (Workflow workflow : workflows) {
     	  workflowService.deleteWorkflow(workflow);
       }
-
     }
   }

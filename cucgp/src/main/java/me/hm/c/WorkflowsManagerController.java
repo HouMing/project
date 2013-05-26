@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import me.hm.m.Workflow;
 import me.hm.s.AuthorizationService;
-import me.hm.s.WorkflowsManagerService;
+import me.hm.s.WorkflowsService;
 import me.hm.s.e.ServerException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class WorkflowsManagerController {
 	@Autowired
 	public AuthorizationService authorizationService;
 	@Autowired
-	public WorkflowsManagerService workflowsManagerService;
+	public WorkflowsService workflowsManagerService;
 
 	// TODO 加入权限控制!
 	@RequestMapping(value = { "/reads" }, method = { RequestMethod.GET })

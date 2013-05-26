@@ -37,6 +37,7 @@
         "width": 800,
         "designer|userClassName": "Students",
         "anchorSize": null,
+        "closable": true,
         "title": "学生信息管理",
         "store": "Students"
     },

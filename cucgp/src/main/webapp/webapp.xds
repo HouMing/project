@@ -118,14 +118,6 @@
             ],
             "className": "Students"
         },
-        "854215e0-951b-4fd5-8313-5434e37629f4": {
-            "paths": [
-                "metadata/view/MyPanel",
-                "app/view/override/MyPanel.js",
-                "app/view/MyPanel.js"
-            ],
-            "className": "MyPanel"
-        },
         "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e": {
             "paths": [
                 "metadata/model/Workflow",
@@ -157,6 +149,62 @@
                 "app/view/Tca.js"
             ],
             "className": "Tca"
+        },
+        "b98b272c-ee26-4a97-a9f7-9877beaf9a62": {
+            "paths": [
+                "metadata/store/Tcas",
+                "app/store/override/Tcas.js",
+                "app/store/Tcas.js"
+            ],
+            "className": "Tcas"
+        },
+        "cf3a6346-2434-4993-95fe-6e45f8878dbe": {
+            "paths": [
+                "metadata/model/Tca",
+                "app/model/override/Tca.js",
+                "app/model/Tca.js"
+            ],
+            "className": "Tca"
+        },
+        "4c05a3dc-e375-4fe7-bc62-a3590d942ab7": {
+            "paths": [
+                "metadata/view/Tcas",
+                "app/view/override/Tcas.js",
+                "app/view/Tcas.js"
+            ],
+            "className": "Tcas"
+        },
+        "1b664e57-be0c-4255-a2a4-735e4003885d": {
+            "paths": [
+                "metadata/view/ApplyTcas",
+                "app/view/override/ApplyTcas.js",
+                "app/view/ApplyTcas.js"
+            ],
+            "className": "ApplyTcas"
+        },
+        "1aba326a-f162-40ca-b479-b96c9b0e03bb": {
+            "paths": [
+                "metadata/view/Logout",
+                "app/view/override/Logout.js",
+                "app/view/Logout.js"
+            ],
+            "className": "Logout"
+        },
+        "eebccfec-cc09-41aa-8551-7108d31e88df": {
+            "paths": [
+                "metadata/model/Stua",
+                "app/model/override/Stua.js",
+                "app/model/Stua.js"
+            ],
+            "className": "Stua"
+        },
+        "5d1d7f21-b9e3-4766-9e06-eabe67ad596f": {
+            "paths": [
+                "metadata/store/Stuas",
+                "app/store/override/Stuas.js",
+                "app/store/Stuas.js"
+            ],
+            "className": "Stuas"
         }
     },
     "viewOrderMap": {
@@ -167,22 +215,28 @@
             "de852162-e48b-4783-b8d9-419cb857fdd2",
             "27c0ee75-310c-4297-887d-2015629422e1",
             "077dd8ea-0c6b-441a-871f-06cb419d1e78",
-            "854215e0-951b-4fd5-8313-5434e37629f4",
             "027084d7-1db5-4201-94ab-25c04091dcf8",
-            "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126"
+            "e563d06a-f9b3-4ae8-8f7b-cbb3a415c126",
+            "4c05a3dc-e375-4fe7-bc62-a3590d942ab7",
+            "1b664e57-be0c-4255-a2a4-735e4003885d",
+            "1aba326a-f162-40ca-b479-b96c9b0e03bb"
         ],
         "store": [
             "0e8503cb-0a1b-4617-9f05-d8d8ba01108a",
             "41a114f0-e9a6-4593-9dae-01000956de7e",
             "53b05f35-63cc-4b83-86a5-aef7c46106c7",
-            "d072611c-1230-445f-bc84-f0ae1d7df63c"
+            "d072611c-1230-445f-bc84-f0ae1d7df63c",
+            "b98b272c-ee26-4a97-a9f7-9877beaf9a62",
+            "5d1d7f21-b9e3-4766-9e06-eabe67ad596f"
         ],
         "controller": [],
         "model": [
             "12fd623d-8377-42f0-ad29-840036efe487",
             "aea1199e-ceab-4553-b4d5-0c593de77901",
             "3dd218f4-5dc6-4186-8556-86597fd9337f",
-            "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e"
+            "f84e55d9-001d-4ec8-bb1e-9cf2a7dfc05e",
+            "cf3a6346-2434-4993-95fe-6e45f8878dbe",
+            "eebccfec-cc09-41aa-8551-7108d31e88df"
         ],
         "resource": [
             "d9a9cf89-80ae-4c31-9c0c-47c454a7572d"

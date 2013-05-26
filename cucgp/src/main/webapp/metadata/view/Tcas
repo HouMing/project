@@ -1,0 +1,234 @@
+{
+    "type": "Ext.grid.Panel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "tbar": [
+            "[",
+            "                {",
+            "                    text: '通过',",
+            "                    handler: function() {",
+            "                     var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                     var record = this.up('grid').getStore().getAt(s.index);",
+            "                     record.set(\"status\", 1);",
+            "                     record.commit();",
+            "                     this.up('grid').getStore().commitChanges();",
+            "                     this.up('grid').plugins[0].cancelEdit();   ",
+            "                    }",
+            "                }, {",
+            "                    text: '不通过',",
+            "                    handler: function() {",
+            "                     var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                     var record = this.up('grid').getStore().getAt(s.index);",
+            "                     record.set(\"status\", 2);",
+            "                     record.commit();",
+            "                     this.up('grid').getStore().commitChanges();",
+            "                     this.up('grid').plugins[0].cancelEdit();",
+            "                    }",
+            "                },  {",
+            "                    text: '查看介绍',",
+            "                    handler: function() {",
+            "                     var s = this.up('grid').getSelectionModel().getSelection()[0];",
+            "                     var record = this.up('grid').getStore().getAt(s.index);",
+            "                     var introduction = record.get(\"introduction\");",
+            "                        Ext.create('Ext.window.Window', {",
+            "                                    title: '申报介绍',",
+            "                                    height: 200,",
+            "                                    width: 400,",
+            "                                    autoScroll: true,",
+            "                                    html: introduction",
+            "                        }).show();      ",
+            "                    }",
+            "                }",
+            "    ]"
+        ],
+        "height": 265,
+        "id": "idTcas",
+        "width": 671,
+        "designer|userClassName": "Tcas",
+        "closable": true,
+        "title": "审核教师申报",
+        "store": "Tcas"
+    },
+    "configAlternates": {
+        "tbar": "array"
+    },
+    "designerId": "4c05a3dc-e375-4fe7-bc62-a3590d942ab7",
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "tbar",
+            "type": "string"
+        }
+    ],
+    "cn": [
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "tcaId",
+                "text": "id"
+            },
+            "designerId": "5d296115-fa04-49ec-bb53-9195ff7c90aa"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "tcaName",
+                "text": "申报名称"
+            },
+            "designerId": "81be9edb-0678-441a-8ea5-7e3a26fc360e"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "numerator",
+                "dataIndex": "numerator",
+                "text": "毕设人数"
+            },
+            "designerId": "6c6e9078-f454-48e5-bd99-fdd7c916506d"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|displayName": "userName",
+                "dataIndex": "userName",
+                "text": "教师姓名"
+            },
+            "designerId": "1f729469-3776-407e-9314-72263beccaad"
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "hidden": true,
+                "designer|displayName": "introduction",
+                "dataIndex": "introduction",
+                "text": "介绍"
+            },
+            "designerId": "3fc7628c-2046-4156-85b7-eaf7452cf3dd",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            ""
+                        ]
+                    },
+                    "designerId": "175aef72-d5d3-4590-bd4d-e53ec627d51b"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.column.Column",
+            "reference": {
+                "name": "columns",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "dataIndex": "status",
+                "text": "课程状态"
+            },
+            "designerId": "29c6ae01-9a97-4019-870e-fb4d5463de7c",
+            "cn": [
+                {
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "renderer",
+                        "designer|params": [
+                            "value",
+                            "metaData",
+                            "record",
+                            "rowIndex",
+                            "colIndex",
+                            "store",
+                            "view"
+                        ],
+                        "implHandler": [
+                            "if (value == 0) {",
+                            "    return \"待领导审核\";",
+                            "}",
+                            "",
+                            "if (value == 1) {",
+                            "    return \"审核通过\";",
+                            "}",
+                            "",
+                            "if (value == 2) {",
+                            "    return \"审核不通过\";",
+                            "}",
+                            "if (value > 2) {",
+                            "    return \"开发中\";",
+                            "}"
+                        ]
+                    },
+                    "designerId": "77a449b7-500b-40dd-9b68-603aa7bc79a1"
+                }
+            ]
+        },
+        {
+            "type": "Ext.grid.View",
+            "reference": {
+                "name": "viewConfig",
+                "type": "object"
+            },
+            "codeClass": null,
+            "designerId": "ac7cbbe2-4399-494d-954e-755edb83760f"
+        },
+        {
+            "type": "Ext.grid.plugin.RowEditing",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": "Ext.grid.plugin.RowEditing",
+            "designerId": "3fdd96b4-99c0-441f-82e5-832fa171bbcc"
+        }
+    ]
+}

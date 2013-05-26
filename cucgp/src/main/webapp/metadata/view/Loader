@@ -21,14 +21,15 @@
             },
             "codeClass": null,
             "userConfig": {
-                "fn": "onContainerBeforeRender",
+                "fn": "onContainerAfterRender",
                 "implHandler": [
                     "var actions = Ext.create('Cucgp.view.Actions', {region : 'west', flex: 1});",
                     "var main = Ext.create('Cucgp.view.Main', {region : 'center', flex : 5});",
                     "this.add(actions);",
-                    "this.add(main);"
+                    "this.add(main);",
+                    "actions.getStore().reload();"
                 ],
-                "name": "beforerender",
+                "name": "afterrender",
                 "scope": "me"
             },
             "designerId": "4f3988f2-3d46-4868-9e51-d455b506721b"

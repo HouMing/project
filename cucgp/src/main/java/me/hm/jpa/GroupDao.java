@@ -35,8 +35,7 @@ public class GroupDao {
 				}
 			};
 
-			Group group = jdbcTemplate.queryForObject(sqlOne,
-					new Object[] { groupId }, rse);
+			Group group = jdbcTemplate.queryForObject(sqlOne, new Object[] { groupId }, rse);
 
 			if (group == null) {
 				return null;
@@ -45,8 +44,7 @@ public class GroupDao {
 			String sqlTwo = " SELECT role_id from role_has_group WHERE group_id = (?) ORDER BY role_id ASC;";
 
 			List<Integer> rolesId = new ArrayList<Integer>();
-			rolesId = jdbcTemplate.queryForList(sqlTwo,
-					new Object[] { groupId }, Integer.class);
+			rolesId = jdbcTemplate.queryForList(sqlTwo, new Object[] { groupId }, Integer.class);
 			group.setRoles(rolesId);
 			return group;
 		} catch (DataAccessException e) {
